@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  margin: 10px auto;
+  flex-wrap: wrap;
+  width: 80%;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 18px;
+  align-self: center;
+}
+.image {
+  width: 100%;
+}
