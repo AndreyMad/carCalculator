@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-state */
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 import React, { Component } from "react";
 import keyGenerator from "uuid/v1";
@@ -66,6 +68,7 @@ class App extends Component {
     const { car } = this.state;
     return (
       <>
+        {/* <Header></Header> */}
         <CarInfo car={car} />
       </>
     );

@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import types from "./types";
 
+// eslint-disable-next-line no-unused-vars
 const initialState = () => {
   const contacts = localStorage.getItem("contacts");
   if (contacts) {
