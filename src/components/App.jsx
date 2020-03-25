@@ -13,6 +13,8 @@ import * as selector from "../redux/Phonebook/selectors";
 import * as action from "../redux/Phonebook/actions";
 import * as API from "../api/api";
 import CarInfo from "./Carinfo/CarInfo";
+import Header from "./Header/Header";
+import DeliveryCalc from "./DeliveryCalc/DeliveryCalc";
 
 class App extends Component {
   state = {
@@ -68,8 +70,9 @@ class App extends Component {
     const { car } = this.state;
     return (
       <>
-        {/* <Header></Header> */}
+        <Header />
         <CarInfo car={car} />
+        <DeliveryCalc />
       </>
     );
   }
