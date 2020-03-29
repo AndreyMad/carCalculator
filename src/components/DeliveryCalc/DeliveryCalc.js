@@ -1,14 +1,31 @@
 import React, { Component } from "react";
 import style from "./DeliveryCalc.module.css";
 import SelectComponent from "../SelectComponent/SelectComponent";
+import * as API from "../../api/api";
 
 class DeliveryCalc extends Component {
   state = {
-    some: ""
+    options: []
   };
 
+  componentDidMount() {
+    const data = [];
+    API.getCarsMakes()
+      .then(res =>
+        res.data.forEach(element => {
+          const el = {
+            value: element,
+            label: element
+          };
+          return data.push(el);
+        })
+      )
+      .then(this.setState({ options: data }));
+    // console.log(this.state.options);
+  }
+
   render() {
-    const { some } = this.state;
+    const { some, options } = this.state;
     return (
       <div className={style.container}>
         <div className={style.outWrapper}>
@@ -18,6 +35,7 @@ class DeliveryCalc extends Component {
             <SelectComponent
               className={style.portSelector}
               placeholder="Порт отправки"
+              options={options}
             />
           </div>
         </div>

@@ -5,6 +5,7 @@
   height: 60px;
   border-radius: 10px;
   margin: -10px 0px 30px;
+  z-index: 200;
 }
 .logo {
   height: 50px;
