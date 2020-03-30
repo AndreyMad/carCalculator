@@ -30,7 +30,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://AndreyMad.github.io/goit-react-hw-05-phonebook",
+  "homepage": "https://andreymad.github.io/carCalculator/",
   "eslintConfig": {
     "extends": "react-app"
   },
