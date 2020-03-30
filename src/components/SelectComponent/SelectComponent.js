@@ -1,25 +1,30 @@
+/* eslint-disable react/no-did-update-set-state */
 import React, { Component } from "react";
 import Select from "react-select";
 import PropTypes from "prop-types";
 
 class SelectComponent extends Component {
   state = {
-    isLoading: false
+    isLoading: false,
+    options: []
   };
 
   static propTypes = {
     placeholder: PropTypes.string.isRequired,
-    className: PropTypes.string.isRequired
+    className: PropTypes.string.isRequired,
+    options: PropTypes.arrayOf(PropTypes.shape({})).isRequired
   };
 
+  componentDidUpdate(prevProps) {
+    const { options } = this.props;
+    if (prevProps.options !== options) {
+      this.setState({ options });
+    }
+  }
+
   render() {
-    const options = [
-      { value: "chocolate", label: "Chocolate" },
-      { value: "strawberry", label: "Strawberry" },
-      { value: "vanilla", label: "Vanilla" }
-    ];
     const { placeholder, className } = this.props;
-    const { isLoading } = this.state;
+    const { isLoading, options } = this.state;
 
     return (
       <Select

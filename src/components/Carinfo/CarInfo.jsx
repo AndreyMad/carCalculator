@@ -5,9 +5,9 @@ import style from "./CarInfo.module.css";
 
 const CarInfo = ({ car }) => {
   const aucDate = Date(car.aucDate);
-  const imgSrc = car.image[0]
-    .replace("width=161", "width=800")
-    .replace("height=120", "height=600");
+  const imgSrc = car.images[0]
+    .replace("width=161", "width=1200")
+    .replace("height=120", "height=800");
 
   return (
     <div className={style.container}>
