@@ -1,8 +1,11 @@
 import axios from "axios";
 
-export const getCarByLot = (lot, price = 1000) => {
+export const getCarByLot = (lot, selectedAuction, price = 1000) => {
   const car = axios
-    .post("http://45.11.24.158/priceCopart", `lot=${lot}&price=${price}`)
+    .post(
+      `http://45.11.24.158/price${selectedAuction}`,
+      `lot=${lot}&price=${price}`
+    )
     .then(res => res.data);
   return car;
 };
@@ -10,8 +13,11 @@ export const getCarByLot = (lot, price = 1000) => {
 export const getCarsMakes = () => {
   return axios.get("http://45.11.24.158/makes");
 };
-export const getAveragePrice = () => {
-  axios
-    .get("http://45.11.24.158/priceAvg?make=TESLA&model=Model%20s&year=2017")
+
+export const getAveragePrice = (make, model, year) => {
+  return axios
+    .get(
+      `http://45.11.24.158/priceAvg?make=${make}&model=${model}&year=${year}`
+    )
     .then(res => res);
 };

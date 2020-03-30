@@ -2,8 +2,9 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import style from "./CarInfo.module.css";
+import * as API from "../../api/api";
 
-const CarInfo = ({ car }) => {
+const CarInfo = ({ car, averagePrice }) => {
   const aucDate = Date(car.aucDate);
   const imgSrc = car.images[0]
     .replace("width=161", "width=1200")
@@ -16,8 +17,12 @@ const CarInfo = ({ car }) => {
         <h2 className={style.carName}>{car.name}</h2>
         <img src={imgSrc} className={style.image} alt="car" />
         <div className={style.wrapper}>
-          <p className={style.carName}>Автомобиль: {car.name}</p>
-          <p className={style.carLot}>Номер лота: {car.lot}</p>
+          <p className={style.carName}>
+            Автомобиль: <span className={style.span}>{car.name}</span>
+          </p>
+          <p className={style.carLot}>
+            Номер лота: <span className={style.span}>{car.lot}</span>
+          </p>
           <p className={style.AuctionDate}>Дата аукциона: {aucDate}</p>
           <p className={style.carEngine}>Двигатель: {car.engine}</p>
           <p className={style.carFuel}>Топливо: {car.fuel}</p>
@@ -26,6 +31,7 @@ const CarInfo = ({ car }) => {
           <p className={style.carRunAndDrive}>
             Run and Drive: {car.runAndDrive ? "Yes" : "No"}{" "}
           </p>
+          <p className={style.averagePrice}>Средняя цена{averagePrice}</p>
         </div>
       </div>
     </div>

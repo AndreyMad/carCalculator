@@ -4,15 +4,17 @@
   box-shadow: -8px 8px 13px 1px rgba(0, 0, 0, 0.43);
   max-width: 80%;
   border-radius: 10px;
-  height: 40px;
+  height: 80px;
   justify-content: center;
   align-items: center;
   outline: none;
+  flex-wrap: wrap;
 }
 .input {
   height: 30px;
-  border-radius: 20px;
+  border-radius: 30px;
   -moz-appearance: textfield;
+  width: 150px;
   padding: 5px 10px;
   margin: 0px 10px;
   outline: none;
@@ -23,6 +25,23 @@ input::-webkit-inner-spin-button {
 }
 .submitBtn {
   height: 30px;
-  border-radius: 20px;
+  border-radius: 30px;
   margin: 0px 10px;
+  background-color: #233682;
+  width: 50px;
+  border: none;
+  color: #ffffff;
+  outline: none;
+}
+.checkboxWrapper {
+  width: 130px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.checkboxWrapper > label {
+  font-size: 17px;
+}
+.checkboxWrapper > label > input {
+  margin-right: 5px;
 }
