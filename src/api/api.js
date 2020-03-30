@@ -1,60 +1,26 @@
-// import axios from "axios";
+/* eslint-disable no-console */
+import axios from "axios";
+/* eslint-disable no-unused-vars */
 
-// // export const getLotByNumber = lotInfo => {
-// //   axios.post("http://45.11.24.158/priceIaai/", lotInfo).then(res => {
-// //     console.log(res);
-// //   });
-// // };
-// //
-// // let myHeaders = new Headers();
-// // myHeaders.append(
-// //   "Content-Type",
-// //   "multipart/form-data; boundary=--------------------------632256987806227050242485"
-// // );
+const getAveragePrice = () => {
+  axios
+    .get("http://45.11.24.158/priceAvg?make=TESLA&model=Model%20s&year=2017")
+    .then(res => console.log(res));
+};
+getAveragePrice();
 
-// // let formdata = new FormData();
-// // formdata.append("lot", "26485914");
-// // formdata.append("price", "10000");
+export const getCarNames = () => {
+  axios.get("http://45.11.24.158/makes").then(res => {
+    console.log(res);
+  });
+};
+// getCarNames();
 
-// // let requestOptions = {
-// //   method: "POST",
-// //   headers: myHeaders,
-// //   body: formdata,
-// //   redirect: "follow"
-// // };
-
-// // const getLotByNumber = async () =>
-// //   await fetch("http://45.11.24.158/priceIaai", requestOptions)
-// //     // .then(response => response.text())
-// //     .then(result => console.log(result))
-// //     .catch(error => console.log("error", error));
-// // getLotByNumber();
-// // export const getLotByNumber = requestOptions => {
-// //   axios(requestOptions)
-// //     .then(res => {
-// //       res.text();
-// //     })
-// //     .then(result => console.log(result));
-// // };
-// // getLotByNumber(requestOptions);
-// var myHeaders = new Headers();
-// myHeaders.append(
-//   "Content-Type",
-//   "multipart/form-data; boundary=--------------------------648087441997285257765553"
-// );
-
-// var formdata = new FormData();
-// formdata.append("lot", "26485914");
-// formdata.append("price", "10000");
-
-// var requestOptions = {
-//   method: "POST",
-//   headers: myHeaders,
-//   body: formdata,
-//   redirect: "follow"
-// };
-
-// fetch("http://45.11.24.158/priceIaai", requestOptions)
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log("error", error));
+export const getLotInfo = async (lot, price) => {
+  return axios
+    .post(
+      "http://45.11.24.158/priceCopart",
+      `lot=${lot}&price=${price || 1000}`
+    )
+    .then(res => res);
+};
