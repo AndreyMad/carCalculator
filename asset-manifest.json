@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/carCalculator/static/css/main.19f0f34e.chunk.css",
-    "main.js": "/carCalculator/static/js/main.58def2dc.chunk.js",
-    "main.js.map": "/carCalculator/static/js/main.58def2dc.chunk.js.map",
+    "main.js": "/carCalculator/static/js/main.085c7597.chunk.js",
+    "main.js.map": "/carCalculator/static/js/main.085c7597.chunk.js.map",
     "runtime-main.js": "/carCalculator/static/js/runtime-main.13e4ffc5.js",
     "runtime-main.js.map": "/carCalculator/static/js/runtime-main.13e4ffc5.js.map",
     "static/js/2.d27d11c1.chunk.js": "/carCalculator/static/js/2.d27d11c1.chunk.js",
     "static/js/2.d27d11c1.chunk.js.map": "/carCalculator/static/js/2.d27d11c1.chunk.js.map",
     "index.html": "/carCalculator/index.html",
-    "precache-manifest.ada5c6916b12ddc53e07bc3e039a8d67.js": "/carCalculator/precache-manifest.ada5c6916b12ddc53e07bc3e039a8d67.js",
+    "precache-manifest.e2d7fe287eebcdfb6336a21c90733fd7.js": "/carCalculator/precache-manifest.e2d7fe287eebcdfb6336a21c90733fd7.js",
     "service-worker.js": "/carCalculator/service-worker.js",
     "static/css/main.19f0f34e.chunk.css.map": "/carCalculator/static/css/main.19f0f34e.chunk.css.map",
     "static/js/2.d27d11c1.chunk.js.LICENSE": "/carCalculator/static/js/2.d27d11c1.chunk.js.LICENSE",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.13e4ffc5.js",
     "static/js/2.d27d11c1.chunk.js",
     "static/css/main.19f0f34e.chunk.css",
-    "static/js/main.58def2dc.chunk.js"
+    "static/js/main.085c7597.chunk.js"
   ]
 }
