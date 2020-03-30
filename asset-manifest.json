@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/carsCalc/static/css/main.19f0f34e.chunk.css",
+    "main.js": "/carsCalc/static/js/main.58def2dc.chunk.js",
+    "main.js.map": "/carsCalc/static/js/main.58def2dc.chunk.js.map",
+    "runtime-main.js": "/carsCalc/static/js/runtime-main.fdbe56fb.js",
+    "runtime-main.js.map": "/carsCalc/static/js/runtime-main.fdbe56fb.js.map",
+    "static/js/2.d27d11c1.chunk.js": "/carsCalc/static/js/2.d27d11c1.chunk.js",
+    "static/js/2.d27d11c1.chunk.js.map": "/carsCalc/static/js/2.d27d11c1.chunk.js.map",
+    "index.html": "/carsCalc/index.html",
+    "precache-manifest.ae4a95b78e32991a9ac2409e6db33083.js": "/carsCalc/precache-manifest.ae4a95b78e32991a9ac2409e6db33083.js",
+    "service-worker.js": "/carsCalc/service-worker.js",
+    "static/css/main.19f0f34e.chunk.css.map": "/carsCalc/static/css/main.19f0f34e.chunk.css.map",
+    "static/js/2.d27d11c1.chunk.js.LICENSE": "/carsCalc/static/js/2.d27d11c1.chunk.js.LICENSE",
+    "static/media/logo.4acaa253b517.png": "/carsCalc/static/media/logo.4acaa253b517.4acaa253.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fdbe56fb.js",
+    "static/js/2.d27d11c1.chunk.js",
+    "static/css/main.19f0f34e.chunk.css",
+    "static/js/main.58def2dc.chunk.js"
+  ]
+}
