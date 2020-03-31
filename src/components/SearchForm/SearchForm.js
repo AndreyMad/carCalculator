@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import style from "./SearchForm.module.css";
@@ -13,7 +14,7 @@ class SearchForm extends Component {
   };
 
   handleChange = e => {
-    this.setState({ value: Number(e.target.value) });
+    this.setState({ value: e.target.value });
   };
 
   handleSubmit = e => {

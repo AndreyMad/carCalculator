@@ -26,3 +26,11 @@
   font-size: 18px;
   font-weight: bold;
 }
+.text {
+  width: 100%;
+  font-weight: normal;
+  line-height: 22px;
+}
+.span {
+  font-weight: bold;
+}
