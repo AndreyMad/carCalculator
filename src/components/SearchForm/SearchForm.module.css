@@ -14,6 +14,7 @@
   height: 30px;
   border-radius: 30px;
   -moz-appearance: textfield;
+  font-family: "Montserrat", sans-serif;
   width: 150px;
   padding: 5px 10px;
   margin: 0px 10px;
@@ -32,6 +33,7 @@ input::-webkit-inner-spin-button {
   border: none;
   color: #ffffff;
   outline: none;
+  font-family: "Montserrat", sans-serif;
 }
 .checkboxWrapper {
   width: 130px;
@@ -41,7 +43,42 @@ input::-webkit-inner-spin-button {
 }
 .checkboxWrapper > label {
   font-size: 17px;
+  font-family: "Montserrat", sans-serif;
 }
 .checkboxWrapper > label > input {
   margin-right: 5px;
+}
+.inputWrapper {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .input {
+    height: 40px;
+    width: 250px;
+    font-size: 20px;
+  }
+  .submitBtn {
+    height: 40px;
+    width: 80px;
+    font-size: 20px;
+  }
+  .checkboxWrapper {
+    width: 200px;
+    height: 30px;
+    margin-right: 110px;
+  }
+  .form {
+    height: 120px;
+  }
+  .checkboxWrapper > label > input {
+    width: 20px;
+    height: 20px;
+  }
+  .checkboxWrapper > label {
+    font-size: 22px;
+    line-height: 28px;
+  }
 }

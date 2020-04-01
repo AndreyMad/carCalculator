@@ -43,14 +43,17 @@ class SearchForm extends Component {
     return (
       <>
         <form onSubmit={this.handleSubmit} className={style.form}>
-          <input
-            type="number"
-            value={value}
-            className={style.input}
-            placeholder="Введите номер лота"
-            onChange={this.handleChange}
-          />
-          <input type="submit" className={style.submitBtn} value="Поиск" />
+          <div className={style.inputWrapper}>
+            <input
+              type="number"
+              value={value}
+              className={style.input}
+              placeholder="Введите номер лота"
+              onChange={this.handleChange}
+            />
+            <input type="submit" className={style.submitBtn} value="Поиск" />
+          </div>
+
           <div className={style.checkboxWrapper}>
             <label htmlFor="CopartBtn">
               <input

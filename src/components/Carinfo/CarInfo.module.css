@@ -4,6 +4,8 @@
   flex-wrap: wrap;
   width: 80%;
   flex-direction: column;
+  margin-top: 30px;
+  max-width: 450px;
 }
 
 .title {
@@ -11,6 +13,8 @@
   font-weight: normal;
   align-self: center;
   text-align: center;
+  font-family: "Montserrat", sans-serif;
+  line-height: 25px;
 }
 .image {
   width: 100%;
@@ -25,12 +29,36 @@
   text-align: center;
   font-size: 18px;
   font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  line-height: 35px;
 }
 .text {
   width: 100%;
+  font-size: 14px;
   font-weight: normal;
   line-height: 22px;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+
+  justify-content: space-between;
 }
+
 .span {
   font-weight: bold;
+}
+@media (min-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+  .carName {
+    font-size: 22px;
+    line-height: 50px;
+  }
+  .text {
+    font-size: 20px;
+    display: flex;
+  }
+  .span {
+    font-size: 20px;
+  }
 }

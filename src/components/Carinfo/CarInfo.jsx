@@ -3,6 +3,8 @@
 import React from "react";
 import style from "./CarInfo.module.css";
 import * as API from "../../api/api";
+import okSvg from "../../assets/svg/ok.svg";
+import falseSvg from "../../assets/svg/falseSvg.svg";
 
 const CarInfo = ({ car, averagePrice }) => {
   const auctionDateTime = aucDate => {
@@ -34,14 +36,28 @@ const CarInfo = ({ car, averagePrice }) => {
             Номер лота: <span className={style.span}>{car.lot}</span>
           </p>
           <p className={style.text}>
-            Дата аукциона: {auctionDateTime(car.aucDate)}
+            Дата аукциона:{" "}
+            <span className={style.span}>{auctionDateTime(car.aucDate)}</span>
           </p>
-          <p className={style.text}>Двигатель: {car.engine}</p>
-          <p className={style.text}>Топливо: {car.fuel}</p>
-          <p className={style.text}>Пробег: {car.odo}</p>
-          <p className={style.text}>Tittle: {car.doc}</p>
           <p className={style.text}>
-            Run and Drive: {car.runAndDrive ? "Yes" : "No"}{" "}
+            Двигатель: <span className={style.span}>{car.engine}</span>
+          </p>
+          <p className={style.text}>
+            Топливо: <span className={style.span}>{car.fuel}</span>
+          </p>
+          <p className={style.text}>
+            Пробег: <span className={style.span}>{car.odo}</span>
+          </p>
+          <p className={style.text}>
+            Tittle: <span className={style.span}>{car.doc}</span>
+          </p>
+          <p className={style.text}>
+            Run and Drive:{" "}
+            {car.runAndDrive ? (
+              <img src={okSvg} alt="ok" />
+            ) : (
+              <img src={falseSvg} alt="presentational images" />
+            )}{" "}
           </p>
           <p className={style.text}>Средняя цена{averagePrice}</p>
         </div>
