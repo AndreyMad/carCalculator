@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/carCalculator/static/css/main.19f0f34e.chunk.css",
-    "main.js": "/carCalculator/static/js/main.085c7597.chunk.js",
-    "main.js.map": "/carCalculator/static/js/main.085c7597.chunk.js.map",
+    "main.css": "/carCalculator/static/css/main.34f25b77.chunk.css",
+    "main.js": "/carCalculator/static/js/main.c82428df.chunk.js",
+    "main.js.map": "/carCalculator/static/js/main.c82428df.chunk.js.map",
     "runtime-main.js": "/carCalculator/static/js/runtime-main.13e4ffc5.js",
     "runtime-main.js.map": "/carCalculator/static/js/runtime-main.13e4ffc5.js.map",
-    "static/js/2.d27d11c1.chunk.js": "/carCalculator/static/js/2.d27d11c1.chunk.js",
-    "static/js/2.d27d11c1.chunk.js.map": "/carCalculator/static/js/2.d27d11c1.chunk.js.map",
+    "static/js/2.354ae313.chunk.js": "/carCalculator/static/js/2.354ae313.chunk.js",
+    "static/js/2.354ae313.chunk.js.map": "/carCalculator/static/js/2.354ae313.chunk.js.map",
     "index.html": "/carCalculator/index.html",
-    "precache-manifest.e2d7fe287eebcdfb6336a21c90733fd7.js": "/carCalculator/precache-manifest.e2d7fe287eebcdfb6336a21c90733fd7.js",
+    "precache-manifest.200e5aed7dc9c2ff0d523e87f57df787.js": "/carCalculator/precache-manifest.200e5aed7dc9c2ff0d523e87f57df787.js",
     "service-worker.js": "/carCalculator/service-worker.js",
-    "static/css/main.19f0f34e.chunk.css.map": "/carCalculator/static/css/main.19f0f34e.chunk.css.map",
-    "static/js/2.d27d11c1.chunk.js.LICENSE": "/carCalculator/static/js/2.d27d11c1.chunk.js.LICENSE",
-    "static/media/logo.4acaa253b517.png": "/carCalculator/static/media/logo.4acaa253b517.4acaa253.png"
+    "static/css/main.34f25b77.chunk.css.map": "/carCalculator/static/css/main.34f25b77.chunk.css.map",
+    "static/js/2.354ae313.chunk.js.LICENSE": "/carCalculator/static/js/2.354ae313.chunk.js.LICENSE",
+    "static/media/PlayfairDisplay-Regular.ttf": "/carCalculator/static/media/PlayfairDisplay-Regular.b3721ba3.ttf",
+    "static/media/falseSvg.svg": "/carCalculator/static/media/falseSvg.f104d068.svg",
+    "static/media/logo.4acaa253b517.png": "/carCalculator/static/media/logo.4acaa253b517.4acaa253.png",
+    "static/media/ok.svg": "/carCalculator/static/media/ok.253ad7b3.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.13e4ffc5.js",
-    "static/js/2.d27d11c1.chunk.js",
-    "static/css/main.19f0f34e.chunk.css",
-    "static/js/main.085c7597.chunk.js"
+    "static/js/2.354ae313.chunk.js",
+    "static/css/main.34f25b77.chunk.css",
+    "static/js/main.c82428df.chunk.js"
   ]
 }
