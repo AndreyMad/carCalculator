@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-console */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable no-unused-vars */
@@ -6,10 +7,10 @@ import React, { Component } from "react";
 import keyGenerator from "uuid/v1";
 import { CSSTransition } from "react-transition-group";
 import { connect } from "react-redux";
+import levenshtein from "fast-levenshtein";
 import style from "./App.module.css";
 import pop from "../transitions/pop.module.css";
 import fade from "../transitions/fade.module.css";
-import WarningModal from "./WarningModal/WarningModal";
 import * as selector from "../redux/Phonebook/selectors";
 import * as action from "../redux/Phonebook/actions";
 import CarInfo from "./Carinfo/CarInfo";
@@ -19,6 +20,7 @@ import * as API from "../api/api";
 import Loader from "./Loader/Loader";
 import SearchForm from "./SearchForm/SearchForm";
 import ErrorNotif from "./ErrorNotif/ErrorNotif";
+import makes from "../assets/data/makes.json";
 
 class App extends Component {
   state = {
@@ -35,34 +37,105 @@ class App extends Component {
       seller: "State Farm Insurance",
       fuel: "GAS",
       engine: "3.5L  6",
-      highlights: "ENGINE START PROGRAM",
+      highlights: "RUNS AND DRIVES",
       odo: 183964,
       capacity: 3.5,
       images: [
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG"
+        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
+        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
+        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
       ],
       doc: "GA - CERT OF TITLE-SALVAGE"
     },
-    averagePrice: 2124,
+    averagePriceCar: {
+      make: "",
+      model: "",
+      year: ""
+    },
+    averagePrice: "",
     isLoading: false,
     error: ""
   };
 
-  componentDidMount() {
-    // this.setState({ isLoading: true });
-    // API.getCarByLot(26557900).then(res => {
-    //   this.setState({ car: res.car, isLoading: false });
-    // });
-    this.getPrice();
+  componentDidUpdate(prevProps, prevState) {
+    const { averagePriceCar, car } = this.state;
+
+    if (
+      JSON.stringify(prevState.averagePriceCar) !==
+      JSON.stringify(averagePriceCar)
+    ) {
+      this.averagePriceHelper(car.name);
+      this.getAveragePrice(averagePriceCar);
+    }
   }
 
-  getPrice = () => {
-    return API.getAveragePrice("FORD", "C-MAX SEL", "2013").then(res => {
+  averagePriceHelper = car => {
+    const arrayData = car.split(" ");
+    const carYear = arrayData[0];
+    const carMake = arrayData[1];
+    const altCarMake = `${arrayData[1]} ${arrayData[2]}`;
+    const carModel = "";
+    const carName = makes.find(el => {
+      if (
+        el.toLowerCase() === carMake.toLowerCase() ||
+        el.toLowerCase() === altCarMake.toLowerCase()
+      ) {
+        return el;
+      }
+    });
+    const from =
+      car.toLowerCase().search(carName.toLowerCase()) + carName.length + 1;
+    const carModelToEqual = car.substr(from, car.length);
+
+    const carModelsFromResponse = carNameToResp => {
+      const modelsFromrRes = [];
+      API.getModels(carNameToResp)
+        .then(res => {
+          return res.data;
+        })
+        .then(data => data.forEach(el => modelsFromrRes.push(el)))
+        .then(data => getModel(modelsFromrRes, carModelToEqual))
+        .finally(data =>
+          this.setState({
+            averagePriceCar: {
+              make: carNameToResp,
+              model: getModel(modelsFromrRes, carModelToEqual),
+              year: carYear
+            }
+          })
+        );
+    };
+
+    carModelsFromResponse(carName);
+
+    const getModel = (models, carModel) => {
+      let initValueLevenstein = 100;
+      let valueToReturn = "";
+      for (const model of models) {
+        if (levenshtein.get(model, carModel) < initValueLevenstein) {
+          initValueLevenstein = levenshtein.get(model, carModel);
+          valueToReturn = model;
+        }
+      }
+
+      return valueToReturn;
+    };
+
+    const carToApi = {
+      make: carName
+    };
+  };
+
+  getAveragePrice = car => {
+    // const { car } = this.state;
+    this.averagePriceHelper(car.name);
+    return API.getAveragePrice(car).then(res => {
       this.setState({ averagePrice: res.data.price });
     });
   };
 
   formSubmit = (value, selectedAuction) => {
+    const { averagePriceCar, car } = this.state;
     this.setState({ isLoading: true });
     API.getCarByLot(value, selectedAuction)
       .then(res => {

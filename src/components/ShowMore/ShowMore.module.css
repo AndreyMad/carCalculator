@@ -1,0 +1,95 @@
+.showMoreBtn:hover {
+  transition: 1s;
+  cursor: pointer;
+  background-color: #3f61e7;
+}
+
+.showMoreBtn {
+  transition: 1s;
+  height: 30px;
+  border-radius: 30px;
+  margin: 20px auto;
+  background-color: #233682;
+  width: 100px;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.showMoreBtnText {
+  line-height: 30px;
+  font-family: "Montserrat", sans-serif;
+}
+.overlay {
+  width: 100vw;
+  background-color: #fff;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+}
+.modalContainer {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  padding-top: 15px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  max-width: 450px;
+  box-shadow: -8px 8px 13px 1px rgba(0, 0, 0, 0.43);
+  margin: 20px auto 0px;
+}
+
+.carImage {
+  width: 80%;
+  height: auto;
+  margin: 15px auto;
+}
+.closeSvg {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  fill: black;
+}
+.closeSvg:hover {
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .closeSvg {
+    width: 40px;
+    height: 40px;
+  }
+  .modalContainer {
+    max-width: 650px;
+    margin-top: 75px;
+  }
+  .showMoreBtn {
+    width: 130px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modalContainer {
+    padding-top: 30px;
+    max-width: 1000px;
+    margin-top: 110px;
+  }
+  .closeSvg {
+    width: 50px;
+    height: 50px;
+    top: 15px;
+    right: 15px;
+  }
+  .showMoreBtn {
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+  }
+}
