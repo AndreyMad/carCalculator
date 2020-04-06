@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import routes from "../../routes/routes";
@@ -35,7 +37,7 @@ class Navigation extends Component {
           <>
             <div className={style.overlay}>
               <ul className={style.menuList}>
-                <li className={style.menuItem}>
+                <li className={style.menuItem} onClick={this.toggleModal}>
                   <NavLink
                     exact
                     className={style.shadowLink}
@@ -44,7 +46,7 @@ class Navigation extends Component {
                     Головна
                   </NavLink>
                 </li>
-                <li className={style.menuItem}>
+                <li className={style.menuItem} onClick={this.toggleModal}>
                   <NavLink
                     className={style.shadowLink}
                     to={routes.CALCULATOR_PAGE.path}
@@ -52,7 +54,7 @@ class Navigation extends Component {
                     Калькулятор
                   </NavLink>
                 </li>
-                <li className={style.menuItem}>
+                <li className={style.menuItem} onClick={this.toggleModal}>
                   <NavLink
                     className={style.shadowLink}
                     to={routes.SEARCH_PAGE.path}
@@ -60,7 +62,7 @@ class Navigation extends Component {
                     Пошук
                   </NavLink>
                 </li>
-                <li className={style.menuItem}>
+                <li className={style.menuItem} onClick={this.toggleModal}>
                   <NavLink
                     className={style.shadowLink}
                     to={routes.SEARCH_PAGE.path}

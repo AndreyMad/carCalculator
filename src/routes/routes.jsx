@@ -12,7 +12,7 @@ export default {
     component: CalculatorPage
   },
   SEARCH_PAGE: {
-    path: "search",
+    path: "/search",
     component: SearchPage
   }
 };
