@@ -5,6 +5,7 @@ import style from "./CarInfo.module.css";
 import * as API from "../../api/api";
 import okSvg from "../../assets/svg/ok.svg";
 import falseSvg from "../../assets/svg/falseSvg.svg";
+import ShowMoreBtn from "../ShowMore/ShowMoreBtn";
 
 const CarInfo = ({ car, averagePrice }) => {
   const auctionDateTime = aucDate => {
@@ -20,54 +21,60 @@ const CarInfo = ({ car, averagePrice }) => {
       aucMin.length > 1 ? aucMin : `0${aucMin}`
     }`;
   };
-
   const runAndDrive = car.highlights === "RUNS AND DRIVES";
-
   const imgSrc = car.images[0]
     .replace("width=161", "width=1200")
     .replace("height=120", "height=800");
-
   return (
     <div className={style.container}>
       <div className={style.outWrapper}>
-        <h1 className={style.title}>Информация о лоте</h1>
-        <h2 className={style.carName}>{car.name}</h2>
-        <img src={imgSrc} className={style.image} alt="car" />
-        <div className={style.wrapper}>
+        <div className={style.titleWrapper}>
+          <h1 className={style.title}>Інформація про лот</h1>
+          <h2 className={style.carName}>{car.name}</h2>
+          <img src={imgSrc} className={style.image} alt="car" />
+        </div>
+
+        <div className={style.aboutWrapper}>
           <p className={style.text}>
-            Номер лота: <span className={style.span}>{car.lot}</span>
+            Номер лоту: <span className={style.span}>{car.lot}</span>
           </p>
           <p className={style.text}>
-            Дата аукциона:{" "}
+            Дата аукціону:{" "}
             <span className={style.span}>{auctionDateTime(car.aucDate)}</span>
           </p>
           <p className={style.text}>
-            Двигатель: <span className={style.span}>{car.engine}</span>
+            Двигун: <span className={style.span}>{car.engine}</span>
           </p>
           <p className={style.text}>
-            Топливо: <span className={style.span}>{car.fuel}</span>
+            Паливо: <span className={style.span}>{car.fuel}</span>
           </p>
           <p className={style.text}>
-            Пробег: <span className={style.span}>{car.odo}</span>
+            Пробіг: <span className={style.span}>{car.odo}</span>
           </p>
           <p className={style.text}>
-            Tittle: <span className={style.span}>{car.doc}</span>
+            Тайтл: <span className={style.span}>{car.doc}</span>
           </p>
           <p className={style.text}>
             Run and Drive:{" "}
             {runAndDrive ? (
-              <img className={style.svg} src={okSvg} alt="ok" />
+              <img src={okSvg} className={style.svg} alt="ok" />
             ) : (
               <img
-                className={style.svg}
                 src={falseSvg}
+                className={style.svg}
                 alt="presentational images"
               />
             )}{" "}
           </p>
-          <p className={style.text}>Средняя цена{averagePrice}</p>
+          {averagePrice ? (
+            <p className={style.text}>
+              Середня ціна такого авто:{" "}
+              <span className={style.span}>{averagePrice}$</span>
+            </p>
+          ) : null}
         </div>
       </div>
+      <ShowMoreBtn images={car.images} />
     </div>
   );
 };

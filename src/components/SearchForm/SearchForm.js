@@ -48,10 +48,10 @@ class SearchForm extends Component {
               type="number"
               value={value}
               className={style.input}
-              placeholder="Введите номер лота"
+              placeholder="Введіть номер лота"
               onChange={this.handleChange}
             />
-            <input type="submit" className={style.submitBtn} value="Поиск" />
+            <input type="submit" className={style.submitBtn} value="Пошук" />
           </div>
 
           <div className={style.checkboxWrapper}>

@@ -2,13 +2,14 @@
   display: flex;
   margin: 10px auto;
   box-shadow: -8px 8px 13px 1px rgba(0, 0, 0, 0.43);
-  max-width: 80%;
   border-radius: 10px;
   height: 80px;
   justify-content: center;
   align-items: center;
   outline: none;
   flex-wrap: wrap;
+  max-width: 450px;
+  width: 80%;
 }
 .input {
   height: 30px;
@@ -24,7 +25,13 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+.submitBtn:hover {
+  transition: 1s;
+  cursor: pointer;
+  background-color: #3f61e7;
+}
 .submitBtn {
+  transition: 1s;
   height: 30px;
   border-radius: 30px;
   margin: 0px 10px;
@@ -44,6 +51,10 @@ input::-webkit-inner-spin-button {
 .checkboxWrapper > label {
   font-size: 17px;
   font-family: "Montserrat", sans-serif;
+}
+.checkboxWrapper > label:hover,
+.checkboxWrapper > label > input:hover {
+  cursor: pointer;
 }
 .checkboxWrapper > label > input {
   margin-right: 5px;
@@ -72,6 +83,7 @@ input::-webkit-inner-spin-button {
   }
   .form {
     height: 120px;
+    max-width: 650px;
   }
   .checkboxWrapper > label > input {
     width: 20px;
@@ -80,5 +92,33 @@ input::-webkit-inner-spin-button {
   .checkboxWrapper > label {
     font-size: 22px;
     line-height: 28px;
+  }
+}
+@media (min-width: 1200px) {
+  .form {
+    box-shadow: none;
+  }
+  .input {
+    height: 50px;
+    width: 300px;
+    font-size: 25px;
+  }
+  .submitBtn {
+    height: 50px;
+    width: 120px;
+    font-size: 25px;
+  }
+  .checkboxWrapper > label > input {
+    width: 20px;
+    height: 20px;
+  }
+  .checkboxWrapper > label {
+    font-size: 26px;
+    line-height: 30px;
+  }
+  .checkboxWrapper {
+    width: 250px;
+    height: 40px;
+    margin-right: 160px;
   }
 }

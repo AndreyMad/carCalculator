@@ -6,6 +6,8 @@
   flex-direction: column;
   margin-top: 30px;
   max-width: 450px;
+  box-shadow: -8px 8px 13px 1px rgba(0, 0, 0, 0.43);
+  border-radius: 10px;
 }
 
 .title {
@@ -22,8 +24,6 @@
 .outWrapper {
   width: 100%;
   padding: 10px 20px;
-  border-radius: 10px;
-  box-shadow: -8px 8px 13px 1px rgba(0, 0, 0, 0.43);
 }
 .carName {
   text-align: center;
@@ -34,7 +34,7 @@
 }
 .text {
   width: 100%;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
   line-height: 22px;
   font-family: "Montserrat", sans-serif;
@@ -43,13 +43,17 @@
   justify-content: space-between;
 }
 .svg {
-  width: 25px;
+  width: 15px;
+  height: 15px;
 }
 
 .span {
   font-weight: bold;
 }
 @media (min-width: 768px) {
+  .container {
+    max-width: 650px;
+  }
   .title {
     font-size: 22px;
   }
@@ -60,8 +64,59 @@
   .text {
     font-size: 20px;
     display: flex;
+    padding-right: 5px;
+    line-height: 30px;
   }
   .span {
     font-size: 20px;
+  }
+  .svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1100px;
+    /* position: relative; */
+  }
+  .outWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+  }
+  .titleWrapper {
+    width: 45%;
+  }
+  .aboutWrapper {
+    width: 50%;
+    align-self: center;
+    margin-top: 30px;
+  }
+  .text {
+    font-size: 22px;
+    display: flex;
+    padding-right: 5px;
+    line-height: 34px;
+  }
+  .span {
+    font-size: 22px;
+  }
+  .title,
+  .carName {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    font-size: 24px;
+  }
+  .title {
+    top: 20px;
+  }
+  .carName {
+    top: 40px;
+  }
+  .image {
+    margin-top: 100px;
   }
 }

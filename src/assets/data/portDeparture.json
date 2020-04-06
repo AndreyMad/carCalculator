@@ -1,0 +1,17 @@
+{
+  "array": [
+    {
+      "name": "Savannah",
+      "value": "sa"
+    },
+    {
+      "name": "New York",
+      "value": "ny"
+    },
+    {
+      "name": "California",
+      "value": "ca"
+    },
+    { "name": "Texas", "value": "tx" }
+  ]
+}
