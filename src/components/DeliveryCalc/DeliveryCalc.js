@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import levenstein from "fast-levenshtein";
 import style from "./DeliveryCalc.module.css";
 import SelectComponent from "../SelectComponent/SelectComponent";
 import * as API from "../../api/api";
@@ -21,6 +22,7 @@ class DeliveryCalc extends Component {
         })
       )
       .then(this.setState({ options: data }));
+    console.log(levenstein.get("car", "car"));
     // console.log(this.state.options);
   }
 

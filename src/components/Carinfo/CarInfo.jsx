@@ -21,6 +21,8 @@ const CarInfo = ({ car, averagePrice }) => {
     }`;
   };
 
+  const runAndDrive = car.highlights === "RUNS AND DRIVES";
+
   const imgSrc = car.images[0]
     .replace("width=161", "width=1200")
     .replace("height=120", "height=800");
@@ -53,10 +55,14 @@ const CarInfo = ({ car, averagePrice }) => {
           </p>
           <p className={style.text}>
             Run and Drive:{" "}
-            {car.runAndDrive ? (
-              <img src={okSvg} alt="ok" />
+            {runAndDrive ? (
+              <img className={style.svg} src={okSvg} alt="ok" />
             ) : (
-              <img src={falseSvg} alt="presentational images" />
+              <img
+                className={style.svg}
+                src={falseSvg}
+                alt="presentational images"
+              />
             )}{" "}
           </p>
           <p className={style.text}>Средняя цена{averagePrice}</p>

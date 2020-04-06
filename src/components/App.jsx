@@ -35,7 +35,7 @@ class App extends Component {
       seller: "State Farm Insurance",
       fuel: "GAS",
       engine: "3.5L  6",
-      highlights: "ENGINE START PROGRAM",
+      highlights: "RUNS AND DRIVES",
       odo: 183964,
       capacity: 3.5,
       images: [
