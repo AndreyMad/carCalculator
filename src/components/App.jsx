@@ -21,6 +21,7 @@ import Loader from "./Loader/Loader";
 import SearchForm from "./SearchForm/SearchForm";
 import ErrorNotif from "./ErrorNotif/ErrorNotif";
 import makes from "../assets/data/makes.json";
+import Navigation from "../pages/Navigation/Navigation";
 
 class App extends Component {
   state = {
@@ -155,6 +156,7 @@ class App extends Component {
       <>
         {isLoading ? <Loader /> : null}
         <Header />
+        <Navigation />
         {isLoading ? <Loader /> : null}
         <SearchForm formSubmit={this.formSubmit} />
 

@@ -1,0 +1,51 @@
+.menuButton {
+  width: 35px;
+  height: 35px;
+  position: fixed;
+  top: 30px;
+  right: 10px;
+  z-index: 1001;
+}
+.overlay {
+  position: static;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.menuItem {
+  margin: 20px 30px;
+  list-style: none;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+}
+.menuItem > a {
+  text-decoration: none;
+  color: #000000;
+  opacity: 1;
+  font-family: "Montserrat", sans-serif;
+}
+.shadowLink::after {
+  content: "";
+  right: -13px;
+  width: calc(100% + 26px);
+  height: 35px;
+  position: absolute;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 255, 0.3);
+
+  top: -5px;
+  z-index: 100;
+}
+.shadowLink::after:hover {
+  background-color: #3f61e7;
+}
