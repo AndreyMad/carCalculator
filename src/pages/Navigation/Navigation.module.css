@@ -5,6 +5,9 @@
   top: 30px;
   right: 10px;
   z-index: 1001;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .overlay {
   position: static;

@@ -32,7 +32,19 @@ class Navigation extends Component {
           type="button"
           onClick={this.toggleModal}
           className={style.menuButton}
-        />
+        >
+          <svg
+            viewBox="0 0 100 80"
+            width="100%"
+            height="100"
+            fill="#3f61e7"
+            className={style.menuButton}
+          >
+            <rect width="30" height="12" rx="8" />
+            <rect y="30" width="90" height="12" rx="8" />
+            <rect y="60" width="30px" height="12" rx="8" />
+          </svg>
+        </button>
         {isBurgerOpen ? (
           <>
             <div className={style.overlay}>
