@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-syntax */
 import React, { Component } from "react";
 import levenshtein from "fast-levenshtein";
@@ -60,7 +61,6 @@ class SearchPage extends Component {
     const carYear = arrayData[0];
     const carMake = arrayData[1];
     const altCarMake = `${arrayData[1]} ${arrayData[2]}`;
-    const carModel = "";
     const carName = makes.find(el => {
       if (
         el.toLowerCase() === carMake.toLowerCase() ||
@@ -116,7 +116,6 @@ class SearchPage extends Component {
   };
 
   formSubmit = (value, selectedAuction) => {
-    const { averagePriceCar, car } = this.state;
     this.setState({ isLoading: true });
     API.getCarByLot(value, selectedAuction)
       .then(res => {
@@ -126,6 +125,7 @@ class SearchPage extends Component {
           this.setState({ car: res.car, isLoading: false });
         }
       })
+      // eslint-disable-next-line no-console
       .catch(err => console.log(err));
   };
 
