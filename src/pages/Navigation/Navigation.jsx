@@ -5,14 +5,29 @@ import { NavLink } from "react-router-dom";
 import routes from "../../routes/routes";
 import style from "./Navigation.module.css";
 import burgerStyle from "./burgerStyle.module.css";
+// import Header from "../../components/Header/Header";
 
 class Navigation extends Component {
   state = {
-    isBurgerOpen: false
+    isBurgerOpen: false,
+    scrolOn: true
   };
 
   toggleModal = () => {
-    this.setState(prevState => ({ isBurgerOpen: !prevState.isBurgerOpen }));
+    this.setState(prevState => ({
+      isBurgerOpen: !prevState.isBurgerOpen,
+      scrolOn: !prevState.scrolOn
+    }));
+    this.togleScrol();
+  };
+
+  togleScrol = () => {
+    const { scrolOn } = this.state;
+    if (scrolOn) {
+      document.body.style = " overflow: hidden ";
+    } else {
+      document.body.style = "";
+    }
   };
 
   togleHelper = e => {
@@ -45,6 +60,7 @@ class Navigation extends Component {
         </button>
         {isBurgerOpen ? (
           <>
+            {/* <Header /> */}
             <div className={style.overlay}>
               <ul className={style.menuList}>
                 <li className={style.menuItem} onClick={this.toggleModal}>
@@ -70,6 +86,14 @@ class Navigation extends Component {
                     to={routes.SEARCH_PAGE.path}
                   >
                     Пошук
+                  </NavLink>
+                </li>
+                <li className={style.menuItem} onClick={this.toggleModal}>
+                  <NavLink
+                    className={style.shadowLink}
+                    to={routes.SEARCH_PAGE.path}
+                  >
+                    Підбір і доставка автозапчастин
                   </NavLink>
                 </li>
                 <li className={style.menuItem} onClick={this.toggleModal}>
