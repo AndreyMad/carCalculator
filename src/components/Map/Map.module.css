@@ -1,0 +1,13 @@
+.mapContainer {
+  width: 100vw;
+  margin: 0px auto;
+  border: 0;
+  min-height: 200px;
+  height: 80vw;
+  max-width: 600px;
+  max-height: 350px;
+}
+.map {
+  width: 100%;
+  height: 100%;
+}
