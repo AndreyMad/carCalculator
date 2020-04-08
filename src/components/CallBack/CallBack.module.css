@@ -1,0 +1,22 @@
+.CallBackButton {
+  background-color: #233682;
+  width: 180px;
+  height: 35px;
+  display: block;
+  margin: 5px auto;
+  outline: none;
+  border-radius: 18px;
+  text-decoration: none;
+  border: none;
+  color: #ffffff;
+  transition: 0.1s;
+  box-shadow: -6px 6px 4px 0px rgba(0, 0, 0, 0.75);
+}
+.CallBackButton:active {
+  transition: 0.1s;
+  transform: translate(-2px, 2px);
+  box-shadow: -4px 4px 4px 0px rgba(0, 0, 0, 0.75);
+}
+.CallBackButton:hover {
+  cursor: pointer;
+}

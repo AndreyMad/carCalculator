@@ -25,3 +25,49 @@
   width: 100%;
   text-align: right;
 }
+.title {
+  font-size: 30px;
+  margin: 0px auto 20px;
+  max-width: 450px;
+  width: 80%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+.aboutBigNumber {
+  font-size: 90px;
+  font-family: sans-serif;
+  color: #ffffff;
+}
+.aboutText {
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+}
+.aboutWrapper {
+  background-image: url(../../assets/img/jaguar_small.jpg);
+}
+.aboutWrapper2 {
+  background-image: url(../../assets/img/audi.jpg);
+}
+.aboutWrapper,
+.aboutWrapper2 {
+  width: 100vw;
+
+  min-height: 300px;
+  background-position: 0% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  max-width: 450px;
+  margin: 20px auto;
+}
+.aboutInnerWrapper {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  padding: 15px;
+}

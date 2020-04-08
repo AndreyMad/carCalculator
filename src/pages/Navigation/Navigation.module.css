@@ -5,7 +5,7 @@
   z-index: 100;
   width: 100vw;
   height: 100vh;
-  background-color: #fff;
+  background-color: lightgray;
 }
 
 .menuList {
@@ -34,7 +34,7 @@
   height: 35px;
   position: absolute;
   border-radius: 10px;
-  background-color: rgba(0, 0, 255, 0.3);
+  background-color: rgba(16, 16, 200, 0.3);
 
   top: -5px;
   z-index: 100;

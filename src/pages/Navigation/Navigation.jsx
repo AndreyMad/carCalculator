@@ -2,9 +2,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
+import slide from "../../transitions/slide.module.css";
 import routes from "../../routes/routes";
 import style from "./Navigation.module.css";
 import burgerStyle from "./burgerStyle.module.css";
+
 // import Header from "../../components/Header/Header";
 
 class Navigation extends Component {
@@ -58,7 +61,13 @@ class Navigation extends Component {
           <span className={burgerStyle.burgerSpan} />
           <span className={burgerStyle.burgerSpan} />
         </button>
-        {isBurgerOpen ? (
+
+        <CSSTransition
+          in={isBurgerOpen}
+          unmountOnExit
+          timeout={250}
+          classNames={slide}
+        >
           <>
             {/* <Header /> */}
             <div className={style.overlay}>
@@ -107,7 +116,7 @@ class Navigation extends Component {
               </ul>
             </div>
           </>
-        ) : null}
+        </CSSTransition>
       </>
     );
   }
