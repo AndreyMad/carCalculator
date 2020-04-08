@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import routes from "../../routes/routes";
 import style from "./Navigation.module.css";
+import burgerStyle from "./burgerStyle.module.css";
 
 class Navigation extends Component {
   state = {
@@ -17,7 +18,8 @@ class Navigation extends Component {
   togleHelper = e => {
     if (
       e.target.className.includes("menuButton") ||
-      e.target.className.includes("menuItem")
+      e.target.className.includes("menuItem") ||
+      e.target.className.includes("menuButton_active")
     ) {
       this.toggleModal();
     }
@@ -31,19 +33,15 @@ class Navigation extends Component {
           value="burgerMenu"
           type="button"
           onClick={this.toggleModal}
-          className={style.menuButton}
+          className={
+            isBurgerOpen
+              ? burgerStyle.menuButton_active
+              : burgerStyle.menuButton
+          }
         >
-          <svg
-            viewBox="0 0 100 80"
-            width="100%"
-            height="100"
-            fill="#3f61e7"
-            className={style.menuButton}
-          >
-            <rect width="30" height="12" rx="8" />
-            <rect y="30" width="90" height="12" rx="8" />
-            <rect y="60" width="30px" height="12" rx="8" />
-          </svg>
+          <span className={burgerStyle.burgerSpan} />
+          <span className={burgerStyle.burgerSpan} />
+          <span className={burgerStyle.burgerSpan} />
         </button>
         {isBurgerOpen ? (
           <>

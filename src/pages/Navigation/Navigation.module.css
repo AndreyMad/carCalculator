@@ -1,14 +1,3 @@
-.menuButton {
-  width: 35px;
-  height: 35px;
-  position: fixed;
-  top: 30px;
-  right: 10px;
-  z-index: 1001;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 .overlay {
   position: static;
   top: 0px;
