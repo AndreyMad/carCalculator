@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4547537873bdd1f4de0f0d87211098d7",
+    "revision": "f1e88c10e0a7ab99ffc4875fa61a4359",
     "url": "/carCalculator/index.html"
   },
   {
-    "revision": "ed1de466e8f903267e69",
-    "url": "/carCalculator/static/css/main.ea50bd54.chunk.css"
+    "revision": "d3cf87ce41ffae3a7bda",
+    "url": "/carCalculator/static/css/main.4ea6f356.chunk.css"
   },
   {
-    "revision": "c0c9488b0ed58fbf9c64",
-    "url": "/carCalculator/static/js/2.6957f159.chunk.js"
+    "revision": "5c8266a9f4d5b02c3fca",
+    "url": "/carCalculator/static/js/2.47179df0.chunk.js"
   },
   {
     "revision": "e928fe768baa9832b5bc57eae021f30c",
-    "url": "/carCalculator/static/js/2.6957f159.chunk.js.LICENSE"
+    "url": "/carCalculator/static/js/2.47179df0.chunk.js.LICENSE"
   },
   {
-    "revision": "ed1de466e8f903267e69",
-    "url": "/carCalculator/static/js/main.59d718fb.chunk.js"
+    "revision": "d3cf87ce41ffae3a7bda",
+    "url": "/carCalculator/static/js/main.11440457.chunk.js"
   },
   {
     "revision": "573505a3d7db1043cb8d",
@@ -28,6 +28,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/PlayfairDisplay-Regular.b3721ba3.ttf"
   },
   {
+    "revision": "af7b510f487f81850859054ccd02c408",
+    "url": "/carCalculator/static/media/audi.af7b510f.jpg"
+  },
+  {
     "revision": "88dbb7b46b88af8fff622ab6d45a6a44",
     "url": "/carCalculator/static/media/close.88dbb7b4.svg"
   },
@@ -36,11 +40,23 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/falseSvg.f104d068.svg"
   },
   {
+    "revision": "5f8b47a056e28100b6a7199b9eb21824",
+    "url": "/carCalculator/static/media/jaguar_small.5f8b47a0.jpg"
+  },
+  {
     "revision": "4acaa253b5177e8951210528f38ee332",
     "url": "/carCalculator/static/media/logo.4acaa253b517.4acaa253.png"
   },
   {
     "revision": "253ad7b39df04bbf66c9049efedb2415",
     "url": "/carCalculator/static/media/ok.253ad7b3.svg"
+  },
+  {
+    "revision": "46fa0ed0720f6844e5c0099f17e77a45",
+    "url": "/carCalculator/static/media/phone.46fa0ed0.svg"
+  },
+  {
+    "revision": "361fd60205bffc7782d99cc124d1872a",
+    "url": "/carCalculator/static/media/viberSvg.361fd602.svg"
   }
 ]);
