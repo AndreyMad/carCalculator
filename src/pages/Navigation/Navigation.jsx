@@ -100,7 +100,7 @@ class Navigation extends Component {
                 <li className={style.menuItem} onClick={this.toggleModal}>
                   <NavLink
                     className={style.shadowLink}
-                    to={routes.SEARCH_PAGE.path}
+                    to={routes.PARTS_PAGE.path}
                   >
                     Підбір і доставка автозапчастин
                   </NavLink>

@@ -50,6 +50,11 @@ class App extends Component {
             exact
             component={routes.SEARCH_PAGE.component}
           />
+          <Route
+            path={routes.PARTS_PAGE.path}
+            exact
+            component={routes.PARTS_PAGE.component}
+          />
           <Redirect to={routes.MAIN_PAGE.path} />
         </Switch>
       </>

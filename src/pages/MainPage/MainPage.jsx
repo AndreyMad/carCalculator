@@ -5,6 +5,7 @@ import phoneSvg from "../../assets/svg/phone.svg";
 import viberSvg from "../../assets/svg/viberSvg.svg";
 import CallBackBtn from "../../components/CallBack/CallBackBtn";
 import CallBackModal from "../../components/CallBack/CallBackModal";
+import Footer from "../../components/Footer/Footer";
 
 class MainPage extends Component {
   state = {
@@ -93,7 +94,7 @@ class MainPage extends Component {
         </div>
         {isModalOpen ? <CallBackModal /> : null}
         <Map />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }
