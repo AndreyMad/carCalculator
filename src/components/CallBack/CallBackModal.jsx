@@ -10,10 +10,7 @@ class CallBackModal extends Component {
     const { formValues } = this.state;
     return (
       <>
-        <div className={style.container}>
-          {formValues}
-          {/* тут сделать форму */}
-        </div>
+        <div className={style.containerDelivery}>{formValues}</div>
       </>
     );
   }
