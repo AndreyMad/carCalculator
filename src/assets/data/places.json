@@ -11,7 +11,7 @@
     {
       "city": "MACON",
       "state": "GA",
-      "sa": 1099,
+      "sa": null,
       "ca": 500,
       "ny": null,
       "tx": null
@@ -330,7 +330,7 @@
     },
     {
       "city": "HAMMOND",
-      "state": "IN",
+      "state": "INN",
       "sa": null,
       "ca": null,
       "ny": 1349,
@@ -370,7 +370,7 @@
     },
     {
       "city": "INDIANAPOLIS",
-      "state": "IN",
+      "state": "INN",
       "sa": 1374,
       "ca": null,
       "ny": 1374,
@@ -1378,7 +1378,7 @@
     },
     {
       "city": "FORT WAYNE",
-      "state": "IN",
+      "state": "INN",
       "sa": null,
       "ca": null,
       "ny": 1399,
