@@ -34,10 +34,39 @@ import tn from "./tnMap.png";
 import ms from "./msMap.png";
 import al from "./alMap.png";
 import fl from "./flMap.png";
+import nc from "./ncMap.png";
+
+import dc from "./dcMap.png";
+import va from "./vaMap.png";
+import wv from "./wvMap.png";
+import oh from "./ohMap.png";
+import md from "./mdMap.png";
+import pa from "./paMap.png";
+import de from "./deMap.png";
+import nj from "./njMap.png";
+import ny from "./nyMap.png";
+import ct from "./ctMap.png";
+import ri from "./riMap.png";
+import ma from "./maMap.png";
 
 export default {
   defaultMap,
+  ma,
+  ri,
+  va,
+  wv,
+  oh,
+  md,
+  pa,
+  de,
+  nj,
+  ny,
+  ct,
   ia,
+  nc,
+  fl,
+  tn,
+  dc,
   mo,
   inn,
   ky,
