@@ -2,19 +2,14 @@ import React, { Component } from "react";
 import Select from "react-select";
 import ports from "../../assets/data/ports.json";
 import style from "./CalculatorPage.module.css";
-import * as maps from "../../assets/img/map/index";
 
 class CalculatorPage extends Component {
   state = {
-    arrayOfDepartures: [],
-    departurePlace: "",
-    arrayOfPorts: [],
-    departurePort: ""
+    arrayOfDepartures: []
   };
 
   componentDidMount() {
     this.departureParse();
-    console.log(maps);
   }
 
   departureParse = () => {
@@ -29,14 +24,14 @@ class CalculatorPage extends Component {
       return departuresArray.push(valToArr);
     });
     this.setState({ arrayOfDepartures: departuresArray });
+    this.imgStateHelper();
   };
 
-  search;
-
-  imgStateHelper = () => {};
-
-  handleChange = e => {
-    this.setState({ departurePlace: e.value });
+  imgStateHelper = departurePlace => {
+    const { Departures } = { ...ports };
+    Departures.find(el => {
+      return el.city === departurePlace;
+    });
   };
 
   render() {
@@ -49,7 +44,7 @@ class CalculatorPage extends Component {
             <br />
             <Select options={arrayOfDepartures} onChange={this.handleChange} />
           </div>
-          {/* <img src=/> */}
+          {/* <img src={departurePort.length>1?}/>  */}
         </div>
       </>
     );
