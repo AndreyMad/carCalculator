@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/carCalculator/static/css/main.0558d580.chunk.css",
-    "main.js": "/carCalculator/static/js/main.23bfa13d.chunk.js",
-    "main.js.map": "/carCalculator/static/js/main.23bfa13d.chunk.js.map",
+    "main.css": "/carCalculator/static/css/main.3241f911.chunk.css",
+    "main.js": "/carCalculator/static/js/main.7f2a9ad6.chunk.js",
+    "main.js.map": "/carCalculator/static/js/main.7f2a9ad6.chunk.js.map",
     "runtime-main.js": "/carCalculator/static/js/runtime-main.13e4ffc5.js",
     "runtime-main.js.map": "/carCalculator/static/js/runtime-main.13e4ffc5.js.map",
-    "static/js/2.eb7a4e1d.chunk.js": "/carCalculator/static/js/2.eb7a4e1d.chunk.js",
-    "static/js/2.eb7a4e1d.chunk.js.map": "/carCalculator/static/js/2.eb7a4e1d.chunk.js.map",
+    "static/js/2.ce95454c.chunk.js": "/carCalculator/static/js/2.ce95454c.chunk.js",
+    "static/js/2.ce95454c.chunk.js.map": "/carCalculator/static/js/2.ce95454c.chunk.js.map",
     "index.html": "/carCalculator/index.html",
-    "precache-manifest.839bcdff41cc4c8c0102f015bd8fac3f.js": "/carCalculator/precache-manifest.839bcdff41cc4c8c0102f015bd8fac3f.js",
+    "precache-manifest.ffb060cd39bd1a61ea18599a39205677.js": "/carCalculator/precache-manifest.ffb060cd39bd1a61ea18599a39205677.js",
     "service-worker.js": "/carCalculator/service-worker.js",
-    "static/css/main.0558d580.chunk.css.map": "/carCalculator/static/css/main.0558d580.chunk.css.map",
-    "static/js/2.eb7a4e1d.chunk.js.LICENSE": "/carCalculator/static/js/2.eb7a4e1d.chunk.js.LICENSE",
+    "static/css/main.3241f911.chunk.css.map": "/carCalculator/static/css/main.3241f911.chunk.css.map",
+    "static/js/2.ce95454c.chunk.js.LICENSE": "/carCalculator/static/js/2.ce95454c.chunk.js.LICENSE",
     "static/media/3carscontainer.jpg": "/carCalculator/static/media/3carscontainer.4e2e4d90.jpg",
     "static/media/4carscontainer.jpg": "/carCalculator/static/media/4carscontainer.6ab4820a.jpg",
     "static/media/PlayfairDisplay-Regular.ttf": "/carCalculator/static/media/PlayfairDisplay-Regular.b3721ba3.ttf",
@@ -30,6 +30,7 @@
     "static/media/falseSvg.svg": "/carCalculator/static/media/falseSvg.f104d068.svg",
     "static/media/flMap.png": "/carCalculator/static/media/flMap.0842cfcf.png",
     "static/media/gaMap.png": "/carCalculator/static/media/gaMap.0865a41f.png",
+    "static/media/hiMap.png": "/carCalculator/static/media/hiMap.9f3640bd.png",
     "static/media/iaMap.png": "/carCalculator/static/media/iaMap.78928d6a.png",
     "static/media/idMap.png": "/carCalculator/static/media/idMap.b5d43774.png",
     "static/media/inMap.png": "/carCalculator/static/media/inMap.a65f0d3b.png",
@@ -69,8 +70,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.13e4ffc5.js",
-    "static/js/2.eb7a4e1d.chunk.js",
-    "static/css/main.0558d580.chunk.css",
-    "static/js/main.23bfa13d.chunk.js"
+    "static/js/2.ce95454c.chunk.js",
+    "static/css/main.3241f911.chunk.css",
+    "static/js/main.7f2a9ad6.chunk.js"
   ]
 }

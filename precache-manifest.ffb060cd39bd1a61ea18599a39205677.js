@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9f90afcbc86471a3b3ffa351343261c5",
+    "revision": "49e3d2ce741a7a47953794386e806fbc",
     "url": "/carCalculator/index.html"
   },
   {
-    "revision": "b64e62d026fd0d02f8a7",
-    "url": "/carCalculator/static/css/main.0558d580.chunk.css"
+    "revision": "c842819234c5adca09dd",
+    "url": "/carCalculator/static/css/main.3241f911.chunk.css"
   },
   {
-    "revision": "a82ae3c77759c37c13a3",
-    "url": "/carCalculator/static/js/2.eb7a4e1d.chunk.js"
+    "revision": "7b642b9d3e7cb1b9a4be",
+    "url": "/carCalculator/static/js/2.ce95454c.chunk.js"
   },
   {
     "revision": "e928fe768baa9832b5bc57eae021f30c",
-    "url": "/carCalculator/static/js/2.eb7a4e1d.chunk.js.LICENSE"
+    "url": "/carCalculator/static/js/2.ce95454c.chunk.js.LICENSE"
   },
   {
-    "revision": "b64e62d026fd0d02f8a7",
-    "url": "/carCalculator/static/js/main.23bfa13d.chunk.js"
+    "revision": "c842819234c5adca09dd",
+    "url": "/carCalculator/static/js/main.7f2a9ad6.chunk.js"
   },
   {
     "revision": "573505a3d7db1043cb8d",
@@ -94,6 +94,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "0865a41f62968935db183d1d07014341",
     "url": "/carCalculator/static/media/gaMap.0865a41f.png"
+  },
+  {
+    "revision": "9f3640bdcfeba16dcd28f22fb6067eea",
+    "url": "/carCalculator/static/media/hiMap.9f3640bd.png"
   },
   {
     "revision": "78928d6ac3ef489333c8ff3426a6e0af",
