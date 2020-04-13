@@ -1,0 +1,88 @@
+.deliveryContainer,
+.priceContainer {
+  width: 100%;
+  display: flex;
+  max-width: 450px;
+  padding: 10px;
+  margin: 10px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.title {
+  font-size: 17px;
+  font-weight: bold;
+  align-self: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  line-height: 25px;
+}
+.mapImg {
+  width: 90%;
+  margin: 30px auto;
+}
+.delivImg {
+  width: 80%;
+  height: 135px;
+  margin: 20px auto;
+}
+.priceInput {
+  width: 100%;
+  max-width: 400px;
+  border-color: hsl(0, 0%, 80%);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  height: 38px;
+  padding: 2px 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  margin: 15px auto;
+}
+.departWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.priceWrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.span {
+  width: 100%;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 22px;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+
+  justify-content: space-between;
+}
+.innerSpan {
+  font-weight: bold;
+}
+.totalDeliveryCostWrappe {
+  margin-right: auto;
+  margin-left: 0px;
+  width: 100%;
+}
+.totalDeliveryCost {
+  font-family: "Montserrat", sans-serif;
+  line-height: 40px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  font-size: 15px;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .deliveryContainer {
+    max-width: 700px;
+  }
+  .departWrapper {
+    max-width: 340px;
+  }
+}

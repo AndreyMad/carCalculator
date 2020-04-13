@@ -3,7 +3,7 @@ import axios from "axios";
 export const getCarByLot = (lot, selectedAuction, price = 1000) => {
   const car = axios
     .post(
-      `https://45.11.24.158/price${selectedAuction}`,
+      `http://45.11.24.158/price${selectedAuction}`,
       `lot=${lot}&price=${price}`
     )
     .then(res => res.data);
@@ -11,7 +11,7 @@ export const getCarByLot = (lot, selectedAuction, price = 1000) => {
 };
 
 export const getCarsMakes = () => {
-  return axios.get("https://45.11.24.158/makes");
+  return axios.get("http://45.11.24.158/makes");
 };
 export const getModels = make => {
   return axios.get(`https://45.11.24.158/models?make=${make}`);
@@ -20,7 +20,7 @@ export const getModels = make => {
 export const getAveragePrice = ({ make, model, year }) => {
   return axios
     .get(
-      `https://45.11.24.158/priceAvg?make=${make}&model=${model}&year=${year}`
+      `http://45.11.24.158/priceAvg?make=${make}&model=${model}&year=${year}`
     )
     .then(res => res);
 };
