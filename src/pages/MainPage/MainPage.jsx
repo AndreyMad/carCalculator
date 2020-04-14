@@ -92,7 +92,7 @@ class MainPage extends Component {
             стосовно автомобіля з сша
           </p>
         </div>
-        {isModalOpen ? <CallBackModal /> : null}
+        {isModalOpen ? <CallBackModal toggleModal={this.toggleModal} /> : null}
         <Map />
         <Footer />
       </div>

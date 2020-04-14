@@ -1,0 +1,40 @@
+.customTitle {
+  font-size: 17px;
+  font-weight: bold;
+  align-self: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  line-height: 25px;
+}
+.span {
+  width: 100%;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 22px;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+
+  justify-content: space-between;
+}
+.innerSpan {
+  font-weight: bold;
+}
+.customContainer {
+  width: 100%;
+  display: flex;
+  max-width: 450px;
+  padding: 10px;
+  margin: 10px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.totalCustomCost {
+  font-family: "Montserrat", sans-serif;
+  line-height: 40px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  font-size: 15px;
+  font-weight: bold;
+}

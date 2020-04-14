@@ -6,6 +6,8 @@ import { carTypes } from "../../assets/data/carTypes.json";
 import style from "./Calculator.module.css";
 import maps from "../../assets/img/map/index";
 import containerImg from "../../assets/img/containers/index";
+import CustomCalc from "../CustomCalc/CustomCalc";
+import Footer from "../Footer/Footer";
 
 class Calculator extends Component {
   state = {
@@ -278,6 +280,8 @@ class Calculator extends Component {
             </div>
           </div>
         </div>
+        <CustomCalc />
+        <Footer />
       </>
     );
   }
