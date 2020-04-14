@@ -15,7 +15,6 @@ import * as selector from "../redux/Phonebook/selectors";
 import * as action from "../redux/Phonebook/actions";
 import CarInfo from "./Carinfo/CarInfo";
 import Header from "./Header/Header";
-import DeliveryCalc from "./DeliveryCalc/DeliveryCalc";
 import * as API from "../api/api";
 import Loader from "./Loader/Loader";
 import SearchForm from "./SearchForm/SearchForm";

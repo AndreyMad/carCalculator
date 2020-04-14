@@ -1,38 +1,54 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import style from "./CustomCalc.module.css";
 
 class CustomCalc extends Component {
   state = {
     portExpedition: 450,
     brokerPrice: 400,
-    customPaid: 1000,
+    inTax: 1000,
     pdv: 400,
     esv: 200,
     evacution: 250,
     certification: 200,
     accounting: 120,
-    totalCustom: ""
+    totalCustom: "",
+    isDieselIngine: false
+  };
+
+  static propTypes = {
+    carPrice: PropTypes.string.isRequired
   };
 
   componentDidMount() {
     this.totalCustomCalc();
   }
 
+  componentDidUpdate(prevProps) {
+    const { carPrice } = this.props;
+    const { isDieselIngine } = this.state;
+    if (this.props !== prevProps) {
+      const k = isDieselIngine ? 50 : 100;
+      this.setState({ inTax: k * carPrice });
+    }
+  }
+
   totalCustomCalc = () => {
     const {
       portExpedition,
       brokerPrice,
-      customPaid,
+      inTax,
       pdv,
       esv,
       evacution,
       certification,
       accounting
     } = this.state;
+
     const totalCustom =
       Number(portExpedition) +
       Number(brokerPrice) +
-      Number(customPaid) +
+      Number(inTax) +
       Number(pdv) +
       Number(esv) +
       Number(evacution) +
@@ -45,14 +61,16 @@ class CustomCalc extends Component {
     const {
       portExpedition,
       brokerPrice,
-      customPaid,
+      inTax,
       pdv,
       esv,
       evacution,
       certification,
       accounting,
-      totalCustom
+      totalCustom,
+      excise
     } = this.state;
+
     return (
       <>
         <div className={style.customContainer}>
@@ -67,7 +85,12 @@ class CustomCalc extends Component {
           </span>
           <br />
           <span className={style.span}>
-            Митний платіж:<span className={style.innerSpan}>{customPaid}</span>
+            Ввізне мито:
+            <span className={style.innerSpan}>{inTax}$</span>
+          </span>
+          <br />
+          <span className={style.span}>
+            Акцизний збір:<span className={style.innerSpan}>{excise}</span>
           </span>
           <br />
           <span className={style.span}>
