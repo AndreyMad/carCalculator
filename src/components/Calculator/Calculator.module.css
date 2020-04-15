@@ -77,7 +77,23 @@
   font-size: 15px;
   font-weight: bold;
 }
-
+.checkboxWrapper {
+  width: 130px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.checkboxWrapper > label {
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+}
+.checkboxWrapper > label:hover,
+.checkboxWrapper > label > input:hover {
+  cursor: pointer;
+}
+.checkboxWrapper > label > input {
+  margin-right: 5px;
+}
 @media (min-width: 768px) {
   .deliveryContainer {
     max-width: 700px;

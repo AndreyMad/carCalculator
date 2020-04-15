@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 import React, { Component } from "react";
 import Select from "react-select";
 import ports from "../../assets/data/portDeparture.json";
@@ -7,6 +9,7 @@ import style from "./Calculator.module.css";
 import maps from "../../assets/img/map/index";
 import containerImg from "../../assets/img/containers/index";
 import CustomCalc from "../CustomCalc/CustomCalc";
+import prices from "../../assets/data/comissionPrice.json";
 
 class Calculator extends Component {
   state = {
@@ -118,6 +121,22 @@ class Calculator extends Component {
     this.setState({ carPrice: e.target.value }, () => this.totalDeliveryCalc());
   };
 
+  comissionCalc = () => {
+    const { carPrice, selectedAuction } = this.state;
+    if (selectedAuction === "Copart") {
+      const comissionArray = prices.CopartArray[0].comission;
+      const aucComission = comissionArray.find(el => {
+        if (el[0] > carPrice) {
+          const newEl = el[1];
+          return newEl;
+        }
+      });
+      return aucComission;
+    }
+
+    // console.log(aucComission);
+  };
+
   totalDeliveryCalc = () => {
     const {
       deliverySea,
@@ -135,6 +154,13 @@ class Calculator extends Component {
           companyСommission
       )
     });
+    this.comissionCalc();
+  };
+
+  handleRadioCheck = e => {
+    this.setState({
+      selectedAuction: e.target.value
+    });
   };
 
   render() {
@@ -143,11 +169,11 @@ class Calculator extends Component {
       departurePorts,
       carPrice,
       imgdDeliverySrc,
-
       overlandDeliveryCost,
       deliverySea,
       totalDelivery,
-      companyСommission
+      companyСommission,
+      selectedAuction
     } = this.state;
     const selectStyles = {
       container: base => ({
@@ -217,6 +243,30 @@ class Calculator extends Component {
                 onChange={this.priceHandler}
               />
             </label>
+            <div className={style.checkboxWrapper}>
+              <label htmlFor="CopartBtn">
+                <input
+                  type="radio"
+                  id="CopartBtn"
+                  checked={selectedAuction === "Copart"}
+                  value="Copart"
+                  name="auctionRadio"
+                  onChange={this.handleRadioCheck}
+                />
+                Copart
+              </label>
+              <label htmlFor="IaaiBtn">
+                <input
+                  type="radio"
+                  value="Iaai"
+                  id="IaaiBtn"
+                  name="auctionRadio"
+                  checked={selectedAuction === "Iaai"}
+                  onChange={this.handleRadioCheck}
+                />
+                Iaai
+              </label>
+            </div>
           </div>
           <div className={style.priceContainer}>
             <div className={style.priceWrapper}>
