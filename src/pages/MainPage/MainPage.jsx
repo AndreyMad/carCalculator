@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CSSTransition } from "react-transition-group";
 import Map from "../../components/Map/Map";
 import style from "./MainPage.module.css";
 import phoneSvg from "../../assets/svg/phone.svg";
@@ -6,6 +7,7 @@ import viberSvg from "../../assets/svg/viberSvg.svg";
 import CallBackBtn from "../../components/CallBack/CallBackBtn";
 import CallBackModal from "../../components/CallBack/CallBackModal";
 import Footer from "../../components/Footer/Footer";
+import slideTop from "../../transitions/slideTop.module.css";
 
 class MainPage extends Component {
   state = {
@@ -66,7 +68,6 @@ class MainPage extends Component {
         <CallBackBtn toggleModal={this.toggleModal} />
         <div className={style.aboutContainer}>
           <div className={style.aboutWrapper}>
-            {/* <img className={style.aboutImage} src={teslaImg} /> */}
             <div className={style.aboutInnerWrapper}>
               <p className={style.aboutBigNumber}>8</p>
               <span className={style.aboutText}>
@@ -76,7 +77,6 @@ class MainPage extends Component {
           </div>
           <CallBackBtn toggleModal={this.toggleModal} />
           <div className={style.aboutWrapper2}>
-            {/* <img className={style.aboutImage} src={teslaImg} /> */}
             <div className={style.aboutInnerWrapper}>
               <p className={style.aboutBigNumber}>2150</p>
               <span className={style.aboutText}>вчасно доставлених авто</span>
@@ -92,7 +92,17 @@ class MainPage extends Component {
             стосовно автомобіля з сша
           </p>
         </div>
-        {isModalOpen ? <CallBackModal toggleModal={this.toggleModal} /> : null}
+        <CSSTransition
+          in={isModalOpen}
+          unmountOnExit
+          timeout={400}
+          classNames={slideTop}
+        >
+          <CallBackModal
+            isModalOpen={isModalOpen}
+            toggleModal={this.toggleModal}
+          />
+        </CSSTransition>
         <Map />
         <Footer />
       </div>

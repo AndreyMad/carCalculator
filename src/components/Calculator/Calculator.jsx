@@ -1,4 +1,5 @@
 /* eslint-disable array-callback-return */
+/* eslint-disable prefer-destructuring */
 /* eslint-disable consistent-return */
 import React, { Component } from "react";
 import Select from "react-select";
@@ -24,7 +25,8 @@ class Calculator extends Component {
     deliverySea: "900",
     overlandDeliveryCost: "",
     totalDelivery: "",
-    companyСommission: 900
+    companyСommission: 900,
+    aucComission: ""
   };
 
   componentDidMount() {
@@ -123,18 +125,64 @@ class Calculator extends Component {
 
   comissionCalc = () => {
     const { carPrice, selectedAuction } = this.state;
+    let aucComission = "";
+    let bidFee = "";
+
     if (selectedAuction === "Copart") {
       const comissionArray = prices.CopartArray[0].comission;
-      const aucComission = comissionArray.find(el => {
+      const bidFeeArray = prices.CopartArray[1].bidFee;
+      const { gateFee } = prices.CopartArray[2];
+
+      comissionArray.find(el => {
         if (el[0] > carPrice) {
-          const newEl = el[1];
-          return newEl;
+          aucComission = el[1];
+          return aucComission;
+        }
+        if (el[comissionArray.length < carPrice]) {
+          aucComission = Math.round(Number(carPrice) * 0.01 + 450);
+          return aucComission;
         }
       });
-      return aucComission;
+      bidFeeArray.find(el => {
+        if (el[0] > carPrice) {
+          bidFee = el[1];
+          return bidFee;
+        }
+      });
+      this.setState({
+        aucComission: Math.round(
+          Number(gateFee) + Number(bidFee) + Number(aucComission)
+        )
+      });
     }
+    if (selectedAuction === "Iaai") {
+      const comissionArray = prices.IaaiArray[0].comission;
+      const bidFeeArray = prices.IaaiArray[1].bidFee;
+      const { gateFee } = prices.IaaiArray[2];
 
-    // console.log(aucComission);
+      comissionArray.find(el => {
+        if (el[0] > carPrice) {
+          aucComission = el[1];
+          return aucComission;
+        }
+        if (el[comissionArray.length < carPrice]) {
+          aucComission = Math.round(Number(carPrice) * 0.01 + 450);
+          return aucComission;
+        }
+      });
+      bidFeeArray.find(el => {
+        if (el[0] > carPrice) {
+          bidFee = el[1];
+          return bidFee;
+        }
+      });
+
+      this.setState({
+        aucComission: Math.round(
+          Number(gateFee) + Number(bidFee) + Number(aucComission)
+        )
+      });
+    }
   };
 
   totalDeliveryCalc = () => {
@@ -158,9 +206,12 @@ class Calculator extends Component {
   };
 
   handleRadioCheck = e => {
-    this.setState({
-      selectedAuction: e.target.value
-    });
+    this.setState(
+      {
+        selectedAuction: e.target.value
+      },
+      () => this.comissionCalc()
+    );
   };
 
   render() {
@@ -173,7 +224,8 @@ class Calculator extends Component {
       deliverySea,
       totalDelivery,
       companyСommission,
-      selectedAuction
+      selectedAuction,
+      aucComission
     } = this.state;
     const selectStyles = {
       container: base => ({
@@ -278,7 +330,7 @@ class Calculator extends Component {
               <span className={style.span}>
                 Комісія аукціону:
                 <span className={style.innerSpan}>
-                  {Math.round(carPrice * 0.1)}
+                  {Math.round(aucComission)}
                 </span>
               </span>
               <br />
