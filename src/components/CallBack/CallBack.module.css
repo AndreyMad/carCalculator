@@ -1,4 +1,5 @@
-.CallBackButton {
+.CallBackButton,
+.CallBackSubmitButton {
   background-color: #233682;
   width: 180px;
   height: 35px;
@@ -12,12 +13,14 @@
   transition: 0.1s;
   box-shadow: -6px 6px 4px 0px rgba(0, 0, 0, 0.75);
 }
-.CallBackButton:active {
+.CallBackButton:active,
+.CallBackSubmitButton:active {
   transition: 0.1s;
   transform: translate(-2px, 2px);
   box-shadow: -4px 4px 4px 0px rgba(0, 0, 0, 0.75);
 }
-.CallBackButton:hover {
+.CallBackButton:hover,
+.CallBackSubmitButton:hover {
   cursor: pointer;
 }
 
@@ -30,9 +33,9 @@
   z-index: 1000;
   background-color: #ffffff;
 
-  padding: 20px;
+  padding: 0px 20px;
 }
-.container {
+.formWrappe {
   width: 100%;
   max-width: 450px;
   margin: 40px auto;
@@ -52,7 +55,7 @@
   margin: 10px 0px;
   padding: 2px 8px;
 }
-.container > form > label {
+.formWrappe > form > label {
   font-family: "Montserrat", sans-serif;
   font-size: 22px;
 }
@@ -69,7 +72,7 @@
   font-size: 17px;
   font-family: "Montserrat", sans-serif;
   text-align: center;
-  margin: 50px auto;
+  margin: 70px auto 40px;
 }
 .closeButton {
   width: 35px;
@@ -81,4 +84,32 @@
   border: none;
   outline: none;
   background-image: url(../../assets/svg/close.svg);
+  z-index: 100000;
+}
+.CallBackSubmitButton {
+  z-index: 100000;
+  position: relative;
+  margin: 40px auto;
+}
+
+@media (min-width: 768px) {
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    width: 80vw;
+    background-color: #fff;
+    position: relative;
+    max-width: 600px;
+    max-height: 85vh;
+  }
+  .formWrappe {
+    z-index: 3000;
+    margin: auto;
+    padding: 20px;
+    height: 80vh;
+  }
 }
