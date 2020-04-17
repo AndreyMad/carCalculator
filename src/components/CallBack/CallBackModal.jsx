@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { CSSTransition } from "react-transition-group";
 import style from "./CallBack.module.css";
+import fade from "../../transitions/fade.module.css";
 
 class CallBackModal extends Component {
   state = {
@@ -8,12 +10,13 @@ class CallBackModal extends Component {
   };
 
   static propTypes = {
-    toggleModal: PropTypes.func.isRequired
+    toggleModal: PropTypes.func.isRequired,
+    isModalOpen: PropTypes.bool.isRequired
   };
 
-  componentDidMount() {
-    document.body.style = " overflow: hidden ";
-  }
+  // componentDidMount() {
+  //   document.body.style = " overflow: hidden ";
+  // }
 
   componentWillUnmount() {
     document.body.style = "";
@@ -27,7 +30,7 @@ class CallBackModal extends Component {
 
   render() {
     const { formValues } = this.state;
-    const { toggleModal } = this.props;
+    const { toggleModal, isModalOpen } = this.props;
     return (
       <>
         <div className={style.overlay}>
@@ -65,16 +68,24 @@ class CallBackModal extends Component {
                 onClick={toggleModal}
                 className={style.closeButton}
               />
-              <button
-                className={style.CallBackSubmitButton}
-                onClick={this.formSubmit}
-                type="button"
-              >
-                Залишити заявку
-              </button>
             </div>
+            <button
+              className={style.CallBackSubmitButton}
+              onClick={this.formSubmit}
+              type="button"
+            >
+              Залишити заявку
+            </button>
           </div>
         </div>
+        <CSSTransition
+          in={isModalOpen}
+          unmountOnExit
+          timeout={400}
+          classNames={fade}
+        >
+          <div className={style.shadow} />
+        </CSSTransition>
       </>
     );
   }

@@ -1,6 +1,9 @@
+/* eslint-disable react/no-did-update-set-state */
 import React, { Component } from "react";
+import Select from "react-select";
 import PropTypes from "prop-types";
 import style from "./CustomCalc.module.css";
+import engines from "../../assets/data/engines.json";
 
 class CustomCalc extends Component {
   state = {
@@ -13,7 +16,9 @@ class CustomCalc extends Component {
     certification: 200,
     accounting: 120,
     totalCustom: "",
-    isDieselIngine: false
+    engineType: "",
+    engineToSelect: {}
+    // engineVolume: ""
   };
 
   static propTypes = {
@@ -22,6 +27,18 @@ class CustomCalc extends Component {
 
   componentDidMount() {
     this.totalCustomCalc();
+    if (engines) {
+      const engineToSelect = [
+        ...engines.engines.map(el => {
+          return {
+            value: el,
+            label: el
+          };
+        })
+      ];
+
+      this.setState({ engineToSelect: [...engineToSelect] });
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -32,6 +49,16 @@ class CustomCalc extends Component {
       this.setState({ inTax: k * carPrice });
     }
   }
+
+  handleRadioCheck = e => {
+    this.setState({
+      engineType: e.target.value
+    });
+  };
+
+  handleSelectChange = (e, { name }) => {
+    this.setState({ [name]: e.value });
+  };
 
   totalCustomCalc = () => {
     const {
@@ -68,13 +95,72 @@ class CustomCalc extends Component {
       certification,
       accounting,
       totalCustom,
-      excise
+      excise,
+      engineType,
+      engineToSelect
     } = this.state;
 
     return (
       <>
         <div className={style.customContainer}>
           <h2 className={style.customTitle}>Калькулятор розмитнення</h2>
+          <div className={style.engineTypeRadioWrapper}>
+            <label htmlFor="BenzineRadio">
+              <input
+                type="radio"
+                id="BenzineRadio"
+                checked={engineType === "Benzine"}
+                value="Benzine"
+                name="engTypeRadio"
+                onChange={this.handleRadioCheck}
+              />
+              Бензин
+            </label>
+            <label htmlFor="DieselRadio">
+              <input
+                type="radio"
+                id="DieselRadio"
+                checked={engineType === "Diesel"}
+                value="Diesel"
+                name="engTypeRadio"
+                onChange={this.handleRadioCheck}
+              />
+              Дизель
+            </label>
+            <label htmlFor="ElectroRadio">
+              <input
+                type="radio"
+                id="ElectroRadio"
+                checked={engineType === "Electro"}
+                value="Electro"
+                name="engTypeRadio"
+                onChange={this.handleRadioCheck}
+              />
+              Електро
+            </label>
+            <label htmlFor="HybridRadio">
+              <input
+                type="radio"
+                id="HybridRadio"
+                checked={engineType === "Hybrid"}
+                value="Hybrid"
+                name="engTypeRadio"
+                onChange={this.handleRadioCheck}
+              />
+              Гібрид
+            </label>
+          </div>
+          <div className={style.selectWrapper}>
+            <Select
+              className={style.selectEngine}
+              placeholder="Обєм двигуна"
+              options={engineToSelect}
+              id="engine"
+              name="engineVolume"
+              onChange={this.handleSelectChange}
+            />
+          </div>
+
           <span className={style.span}>
             Експедиція в порту:
             <span className={style.innerSpan}>{portExpedition}$</span>
