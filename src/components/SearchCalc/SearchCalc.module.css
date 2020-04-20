@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  margin: 10px auto;
+  flex-wrap: wrap;
+  width: 90%;
+  flex-direction: column;
+  margin-top: 30px;
+  max-width: 450px;
+  box-shadow: -8px 8px 13px 1px rgba(0, 0, 0, 0.43);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+.span {
+  width: 100%;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 22px;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+
+  justify-content: space-between;
+}
+.innerSpan {
+  font-weight: bold;
+}
+.wrapper {
+  width: 100%;
+  padding: 10px 20px;
+}
+.aboutWrapper {
+  width: 100%;
+}
+.title {
+  font-size: 17px;
+  font-weight: normal;
+  align-self: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  line-height: 25px;
+}

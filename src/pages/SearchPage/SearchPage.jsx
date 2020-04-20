@@ -8,6 +8,7 @@ import SearchForm from "../../components/SearchForm/SearchForm";
 import CarInfo from "../../components/Carinfo/CarInfo";
 import ErrorNotif from "../../components/ErrorNotif/ErrorNotif";
 import Loader from "../../components/Loader/Loader";
+import SearchCalc from "../../components/SearchCalc/SearchCalc";
 
 class SearchPage extends Component {
   state = {
@@ -41,7 +42,8 @@ class SearchPage extends Component {
     },
     averagePrice: "",
     isLoading: false,
-    error: ""
+    error: "",
+    lotPrice: ""
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -108,6 +110,7 @@ class SearchPage extends Component {
   };
 
   getAveragePrice = car => {
+    console.log("start");
     // const { car } = this.state;
     this.averagePriceHelper(car.name);
     return API.getAveragePrice(car).then(res => {
@@ -115,8 +118,8 @@ class SearchPage extends Component {
     });
   };
 
-  formSubmit = (value, selectedAuction) => {
-    this.setState({ isLoading: true });
+  formSubmit = (value, selectedAuction, lotPrice) => {
+    this.setState({ isLoading: true, lotPrice });
     API.getCarByLot(value, selectedAuction)
       .then(res => {
         if (res.err) {
@@ -130,13 +133,14 @@ class SearchPage extends Component {
   };
 
   render() {
-    const { car, isLoading, averagePrice, error } = this.state;
+    const { car, isLoading, averagePrice, error, lotPrice } = this.state;
     return (
       <>
         {isLoading ? <Loader /> : null}
         <SearchForm formSubmit={this.formSubmit} />
         {car.images ? <CarInfo car={car} averagePrice={averagePrice} /> : null}
         {error ? <ErrorNotif error={error} /> : null}
+        {car.lot > 5 ? <SearchCalc car={car} lotPrice={lotPrice} /> : null}
       </>
     );
   }

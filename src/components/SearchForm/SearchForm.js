@@ -5,7 +5,8 @@ import style from "./SearchForm.module.css";
 
 class SearchForm extends Component {
   state = {
-    value: "",
+    lotNumber: "",
+    lotPrice: "",
     selectedAuction: ""
   };
 
@@ -14,13 +15,13 @@ class SearchForm extends Component {
   };
 
   handleChange = e => {
-    this.setState({ value: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
     const { formSubmit } = this.props;
-    const { value, selectedAuction } = this.state;
+    const { lotNumber, lotPrice, selectedAuction } = this.state;
     if (!selectedAuction) {
       alert("Выберите аукцион");
       return;
@@ -29,7 +30,7 @@ class SearchForm extends Component {
       alert("Я ж казав з Iaai поки не працює)))");
       return;
     }
-    formSubmit(value, selectedAuction);
+    formSubmit(lotNumber, selectedAuction, lotPrice);
   };
 
   handleRadioCheck = e => {
@@ -39,44 +40,53 @@ class SearchForm extends Component {
   };
 
   render() {
-    const { value, selectedAuction } = this.state;
+    const { lotNumber, selectedAuction, lotPrice } = this.state;
     return (
       <>
         <form onSubmit={this.handleSubmit} className={style.form}>
           <div className={style.inputWrapper}>
             <input
               type="number"
-              value={value}
+              value={lotNumber}
+              name="lotNumber"
               className={style.input}
-              placeholder="Введіть номер лота"
+              placeholder="Номер лота"
               onChange={this.handleChange}
             />
-            <input type="submit" className={style.submitBtn} value="Пошук" />
-          </div>
+            <input
+              type="number"
+              name="lotPrice"
+              value={lotPrice}
+              className={style.inputPrice}
+              placeholder="Ціна купівлі"
+              onChange={this.handleChange}
+            />
+            <div className={style.checkboxWrapper}>
+              <label htmlFor="CopartBtn">
+                <input
+                  type="radio"
+                  id="CopartBtn"
+                  checked={selectedAuction === "Copart"}
+                  value="Copart"
+                  name="auctionRadio"
+                  onChange={this.handleRadioCheck}
+                />
+                Copart
+              </label>
+              <label htmlFor="IaaiBtn">
+                <input
+                  type="radio"
+                  value="Iaai"
+                  id="IaaiBtn"
+                  name="auctionRadio"
+                  checked={selectedAuction === "Iaai"}
+                  onChange={this.handleRadioCheck}
+                />
+                Iaai
+              </label>
+            </div>
 
-          <div className={style.checkboxWrapper}>
-            <label htmlFor="CopartBtn">
-              <input
-                type="radio"
-                id="CopartBtn"
-                checked={selectedAuction === "Copart"}
-                value="Copart"
-                name="auctionRadio"
-                onChange={this.handleRadioCheck}
-              />
-              Copart
-            </label>
-            <label htmlFor="IaaiBtn">
-              <input
-                type="radio"
-                value="Iaai"
-                id="IaaiBtn"
-                name="auctionRadio"
-                checked={selectedAuction === "Iaai"}
-                onChange={this.handleRadioCheck}
-              />
-              Iaai
-            </label>
+            <input type="submit" className={style.submitBtn} value="Пошук" />
           </div>
         </form>
       </>

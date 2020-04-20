@@ -13,7 +13,7 @@ class CustomCalc extends Component {
     esv: "",
     evacution: 250,
     certification: 200,
-    accounting: 120,
+    accounting: 45,
     totalCustom: "",
     engineType: "",
     engineToSelect: {},
@@ -189,6 +189,18 @@ class CustomCalc extends Component {
       Number(evacution) +
       Number(certification) +
       Number(accounting);
+
+    const selectStyles = {
+      control: base => ({
+        ...base,
+
+        fontSize: "13px;"
+      }),
+      menu: base => ({
+        ...base,
+        fontSize: "13px;"
+      })
+    };
     return (
       <>
         <div className={style.customContainer}>
@@ -242,6 +254,8 @@ class CustomCalc extends Component {
           <div className={style.selectWrapper}>
             <Select
               className={style.selectEngine}
+              isSearchable={false}
+              styles={selectStyles}
               placeholder="Обєм двигуна"
               options={engineToSelect}
               id="engine"
@@ -250,7 +264,9 @@ class CustomCalc extends Component {
             />
 
             <Select
+              isSearchable={false}
               className={style.carYear}
+              styles={selectStyles}
               placeholder="Рік випуску авто"
               options={yearsToSelect}
               id="carYear"
