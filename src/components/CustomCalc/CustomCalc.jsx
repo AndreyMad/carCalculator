@@ -4,21 +4,25 @@ import Select from "react-select";
 import PropTypes from "prop-types";
 import style from "./CustomCalc.module.css";
 import engines from "../../assets/data/engines.json";
+import { carYear } from "../../assets/data/carYear.json";
 
 class CustomCalc extends Component {
   state = {
     portExpedition: 450,
     brokerPrice: 400,
-    inTax: 1000,
-    pdv: 400,
-    esv: 200,
+    esv: "",
     evacution: 250,
     certification: 200,
     accounting: 120,
     totalCustom: "",
     engineType: "",
-    engineToSelect: {}
-    // engineVolume: ""
+    engineToSelect: {},
+    yearsToSelect: [],
+    carYear: "",
+    engineVolume: "",
+    importDuty: "",
+    exise: "",
+    nds: ""
   };
 
   static propTypes = {
@@ -27,7 +31,7 @@ class CustomCalc extends Component {
 
   componentDidMount() {
     this.totalCustomCalc();
-    if (engines) {
+    if (engines && carYear) {
       const engineToSelect = [
         ...engines.engines.map(el => {
           return {
@@ -36,28 +40,104 @@ class CustomCalc extends Component {
           };
         })
       ];
-
-      this.setState({ engineToSelect: [...engineToSelect] });
+      const yearsToSelect = [
+        ...carYear.map(el => {
+          return {
+            value: el,
+            label: el
+          };
+        })
+      ];
+      this.setState({
+        engineToSelect: [...engineToSelect],
+        yearsToSelect: [...yearsToSelect]
+      });
     }
   }
 
   componentDidUpdate(prevProps) {
-    const { carPrice } = this.props;
-    const { isDieselIngine } = this.state;
+    const { carPrice, aucComission } = this.props;
     if (this.props !== prevProps) {
-      const k = isDieselIngine ? 50 : 100;
-      this.setState({ inTax: k * carPrice });
+      const totalCarPrice = Number(carPrice) + Number(aucComission);
+      this.setState({ importDuty: Math.round(totalCarPrice * 0.1) });
     }
   }
 
   handleRadioCheck = e => {
-    this.setState({
-      engineType: e.target.value
-    });
+    this.setState(
+      {
+        engineType: e.target.value
+      },
+      () => {
+        this.taxesCalc();
+      }
+    );
   };
 
   handleSelectChange = (e, { name }) => {
-    this.setState({ [name]: e.value });
+    this.setState({ [name]: e.value }, () => this.taxesCalc());
+  };
+
+  taxesCalc = () => {
+    const { carPrice, aucComission } = this.props;
+    const { engineType, carYear, importDuty, engineVolume } = this.state;
+
+    if (carYear.length > 1 && engineVolume.length > 1) {
+      let coeficient = 50;
+      const ageOfCar = 2020 - Number(carYear);
+      let exise = "";
+      let totalCustomPrice = "";
+      let nds = "";
+      switch (engineType) {
+        case "Benzine":
+          if (Number(engineVolume) > 3.5) {
+            coeficient = 100;
+          }
+          exise = Math.round(
+            Number(ageOfCar) * Number(engineVolume) * Number(coeficient)
+          );
+          totalCustomPrice =
+            Number(carPrice) +
+            Number(aucComission) +
+            Number(exise) +
+            Number(importDuty);
+          nds = Math.round(totalCustomPrice * 0.2);
+          break;
+        case "Diesel":
+          if (Number(engineVolume) > 3.5) {
+            coeficient = 150;
+          } else coeficient = 75;
+          exise = Math.round(
+            Number(ageOfCar) * Number(engineVolume) * Number(coeficient)
+          );
+          totalCustomPrice =
+            Number(carPrice) +
+            Number(aucComission) +
+            Number(exise) +
+            Number(importDuty);
+          nds = Math.round(totalCustomPrice * 0.2);
+          break;
+        case "Hybrid":
+          exise = 100;
+          totalCustomPrice =
+            Number(carPrice) +
+            Number(aucComission) +
+            Number(exise) +
+            Number(importDuty);
+          nds = Math.round(totalCustomPrice * 0.2);
+          break;
+        case "Electro":
+          exise = 0;
+          totalCustomPrice = 0;
+          nds = 0;
+          break;
+        default:
+          return coeficient;
+      }
+
+      const esv = Math.round(totalCustomPrice * 0.04);
+      this.setState({ nds, exise, importDuty, esv });
+    }
   };
 
   totalCustomCalc = () => {
@@ -88,18 +168,27 @@ class CustomCalc extends Component {
     const {
       portExpedition,
       brokerPrice,
-      inTax,
-      pdv,
       esv,
       evacution,
       certification,
       accounting,
-      totalCustom,
-      excise,
+      exise,
+      importDuty,
+      nds,
       engineType,
+      yearsToSelect,
       engineToSelect
     } = this.state;
-
+    const totalCustom =
+      Number(portExpedition) +
+      Number(brokerPrice) +
+      Number(importDuty) +
+      Number(exise) +
+      Number(nds) +
+      Number(esv) +
+      Number(evacution) +
+      Number(certification) +
+      Number(accounting);
     return (
       <>
         <div className={style.customContainer}>
@@ -159,6 +248,15 @@ class CustomCalc extends Component {
               name="engineVolume"
               onChange={this.handleSelectChange}
             />
+
+            <Select
+              className={style.carYear}
+              placeholder="Рік випуску авто"
+              options={yearsToSelect}
+              id="carYear"
+              name="carYear"
+              onChange={this.handleSelectChange}
+            />
           </div>
 
           <span className={style.span}>
@@ -172,15 +270,15 @@ class CustomCalc extends Component {
           <br />
           <span className={style.span}>
             Ввізне мито:
-            <span className={style.innerSpan}>{inTax}$</span>
+            <span className={style.innerSpan}>{importDuty}$</span>
           </span>
           <br />
           <span className={style.span}>
-            Акцизний збір:<span className={style.innerSpan}>{excise}</span>
+            Акцизний збір:<span className={style.innerSpan}>{exise}$</span>
           </span>
           <br />
           <span className={style.span}>
-            ПДВ:<span className={style.innerSpan}>{pdv}$</span>
+            ПДВ:<span className={style.innerSpan}>{nds}$</span>
           </span>
           <br />
           <span className={style.span}>

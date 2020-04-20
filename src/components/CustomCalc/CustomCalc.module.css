@@ -62,10 +62,16 @@
 }
 .selectWrapper {
   width: 100%;
+  display: flex;
 }
 .selectEngine {
   width: 30%;
-  min-width: 160px;
+  min-width: 150px;
+  margin: 0px 5px 10px 0px;
+}
+.carYear {
+  width: 60%;
+  min-width: 180px;
 }
 @media (min-width: 480px) {
   .engineTypeRadioWrapper {

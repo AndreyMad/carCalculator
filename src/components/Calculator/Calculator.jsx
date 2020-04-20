@@ -330,21 +330,25 @@ class Calculator extends Component {
               <span className={style.span}>
                 Комісія аукціону:
                 <span className={style.innerSpan}>
-                  {Math.round(aucComission)}
+                  {Math.round(aucComission)}$
                 </span>
               </span>
               <br />
-              {departurePorts[0] && departurePorts[0].name ? (
-                <>
-                  <span className={style.span}>
-                    Вартість доставки по США в порт {departurePorts[0].name}:
-                    <span className={style.innerSpan}>
-                      {overlandDeliveryCost}
-                    </span>
-                  </span>
-                  <br />
-                </>
-              ) : null}
+
+              <span className={style.span}>
+                Вартість доставки по США в порт
+                {departurePorts[0] && departurePorts[0].name
+                  ? departurePorts[0].name
+                  : null}
+                :
+                <span className={style.innerSpan}>
+                  {departurePorts[0] && departurePorts[0].name
+                    ? overlandDeliveryCost
+                    : null}
+                  $
+                </span>
+              </span>
+              <br />
 
               <span className={style.span}>
                 Ціна доставки морем:
@@ -354,7 +358,7 @@ class Calculator extends Component {
               <span className={style.span}>
                 Страховка:
                 <span className={style.innerSpan}>
-                  {Math.round(carPrice * 0.05)}
+                  {Math.round(carPrice * 0.05)}$
                 </span>
               </span>
               <br />
@@ -365,12 +369,12 @@ class Calculator extends Component {
               <br />
               <span className={style.span}>
                 Срок доставки:
-                <span className={style.innerSpan}>55днів</span>
+                <span className={style.innerSpan}>55 днів</span>
               </span>
               <br />
               <span className={style.span}>
                 Комісія компанії:
-                <span className={style.innerSpan}>{companyСommission}</span>
+                <span className={style.innerSpan}>{companyСommission}$</span>
               </span>
               <br />
               <span className={style.totalDeliveryCostWrappe}>
@@ -382,7 +386,7 @@ class Calculator extends Component {
             </div>
           </div>
         </div>
-        <CustomCalc carPrice={carPrice} />
+        <CustomCalc carPrice={carPrice} aucComission={aucComission} />
       </>
     );
   }

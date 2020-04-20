@@ -11,7 +11,7 @@ import slideTop from "../../transitions/slideTop.module.css";
 
 class MainPage extends Component {
   state = {
-    isModalOpen: true
+    isModalOpen: false
   };
 
   componentDidMount() {}
