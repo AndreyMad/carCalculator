@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/carCalculator/static/css/main.dab76faa.chunk.css",
-    "main.js": "/carCalculator/static/js/main.3877f9cc.chunk.js",
-    "main.js.map": "/carCalculator/static/js/main.3877f9cc.chunk.js.map",
+    "main.css": "/carCalculator/static/css/main.39834551.chunk.css",
+    "main.js": "/carCalculator/static/js/main.5791975e.chunk.js",
+    "main.js.map": "/carCalculator/static/js/main.5791975e.chunk.js.map",
     "runtime-main.js": "/carCalculator/static/js/runtime-main.13e4ffc5.js",
     "runtime-main.js.map": "/carCalculator/static/js/runtime-main.13e4ffc5.js.map",
-    "static/js/2.527f503a.chunk.js": "/carCalculator/static/js/2.527f503a.chunk.js",
-    "static/js/2.527f503a.chunk.js.map": "/carCalculator/static/js/2.527f503a.chunk.js.map",
+    "static/js/2.ab95b550.chunk.js": "/carCalculator/static/js/2.ab95b550.chunk.js",
+    "static/js/2.ab95b550.chunk.js.map": "/carCalculator/static/js/2.ab95b550.chunk.js.map",
     "index.html": "/carCalculator/index.html",
-    "precache-manifest.f68c42fc56f028beab9dc5cb4923804b.js": "/carCalculator/precache-manifest.f68c42fc56f028beab9dc5cb4923804b.js",
+    "precache-manifest.eb5373afaae6a77df8dce53168dfaaaa.js": "/carCalculator/precache-manifest.eb5373afaae6a77df8dce53168dfaaaa.js",
     "service-worker.js": "/carCalculator/service-worker.js",
-    "static/css/main.dab76faa.chunk.css.map": "/carCalculator/static/css/main.dab76faa.chunk.css.map",
-    "static/js/2.527f503a.chunk.js.LICENSE": "/carCalculator/static/js/2.527f503a.chunk.js.LICENSE",
+    "static/css/main.39834551.chunk.css.map": "/carCalculator/static/css/main.39834551.chunk.css.map",
+    "static/js/2.ab95b550.chunk.js.LICENSE": "/carCalculator/static/js/2.ab95b550.chunk.js.LICENSE",
     "static/media/3carscontainer.jpg": "/carCalculator/static/media/3carscontainer.4e2e4d90.jpg",
     "static/media/4carscontainer.jpg": "/carCalculator/static/media/4carscontainer.6ab4820a.jpg",
     "static/media/PlayfairDisplay-Regular.ttf": "/carCalculator/static/media/PlayfairDisplay-Regular.b3721ba3.ttf",
@@ -70,8 +70,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.13e4ffc5.js",
-    "static/js/2.527f503a.chunk.js",
-    "static/css/main.dab76faa.chunk.css",
-    "static/js/main.3877f9cc.chunk.js"
+    "static/js/2.ab95b550.chunk.js",
+    "static/css/main.39834551.chunk.css",
+    "static/js/main.5791975e.chunk.js"
   ]
 }
