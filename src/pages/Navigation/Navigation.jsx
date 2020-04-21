@@ -18,7 +18,7 @@ import phoneIcon from "../../assets/svg/naviPhone.svg";
 
 class Navigation extends Component {
   state = {
-    isBurgerOpen: true,
+    isBurgerOpen: false,
     scrolOn: true
   };
 
