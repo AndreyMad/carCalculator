@@ -26,7 +26,8 @@ class Calculator extends Component {
     overlandDeliveryCost: "",
     totalDelivery: "",
     companyСommission: 900,
-    aucComission: ""
+    aucComission: "",
+    insurance: "0"
   };
 
   componentDidMount() {
@@ -120,7 +121,13 @@ class Calculator extends Component {
   };
 
   priceHandler = e => {
-    this.setState({ carPrice: e.target.value }, () => this.totalDeliveryCalc());
+    this.setState(
+      {
+        carPrice: e.target.value,
+        insurance: Math.round(Number(e.target.value * 0.04))
+      },
+      () => this.totalDeliveryCalc()
+    );
   };
 
   comissionCalc = () => {
@@ -225,7 +232,8 @@ class Calculator extends Component {
       totalDelivery,
       companyСommission,
       selectedAuction,
-      aucComission
+      aucComission,
+      insurance
     } = this.state;
     const selectStyles = {
       container: base => ({
@@ -357,9 +365,7 @@ class Calculator extends Component {
               <br />
               <span className={style.span}>
                 Страховка:
-                <span className={style.innerSpan}>
-                  {Math.round(carPrice * 0.05)}$
-                </span>
+                <span className={style.innerSpan}>{insurance}$</span>
               </span>
               <br />
               <span className={style.span}>

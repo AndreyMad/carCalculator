@@ -53,3 +53,8 @@
   transform: rotate(-45deg) translate(8px, -8px);
   width: 27px;
 }
+@media (min-width: 768px) {
+  .menuButton {
+    display: none;
+  }
+}

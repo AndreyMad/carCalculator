@@ -43,7 +43,8 @@ class SearchPage extends Component {
     averagePrice: "",
     isLoading: false,
     error: "",
-    lotPrice: ""
+    lotPrice: "",
+    selectedAuction: ""
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -110,7 +111,6 @@ class SearchPage extends Component {
   };
 
   getAveragePrice = car => {
-    console.log("start");
     // const { car } = this.state;
     this.averagePriceHelper(car.name);
     return API.getAveragePrice(car).then(res => {
@@ -119,7 +119,7 @@ class SearchPage extends Component {
   };
 
   formSubmit = (value, selectedAuction, lotPrice) => {
-    this.setState({ isLoading: true, lotPrice });
+    this.setState({ isLoading: true, lotPrice, selectedAuction });
     API.getCarByLot(value, selectedAuction)
       .then(res => {
         if (res.err) {
@@ -133,14 +133,27 @@ class SearchPage extends Component {
   };
 
   render() {
-    const { car, isLoading, averagePrice, error, lotPrice } = this.state;
+    const {
+      car,
+      isLoading,
+      averagePrice,
+      error,
+      lotPrice,
+      selectedAuction
+    } = this.state;
     return (
       <>
         {isLoading ? <Loader /> : null}
         <SearchForm formSubmit={this.formSubmit} />
         {car.images ? <CarInfo car={car} averagePrice={averagePrice} /> : null}
         {error ? <ErrorNotif error={error} /> : null}
-        {car.lot > 5 ? <SearchCalc car={car} lotPrice={lotPrice} /> : null}
+        {car.lot > 5 ? (
+          <SearchCalc
+            car={car}
+            lotPrice={lotPrice}
+            selectedAuction={selectedAuction}
+          />
+        ) : null}
       </>
     );
   }

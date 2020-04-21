@@ -72,23 +72,23 @@ input::-webkit-inner-spin-button {
   justify-content: start;
 }
 @media (min-width: 768px) {
-  .input {
+  .input,
+  .inputPrice {
     height: 40px;
     width: 250px;
     font-size: 20px;
   }
   .submitBtn {
     height: 40px;
-    width: 80px;
+    width: 150px;
     font-size: 20px;
   }
   .checkboxWrapper {
     width: 200px;
     height: 30px;
-    margin-right: 110px;
   }
   .form {
-    height: 120px;
+    height: 195px;
     max-width: 650px;
   }
   .checkboxWrapper > label > input {
