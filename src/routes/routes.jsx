@@ -5,7 +5,7 @@ import PartsPage from "../pages/PartsPage/PartsPage";
 
 export default {
   MAIN_PAGE: {
-    path: "/carCalculator",
+    path: "/",
     component: MainPage
   },
   CALCULATOR_PAGE: {
