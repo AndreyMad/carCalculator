@@ -4,10 +4,12 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import slide from "../../transitions/slide.module.css";
+import fade from "../../transitions/fade250.module.css";
+
 import routes from "../../routes/routes";
 import style from "./Navigation.module.css";
 import burgerStyle from "./burgerStyle.module.css";
-import logo from "../../assets/img/logo.4acaa253b517.png";
+// import logo from "../../assets/img/logo.4acaa253b517.png";
 import searchIcon from "../../assets/svg/search.svg";
 import calculatorIcon from "../../assets/svg/calculator.svg";
 import homeIcon from "../../assets/svg/home.svg";
@@ -136,6 +138,14 @@ class Navigation extends Component {
               </ul>
             </div>
           </>
+        </CSSTransition>
+        <CSSTransition
+          in={isBurgerOpen}
+          unmountOnExit
+          timeout={250}
+          classNames={fade}
+        >
+          <div className={style.shadow} />
         </CSSTransition>
       </>
     );

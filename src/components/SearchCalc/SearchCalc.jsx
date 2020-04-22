@@ -23,7 +23,7 @@ class SearchCalc extends Component {
   static propTypes = {
     selectedAuction: PropTypes.string,
     lotPrice: PropTypes.string,
-    car: PropTypes.shapeOf({
+    car: PropTypes.shape({
       state: PropTypes.string.isRequired,
       city: PropTypes.string.isRequired
     })
