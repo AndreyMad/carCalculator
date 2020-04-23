@@ -7,7 +7,7 @@ class SearchForm extends Component {
   state = {
     lotNumber: "",
     lotPrice: "",
-    selectedAuction: ""
+    selectedAuction: "Copart"
   };
 
   static propTypes = {

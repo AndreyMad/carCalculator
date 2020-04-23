@@ -17,7 +17,16 @@ class SearchCalc extends Component {
     overlandDeliveryCost: "0",
     companyСommission: 900,
     aucComission: "0",
-    insurance: "0"
+    insurance: "0",
+    portExpedition: "450",
+    brokerPrice: "400",
+    evacution: "250",
+    certification: "200",
+    importDuty: "0",
+    nds: "0",
+    exise: "0",
+    esv: "0",
+    car: {}
   };
 
   static propTypes = {
@@ -37,20 +46,23 @@ class SearchCalc extends Component {
 
   componentDidMount() {
     this.deaprtureFinder();
+    this.taxesCalc();
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
-      const { selectedAuction, lotPrice } = this.props;
+      const { selectedAuction, lotPrice, car } = this.props;
       this.setState(
         {
           selectedAuction,
           lotPrice,
-          insurance: Math.round(Number(lotPrice * 0.04))
+          insurance: Math.round(Number(lotPrice * 0.04)),
+          car: { ...car }
         },
         () => {
           this.deaprtureFinder();
           this.comissionCalc();
+          this.taxesCalc();
         }
       );
     }
@@ -93,6 +105,7 @@ class SearchCalc extends Component {
       comissionArray.find(el => {
         if (el[0] > lotPrice) {
           aucComission = el[1];
+
           return aucComission;
         }
         if (el[comissionArray.length < lotPrice]) {
@@ -103,13 +116,21 @@ class SearchCalc extends Component {
       bidFeeArray.find(el => {
         if (el[0] > lotPrice) {
           bidFee = el[1];
+
           return bidFee;
         }
       });
+      const totalAucComission =
+        Number(bidFee) + Number(aucComission) + Number(gateFee);
+      const totalCarPrice = Number(lotPrice) + Number(totalAucComission);
+
+      // console.log(object);
+
       this.setState({
         aucComission: Math.round(
           Number(gateFee) + Number(bidFee) + Number(aucComission)
-        )
+        ),
+        importDuty: Math.round(totalCarPrice * 0.1)
       });
     }
     if (selectedAuction === "Iaai") {
@@ -142,16 +163,85 @@ class SearchCalc extends Component {
     }
   };
 
+  taxesCalc = () => {
+    const { lotPrice, aucComission, importDuty, car } = this.state;
+
+    if (car.year > 1 && car.capacity > 0) {
+      let coeficient = 50;
+      const ageOfCar = 2020 - Number(car.year);
+      let exise = "";
+      let totalCustomPrice = "";
+      let nds = "";
+      switch (car.fuel) {
+        case "GAS":
+          if (Number(car.capacity) > 3.5) {
+            coeficient = 100;
+          }
+          exise = Math.round(
+            Number(ageOfCar) * Number(car.capacity) * Number(coeficient)
+          );
+          totalCustomPrice =
+            Number(lotPrice) +
+            Number(aucComission) +
+            Number(exise) +
+            Number(importDuty);
+          nds = Math.round(totalCustomPrice * 0.2);
+          break;
+        case "DIESEL":
+          if (Number(car.capacity) > 3.5) {
+            coeficient = 150;
+          } else coeficient = 75;
+          exise = Math.round(
+            Number(ageOfCar) * Number(car.capacity) * Number(coeficient)
+          );
+          totalCustomPrice =
+            Number(lotPrice) +
+            Number(aucComission) +
+            Number(exise) +
+            Number(importDuty);
+          nds = Math.round(totalCustomPrice * 0.2);
+          break;
+        case "HYBRID ENGINE":
+          exise = 100;
+          totalCustomPrice =
+            Number(lotPrice) +
+            Number(aucComission) +
+            Number(exise) +
+            Number(importDuty);
+          nds = Math.round(totalCustomPrice * 0.2);
+          break;
+        case "ELECTRIC":
+          exise = 0;
+          totalCustomPrice = 0;
+          nds = 0;
+          break;
+        default:
+          return coeficient;
+      }
+
+      const esv = Math.round(totalCustomPrice * 0.04);
+      this.setState({ nds, exise, esv });
+    }
+  };
+
   render() {
     const {
       lotPrice,
       deliverySea,
       overlandDeliveryCost,
-
       companyСommission,
       aucComission,
       deaprturePort,
-      insurance
+      insurance,
+      portExpedition,
+      brokerPrice,
+      evacution,
+      importDuty,
+      exise,
+      esv,
+      nds,
+      certification,
+      accounting
     } = this.state;
     const totalDelivery =
       Number(lotPrice) +
@@ -160,6 +250,16 @@ class SearchCalc extends Component {
       Number(insurance) +
       Number(companyСommission) +
       Number(overlandDeliveryCost);
+    const totalCustom =
+      Number(portExpedition) +
+      Number(brokerPrice) +
+      Number(importDuty) +
+      Number(exise) +
+      // Number(nds) +
+      // Number(esv) +
+      Number(evacution);
+    // Number(certification) +
+    // Number(accounting);
 
     return (
       <>
@@ -217,8 +317,50 @@ class SearchCalc extends Component {
 
         <div className={style.container}>
           <h2 className={style.title}>Оплата по прибуттю</h2>
-
-          <div className={style.customWrapper}>asdf</div>
+          <span className={style.span}>
+            Експедиція в порту:
+            <span className={style.innerSpan}>{portExpedition}$</span>
+          </span>
+          <br />
+          <span className={style.span}>
+            Брокер:<span className={style.innerSpan}>{brokerPrice}$</span>
+          </span>
+          <br />
+          <span className={style.span}>
+            Ввізне мито:
+            <span className={style.innerSpan}>{importDuty}$</span>
+          </span>
+          <br />
+          <span className={style.span}>
+            Акцизний збір:<span className={style.innerSpan}>{exise}$</span>
+          </span>
+          <br />
+          <span className={style.span}>
+            ПДВ:<span className={style.innerSpan}>{nds}$</span>
+          </span>
+          <br />
+          <span className={style.span}>
+            ЄСВ:<span className={style.innerSpan}>{esv}$</span>
+          </span>
+          <br />
+          <span className={style.span}>
+            Евакуатор до адреси клієнта:
+            <span className={style.innerSpan}>{evacution}$</span>
+          </span>
+          <br />
+          <span className={style.span}>
+            Сертифікація:
+            <span className={style.innerSpan}>{certification}$</span>
+          </span>
+          <br />
+          <span className={style.span}>
+            Постановка на облік:
+            <span className={style.innerSpan}>{accounting}$</span>
+          </span>
+          <span className={style.totalCustomCost}>
+            Сума платежів в Україні:
+            <span className={style.innerSpan}> {totalCustom}$</span>
+          </span>
         </div>
       </>
     );

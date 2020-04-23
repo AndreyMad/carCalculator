@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable consistent-return */
 /* eslint-disable react/no-did-update-set-state */
 import React, { Component } from "react";
 import Select from "react-select";
@@ -14,7 +16,6 @@ class CustomCalc extends Component {
     evacution: 250,
     certification: 200,
     accounting: 45,
-    totalCustom: "",
     engineType: "",
     engineToSelect: {},
     yearsToSelect: [],
@@ -26,7 +27,8 @@ class CustomCalc extends Component {
   };
 
   static propTypes = {
-    carPrice: PropTypes.string.isRequired
+    carPrice: PropTypes.string.isRequired,
+    aucComission: PropTypes.string.isRequired
   };
 
   componentDidMount() {
@@ -89,7 +91,7 @@ class CustomCalc extends Component {
       let totalCustomPrice = "";
       let nds = "";
       switch (engineType) {
-        case "Benzine":
+        case "GAS":
           if (Number(engineVolume) > 3.5) {
             coeficient = 100;
           }
@@ -103,7 +105,7 @@ class CustomCalc extends Component {
             Number(importDuty);
           nds = Math.round(totalCustomPrice * 0.2);
           break;
-        case "Diesel":
+        case "DIESEL":
           if (Number(engineVolume) > 3.5) {
             coeficient = 150;
           } else coeficient = 75;
@@ -117,7 +119,7 @@ class CustomCalc extends Component {
             Number(importDuty);
           nds = Math.round(totalCustomPrice * 0.2);
           break;
-        case "Hybrid":
+        case "HYBRID ENGINE":
           exise = 100;
           totalCustomPrice =
             Number(carPrice) +
@@ -126,7 +128,7 @@ class CustomCalc extends Component {
             Number(importDuty);
           nds = Math.round(totalCustomPrice * 0.2);
           break;
-        case "Electro":
+        case "ELECTRIC":
           exise = 0;
           totalCustomPrice = 0;
           nds = 0;
@@ -140,29 +142,27 @@ class CustomCalc extends Component {
     }
   };
 
-  totalCustomCalc = () => {
-    const {
-      portExpedition,
-      brokerPrice,
-      inTax,
-      pdv,
-      esv,
-      evacution,
-      certification,
-      accounting
-    } = this.state;
-
-    const totalCustom =
-      Number(portExpedition) +
-      Number(brokerPrice) +
-      Number(inTax) +
-      Number(pdv) +
-      Number(esv) +
-      Number(evacution) +
-      Number(certification) +
-      Number(accounting);
-    this.setState({ totalCustom });
-  };
+  // totalCustomCalc = () => {
+  // const {
+  //   portExpedition,
+  //   brokerPrice,
+  //   inTax,
+  //   pdv,
+  //   esv,
+  //   evacution,
+  //   certification,
+  //   accounting
+  // } = this.state;
+  // const totalCustom =
+  //   Number(portExpedition) +
+  //   Number(brokerPrice) +
+  //   Number(inTax) +
+  //   Number(pdv) +
+  //   Number(esv) +
+  //   Number(evacution) +
+  //   Number(certification) +
+  //   Number(accounting);
+  // };
 
   render() {
     const {
@@ -210,8 +210,8 @@ class CustomCalc extends Component {
               <input
                 type="radio"
                 id="BenzineRadio"
-                checked={engineType === "Benzine"}
-                value="Benzine"
+                checked={engineType === "GAS"}
+                value="GAS"
                 name="engTypeRadio"
                 onChange={this.handleRadioCheck}
               />
@@ -221,8 +221,8 @@ class CustomCalc extends Component {
               <input
                 type="radio"
                 id="DieselRadio"
-                checked={engineType === "Diesel"}
-                value="Diesel"
+                checked={engineType === "DIESEL"}
+                value="DIESEL"
                 name="engTypeRadio"
                 onChange={this.handleRadioCheck}
               />
@@ -232,8 +232,8 @@ class CustomCalc extends Component {
               <input
                 type="radio"
                 id="ElectroRadio"
-                checked={engineType === "Electro"}
-                value="Electro"
+                checked={engineType === "ELECTRIC"}
+                value="ELECTRIC"
                 name="engTypeRadio"
                 onChange={this.handleRadioCheck}
               />
@@ -243,8 +243,8 @@ class CustomCalc extends Component {
               <input
                 type="radio"
                 id="HybridRadio"
-                checked={engineType === "Hybrid"}
-                value="Hybrid"
+                checked={engineType === "HYBRID ENGINE"}
+                value="HYBRID ENGINE"
                 name="engTypeRadio"
                 onChange={this.handleRadioCheck}
               />
