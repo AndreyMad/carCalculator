@@ -26,7 +26,8 @@ class SearchCalc extends Component {
     nds: "0",
     exise: "0",
     esv: "0",
-    car: {}
+    car: {},
+    accounting: "45"
   };
 
   static propTypes = {
@@ -255,11 +256,13 @@ class SearchCalc extends Component {
       Number(brokerPrice) +
       Number(importDuty) +
       Number(exise) +
-      // Number(nds) +
-      // Number(esv) +
-      Number(evacution);
-    // Number(certification) +
-    // Number(accounting);
+      Number(nds) +
+      Number(esv) +
+      Number(evacution) +
+      Number(certification) +
+      Number(accounting);
+
+    const totalPrice = totalDelivery + totalCustom;
 
     return (
       <>
@@ -321,38 +324,30 @@ class SearchCalc extends Component {
             Експедиція в порту:
             <span className={style.innerSpan}>{portExpedition}$</span>
           </span>
-          <br />
           <span className={style.span}>
             Брокер:<span className={style.innerSpan}>{brokerPrice}$</span>
           </span>
-          <br />
           <span className={style.span}>
             Ввізне мито:
             <span className={style.innerSpan}>{importDuty}$</span>
           </span>
-          <br />
           <span className={style.span}>
             Акцизний збір:<span className={style.innerSpan}>{exise}$</span>
           </span>
-          <br />
           <span className={style.span}>
             ПДВ:<span className={style.innerSpan}>{nds}$</span>
           </span>
-          <br />
           <span className={style.span}>
-            ЄСВ:<span className={style.innerSpan}>{esv}$</span>
+            Пенсійний фонд:<span className={style.innerSpan}>{esv}$</span>
           </span>
-          <br />
           <span className={style.span}>
             Евакуатор до адреси клієнта:
             <span className={style.innerSpan}>{evacution}$</span>
           </span>
-          <br />
           <span className={style.span}>
             Сертифікація:
             <span className={style.innerSpan}>{certification}$</span>
           </span>
-          <br />
           <span className={style.span}>
             Постановка на облік:
             <span className={style.innerSpan}>{accounting}$</span>
@@ -360,6 +355,10 @@ class SearchCalc extends Component {
           <span className={style.totalCustomCost}>
             Сума платежів в Україні:
             <span className={style.innerSpan}> {totalCustom}$</span>
+          </span>
+          <span className={style.totalCost}>
+            Загальна вартість:
+            <span className={style.innerSpan}> {totalPrice}$</span>
           </span>
         </div>
       </>

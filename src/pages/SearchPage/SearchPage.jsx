@@ -9,6 +9,7 @@ import CarInfo from "../../components/Carinfo/CarInfo";
 import ErrorNotif from "../../components/ErrorNotif/ErrorNotif";
 import Loader from "../../components/Loader/Loader";
 import SearchCalc from "../../components/SearchCalc/SearchCalc";
+import Footer from "../../components/Footer/Footer";
 
 class SearchPage extends Component {
   state = {
@@ -154,6 +155,7 @@ class SearchPage extends Component {
             selectedAuction={selectedAuction}
           />
         ) : null}
+        <Footer />
       </>
     );
   }

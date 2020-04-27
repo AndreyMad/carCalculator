@@ -15,7 +15,7 @@ class CustomCalc extends Component {
     esv: "",
     evacution: 250,
     certification: 200,
-    accounting: 45,
+    accounting: 40,
     engineType: "",
     engineToSelect: {},
     yearsToSelect: [],
@@ -142,27 +142,28 @@ class CustomCalc extends Component {
     }
   };
 
-  // totalCustomCalc = () => {
-  // const {
-  //   portExpedition,
-  //   brokerPrice,
-  //   inTax,
-  //   pdv,
-  //   esv,
-  //   evacution,
-  //   certification,
-  //   accounting
-  // } = this.state;
-  // const totalCustom =
-  //   Number(portExpedition) +
-  //   Number(brokerPrice) +
-  //   Number(inTax) +
-  //   Number(pdv) +
-  //   Number(esv) +
-  //   Number(evacution) +
-  //   Number(certification) +
-  //   Number(accounting);
-  // };
+  totalCustomCalc = () => {
+    const {
+      portExpedition,
+      brokerPrice,
+      inTax,
+      pdv,
+      esv,
+      evacution,
+      certification,
+      accounting
+    } = this.state;
+    // eslint-disable-next-line no-unused-vars
+    const totalCustom =
+      Number(portExpedition) +
+      Number(brokerPrice) +
+      Number(inTax) +
+      Number(pdv) +
+      Number(esv) +
+      Number(evacution) +
+      Number(certification) +
+      Number(accounting);
+  };
 
   render() {
     const {
