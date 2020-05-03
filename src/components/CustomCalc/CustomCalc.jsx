@@ -23,12 +23,14 @@ class CustomCalc extends Component {
     engineVolume: "",
     importDuty: "",
     exise: "",
-    nds: ""
+    nds: "",
+    totalDelivery: ""
   };
 
   static propTypes = {
     carPrice: PropTypes.string.isRequired,
-    aucComission: PropTypes.string.isRequired
+    aucComission: PropTypes.string.isRequired,
+    totalDelivery: PropTypes.string.isRequired
   };
 
   componentDidMount() {
@@ -58,10 +60,13 @@ class CustomCalc extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { carPrice, aucComission } = this.props;
+    const { carPrice, aucComission, totalDelivery } = this.props;
     if (this.props !== prevProps) {
       const totalCarPrice = Number(carPrice) + Number(aucComission);
-      this.setState({ importDuty: Math.round(totalCarPrice * 0.1) });
+      this.setState({
+        importDuty: Math.round(totalCarPrice * 0.1),
+        totalDelivery
+      });
     }
   }
 
@@ -83,7 +88,6 @@ class CustomCalc extends Component {
   taxesCalc = () => {
     const { carPrice, aucComission } = this.props;
     const { engineType, carYear, importDuty, engineVolume } = this.state;
-
     if (carYear.length > 1 && engineVolume.length > 1) {
       let coeficient = 50;
       const ageOfCar = 2020 - Number(carYear);
@@ -178,7 +182,8 @@ class CustomCalc extends Component {
       nds,
       engineType,
       yearsToSelect,
-      engineToSelect
+      engineToSelect,
+      totalDelivery
     } = this.state;
     const totalCustom =
       Number(portExpedition) +
@@ -190,7 +195,8 @@ class CustomCalc extends Component {
       Number(evacution) +
       Number(certification) +
       Number(accounting);
-
+    const totalCarPrice = Number(totalCustom) + Number(totalDelivery);
+    console.log(engineToSelect[15]);
     const selectStyles = {
       control: base => ({
         ...base,
@@ -259,6 +265,7 @@ class CustomCalc extends Component {
               styles={selectStyles}
               placeholder="Обєм двигуна"
               options={engineToSelect}
+              defaultValue={engineToSelect[15]}
               id="engine"
               name="engineVolume"
               onChange={this.handleSelectChange}
@@ -319,6 +326,10 @@ class CustomCalc extends Component {
           <span className={style.totalCustomCost}>
             Сума платежів в Україні:
             <span className={style.innerSpan}> {totalCustom}$</span>
+          </span>
+          <span className={style.totalCustomCost}>
+            Загальна вартість авто:
+            <span className={style.innerSpan}> {totalCarPrice}$</span>
           </span>
         </div>
       </>

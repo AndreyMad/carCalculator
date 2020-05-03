@@ -10,42 +10,43 @@ import ErrorNotif from "../../components/ErrorNotif/ErrorNotif";
 import Loader from "../../components/Loader/Loader";
 import SearchCalc from "../../components/SearchCalc/SearchCalc";
 import Footer from "../../components/Footer/Footer";
+import CallBackBtn from "../../components/CallBack/CallBackBtn";
 
 class SearchPage extends Component {
   state = {
-    car: {
-      currentBid: 0,
-      buyNow: 0,
-      lot: 26098920,
-      aucDate: 1587996000000,
-      vin: "2FMDK39C57B******",
-      name: "2007 FORD EDGE SEL PLUS",
-      year: 2007,
-      city: "SAVANNAH",
-      state: "GA",
-      seller: "State Farm Insurance",
-      fuel: "GAS",
-      engine: "3.5L  6",
-      highlights: "RUNS AND DRIVES",
-      odo: 183964,
-      capacity: 3.5,
-      images: [
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
-      ],
-      doc: "GA - CERT OF TITLE-SALVAGE"
-    },
-    averagePriceCar: {
-      make: "",
-      model: "",
-      year: ""
-    },
-    averagePrice: "",
-    isLoading: false,
-    error: "",
-    lotPrice: "",
-    selectedAuction: ""
+    // car: {
+    //   currentBid: 0,
+    //   buyNow: 0,
+    //   lot: 26098920,
+    //   aucDate: 1587996000000,
+    //   vin: "2FMDK39C57B******",
+    //   name: "2007 FORD EDGE SEL PLUS",
+    //   year: 2007,
+    //   city: "SAVANNAH",
+    //   state: "GA",
+    //   seller: "State Farm Insurance",
+    //   fuel: "GAS",
+    //   engine: "3.5L  6",
+    //   highlights: "RUNS AND DRIVES",
+    //   odo: 183964,
+    //   capacity: 3.5,
+    //   images: [
+    //     "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
+    //     "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
+    //     "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
+    //   ],
+    //   doc: "GA - CERT OF TITLE-SALVAGE"
+    // },
+    // averagePriceCar: {
+    //   make: "",
+    //   model: "",
+    //   year: ""
+    // },
+    // averagePrice: "",
+    // isLoading: false,
+    // error: "",
+    // lotPrice: "",
+    // selectedAuction: ""
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -146,15 +147,24 @@ class SearchPage extends Component {
       <>
         {isLoading ? <Loader /> : null}
         <SearchForm formSubmit={this.formSubmit} />
-        {car.images ? <CarInfo car={car} averagePrice={averagePrice} /> : null}
-        {error ? <ErrorNotif error={error} /> : null}
-        {car.lot > 5 ? (
-          <SearchCalc
-            car={car}
-            lotPrice={lotPrice}
-            selectedAuction={selectedAuction}
-          />
+        {car ? (
+          <>
+            {" "}
+            {car.images ? (
+              <CarInfo car={car} averagePrice={averagePrice} />
+            ) : null}
+            {error ? <ErrorNotif error={error} /> : null}
+            {car.lot > 5 ? (
+              <SearchCalc
+                car={car}
+                lotPrice={lotPrice}
+                selectedAuction={selectedAuction}
+              />
+            ) : null}
+          </>
         ) : null}
+
+        <CallBackBtn />
         <Footer />
       </>
     );

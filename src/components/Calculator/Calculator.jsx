@@ -156,11 +156,14 @@ class Calculator extends Component {
           return bidFee;
         }
       });
-      this.setState({
-        aucComission: Math.round(
-          Number(gateFee) + Number(bidFee) + Number(aucComission)
-        )
-      });
+      this.setState(
+        {
+          aucComission: Math.round(
+            Number(gateFee) + Number(bidFee) + Number(aucComission)
+          )
+        },
+        () => this.totalDeliveryCalc()
+      );
     }
     if (selectedAuction === "Iaai") {
       const comissionArray = prices.IaaiArray[0].comission;
@@ -184,11 +187,16 @@ class Calculator extends Component {
         }
       });
 
-      this.setState({
-        aucComission: Math.round(
-          Number(gateFee) + Number(bidFee) + Number(aucComission)
-        )
-      });
+      this.setState(
+        {
+          aucComission: Math.round(
+            Number(gateFee) + Number(bidFee) + Number(aucComission)
+          )
+        },
+        () => {
+          this.totalDeliveryCalc();
+        }
+      );
     }
   };
 
@@ -197,19 +205,21 @@ class Calculator extends Component {
       deliverySea,
       carPrice,
       overlandDeliveryCost,
-      companyСommission
+      companyСommission,
+      insurance,
+      aucComission
     } = this.state;
+
     this.setState({
       totalDelivery: Math.round(
         Number(deliverySea) +
           Number(overlandDeliveryCost) +
           Number(carPrice) +
-          Number(carPrice * 0.05) +
-          Number(carPrice * 0.1) +
+          Number(insurance) +
+          Number(aucComission) +
           companyСommission
       )
     });
-    this.comissionCalc();
   };
 
   handleRadioCheck = e => {
@@ -235,6 +245,7 @@ class Calculator extends Component {
       aucComission,
       insurance
     } = this.state;
+
     const selectStyles = {
       container: base => ({
         ...base,
@@ -392,7 +403,11 @@ class Calculator extends Component {
             </div>
           </div>
         </div>
-        <CustomCalc carPrice={carPrice} aucComission={aucComission} />
+        <CustomCalc
+          carPrice={carPrice}
+          aucComission={aucComission.toString()}
+          totalDelivery={totalDelivery.toString()}
+        />
       </>
     );
   }
