@@ -21,6 +21,7 @@ class CallBackBtn extends Component {
     return (
       <>
         <button
+          id="callBackButton"
           className={style.CallBackButton}
           type="button"
           onClick={this.toggleModal}

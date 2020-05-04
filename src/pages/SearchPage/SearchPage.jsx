@@ -11,6 +11,7 @@ import Loader from "../../components/Loader/Loader";
 import SearchCalc from "../../components/SearchCalc/SearchCalc";
 import Footer from "../../components/Footer/Footer";
 import CallBackBtn from "../../components/CallBack/CallBackBtn";
+import style from "./SearchPage.module.css";
 
 class SearchPage extends Component {
   state = {
@@ -146,26 +147,28 @@ class SearchPage extends Component {
     return (
       <>
         {isLoading ? <Loader /> : null}
-        <SearchForm formSubmit={this.formSubmit} />
-        {car ? (
-          <>
-            {" "}
-            {car.images ? (
-              <CarInfo car={car} averagePrice={averagePrice} />
-            ) : null}
-            {error ? <ErrorNotif error={error} /> : null}
-            {car.lot > 5 ? (
-              <SearchCalc
-                car={car}
-                lotPrice={lotPrice}
-                selectedAuction={selectedAuction}
-              />
-            ) : null}
-          </>
-        ) : null}
+        <div className={style.container}>
+          <SearchForm formSubmit={this.formSubmit} />
+          {car ? (
+            <>
+              {" "}
+              {car.images ? (
+                <CarInfo car={car} averagePrice={averagePrice} />
+              ) : null}
+              {error ? <ErrorNotif error={error} /> : null}
+              {car.lot > 5 ? (
+                <SearchCalc
+                  car={car}
+                  lotPrice={lotPrice}
+                  selectedAuction={selectedAuction}
+                />
+              ) : null}
+            </>
+          ) : null}
 
-        <CallBackBtn />
-        <Footer />
+          <CallBackBtn />
+          <Footer />
+        </div>
       </>
     );
   }
