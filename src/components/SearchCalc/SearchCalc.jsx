@@ -46,8 +46,20 @@ class SearchCalc extends Component {
   };
 
   componentDidMount() {
-    this.deaprtureFinder();
-    this.taxesCalc();
+    const { selectedAuction, lotPrice, car } = this.props;
+    this.setState(
+      {
+        selectedAuction,
+        lotPrice,
+        insurance: Math.round(Number(lotPrice * 0.04)),
+        car: { ...car }
+      },
+      () => {
+        this.deaprtureFinder();
+        this.comissionCalc();
+        this.taxesCalc();
+      }
+    );
   }
 
   componentDidUpdate(prevProps) {
@@ -173,6 +185,7 @@ class SearchCalc extends Component {
       let exise = "";
       let totalCustomPrice = "";
       let nds = "";
+
       switch (car.fuel) {
         case "GAS":
           if (Number(car.capacity) > 3.5) {
