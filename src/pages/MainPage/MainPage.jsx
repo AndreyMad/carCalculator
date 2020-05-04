@@ -5,25 +5,14 @@ import style from "./MainPage.module.css";
 import phoneSvg from "../../assets/svg/phone.svg";
 import viberSvg from "../../assets/svg/viberSvg.svg";
 import CallBackBtn from "../../components/CallBack/CallBackBtn";
-import CallBackModal from "../../components/CallBack/CallBackModal";
 import Footer from "../../components/Footer/Footer";
-import slideTop from "../../transitions/slideTop.module.css";
 
 class MainPage extends Component {
   state = {
     isModalOpen: false
   };
 
-  componentDidMount() {}
-
-  toggleModal = () => {
-    this.setState(prevState => ({
-      isModalOpen: !prevState.isModalOpen
-    }));
-  };
-
   render() {
-    const { isModalOpen } = this.state;
     return (
       <div>
         <div className={style.phoneContainer}>
@@ -65,7 +54,7 @@ class MainPage extends Component {
           </div>
         </div>
         <h1 className={style.title}>Купівля та доставка авто з США</h1>
-        <CallBackBtn toggleModal={this.toggleModal} />
+        <CallBackBtn />
         <div className={style.aboutContainer}>
           <div className={style.aboutWrapper}>
             <div className={style.aboutInnerWrapper}>
@@ -75,14 +64,14 @@ class MainPage extends Component {
               </span>
             </div>
           </div>
-          <CallBackBtn toggleModal={this.toggleModal} />
+          <CallBackBtn />
           <div className={style.aboutWrapper2}>
             <div className={style.aboutInnerWrapper}>
               <p className={style.aboutBigNumber}>2150</p>
               <span className={style.aboutText}>вчасно доставлених авто</span>
             </div>
           </div>
-          <CallBackBtn toggleModal={this.toggleModal} />
+          <CallBackBtn />
 
           <p>
             компанія автоном успшно працює на ринку більж 8 років. ми проводимо
@@ -92,17 +81,7 @@ class MainPage extends Component {
             стосовно автомобіля з сша
           </p>
         </div>
-        <CSSTransition
-          in={isModalOpen}
-          unmountOnExit
-          timeout={400}
-          classNames={slideTop}
-        >
-          <CallBackModal
-            isModalOpen={isModalOpen}
-            toggleModal={this.toggleModal}
-          />
-        </CSSTransition>
+
         <Map />
         <Footer />
       </div>

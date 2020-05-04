@@ -9,14 +9,11 @@ import fade from "../../transitions/fade250.module.css";
 import routes from "../../routes/routes";
 import style from "./Navigation.module.css";
 import burgerStyle from "./burgerStyle.module.css";
-// import logo from "../../assets/img/logo.4acaa253b517.png";
 import searchIcon from "../../assets/svg/search.svg";
 import calculatorIcon from "../../assets/svg/calculator.svg";
 import homeIcon from "../../assets/svg/home.svg";
 import partsIcon from "../../assets/svg/parts.svg";
 import phoneIcon from "../../assets/svg/naviPhone.svg";
-
-// import Header from "../../components/Header/Header";
 
 class Navigation extends Component {
   state = {
@@ -77,9 +74,7 @@ class Navigation extends Component {
           classNames={slide}
         >
           <>
-            {/* <Header /> */}
             <div className={style.overlay}>
-              {/* <img src={logo} alt="logo" className={style.logo} /> */}
               <ul className={style.menuList}>
                 <li className={style.menuItem} onClick={this.toggleModal}>
                   <img src={homeIcon} className={style.icon} alt="search" />

@@ -7,10 +7,11 @@
   position: relative;
   display: flex;
   justify-content: space-between;
+  /* bottom: 0px; */
   align-items: center;
 }
 .imgLogo {
-  height: 55px;
+  height: 45px;
   left: 0px;
   align-self: flex-start;
   width: 30%;
