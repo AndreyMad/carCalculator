@@ -25,7 +25,7 @@ class Calculator extends Component {
     deliverySea: "900",
     overlandDeliveryCost: "",
     totalDelivery: "",
-    companyСommission: 900,
+    companyСommission: 700,
     aucComission: "",
     insurance: "0"
   };
@@ -51,6 +51,11 @@ class Calculator extends Component {
     });
     this.setState({ arrayOfDepartures: newDeparturesArray });
   };
+  // componentDidUpdate(prevState) {
+  //   if (prevState !== this.state) {
+  //     this.totalDeliveryCalc();
+  //   }
+  // }
 
   departurePortHandler = () => {
     this.setState({ arrayOfPorts: [] });
