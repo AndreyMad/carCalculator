@@ -179,7 +179,7 @@ class SearchCalc extends Component {
   taxesCalc = () => {
     const { lotPrice, aucComission, importDuty, car } = this.state;
 
-    if (car.year > 1 && car.capacity > 0) {
+    if (car.year > 1 && car.capacity) {
       let coeficient = 50;
       const ageOfCar = 2020 - Number(car.year);
       let exise = "";
