@@ -1,10 +1,17 @@
-.container {
+.outWrapper {
   display: flex;
-  margin: 30px auto;
   flex-wrap: wrap;
   width: 90%;
-  flex-direction: column;
   max-width: 450px;
+  margin: 10px auto;
+}
+
+.container {
+  display: flex;
+  margin: 10px auto;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: column;
   box-shadow: -8px 8px 13px 1px rgba(0, 0, 0, 0.43);
   border-radius: 10px;
   padding: 30px 20px;
@@ -57,7 +64,7 @@
 }
 
 @media (min-width: 768px) {
-  .container {
+  .outWrapper {
     max-width: 650px;
   }
   .span {
@@ -67,10 +74,28 @@
     line-height: 30px;
   }
   .totalDeliveryCost,
-  .title {
+  .title,
+  .totalCustomCost {
     font-size: 23px;
+  }
+  .totalCost,
+  .totalCost > .innerSpan {
+    font-size: 29px;
+    margin-top: 10px;
   }
   .innerSpan {
     font-size: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .outWrapper {
+    max-width: 1400px;
+    box-shadow: -8px 8px 13px 1px rgba(0, 0, 0, 0.43);
+    border-radius: 10px;
+  }
+  .container {
+    width: 50%;
+    box-shadow: none;
   }
 }

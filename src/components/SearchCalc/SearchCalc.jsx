@@ -179,7 +179,7 @@ class SearchCalc extends Component {
   taxesCalc = () => {
     const { lotPrice, aucComission, importDuty, car } = this.state;
 
-    if (car.year > 1 && car.capacity) {
+    if (car.year > 1 && car.capacity >= 0) {
       let coeficient = 50;
       const ageOfCar = 2020 - Number(car.year);
       let exise = "";
@@ -279,100 +279,101 @@ class SearchCalc extends Component {
 
     return (
       <>
-        <div className={style.container}>
-          <h2 className={style.title}>Оплата після покупки</h2>
-          <div className={style.deliveryWrapper}>
-            <span className={style.span}>
-              Ціна лота:
-              <span className={style.innerSpan}> {lotPrice}$</span>
-            </span>
-
-            <span className={style.span}>
-              Комісія аукціону:
-              <span className={style.innerSpan}>{aucComission}$</span>
-            </span>
-
-            <span className={style.span}>
-              Доставка по США в порт {deaprturePort}
-              <span className={style.innerSpan}>{overlandDeliveryCost}$</span>
-            </span>
-
-            <span className={style.span}>
-              Ціна доставки морем:
-              <span className={style.innerSpan}>{deliverySea}$</span>
-            </span>
-
-            <span className={style.span}>
-              Страховка:
-              <span className={style.innerSpan}>{insurance}$</span>
-            </span>
-
-            <span className={style.span}>
-              Порт доставки:
-              <span className={style.innerSpan}>Одеса</span>
-            </span>
-
-            <span className={style.span}>
-              Срок доставки:
-              <span className={style.innerSpan}>55 днів</span>
-            </span>
-
-            <span className={style.span}>
-              Комісія компанії:
-              <span className={style.innerSpan}>{900}$</span>
-            </span>
-
-            <span className={style.totalDeliveryCostWrappe}>
-              <span className={style.totalDeliveryCost}>
-                Загальна сума до порту Одеса:
-                <span className={style.innerSpan}>{totalDelivery}$ </span>
+        <div className={style.outWrapper}>
+          <div className={style.container}>
+            <h2 className={style.title}>Оплата після покупки</h2>
+            <div className={style.deliveryWrapper}>
+              <span className={style.span}>
+                Ціна лота:
+                <span className={style.innerSpan}> {lotPrice}$</span>
               </span>
+
+              <span className={style.span}>
+                Комісія аукціону:
+                <span className={style.innerSpan}>{aucComission}$</span>
+              </span>
+
+              <span className={style.span}>
+                Доставка по США в порт {deaprturePort}
+                <span className={style.innerSpan}>{overlandDeliveryCost}$</span>
+              </span>
+
+              <span className={style.span}>
+                Ціна доставки морем:
+                <span className={style.innerSpan}>{deliverySea}$</span>
+              </span>
+
+              <span className={style.span}>
+                Страховка:
+                <span className={style.innerSpan}>{insurance}$</span>
+              </span>
+
+              <span className={style.span}>
+                Порт доставки:
+                <span className={style.innerSpan}>Одеса</span>
+              </span>
+
+              <span className={style.span}>
+                Срок доставки:
+                <span className={style.innerSpan}>55 днів</span>
+              </span>
+
+              <span className={style.span}>
+                Комісія компанії:
+                <span className={style.innerSpan}>{900}$</span>
+              </span>
+
+              <span className={style.totalDeliveryCostWrappe}>
+                <span className={style.totalDeliveryCost}>
+                  Загальна сума до порту Одеса:
+                  <span className={style.innerSpan}>{totalDelivery}$ </span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <div className={style.container}>
+            <h2 className={style.title}>Оплата по прибуттю</h2>
+            <span className={style.span}>
+              Експедиція в порту:
+              <span className={style.innerSpan}>{portExpedition}$</span>
+            </span>
+            <span className={style.span}>
+              Брокер:<span className={style.innerSpan}>{brokerPrice}$</span>
+            </span>
+            <span className={style.span}>
+              Ввізне мито:
+              <span className={style.innerSpan}>{importDuty}$</span>
+            </span>
+            <span className={style.span}>
+              Акцизний збір:<span className={style.innerSpan}>{exise}$</span>
+            </span>
+            <span className={style.span}>
+              ПДВ:<span className={style.innerSpan}>{nds}$</span>
+            </span>
+            <span className={style.span}>
+              Пенсійний фонд:<span className={style.innerSpan}>{esv}$</span>
+            </span>
+            <span className={style.span}>
+              Евакуатор до адреси клієнта:
+              <span className={style.innerSpan}>{evacution}$</span>
+            </span>
+            <span className={style.span}>
+              Сертифікація:
+              <span className={style.innerSpan}>{certification}$</span>
+            </span>
+            <span className={style.span}>
+              Постановка на облік:
+              <span className={style.innerSpan}>{accounting}$</span>
+            </span>
+            <span className={style.totalCustomCost}>
+              Сума платежів в Україні:
+              <span className={style.innerSpan}> {totalCustom}$</span>
+            </span>
+            <span className={style.totalCost}>
+              Загальна вартість:
+              <span className={style.innerSpan}> {totalPrice}$</span>
             </span>
           </div>
-        </div>
-
-        <div className={style.container}>
-          <h2 className={style.title}>Оплата по прибуттю</h2>
-          <span className={style.span}>
-            Експедиція в порту:
-            <span className={style.innerSpan}>{portExpedition}$</span>
-          </span>
-          <span className={style.span}>
-            Брокер:<span className={style.innerSpan}>{brokerPrice}$</span>
-          </span>
-          <span className={style.span}>
-            Ввізне мито:
-            <span className={style.innerSpan}>{importDuty}$</span>
-          </span>
-          <span className={style.span}>
-            Акцизний збір:<span className={style.innerSpan}>{exise}$</span>
-          </span>
-          <span className={style.span}>
-            ПДВ:<span className={style.innerSpan}>{nds}$</span>
-          </span>
-          <span className={style.span}>
-            Пенсійний фонд:<span className={style.innerSpan}>{esv}$</span>
-          </span>
-          <span className={style.span}>
-            Евакуатор до адреси клієнта:
-            <span className={style.innerSpan}>{evacution}$</span>
-          </span>
-          <span className={style.span}>
-            Сертифікація:
-            <span className={style.innerSpan}>{certification}$</span>
-          </span>
-          <span className={style.span}>
-            Постановка на облік:
-            <span className={style.innerSpan}>{accounting}$</span>
-          </span>
-          <span className={style.totalCustomCost}>
-            Сума платежів в Україні:
-            <span className={style.innerSpan}> {totalCustom}$</span>
-          </span>
-          <span className={style.totalCost}>
-            Загальна вартість:
-            <span className={style.innerSpan}> {totalPrice}$</span>
-          </span>
         </div>
       </>
     );

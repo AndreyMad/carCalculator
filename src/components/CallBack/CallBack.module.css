@@ -137,3 +137,12 @@
     cursor: pointer;
   }
 }
+@media (min-width: 1200px) {
+  .CallBackButton {
+    width: 250px;
+    height: 70px;
+    border-radius: 50px;
+    font-size: 25px;
+    margin: 30px auto 50px;
+  }
+}

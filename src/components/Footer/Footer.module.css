@@ -5,6 +5,7 @@
   margin: 50px auto 0px;
   align-self: flex-end !important;
   position: relative;
+  bottom: 0px;
   display: flex;
   justify-content: space-between;
   /* bottom: 0px; */
