@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { CSSTransition } from "react-transition-group";
 import Map from "../../components/Map/Map";
 import style from "./MainPage.module.css";
 import phoneSvg from "../../assets/svg/phone.svg";
@@ -9,6 +8,7 @@ import Footer from "../../components/Footer/Footer";
 
 class MainPage extends Component {
   state = {
+    // eslint-disable-next-line react/no-unused-state
     isModalOpen: false
   };
 
@@ -54,6 +54,10 @@ class MainPage extends Component {
           </div>
         </div>
         <h1 className={style.title}>Купівля та доставка авто з США</h1>
+        <h2>
+          Підбір, придбання, доставка, митне оформлення, сертифікація, ремонт
+          авто з США
+        </h2>
         <p>
           компанія автоном успішно працює на ринку більж 8 років. ми проводимо
           повний цикл починаючи від консультації клієнта і до постановки
@@ -90,7 +94,7 @@ class MainPage extends Component {
             <li>найвищий рівень обслуговування;</li>
           </ul>
         </section>
-        {/* <Map /> */}
+        <Map />
         <Footer />
       </div>
     );

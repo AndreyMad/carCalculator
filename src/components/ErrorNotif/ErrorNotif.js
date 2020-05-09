@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import oopsImg from "../../assets/img/8885322-oops-icon.jpg";
 import style from "./ErrorNotif.module.css";
+// eslint-disable-next-line import/no-cycle
 import routes from "../../routes/routes";
 
 const ErrorNotif = () => {

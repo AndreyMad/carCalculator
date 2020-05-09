@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-syntax */
 import React, { Component } from "react";
