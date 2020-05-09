@@ -69,8 +69,8 @@
 .shadowLink {
   max-width: 180px;
   width: 100%;
-  height: 45px;
-  line-height: 45px;
+  /* height: 45px;
+  line-height: 45px; */
 }
 .icon {
   width: 15px;

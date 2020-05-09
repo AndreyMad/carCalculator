@@ -82,7 +82,13 @@ class MainPage extends Component {
         </div>
         <section className={style.advantage}>
           <h2 className={style.subTitle}>Переваги роботи з нами:</h2>
-          <ul className={style.list} />
+          <ul className={style.list}>
+            <li>одні з найкращих тарифів на ринку</li>
+            <li>гарантія безпеки та збереження авто до отримання власником </li>
+            <li>гнучкі умови дилерського співробітництва</li>
+            <li>Професійна команда менеджерів на звязку 24/7</li>
+            <li>найвищий рівень обслуговування;</li>
+          </ul>
         </section>
         {/* <Map /> */}
         <Footer />
