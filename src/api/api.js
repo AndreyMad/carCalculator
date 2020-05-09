@@ -24,15 +24,3 @@ export const getAveragePrice = ({ make, model, year }) => {
     )
     .then(res => res);
 };
-
-export const sendFile = file => {
-  const formData = new FormData();
-
-  formData.append("image", file);
-  console.log(formData);
-  axios.post(`http://localhost:8080/saveFileRoute`, formData, {
-    headers: {
-      "Content-Type": "multipart/form-data"
-    }
-  });
-};

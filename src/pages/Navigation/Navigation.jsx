@@ -127,7 +127,17 @@ class Navigation extends Component {
                     className={style.shadowLink}
                     to={routes.SEARCH_PAGE.path}
                   >
-                    Контакти
+                    Про нас
+                  </NavLink>
+                </li>
+                <li className={style.menuItem} onClick={this.toggleModal}>
+                  <img src={phoneIcon} className={style.icon} alt="search" />
+
+                  <NavLink
+                    className={style.shadowLink}
+                    to={routes.SEARCH_PAGE.path}
+                  >
+                    Питання - відповідь
                   </NavLink>
                 </li>
               </ul>

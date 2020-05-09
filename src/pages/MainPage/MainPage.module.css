@@ -1,7 +1,7 @@
 .phoneContainer {
   display: flex;
-  width: 200px;
-  margin: 10px auto;
+  max-width: 450px;
+  margin: 10px auto 0px;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -11,8 +11,8 @@
   justify-content: space-between;
   position: relative;
   height: 20px;
-  max-width: 145px;
-  margin-bottom: 10px;
+  max-width: 120px;
+  margin: 10px;
 }
 .phoneSvg {
   width: 20px;
@@ -24,14 +24,21 @@
   text-decoration: none;
   width: 100%;
   text-align: right;
+  font-size: 14px;
+  line-height: 20px;
 }
 .title {
   font-size: 30px;
-  margin: 0px auto 20px;
+  position: absolute;
   max-width: 450px;
+  top: 60%;
   width: 80%;
   text-align: center;
   font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  color: #ffffff;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .aboutBigNumber {
   font-size: 90px;
@@ -70,4 +77,62 @@
   height: 100%;
   min-height: 300px;
   padding: 15px;
+}
+.causes,
+.advantage {
+  max-width: 450px;
+  width: 100%;
+
+  margin: 0px auto;
+}
+.causesList {
+  list-style: none;
+  width: 100%;
+}
+.listItem {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  font-weight: bold;
+}
+.listInnerItem {
+  width: 100%;
+  font-weight: normal;
+}
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  z-index: -1;
+}
+.backgroundImg {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+.backgroundShadow {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.headWrapper {
+  margin-top: -10px;
+  width: 100%;
+  min-height: 350px;
+  position: relative;
+}
+
+.carousel {
+  height: 100%;
+}
+.dots {
+  background-color: #fff;
+  width: 40px;
 }
