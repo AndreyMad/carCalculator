@@ -1,0 +1,70 @@
+.container {
+  width: 100%;
+  background-image: url(../../assets/img/255308.jpg);
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  max-width: 450px;
+  margin: -4px auto 0px;
+  position: relative;
+}
+.shadow {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 19px;
+  margin: 0px 5px 10px;
+  color: #ffffff;
+}
+.orderForm {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+}
+.inputName,
+.inputNumber {
+  width: 43%;
+  height: 35px;
+  font-size: 14px;
+  border-radius: 5px;
+
+  outline: none;
+  -moz-appearance: textfield;
+  font-family: "Montserrat", sans-serif;
+  margin: 10px 10px;
+  padding: 2px 8px;
+}
+.inputComment {
+  width: 100%;
+  height: 35px;
+  font-size: 14px;
+  border-radius: 5px;
+
+  outline: none;
+  -moz-appearance: textfield;
+  font-family: "Montserrat", sans-serif;
+  margin: 10px 10px;
+  padding: 2px 8px;
+}
+.submitBtn {
+  width: 150px;
+  height: 35px;
+  border-radius: 5px;
+  margin: 15px auto;
+  background-color: #233682;
+  outline: none;
+  color: #ffffff;
+}
+.text {
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  margin: 10px 10px;
+}
