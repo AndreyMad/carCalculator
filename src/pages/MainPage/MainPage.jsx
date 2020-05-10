@@ -13,6 +13,7 @@ import EMMA_MAERSK from "../../assets/img/EMMA_MAERSK.png";
 import parts from "../../assets/img/parts.png";
 import sertif from "../../assets/img/sertif.png";
 import OrderForm from "../../components/OrderForm/OrderForm";
+import SVG from "../../assets/svg/index";
 
 class MainPage extends Component {
   state = {
@@ -30,7 +31,6 @@ class MainPage extends Component {
       arrows: false,
       dots: false
     };
-
     return (
       <div className={style.container}>
         <section className={style.headWrapper}>
@@ -116,7 +116,12 @@ class MainPage extends Component {
             <h3 className={style.subtitle}>6 причин придбати авто з США</h3>
             <ul className={style.causesList}>
               <li className={style.listItem}>
-                Вигідна ціна
+                <img
+                  src={SVG.money}
+                  className={style.causesIcon}
+                  alt="presentation"
+                />
+                <p> Вигідна ціна</p>
                 <span className={style.listInnerItem}>
                   Автомобілі в США дешевші, ніж аналогічні марки, того ж року
                   випуску, у Європі. Відповідно вартість розмитнення, яка
@@ -127,7 +132,13 @@ class MainPage extends Component {
                 </span>
               </li>
               <li className={style.listItem}>
-                Великий вибір
+                <img
+                  src={SVG.choice}
+                  className={style.causesIcon}
+                  alt="presentation"
+                />
+                <p> Великий вибір</p>
+
                 <span className={style.listInnerItem}>
                   Багато американців віддають перевагу новим авто, а їздять вони
                   на них до закінчення гарантії, після чого автомобіль
@@ -137,7 +148,13 @@ class MainPage extends Component {
                 </span>
               </li>
               <li className={style.listItem}>
-                Чесна історія
+                <img
+                  src={SVG.history}
+                  className={style.causesIcon}
+                  alt="presentation"
+                />
+                <p> Чесна історія</p>
+
                 <span className={style.listInnerItem}>
                   Купуючи американське авто, покупець бачить 100% офіційної
                   історії: кількість власників, рік випуску, чи були ДТП тощо. В
@@ -148,7 +165,13 @@ class MainPage extends Component {
                 </span>
               </li>
               <li className={style.listItem}>
-                Багата комплектація
+                <img
+                  src={SVG.carComplect}
+                  className={style.causesIcon}
+                  alt="presentation"
+                />
+                <p> Багата комплектація</p>
+
                 <span className={style.listInnerItem}>
                   Американці люблять комфорт. Тож їхні автомобілі здебільшого
                   краще оснащені, ніж європейські. Переважна частина машин має
@@ -157,7 +180,13 @@ class MainPage extends Component {
                 </span>
               </li>
               <li className={style.listItem}>
-                Надійність та невибагливість
+                <img
+                  src={SVG.carNad}
+                  className={style.causesIcon}
+                  alt="presentation"
+                />
+                <p> Надійність та невибагливість</p>
+
                 <span className={style.listInnerItem}>
                   Авто з Америки мають об'єм двигуна вище середнього, а також
                   розраховані на бензин марки 92, що чудово підходить для
@@ -165,7 +194,13 @@ class MainPage extends Component {
                 </span>
               </li>
               <li className={style.listItem}>
-                Оплата частинами
+                <img
+                  src={SVG.oplata}
+                  className={style.causesIcon}
+                  alt="presentation"
+                />
+                <p> Оплата частинами</p>
+
                 <span className={style.listInnerItem}>
                   Покупка авто відбувається в 2 етапи. Після виграшу на аукціоні
                   покупець оплачує лише вартість авто та доставку морем. Всі

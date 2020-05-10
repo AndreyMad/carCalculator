@@ -4,12 +4,14 @@ import style from "./OrderForm.module.css";
 class OrderForm extends Component {
   state = {
     name: "",
-    form: "",
+    number: "",
     comment: ""
   };
-  // handleChange(e)=>{
 
-  // }
+  handleChange = ({ target }) => {
+    this.setState({ [target.id]: target.value });
+  };
+
   render() {
     return (
       <div className={style.container}>
@@ -18,17 +20,23 @@ class OrderForm extends Component {
           <form className={style.orderForm}>
             <input
               type="text"
+              id="name"
               className={style.inputName}
+              onChange={this.handleChange}
               placeholder="Ваше ім'я"
             />
             <input
               type="number"
+              id="number"
               className={style.inputNumber}
+              onChange={this.handleChange}
               placeholder="Ваш телефон"
             />
             <input
               type="text"
+              id="comment"
               className={style.inputComment}
+              onChange={this.handleChange}
               placeholder="Коментар"
             />
             <input

@@ -85,21 +85,50 @@
 
   margin: 0px auto;
 }
+.causes {
+  background-image: url(../../assets//img/7222.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+}
 .causesList {
   list-style: none;
   width: 100%;
+  padding-bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
+
 .listItem {
   width: 100%;
   max-width: 450px;
   display: flex;
+  flex-direction: column;
+  margin: 15px auto 0px;
+  text-align: center;
+  align-items: center;
   flex-wrap: wrap;
   font-size: 16px;
   font-weight: bold;
+  max-width: 320px;
+  padding: 20px;
+  border: 1px solid black;
+  position: relative;
+  border-top-width: 0px;
+}
+.listItem > p {
+  margin: 15px auto;
+  font-size: 18px;
+  color: #ffffff;
+  letter-spacing: 1px;
+
+  font-family: "Montserrat", sans-serif;
 }
 .listInnerItem {
   width: 100%;
+  color: #ffffff;
+  letter-spacing: 1px;
   font-weight: normal;
+  font-family: "Montserrat", sans-serif;
 }
 .background {
   width: 100%;
@@ -123,10 +152,11 @@
   left: 0;
 }
 .headWrapper {
-  margin-top: -10px;
   width: 100%;
   min-height: 350px;
   position: relative;
+  max-width: 450px;
+  margin: -10px auto 0px;
 }
 
 .carousel {
@@ -135,4 +165,55 @@
 .dots {
   background-color: #fff;
   width: 40px;
+}
+.causesIcon {
+  width: 40px;
+  height: 40px;
+
+  margin-top: -42px;
+}
+.listItem::after {
+  content: " ";
+  border: 1px solid #ffffff;
+  width: 120px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.listItem::before {
+  content: " ";
+  border: 1px solid #ffffff;
+  width: 110px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.subtitle {
+  font-size: 22px;
+  margin: 0px auto 10px;
+  color: #ffffff;
+}
+.listItem {
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto 0px;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  font-weight: bold;
+  max-width: 320px;
+  padding: 20px;
+  border: 1px solid #ffffff;
+  position: relative;
+  border-top-width: 0px;
+}
+.outwrapper {
+  padding-top: 20px;
+  text-align: center;
+}
+.listItem:last-of-type {
+  margin-top: 30px;
 }
