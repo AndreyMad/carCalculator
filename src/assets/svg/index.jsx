@@ -14,6 +14,13 @@ import history from "./history.svg";
 import carComplect from "./carComplect.svg";
 import carNad from "./carNad.svg";
 import oplata from "./oplata.svg";
+import downArrow from "./downArrow.svg";
+import downArrow2 from "./downArrow2.svg";
+import defAxle from "./defAxle.svg";
+import engineCapacity from "./engineCapacity.svg";
+import odometer from "./odometer.svg";
+import year from "./year.svg";
+import fuel from "./fuel.svg";
 
 export default {
   calculator,
@@ -31,5 +38,12 @@ export default {
   history,
   carComplect,
   carNad,
-  oplata
+  oplata,
+  downArrow,
+  downArrow2,
+  defAxle,
+  engineCapacity,
+  odometer,
+  fuel,
+  year
 };

@@ -17,16 +17,18 @@ class CallBackBtn extends Component {
   };
 
   render() {
+    const { styles, text } = this.props;
     const { isModalOpen } = this.state;
     return (
       <>
         <button
+          style={{ ...styles }}
           id="callBackButton"
           className={style.CallBackButton}
           type="button"
           onClick={this.toggleModal}
         >
-          Замовити консультацію
+          {text || "Замовити консультацію"}
         </button>
         <CSSTransition
           in={isModalOpen}

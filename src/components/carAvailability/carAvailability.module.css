@@ -1,0 +1,97 @@
+.container {
+  width: 100%;
+  max-width: 450px;
+  margin: 0px auto;
+  background-color: grey;
+  padding-top: 30px;
+}
+.carPhoto {
+  height: 100%;
+  width: 100%;
+  /* height: 100%; */
+  object-fit: cover;
+}
+.title {
+  font-size: 26px;
+  max-width: 300px;
+  margin: 0px auto 30px;
+  text-align: center;
+}
+.sliderInnerWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-width: 400px;
+  height: 300px;
+  object-fit: cover;
+  margin: 0px auto;
+}
+.sliderWrapper {
+  max-width: 360px;
+  margin: 0px auto;
+}
+.carName {
+  font-size: 25px;
+  text-align: center;
+  margin: 10px auto;
+}
+.carPrice {
+  font-size: 22px;
+  margin-left: 40px;
+}
+.innerWrapper {
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  max-width: 400px;
+  margin: 10px 20px;
+}
+.iconsContainer {
+  height: 30px;
+  width: 70px;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icon {
+  height: 20px;
+}
+.outWrapper {
+  margin: 40px 10px;
+  background-color: #ffffff;
+  position: relative;
+  padding: 20px 10px;
+  /* border: 1px solid black; */
+}
+.hitLogo {
+  position: absolute;
+  width: 80px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  transform: rotateZ(-35deg);
+}
+.averagePrice {
+  width: 100%;
+  height: 30px;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  margin: 0px auto 15px;
+  justify-content: center;
+  text-align: center;
+}
+.averagePrice > p {
+  font-size: 22px;
+  font-weight: bold;
+}
+.avtoriaLogo {
+  height: 25px;
+  width: 75px;
+  margin: 0px 10px;
+}

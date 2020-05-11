@@ -44,42 +44,13 @@
   font-size: 90px;
   font-family: sans-serif;
   color: #ffffff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -100%);
 }
-.aboutText {
-  font-family: "Montserrat", sans-serif;
-  color: #ffffff;
-  font-size: 30px;
-  line-height: 45px;
-  text-align: center;
-}
-.aboutWrapper {
-  background-image: url(../../assets/img/jaguar_small.jpg);
-}
-.aboutWrapper2 {
-  background-image: url(../../assets/img/audi.jpg);
-}
-.aboutWrapper,
-.aboutWrapper2 {
-  width: 100vw;
 
-  min-height: 300px;
-  background-position: 0% 0%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  max-width: 450px;
-  margin: 20px auto;
-}
-.aboutInnerWrapper {
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  min-height: 300px;
-  padding: 15px;
-}
-.causes,
-.advantage {
+.causes {
   max-width: 450px;
   width: 100%;
 
@@ -94,8 +65,7 @@
 .causesList {
   list-style: none;
   width: 100%;
-  padding-bottom: 30px;
-  background-color: rgba(0, 0, 0, 0.7);
+  padding-bottom: 20px;
 }
 
 .listItem {
@@ -146,7 +116,8 @@
 .backgroundShadow {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+
   position: absolute;
   top: 0;
   left: 0;
@@ -213,7 +184,11 @@
 .outwrapper {
   padding-top: 20px;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .listItem:last-of-type {
   margin-top: 30px;
+}
+.callBackBtn {
+  width: 200px;
 }

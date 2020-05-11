@@ -14,6 +14,10 @@ import parts from "../../assets/img/parts.png";
 import sertif from "../../assets/img/sertif.png";
 import OrderForm from "../../components/OrderForm/OrderForm";
 import SVG from "../../assets/svg/index";
+import audiImg from "../../assets/img/audi.png";
+import jaguar from "../../assets/img/jaguar.png";
+import SimpleBuy from "../../components/SimpleBuy/SimpleBuy";
+import CarAvailability from "../../components/carAvailability/carAvailability";
 
 class MainPage extends Component {
   state = {
@@ -26,8 +30,8 @@ class MainPage extends Component {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 6000,
+      // autoplay: true,
+      // autoplaySpeed: 3000,
       arrows: false,
       dots: false
     };
@@ -93,15 +97,40 @@ class MainPage extends Component {
                 alt="presentation"
               />
             </div>
+
             <div className={style.headWrapper}>
               <div className={style.backgroundShadow} />
 
               <h1 className={style.title}>
-                Сертифікація та постановка на облік{" "}
+                Сертифікація та постановка на облік
               </h1>
               <img
                 className={style.backgroundImg}
                 src={sertif}
+                alt="presentation"
+              />
+            </div>
+
+            <div className={style.headWrapper}>
+              <div className={style.backgroundShadow} />
+              <p className={style.aboutBigNumber}>8</p>
+              <span className={style.title}>
+                років на автомобільному ринку України
+              </span>
+              <img
+                className={style.backgroundImg}
+                src={audiImg}
+                alt="presentation"
+              />
+            </div>
+
+            <div className={style.headWrapper}>
+              <div className={style.backgroundShadow} />
+              <p className={style.aboutBigNumber}>2150</p>
+              <span className={style.title}>вчасно доставлених авто</span>
+              <img
+                className={style.backgroundImg}
+                src={jaguar}
                 alt="presentation"
               />
             </div>
@@ -209,82 +238,16 @@ class MainPage extends Component {
                   сподобалось авто яке наразі трохи не по кишені.
                 </span>
               </li>
+              <li>
+                <CallBackBtn styles={{ margin: "20px auto 30px" }} />
+              </li>
             </ul>
           </div>
         </section>
-        <section className={style.aboutContainer}>
-          <div className={style.aboutWrapper}>
-            <div className={style.aboutInnerWrapper}>
-              <p className={style.aboutBigNumber}>8</p>
-              <span className={style.aboutText}>
-                років на автомобільному ринку України
-              </span>
-            </div>
-          </div>
-          <CallBackBtn />
-          <div className={style.aboutWrapper2}>
-            <div className={style.aboutInnerWrapper}>
-              <p className={style.aboutBigNumber}>2150</p>
-              <span className={style.aboutText}>вчасно доставлених авто</span>
-            </div>
-          </div>
-          <CallBackBtn />
+        <section className={style.simpleBuyContainer}>
+          <SimpleBuy />
+          <CarAvailability />
         </section>
-        <section className={style.advantage}>
-          <p className={style.about}>
-            компанія автоном успішно працює на ринку більж 8 років. ми проводимо
-            повний цикл починаючи від консультації клієнта і до постановки
-            автомобіля на облік в сервісному центрі. залиште заявку або
-            зателефонуйте нам і ви отримаєте відповіді на всі ваші питання
-            стосовно автомобіля з сша
-          </p>
-          <h2 className={style.subTitle}>Переваги роботи з нами:</h2>
-          <ul className={style.list}>
-            <li>
-              найвищий рівень обслуговування
-              <p>
-                Компанія Автоном це команда професіоналів яка в найкоротші сроки
-                надасть Вам актуальну інформацію та здійснить професійний підбір
-                автомобіля, згідно Ваших побажань та бюджету
-              </p>
-            </li>
-            <li>
-              одні з найкращих тарифів на ринку
-              <p>
-                Завдяки довгостроковим відносинам та оптовим поставкам авто, ми
-                можемо запропонувати нашим клієнтам найкращі ціни та умови
-                доставки авто за США
-              </p>
-            </li>
-            <li>
-              гарантія безпеки та збереження авто до отримання власником
-              <p>
-                Купівля авто проходить згідно договору, всі платежі покупець
-                здійснює самостійно в касі банку Swift переказом. Всі автомобілі
-                застраховані в найкращих страхових компаніях світу.
-              </p>
-            </li>
-            <li>
-              гнучкі умови дилерського співробітництва
-              <p>
-                Якщо ви розумієтесь на авто і у вас є бажання займатись цією
-                діяльністю, зв'яжіться за нашим менеджером для отримання
-                дилерської пропозиції
-              </p>
-            </li>
-            <li>
-              Найкращі ціни на автозапчастини
-              <p>
-                Одним із напрямків діяльності компаніїї являється доставка і
-                продаж автозапчастин. Ми співпрацюємо з постачальниками з
-                Європи, США, Японії, Арабських Еміратів та інших. Тому при
-                замовленні авто у нас Ви можете бути впевнені в тому що
-                отримаєте якісні запасні частини за найкращими цінами на ринку.
-              </p>
-            </li>
-          </ul>
-        </section>
-
         {/* <Map /> */}
         <Footer />
       </div>
