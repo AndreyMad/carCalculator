@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "35922c57de8e482094586f7c7d65f1b7",
+    "revision": "acaaf030c1c37b48be4a4c03f4e030d9",
     "url": "/carCalculator/index.html"
   },
   {
-    "revision": "638e1d831061f1110ed6",
+    "revision": "228278f26692e65af5cc",
     "url": "/carCalculator/static/css/2.a2f92c16.chunk.css"
   },
   {
-    "revision": "7c49655ae1611eab4631",
-    "url": "/carCalculator/static/css/main.e3be8e32.chunk.css"
+    "revision": "750a32d0cd89040aaa0b",
+    "url": "/carCalculator/static/css/main.6e011f39.chunk.css"
   },
   {
-    "revision": "638e1d831061f1110ed6",
-    "url": "/carCalculator/static/js/2.3de83237.chunk.js"
+    "revision": "228278f26692e65af5cc",
+    "url": "/carCalculator/static/js/2.12773b7a.chunk.js"
   },
   {
     "revision": "86afaa925e0f432774bf95b19b6933fb",
-    "url": "/carCalculator/static/js/2.3de83237.chunk.js.LICENSE"
+    "url": "/carCalculator/static/js/2.12773b7a.chunk.js.LICENSE"
   },
   {
-    "revision": "7c49655ae1611eab4631",
-    "url": "/carCalculator/static/js/main.d3e1a33d.chunk.js"
+    "revision": "750a32d0cd89040aaa0b",
+    "url": "/carCalculator/static/js/main.54adedac.chunk.js"
   },
   {
     "revision": "573505a3d7db1043cb8d",
@@ -64,8 +64,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/alMap.e83b7787.png"
   },
   {
-    "revision": "af7b510f487f81850859054ccd02c408",
-    "url": "/carCalculator/static/media/audi.af7b510f.jpg"
+    "revision": "1554e0a4859b70f860b2af1dcac26047",
+    "url": "/carCalculator/static/media/audi.1554e0a4.png"
+  },
+  {
+    "revision": "d03b435406fd786e053b45f5b32894a8",
+    "url": "/carCalculator/static/media/avtoriaLogo.d03b4354.jpg"
   },
   {
     "revision": "c946e26882666d8235ef2020fe2fe4ce",
@@ -100,6 +104,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/coMap.6bcdec0a.png"
   },
   {
+    "revision": "5c77c310c5d429f99821ee1079d64e66",
+    "url": "/carCalculator/static/media/copartLogo.5c77c310.jpg"
+  },
+  {
     "revision": "a2a3f9f13585d6ffe772621a1220fded",
     "url": "/carCalculator/static/media/ctMap.a2a3f9f1.png"
   },
@@ -112,6 +120,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/deMap.86dfeda4.png"
   },
   {
+    "revision": "039a6cd659fec4d3ea132c296dff5944",
+    "url": "/carCalculator/static/media/defAxle.039a6cd6.svg"
+  },
+  {
     "revision": "e7faacc099027a0c56f1a792da0a7b42",
     "url": "/carCalculator/static/media/defaultImg.e7faacc0.jpg"
   },
@@ -120,12 +132,56 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/defaultMap.dc87469a.png"
   },
   {
+    "revision": "1a44384a0f71be9ce576c8ccfc6eb11a",
+    "url": "/carCalculator/static/media/downArrow.1a44384a.svg"
+  },
+  {
+    "revision": "11ad70b89e81fb1bcf47d7523a29ad5d",
+    "url": "/carCalculator/static/media/downArrow2.11ad70b8.svg"
+  },
+  {
+    "revision": "856b0f494704d9fd34eb80289961f46e",
+    "url": "/carCalculator/static/media/engineCapacity.856b0f49.svg"
+  },
+  {
     "revision": "f104d06899beefc85a05c887ce03389f",
     "url": "/carCalculator/static/media/falseSvg.f104d068.svg"
   },
   {
     "revision": "0842cfcf123aff490c9fe940c01e03b4",
     "url": "/carCalculator/static/media/flMap.0842cfcf.png"
+  },
+  {
+    "revision": "f67c98265be64f967141dffe197db72f",
+    "url": "/carCalculator/static/media/ford_fusion__314705545fx.f67c9826.webp"
+  },
+  {
+    "revision": "33d3ddb410a4bd109f5ee4218807562e",
+    "url": "/carCalculator/static/media/ford_fusion__314705557fx.33d3ddb4.webp"
+  },
+  {
+    "revision": "f51a1111c5be50c9ffe3f882cfc56001",
+    "url": "/carCalculator/static/media/ford_fusion__314705561fx (1).f51a1111.webp"
+  },
+  {
+    "revision": "f51a1111c5be50c9ffe3f882cfc56001",
+    "url": "/carCalculator/static/media/ford_fusion__314705561fx.f51a1111.webp"
+  },
+  {
+    "revision": "54f3011163ed0bf35a9fff903a140e6f",
+    "url": "/carCalculator/static/media/ford_fusion__314705584fx.54f30111.webp"
+  },
+  {
+    "revision": "05f01f717f29912db177a3510e2b3430",
+    "url": "/carCalculator/static/media/ford_fusion__314705605fx.05f01f71.webp"
+  },
+  {
+    "revision": "492bfa249b3e7e37f1849de3b015c0b3",
+    "url": "/carCalculator/static/media/ford_fusion__314705749fx.492bfa24.webp"
+  },
+  {
+    "revision": "7b0bcee7284e0ba92fd27d3a8001a3cc",
+    "url": "/carCalculator/static/media/fuel.7b0bcee7.svg"
   },
   {
     "revision": "0865a41f62968935db183d1d07014341",
@@ -138,6 +194,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "24360c6a5482e390d4e8208f9e3a89f6",
     "url": "/carCalculator/static/media/history.24360c6a.svg"
+  },
+  {
+    "revision": "cc3c228589d8f0d3b47f348ce3b250d8",
+    "url": "/carCalculator/static/media/hit.cc3c2285.webp"
   },
   {
     "revision": "68a9df662587ec3a5e4097c72cf0441d",
@@ -156,8 +216,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/inMap.a65f0d3b.png"
   },
   {
-    "revision": "5f8b47a056e28100b6a7199b9eb21824",
-    "url": "/carCalculator/static/media/jaguar_small.5f8b47a0.jpg"
+    "revision": "28979ae696f54206bffb5a44711168b3",
+    "url": "/carCalculator/static/media/jaguar.28979ae6.png"
   },
   {
     "revision": "cd7e71bbf15116ec633322bde0c7383b",
@@ -220,6 +280,34 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/neMap.15f021e4.png"
   },
   {
+    "revision": "525fbba0288b5f8a8abd74004722da6a",
+    "url": "/carCalculator/static/media/nissan_rogue__329083827fx.525fbba0.webp"
+  },
+  {
+    "revision": "919af5ac465db3893fb3825375bd042f",
+    "url": "/carCalculator/static/media/nissan_rogue__329083830fx.919af5ac.webp"
+  },
+  {
+    "revision": "d5bffe26e509b03865fc3aa3473b317c",
+    "url": "/carCalculator/static/media/nissan_rogue__329083836fx.d5bffe26.webp"
+  },
+  {
+    "revision": "73cdff8042e2661f34c39ecb38ccf8c5",
+    "url": "/carCalculator/static/media/nissan_rogue__329083840fx.73cdff80.webp"
+  },
+  {
+    "revision": "fa628392a3f4d65a746b7f4eedfa230e",
+    "url": "/carCalculator/static/media/nissan_rogue__329083846fx.fa628392.webp"
+  },
+  {
+    "revision": "1a891d7de82d025eef28a86f3dd9c8ff",
+    "url": "/carCalculator/static/media/nissan_rogue__329083848fx.1a891d7d.webp"
+  },
+  {
+    "revision": "c07070cca2cbf93938f372464fb2eedc",
+    "url": "/carCalculator/static/media/nissan_rogue__329084069fx.c07070cc.webp"
+  },
+  {
     "revision": "b20f76b8c42fb6ed6ff205d4b8e3ef91",
     "url": "/carCalculator/static/media/njMap.b20f76b8.png"
   },
@@ -234,6 +322,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "6985692ae65f5b44a385249f6e450620",
     "url": "/carCalculator/static/media/nyMap.6985692a.png"
+  },
+  {
+    "revision": "82b1ff6a7d9f63110a2a535a2f8f42c7",
+    "url": "/carCalculator/static/media/odometer.82b1ff6a.svg"
   },
   {
     "revision": "5afffda0e0831359c09fefb3ef1497ff",
@@ -312,6 +404,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/txMap.82d28f1b.png"
   },
   {
+    "revision": "dce2cc28ddfba7376c5782452d9f2a21",
+    "url": "/carCalculator/static/media/usaflag.dce2cc28.jpg"
+  },
+  {
     "revision": "c38a9a9de7886984f41d2b0f26ea4147",
     "url": "/carCalculator/static/media/utMap.c38a9a9d.png"
   },
@@ -334,5 +430,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "03f0d2f6151618d84fa1bbab916f74c6",
     "url": "/carCalculator/static/media/wyMap.03f0d2f6.png"
+  },
+  {
+    "revision": "9cb81d13add05fa44b378b34f3faa53c",
+    "url": "/carCalculator/static/media/year.9cb81d13.svg"
   }
 ]);
