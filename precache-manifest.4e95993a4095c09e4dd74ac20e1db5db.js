@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "acaaf030c1c37b48be4a4c03f4e030d9",
+    "revision": "0e06b71e0a91329ed1d397af21c76100",
     "url": "/carCalculator/index.html"
   },
   {
-    "revision": "228278f26692e65af5cc",
+    "revision": "c190dfe17a80d632d61f",
     "url": "/carCalculator/static/css/2.a2f92c16.chunk.css"
   },
   {
-    "revision": "750a32d0cd89040aaa0b",
-    "url": "/carCalculator/static/css/main.6e011f39.chunk.css"
+    "revision": "0d734abec16ae42ee18d",
+    "url": "/carCalculator/static/css/main.68552b96.chunk.css"
   },
   {
-    "revision": "228278f26692e65af5cc",
-    "url": "/carCalculator/static/js/2.12773b7a.chunk.js"
+    "revision": "c190dfe17a80d632d61f",
+    "url": "/carCalculator/static/js/2.4f09100b.chunk.js"
   },
   {
     "revision": "86afaa925e0f432774bf95b19b6933fb",
-    "url": "/carCalculator/static/js/2.12773b7a.chunk.js.LICENSE"
+    "url": "/carCalculator/static/js/2.4f09100b.chunk.js.LICENSE"
   },
   {
-    "revision": "750a32d0cd89040aaa0b",
-    "url": "/carCalculator/static/js/main.54adedac.chunk.js"
+    "revision": "0d734abec16ae42ee18d",
+    "url": "/carCalculator/static/js/main.1cd3c7a7.chunk.js"
   },
   {
     "revision": "573505a3d7db1043cb8d",
@@ -50,6 +50,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2a864831f54c8f02811c753b0bfe531e",
     "url": "/carCalculator/static/media/EMMA_MAERSK.2a864831.png"
+  },
+  {
+    "revision": "121480c1f342e3b34b14b5e0c17ac7d1",
+    "url": "/carCalculator/static/media/Manheim_Auctions-Logo.wine.121480c1.png"
   },
   {
     "revision": "b3721ba3bde34e5b38b0e1523cccfd7f",
@@ -132,8 +136,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/defaultMap.dc87469a.png"
   },
   {
-    "revision": "1a44384a0f71be9ce576c8ccfc6eb11a",
-    "url": "/carCalculator/static/media/downArrow.1a44384a.svg"
+    "revision": "5429bea26178f62c19b06f1d572727b4",
+    "url": "/carCalculator/static/media/downArrow.5429bea2.svg"
   },
   {
     "revision": "11ad70b89e81fb1bcf47d7523a29ad5d",
