@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
 import Slider from "react-slick";
 import allCars from "../../assets/img/availabCars/index";
@@ -37,8 +38,15 @@ class carAvailability extends Component {
             <div className={style.sliderWrapper}>
               <Slider {...settings}>
                 {car.photos.map(photo => (
-                  <div className={style.sliderInnerWrapper}>
-                    <img src={photo} className={style.carPhoto} />
+                  <div
+                    className={style.sliderInnerWrapper}
+                    key={photo.indexOf()}
+                  >
+                    <img
+                      src={photo}
+                      className={style.carPhoto}
+                      alt="presentation"
+                    />
                   </div>
                 ))}
               </Slider>
@@ -86,7 +94,7 @@ class carAvailability extends Component {
                 src={avtoriaLogo}
                 alt="presentation"
               />
-              <p>{car.averagePrice}$</p>
+              <span>{car.averagePrice}$</span>
             </p>
             <CallBackBtn text="Замовити авто" />
           </div>

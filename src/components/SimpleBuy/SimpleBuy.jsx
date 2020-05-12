@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./SimpleBuy.module.css";
-import copartLogo from "../../assets/img/copartLogo.jpg";
+import copartLogo from "../../assets/img/1200px-Copart_logo.svg.png";
 import iaaiLogo from "../../assets/img/iaaiLogo.jpg";
-import manheimLogo from "../../assets/img/Manheim_Auctions-Logo.wine.png";
+import manheimLogo from "../../assets/img/manheimLogo.jpg";
 import SVG from "../../assets/svg/index";
 import routes from "../../routes/routes";
 import CallBackBtn from "../CallBack/CallBackBtn";

@@ -17,6 +17,7 @@ import audiImg from "../../assets/img/audi.png";
 import jaguar from "../../assets/img/jaguar.png";
 import SimpleBuy from "../../components/SimpleBuy/SimpleBuy";
 import CarAvailability from "../../components/carAvailability/carAvailability";
+import Reviews from "../../components/Reviews/Reviews";
 
 class MainPage extends Component {
   state = {
@@ -29,8 +30,8 @@ class MainPage extends Component {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      // autoplay: true,
-      // autoplaySpeed: 3000,
+      autoplay: true,
+      autoplaySpeed: 3000,
       arrows: false,
       dots: false
     };
@@ -209,6 +210,7 @@ class MainPage extends Component {
           <SimpleBuy />
           <CarAvailability />
         </section>
+        <section>{/* <Reviews /> */}</section>
         {/* <Map /> */}
         <Footer />
       </div>

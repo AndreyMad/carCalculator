@@ -1,22 +1,40 @@
 import React from "react";
+import bmwLeft from "../../assets/img/bmwLeft.jpg";
+import bmwRight from "../../assets/img/bmwRight.jpg";
 import style from "./Footer.module.css";
-import logo from "../../assets/img/logo.4acaa253b517.png";
+import SVG from "../../assets/svg/index";
 
 const componentName = () => {
   return (
     <div className={style.footerContainer}>
-      <img src={logo} alt="autonom logo" className={style.imgLogo} />
-      <div className={style.wrapper}>
-        <span className={style.span}>Графік роботи:</span>
-        <div className={style.innerWrapper}>
-          <span className={style.span}>пн-пт 9:00-19:00</span>
-          <span className={style.span}>сб 10:00-13:00</span>
-          <span className={style.span}>нд вихідний</span>
-        </div>
-      </div>
+      <div className={style.imgWrapper}>
+        <img className={style.leftImg} src={bmwLeft} alt="presentation" />
 
-      <div className={style.wrapper}>
-        <p className={style.title}>З нами по дорозі!!!</p>
+        <img className={style.rightImg} src={bmwRight} alt="presentation" />
+      </div>
+      <div className={style.innerWraper}>
+        <h4 className={style.title}>З нами по дорозі</h4>
+        <div className={style.contactsWrapper}>
+          <a className={style.link} href="tel: +380979011449">
+            380979011449
+          </a>
+          <p className={style.link}>Контакти</p>
+          <a className={style.link} href="mailto: mail@autonom.ua">
+            mail@autonom.ua
+          </a>
+          <a className={style.logoLink} alt="presentation">
+            <img src={SVG.viberWhite} />
+          </a>
+          <a className={style.logoLink}>
+            <img src={SVG.telegramWhite} alt="presentation" />
+          </a>
+        </div>
+        <div className={style.scheduleWrapper}>
+          <p>Графік роботи:</p>
+          <p>ПН-ПТ 9:00 - 19:00</p>
+          <p>СБ 10:00 - 13:00</p>
+          <p>НД вихідний</p>
+        </div>
       </div>
     </div>
   );

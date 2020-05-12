@@ -21,9 +21,13 @@ import engineCapacity from "./engineCapacity.svg";
 import odometer from "./odometer.svg";
 import year from "./year.svg";
 import fuel from "./fuel.svg";
+import viberWhite from "./viberWhite.svg";
+import telegramWhite from "./telegramWhite.svg";
 
 export default {
   calculator,
+  viberWhite,
+  telegramWhite,
   close,
   falseSvg,
   home,
