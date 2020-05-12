@@ -1,32 +1,3 @@
-.phoneContainer {
-  display: flex;
-  max-width: 450px;
-  margin: 10px auto 0px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.phoneWrapper {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  position: relative;
-  height: 20px;
-  max-width: 120px;
-  margin: 10px;
-}
-.phoneSvg {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: 0;
-}
-.phoneLink {
-  text-decoration: none;
-  width: 100%;
-  text-align: right;
-  font-size: 14px;
-  line-height: 20px;
-}
 .title {
   font-size: 30px;
   position: absolute;

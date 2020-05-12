@@ -3,16 +3,49 @@
   position: relative;
   background-color: #233682;
   height: 60px;
-  border-radius: 10px;
-  margin: -10px auto 0px;
+  margin: 0px auto;
   z-index: 200;
   max-width: 800px;
+  display: flex;
 }
 .logo {
   height: 50px;
   margin: 10px 10px 0px;
   transition: 2s;
   transform: rotateY(720deg);
+}
+
+.phoneContainer {
+  display: flex;
+  max-width: 150px;
+  height: 40px;
+  object-fit: cover;
+  margin: auto 0px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.phoneWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  height: 20px;
+  max-width: 120px;
+}
+.phoneSvg {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+}
+.phoneLink {
+  text-decoration: none;
+  width: 100%;
+  text-align: right;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 20px;
 }
 
 @media (min-width: 1200px) {

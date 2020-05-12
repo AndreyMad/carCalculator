@@ -5,8 +5,7 @@ import Map from "../../components/Map/Map";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import style from "./MainPage.module.css";
-import phoneSvg from "../../assets/svg/phone.svg";
-import viberSvg from "../../assets/svg/viberSvg.svg";
+
 import CallBackBtn from "../../components/CallBack/CallBackBtn";
 import Footer from "../../components/Footer/Footer";
 import EMMA_MAERSK from "../../assets/img/EMMA_MAERSK.png";
@@ -38,44 +37,6 @@ class MainPage extends Component {
     return (
       <div className={style.container}>
         <section className={style.headWrapper}>
-          <div className={style.phoneContainer}>
-            <div className={style.phoneWrapper}>
-              <img
-                className={style.phoneSvg}
-                alt="phone"
-                src={phoneSvg}
-                role="presentation"
-              />
-
-              <a href="tel: +380979011449" className={style.phoneLink}>
-                +38 097 9011449
-              </a>
-            </div>
-            <div className={style.phoneWrapper}>
-              <img
-                className={style.phoneSvg}
-                alt="phone"
-                src={phoneSvg}
-                role="presentation"
-              />
-
-              <a href="tel: +380979011449" className={style.phoneLink}>
-                +38 097 9011449
-              </a>
-            </div>
-            <div className={style.phoneWrapper}>
-              <img
-                className={style.phoneSvg}
-                alt="phone"
-                src={viberSvg}
-                role="presentation"
-              />
-
-              <a href="tel: +380979011449" className={style.phoneLink}>
-                +38 097 9011449
-              </a>
-            </div>
-          </div>
           <Slider {...settings}>
             <div className={style.headWrapper}>
               <div className={style.backgroundShadow} />
