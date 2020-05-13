@@ -97,7 +97,6 @@ class MainPage extends Component {
               />
             </div>
           </Slider>
-          {/* <CallBackBtn /> */}
         </section>
         <section className={style.orderForm}>
           <OrderForm />
@@ -211,7 +210,7 @@ class MainPage extends Component {
           <CarAvailability />
         </section>
         <section>{/* <Reviews /> */}</section>
-        {/* <Map /> */}
+        <Map />
         <Footer />
       </div>
     );

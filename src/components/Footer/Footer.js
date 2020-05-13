@@ -22,13 +22,27 @@ const componentName = () => {
           <a className={style.link} href="mailto: mail@autonom.ua">
             mail@autonom.ua
           </a>
-          <a className={style.logoLink} alt="presentation">
-            <img src={SVG.viberWhite} />
+        </div>
+        <div className={style.logoWrapper}>
+          <a
+            className={style.logoLink}
+            href="viber://chat?number=+380979011449"
+          >
+            <img
+              src={SVG.viberWhite}
+              className={style.miniLogo}
+              alt="presentation"
+            />
           </a>
-          <a className={style.logoLink}>
-            <img src={SVG.telegramWhite} alt="presentation" />
+          <a className={style.logoLink} href="tg://resolve?domain=andreyMad87">
+            <img
+              src={SVG.telegramWhite}
+              className={style.miniLogo}
+              alt="presentation"
+            />
           </a>
         </div>
+
         <div className={style.scheduleWrapper}>
           <p>Графік роботи:</p>
           <p>ПН-ПТ 9:00 - 19:00</p>

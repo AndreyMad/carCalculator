@@ -18,13 +18,27 @@ class carAvailability extends Component {
   }
 
   render() {
+    const ArrowLeft = props => <button {...props} className={style.prev} />;
+    const ArrowRight = props => <button {...props} className={style.next} />;
+
     const settings = {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      // autoplay: true,
-      // autoplaySpeed: 3000,
-      arrows: true
+      dots: true,
+      arrows: true,
+      prevArrow: <ArrowLeft />,
+      nextArrow: <ArrowRight />,
+      appendDots: dots => (
+        <div
+          style={{
+            borderRadius: "10px",
+            padding: "10px"
+          }}
+        >
+          <ul style={{ margin: "0px" }}> {dots} </ul>
+        </div>
+      )
     };
     const { cars } = this.state;
     return (
