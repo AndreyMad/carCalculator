@@ -10,7 +10,7 @@ class CallBackBtn extends Component {
     isModalOpen: false
   };
 
-  toggleModal = () => {
+  toggleModal = e => {
     this.setState(prevState => ({
       isModalOpen: !prevState.isModalOpen
     }));

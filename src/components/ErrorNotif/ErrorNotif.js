@@ -14,9 +14,8 @@ const ErrorNotif = () => {
         <p className={style.text}>
           Щось пішло не так...
           <p className={style.text}>
-            Перевірте номер лоту і спробуйте ще раз, або скористайтесь
+            Перевірте номер лоту і спробуйте ще раз, або скористайтесь &nbsp;
             <NavLink className={style.link} to={routes.CALCULATOR_PAGE.path}>
-              {" "}
               калькулятором
             </NavLink>
           </p>

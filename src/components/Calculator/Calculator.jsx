@@ -31,6 +31,7 @@ class Calculator extends Component {
   };
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.departureParse();
   }
 
@@ -269,142 +270,146 @@ class Calculator extends Component {
     return (
       <>
         <div className={style.deliveryContainer}>
-          <div className={style.departWrapper}>
-            <p className={style.title}>
-              Оберіть місцезнаходження автомобіля:*{" "}
-            </p>
-            <br />
-            <Select
-              styles={selectStyles}
-              options={arrayOfDepartures}
-              onChange={this.handleChange}
-            />
-            <img
-              src={this.imgStateHelper()}
-              className={style.mapImg}
-              alt="map"
-            />
-            {/* {departurePorts.length > 0 ? (
-            <p className={style.departurePort}>
-              Порт відправки: {departurePorts[0].name}
-            </p>
-          ) : null} */}
-          </div>
-
-          <div className={style.departWrapper}>
-            <p className={style.title}>Тип автомобіля:* </p>
-            <br />
-            <Select
-              options={carTypes}
-              styles={selectStyles}
-              placeholder="Оберіть тип авто"
-              isSearchable={false}
-              onChange={this.seaDeliveryHandler}
-            />
-            <img
-              src={imgdDeliverySrc}
-              className={style.delivImg}
-              alt="container"
-            />
-          </div>
-          <br />
-          <div className={style.departWrapper}>
-            <label htmlFor="priceInput" className={style.title}>
-              Очікувана виграшна ставка $:*
-              <input
-                id="priceInput"
-                type="number"
-                placeholder="Ціна"
-                className={style.priceInput}
-                onChange={this.priceHandler}
+          <div className={style.shadow}>
+            <div className={style.departWrapper}>
+              <p className={style.title}>
+                Оберіть місцезнаходження автомобіля:*
+              </p>
+              <br />
+              <Select
+                styles={selectStyles}
+                options={arrayOfDepartures}
+                onChange={this.handleChange}
               />
-            </label>
-            <div className={style.checkboxWrapper}>
-              <label htmlFor="CopartBtn">
-                <input
-                  type="radio"
-                  id="CopartBtn"
-                  checked={selectedAuction === "Copart"}
-                  value="Copart"
-                  name="auctionRadio"
-                  onChange={this.handleRadioCheck}
-                />
-                Copart
-              </label>
-              <label htmlFor="IaaiBtn">
-                <input
-                  type="radio"
-                  value="Iaai"
-                  id="IaaiBtn"
-                  name="auctionRadio"
-                  checked={selectedAuction === "Iaai"}
-                  onChange={this.handleRadioCheck}
-                />
-                Iaai
-              </label>
+              <img
+                src={this.imgStateHelper()}
+                className={style.mapImg}
+                alt="map"
+              />
+              {departurePorts.length > 0 ? (
+                <p className={style.departurePort}>
+                  Порт відправки: {departurePorts[0].name}
+                </p>
+              ) : null}
             </div>
-          </div>
-          <div className={style.priceContainer}>
-            <div className={style.priceWrapper}>
-              <span className={style.span}>
-                Ціна лота:
-                <span className={style.innerSpan}>{carPrice}</span>
-              </span>
-              <br />
-              <span className={style.span}>
-                Комісія аукціону:
-                <span className={style.innerSpan}>
-                  {Math.round(aucComission)}$
-                </span>
-              </span>
-              <br />
 
-              <span className={style.span}>
-                Вартість доставки по США в порт
-                {departurePorts[0] && departurePorts[0].name
-                  ? departurePorts[0].name
-                  : null}
-                :
-                <span className={style.innerSpan}>
+            <div className={style.departWrapper}>
+              <p className={style.title}>Тип автомобіля:* </p>
+              <br />
+              <Select
+                options={carTypes}
+                styles={selectStyles}
+                placeholder="Оберіть тип авто"
+                isSearchable={false}
+                onChange={this.seaDeliveryHandler}
+              />
+              <div className={style.delivImgWrapper}>
+                <img
+                  src={imgdDeliverySrc}
+                  className={style.delivImg}
+                  alt="container"
+                />
+              </div>
+            </div>
+            <br />
+            <div className={style.departWrapper}>
+              <label htmlFor="priceInput" className={style.title}>
+                Очікувана виграшна ставка $:*
+                <input
+                  id="priceInput"
+                  type="number"
+                  placeholder="Ціна"
+                  className={style.priceInput}
+                  onChange={this.priceHandler}
+                />
+              </label>
+              <div className={style.checkboxWrapper}>
+                <label htmlFor="CopartBtn">
+                  <input
+                    type="radio"
+                    id="CopartBtn"
+                    checked={selectedAuction === "Copart"}
+                    value="Copart"
+                    name="auctionRadio"
+                    onChange={this.handleRadioCheck}
+                  />
+                  Copart
+                </label>
+                <label htmlFor="IaaiBtn">
+                  <input
+                    type="radio"
+                    value="Iaai"
+                    id="IaaiBtn"
+                    name="auctionRadio"
+                    checked={selectedAuction === "Iaai"}
+                    onChange={this.handleRadioCheck}
+                  />
+                  Iaai
+                </label>
+              </div>
+            </div>
+            <div className={style.priceContainer}>
+              <div className={style.priceWrapper}>
+                <span className={style.span}>
+                  Ціна лота:
+                  <span className={style.innerSpan}>{carPrice}</span>
+                </span>
+                <br />
+                <span className={style.span}>
+                  Комісія аукціону:
+                  <span className={style.innerSpan}>
+                    {Math.round(aucComission)}$
+                  </span>
+                </span>
+                <br />
+
+                <span className={style.span}>
+                  Вартість доставки по США в порт
                   {departurePorts[0] && departurePorts[0].name
-                    ? overlandDeliveryCost
+                    ? departurePorts[0].name
                     : null}
-                  $
+                  :
+                  <span className={style.innerSpan}>
+                    {departurePorts[0] && departurePorts[0].name
+                      ? overlandDeliveryCost
+                      : null}
+                    $
+                  </span>
                 </span>
-              </span>
-              <br />
+                <br />
 
-              <span className={style.span}>
-                Ціна доставки морем:
-                <span className={style.innerSpan}>{deliverySea}$</span>
-              </span>
-              <br />
-              <span className={style.span}>
-                Страховка:
-                <span className={style.innerSpan}>{insurance}$</span>
-              </span>
-              <br />
-              <span className={style.span}>
-                Порт доставки:
-                <span className={style.innerSpan}>Одеса</span>
-              </span>
-              <br />
-              <span className={style.span}>
-                Срок доставки:
-                <span className={style.innerSpan}>55 днів</span>
-              </span>
-              <br />
-              <span className={style.span}>
-                Комісія компанії:
-                <span className={style.innerSpan}>{companyСommission}$</span>
-              </span>
-              <br />
-              <span className={style.totalDeliveryCostWrappe}>
-                <span className={style.totalDeliveryCost}>
-                  Загальна сума до порту Одеса:
-                  <span className={style.innerSpan}> {totalDelivery}</span>
+                <span className={style.span}>
+                  Ціна доставки морем:
+                  <span className={style.innerSpan}>{deliverySea}$</span>
                 </span>
-              </span>
+                <br />
+                <span className={style.span}>
+                  Страховка:
+                  <span className={style.innerSpan}>{insurance}$</span>
+                </span>
+                <br />
+                <span className={style.span}>
+                  Порт доставки:
+                  <span className={style.innerSpan}>Одеса</span>
+                </span>
+                <br />
+                <span className={style.span}>
+                  Срок доставки:
+                  <span className={style.innerSpan}>55 днів</span>
+                </span>
+                <br />
+                <span className={style.span}>
+                  Комісія компанії:
+                  <span className={style.innerSpan}>{companyСommission}$</span>
+                </span>
+                <br />
+                <span className={style.totalDeliveryCostWrappe}>
+                  <span className={style.totalDeliveryCost}>
+                    Загальна сума до порту Одеса:
+                    <span className={style.innerSpan}> {totalDelivery}</span>
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
         </div>

@@ -4,9 +4,13 @@
 import React, { Component } from "react";
 import Select from "react-select";
 import PropTypes from "prop-types";
+import { CSSTransition } from "react-transition-group";
 import style from "./CustomCalc.module.css";
 import engines from "../../assets/data/engines.json";
 import { carYear } from "../../assets/data/carYear.json";
+import heightTransition from "../../transitions/height.module.css";
+import widthTransition from "../../transitions/width.module.css";
+import CallBackBtn from "../CallBack/CallBackBtn";
 
 class CustomCalc extends Component {
   state = {
@@ -211,126 +215,145 @@ class CustomCalc extends Component {
     return (
       <>
         <div className={style.customContainer}>
-          <h2 className={style.customTitle}>Калькулятор розмитнення</h2>
-          <div className={style.engineTypeRadioWrapper}>
-            <label htmlFor="BenzineRadio">
-              <input
-                type="radio"
-                id="BenzineRadio"
-                checked={engineType === "GAS"}
-                value="GAS"
-                name="engTypeRadio"
-                onChange={this.handleRadioCheck}
-              />
-              Бензин
-            </label>
-            <label htmlFor="DieselRadio">
-              <input
-                type="radio"
-                id="DieselRadio"
-                checked={engineType === "DIESEL"}
-                value="DIESEL"
-                name="engTypeRadio"
-                onChange={this.handleRadioCheck}
-              />
-              Дизель
-            </label>
-            <label htmlFor="ElectroRadio">
-              <input
-                type="radio"
-                id="ElectroRadio"
-                checked={engineType === "ELECTRIC"}
-                value="ELECTRIC"
-                name="engTypeRadio"
-                onChange={this.handleRadioCheck}
-              />
-              Електро
-            </label>
-            <label htmlFor="HybridRadio">
-              <input
-                type="radio"
-                id="HybridRadio"
-                checked={engineType === "HYBRID ENGINE"}
-                value="HYBRID ENGINE"
-                name="engTypeRadio"
-                onChange={this.handleRadioCheck}
-              />
-              Гібрид
-            </label>
-          </div>
-          <div className={style.selectWrapper}>
-            <Select
-              className={style.selectEngine}
-              isSearchable={false}
-              styles={selectStyles}
-              placeholder="Обєм двигуна"
-              options={engineToSelect}
-              defaultValue={engineToSelect[15]}
-              id="engine"
-              name="engineVolume"
-              onChange={this.handleSelectChange}
-            />
+          <div className={style.shadow}>
+            <h2 className={style.customTitle}>Калькулятор розмитнення</h2>
 
-            <Select
-              isSearchable={false}
-              className={style.carYear}
-              styles={selectStyles}
-              placeholder="Рік випуску авто"
-              options={yearsToSelect}
-              id="carYear"
-              name="carYear"
-              onChange={this.handleSelectChange}
-            />
-          </div>
+            <div className={style.engineTypeRadioWrapper}>
+              <label htmlFor="BenzineRadio">
+                <input
+                  type="radio"
+                  className={style.styledCheckBox}
+                  id="BenzineRadio"
+                  checked={engineType === "GAS"}
+                  value="GAS"
+                  name="engTypeRadio"
+                  onChange={this.handleRadioCheck}
+                />
+                <span className={style.checkmark}>Бензин</span>
+              </label>
+              <label htmlFor="DieselRadio">
+                <input
+                  type="radio"
+                  id="DieselRadio"
+                  checked={engineType === "DIESEL"}
+                  value="DIESEL"
+                  name="engTypeRadio"
+                  onChange={this.handleRadioCheck}
+                />
+                <span className={style.checkmark}>Дизель</span>
+              </label>
+              <label htmlFor="ElectroRadio">
+                <input
+                  type="radio"
+                  id="ElectroRadio"
+                  checked={engineType === "ELECTRIC"}
+                  value="ELECTRIC"
+                  name="engTypeRadio"
+                  onChange={this.handleRadioCheck}
+                />
+                <span className={style.checkmark}>Електро</span>
+              </label>
+              <label htmlFor="HybridRadio">
+                <input
+                  type="radio"
+                  id="HybridRadio"
+                  checked={engineType === "HYBRID ENGINE"}
+                  value="HYBRID ENGINE"
+                  name="engTypeRadio"
+                  onChange={this.handleRadioCheck}
+                />
+                <span className={style.checkmark}>Гібрид</span>
+              </label>
+            </div>
+            {engineType.length > 1 ? null : <div className={style.pseudo} />}
+            <CSSTransition
+              in={engineType.length > 1}
+              unmountOnExit
+              timeout={300}
+              classNames={heightTransition}
+            >
+              <div className={style.selectWrapper}>
+                <CSSTransition
+                  in={engineType !== "ELECTRIC"}
+                  unmountOnExit
+                  timeout={300}
+                  classNames={widthTransition}
+                >
+                  <Select
+                    className={style.selectEngine}
+                    isSearchable={false}
+                    styles={selectStyles}
+                    placeholder="Обєм двигуна"
+                    options={engineToSelect}
+                    defaultValue={engineToSelect[15]}
+                    id="engine"
+                    name="engineVolume"
+                    onChange={this.handleSelectChange}
+                  />
+                </CSSTransition>
+                <Select
+                  isSearchable={false}
+                  className={style.carYear}
+                  styles={selectStyles}
+                  placeholder="Рік випуску авто"
+                  options={yearsToSelect}
+                  id="carYear"
+                  name="carYear"
+                  onChange={this.handleSelectChange}
+                />
+              </div>
+            </CSSTransition>
 
-          <span className={style.span}>
-            Експедиція в порту:
-            <span className={style.innerSpan}>{portExpedition}$</span>
-          </span>
-          <br />
-          <span className={style.span}>
-            Брокер:<span className={style.innerSpan}>{brokerPrice}$</span>
-          </span>
-          <br />
-          <span className={style.span}>
-            Ввізне мито:
-            <span className={style.innerSpan}>{importDuty}$</span>
-          </span>
-          <br />
-          <span className={style.span}>
-            Акцизний збір:<span className={style.innerSpan}>{exise}$</span>
-          </span>
-          <br />
-          <span className={style.span}>
-            ПДВ:<span className={style.innerSpan}>{nds}$</span>
-          </span>
-          <br />
-          <span className={style.span}>
-            ЄСВ:<span className={style.innerSpan}>{esv}$</span>
-          </span>
-          <br />
-          <span className={style.span}>
-            Евакуатор до адреси клієнта:
-            <span className={style.innerSpan}>{evacution}$</span>
-          </span>
-          <br />
-          <span className={style.span}>
-            Сертифікація:
-            <span className={style.innerSpan}>{certification}$</span>
-          </span>
-          <br />
-          <span className={style.span}>
-            Постановка на облік:
-            <span className={style.innerSpan}>{accounting}$</span>
-          </span>
-          <span className={style.totalCustomCost}>
-            Сума платежів в Україні:
-            <span className={style.innerSpan}> {totalCustom}$</span>
-          </span>
-          <span className={style.totalCustomCost}>
-            Загальна вартість авто:
-            <span className={style.innerSpan}> {totalCarPrice}$</span>
-          </span>
+            <span className={style.span}>
+              Експедиція в порту:
+              <span className={style.innerSpan}>{portExpedition}$</span>
+            </span>
+
+            <span className={style.span}>
+              Брокер:<span className={style.innerSpan}>{brokerPrice}$</span>
+            </span>
+
+            <span className={style.span}>
+              Ввізне мито:
+              <span className={style.innerSpan}>{importDuty}$</span>
+            </span>
+
+            <span className={style.span}>
+              Акцизний збір:<span className={style.innerSpan}>{exise}$</span>
+            </span>
+
+            <span className={style.span}>
+              ПДВ:<span className={style.innerSpan}>{nds}$</span>
+            </span>
+
+            <span className={style.span}>
+              ЄСВ:<span className={style.innerSpan}>{esv}$</span>
+            </span>
+
+            <span className={style.span}>
+              Евакуатор до адреси клієнта:
+              <span className={style.innerSpan}>{evacution}$</span>
+            </span>
+
+            <span className={style.span}>
+              Сертифікація:
+              <span className={style.innerSpan}>{certification}$</span>
+            </span>
+
+            <span className={style.span}>
+              Постановка на облік:
+              <span className={style.innerSpan}>{accounting}$</span>
+            </span>
+            <span className={style.totalCustomCost}>
+              Сума платежів в Україні:
+              <span className={style.innerSpan}> {totalCustom}$</span>
+            </span>
+            <span className={style.totalCustomCost}>
+              Загальна вартість авто:
+              <span className={style.innerSpan}> {totalCarPrice}$</span>
+            </span>
+            <CallBackBtn styles={{ margin: "40px auto" }} />
+          </div>
         </div>
       </>
     );

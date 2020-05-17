@@ -29,6 +29,7 @@
 }
 .causes {
   background-image: url(../../assets//img/7222.jpg);
+  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-position-x: center;

@@ -18,8 +18,15 @@ class carAvailability extends Component {
   }
 
   render() {
-    const ArrowLeft = props => <button {...props} className={style.prev} />;
-    const ArrowRight = props => <button {...props} className={style.next} />;
+    const ArrowLeft = props => {
+      const { currentSlide, slideCount, ...arrowProps } = props;
+      return <button {...arrowProps} className={style.prev} type="button" />;
+    };
+
+    const ArrowRight = props => {
+      const { currentSlide, slideCount, ...arrowProps } = props;
+      return <button {...arrowProps} className={style.next} type="button" />;
+    };
 
     const settings = {
       infinite: true,

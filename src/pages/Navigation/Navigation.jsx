@@ -39,9 +39,12 @@ class Navigation extends Component {
   };
 
   togleHelper = e => {
+    console.log(e.target);
     if (
       e.target.className.includes("menuButton") ||
+      e.target.className.includes("overlay") ||
       e.target.className.includes("menuItem") ||
+      e.target.className.includes("shadowLink") ||
       e.target.className.includes("menuButton_active")
     ) {
       this.toggleModal();
@@ -74,9 +77,9 @@ class Navigation extends Component {
           classNames={slide}
         >
           <>
-            <div className={style.overlay}>
+            <div className={style.overlay} onClick={this.togleHelper}>
               <ul className={style.menuList}>
-                <li className={style.menuItem} onClick={this.toggleModal}>
+                <li className={style.menuItem}>
                   <img src={homeIcon} className={style.icon} alt="search" />
 
                   <NavLink
@@ -87,7 +90,7 @@ class Navigation extends Component {
                     Головна
                   </NavLink>
                 </li>
-                <li className={style.menuItem} onClick={this.toggleModal}>
+                <li className={style.menuItem}>
                   <img src={searchIcon} className={style.icon} alt="search" />
                   <NavLink
                     className={style.shadowLink}
@@ -96,7 +99,7 @@ class Navigation extends Component {
                     Пошук
                   </NavLink>
                 </li>
-                <li className={style.menuItem} onClick={this.toggleModal}>
+                <li className={style.menuItem}>
                   <img
                     src={calculatorIcon}
                     className={style.icon}
@@ -111,7 +114,7 @@ class Navigation extends Component {
                   </NavLink>
                 </li>
 
-                <li className={style.menuItem} onClick={this.toggleModal}>
+                <li className={style.menuItem}>
                   <img src={partsIcon} className={style.icon} alt="search" />
                   <NavLink
                     className={style.shadowLink}
@@ -120,22 +123,22 @@ class Navigation extends Component {
                     Підбір і доставка автозапчастин
                   </NavLink>
                 </li>
-                <li className={style.menuItem} onClick={this.toggleModal}>
+                <li className={style.menuItem}>
                   <img src={phoneIcon} className={style.icon} alt="search" />
 
                   <NavLink
                     className={style.shadowLink}
-                    to={routes.SEARCH_PAGE.path}
+                    to={routes.ABOUT_US_PAGE.path}
                   >
                     Про нас
                   </NavLink>
                 </li>
-                <li className={style.menuItem} onClick={this.toggleModal}>
+                <li className={style.menuItem}>
                   <img src={phoneIcon} className={style.icon} alt="search" />
 
                   <NavLink
                     className={style.shadowLink}
-                    to={routes.SEARCH_PAGE.path}
+                    to={routes.ANSWERS.path}
                   >
                     Питання - відповідь
                   </NavLink>

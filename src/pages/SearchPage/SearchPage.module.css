@@ -4,7 +4,30 @@
   display: flex;
   flex-wrap: wrap;
 }
-
+.wrapper {
+  min-height: 400px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  background-image: url(../../assets//img//searchbackgr.jpg);
+}
+.infoText {
+  font-size: 22px;
+  margin: 50px 10px 280px;
+  color: #fff;
+  text-align: center;
+}
+.shadow {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.marginContainer {
+  width: 100%;
+  min-height: 70px;
+}
 @media (min-width: 1200px) {
   .container {
     max-width: 1400px;

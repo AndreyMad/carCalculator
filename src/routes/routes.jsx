@@ -2,6 +2,8 @@ import MainPage from "../pages/MainPage/MainPage";
 import CalculatorPage from "../pages/CalculatorPage/CalculatorPage";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import PartsPage from "../pages/PartsPage/PartsPage";
+import AboutUs from "../pages/AboutUs/AboutUs";
+import Answers from "../pages/Answers/Answers";
 
 export default {
   MAIN_PAGE: {
@@ -19,5 +21,13 @@ export default {
   PARTS_PAGE: {
     path: "/parts",
     component: PartsPage
+  },
+  ABOUT_US_PAGE: {
+    path: "/about",
+    component: AboutUs
+  },
+  ANSWERS: {
+    path: "/answers",
+    component: Answers
   }
 };

@@ -17,27 +17,27 @@ import style from "./SearchPage.module.css";
 class SearchPage extends Component {
   state = {
     car: {
-      currentBid: 0,
-      buyNow: 0,
-      lot: 26098920,
-      aucDate: 1587996000000,
-      vin: "2FMDK39C57B******",
-      name: "2007 FORD EDGE SEL PLUS",
-      year: 2007,
-      city: "SAVANNAH",
-      state: "GA",
-      seller: "State Farm Insurance",
-      fuel: "GAS",
-      engine: "3.5L  6",
-      highlights: "RUNS AND DRIVES",
-      odo: 183964,
-      capacity: 3.5,
-      images: [
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
-      ],
-      doc: "GA - CERT OF TITLE-SALVAGE"
+      // currentBid: 0,
+      // buyNow: 0,
+      // lot: 26098920,
+      // aucDate: 1587996000000,
+      // vin: "2FMDK39C57B******",
+      // name: "2007 FORD EDGE SEL PLUS",
+      // year: 2007,
+      // city: "SAVANNAH",
+      // state: "GA",
+      // seller: "State Farm Insurance",
+      // fuel: "GAS",
+      // engine: "3.5L  6",
+      // highlights: "RUNS AND DRIVES",
+      // odo: 183964,
+      // capacity: 3.5,
+      // images: [
+      //   "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
+      //   "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
+      //   "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
+      // ],
+      // doc: "GA - CERT OF TITLE-SALVAGE"
     },
     averagePriceCar: {
       make: "",
@@ -155,25 +155,43 @@ class SearchPage extends Component {
       <>
         {isLoading ? <Loader /> : null}
         <div className={style.container}>
-          <SearchForm formSubmit={this.formSubmit} />
-          {car ? (
-            <>
-              {car.images ? (
-                <CarInfo car={car} averagePrice={averagePrice} />
-              ) : null}
+          <div className={style.wrapper}>
+            <div className={style.shadow}>
+              {car.lot ? null : <div className={style.marginContainer} />}
+              <SearchForm formSubmit={this.formSubmit} />
 
-              {car.lot > 5 ? (
-                <SearchCalc
-                  car={car}
-                  lotPrice={lotPrice}
-                  selectedAuction={selectedAuction}
-                />
-              ) : null}
-            </>
-          ) : null}
-          {error ? <ErrorNotif error={error} /> : null}
+              {car ? (
+                <>
+                  {car.images ? (
+                    <CarInfo car={car} averagePrice={averagePrice} />
+                  ) : null}
 
-          {car && error.length === 0 ? <CallBackBtn /> : null}
+                  {car.lot > 5 ? (
+                    <SearchCalc
+                      car={car}
+                      lotPrice={lotPrice}
+                      selectedAuction={selectedAuction}
+                    />
+                  ) : (
+                    <>
+                      {error.length === 0 ? (
+                        <p className={style.infoText}>
+                          Для отримання повної вартості введіть номер лоту та
+                          очікувану виграшну ставку
+                        </p>
+                      ) : (
+                        <ErrorNotif error={error} />
+                      )}
+                    </>
+                  )}
+                </>
+              ) : null}
+              {/* {error ? <ErrorNotif error={error} /> : null} */}
+
+              {car.lot && error.length === 0 ? <CallBackBtn /> : null}
+            </div>
+          </div>
+
           <Footer />
         </div>
       </>
