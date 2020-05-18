@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/carCalculator/static/css/main.7e1dc3e4.chunk.css",
-    "main.js": "/carCalculator/static/js/main.9adfede1.chunk.js",
-    "main.js.map": "/carCalculator/static/js/main.9adfede1.chunk.js.map",
+    "main.css": "/carCalculator/static/css/main.1c6fc63d.chunk.css",
+    "main.js": "/carCalculator/static/js/main.ff11563f.chunk.js",
+    "main.js.map": "/carCalculator/static/js/main.ff11563f.chunk.js.map",
     "runtime-main.js": "/carCalculator/static/js/runtime-main.13e4ffc5.js",
     "runtime-main.js.map": "/carCalculator/static/js/runtime-main.13e4ffc5.js.map",
     "static/css/2.57d9a90a.chunk.css": "/carCalculator/static/css/2.57d9a90a.chunk.css",
-    "static/js/2.071ccb57.chunk.js": "/carCalculator/static/js/2.071ccb57.chunk.js",
-    "static/js/2.071ccb57.chunk.js.map": "/carCalculator/static/js/2.071ccb57.chunk.js.map",
+    "static/js/2.8df5af2a.chunk.js": "/carCalculator/static/js/2.8df5af2a.chunk.js",
+    "static/js/2.8df5af2a.chunk.js.map": "/carCalculator/static/js/2.8df5af2a.chunk.js.map",
     "index.html": "/carCalculator/index.html",
-    "precache-manifest.bc4e9fa0ce8fceef17686ec916b681a3.js": "/carCalculator/precache-manifest.bc4e9fa0ce8fceef17686ec916b681a3.js",
+    "precache-manifest.dc0ef0aebc1d143719560ab96f6dd530.js": "/carCalculator/precache-manifest.dc0ef0aebc1d143719560ab96f6dd530.js",
     "service-worker.js": "/carCalculator/service-worker.js",
     "static/css/2.57d9a90a.chunk.css.map": "/carCalculator/static/css/2.57d9a90a.chunk.css.map",
-    "static/css/main.7e1dc3e4.chunk.css.map": "/carCalculator/static/css/main.7e1dc3e4.chunk.css.map",
-    "static/js/2.071ccb57.chunk.js.LICENSE": "/carCalculator/static/js/2.071ccb57.chunk.js.LICENSE",
+    "static/css/main.1c6fc63d.chunk.css.map": "/carCalculator/static/css/main.1c6fc63d.chunk.css.map",
+    "static/js/2.8df5af2a.chunk.js.LICENSE": "/carCalculator/static/js/2.8df5af2a.chunk.js.LICENSE",
     "static/media/1200px-Copart_logo.svg.png": "/carCalculator/static/media/1200px-Copart_logo.svg.88adcdb7.png",
     "static/media/OrderForm.module.css": "/carCalculator/static/media/255308.27663750.jpg",
     "static/media/3carscontainer.jpg": "/carCalculator/static/media/3carscontainer.3ef0788c.jpg",
@@ -126,8 +126,8 @@
   "entrypoints": [
     "static/js/runtime-main.13e4ffc5.js",
     "static/css/2.57d9a90a.chunk.css",
-    "static/js/2.071ccb57.chunk.js",
-    "static/css/main.7e1dc3e4.chunk.css",
-    "static/js/main.9adfede1.chunk.js"
+    "static/js/2.8df5af2a.chunk.js",
+    "static/css/main.1c6fc63d.chunk.css",
+    "static/js/main.ff11563f.chunk.js"
   ]
 }
