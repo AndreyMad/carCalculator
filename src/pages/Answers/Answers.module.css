@@ -1,0 +1,52 @@
+.spoiler {
+  min-height: 30px;
+  height: auto;
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  background-color: red;
+}
+.spoiler > input {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  opacity: 0;
+  z-index: 10;
+}
+.listInner {
+  overflow: hidden;
+  max-height: 0px;
+  transition: 600ms ease-in-out;
+  position: relative;
+}
+input:checked ~ .listInner {
+  max-height: 300px;
+  transition: 600ms ease-in-out;
+}
+.question {
+  position: relative;
+  width: 100%;
+  display: block;
+  height: 100%;
+}
+.question::after {
+  background: #233682;
+  border-radius: 50%;
+  content: "+";
+  font-size: 45px;
+  font-weight: bold;
+  margin: -5px 10px 0 0;
+  padding: 0;
+  text-align: center;
+  width: 50px;
+  position: absolute;
+  transition: 400ms ease-in-out;
+  z-index: 10;
+  right: 0px;
+  color: #ffffff;
+}
+input:checked ~ .question::after {
+  transform: rotateZ(135deg);
+  content: "+";
+  transition: 400ms ease-in-out;
+}
