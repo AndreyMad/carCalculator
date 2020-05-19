@@ -35,6 +35,7 @@
 }
 .item {
   margin-bottom: 40px;
+  max-width: 100%;
   position: relative;
   color: #ffffff;
 }

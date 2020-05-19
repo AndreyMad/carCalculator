@@ -18,7 +18,7 @@ const componentName = () => {
           <a className={style.link} href="tel: +380979011449">
             380979011449
           </a>
-          <p className={style.link}>Контакти</p>
+          <p className={style.linkAbs}>Контакти</p>
           <a className={style.link} href="mailto: mail@autonom.ua">
             mail@autonom.ua
           </a>
