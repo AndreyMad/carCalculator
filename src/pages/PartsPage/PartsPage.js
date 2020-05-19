@@ -7,7 +7,12 @@ class PartsPage extends Component {
   render() {
     const { imagePreviewUrl } = this.state;
 
-    return <div>afsasdfasfd</div>;
+    return (
+      <>
+        <div>{API}</div>
+        <div>{imagePreviewUrl}</div>
+      </>
+    );
   }
 }
 
