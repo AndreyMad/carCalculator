@@ -1,0 +1,113 @@
+.advantage {
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  background-image: url(../../assets/img/searchbackgr.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  line-height: 1.55;
+  color: #ffffff;
+  padding-bottom: 15px;
+}
+
+.about_wrapper {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Title {
+  margin: 10px 0px 10px 0px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.about {
+  text-align: justify;
+  margin: 0px auto;
+  font-size: 18px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+  justify-content: center;
+  max-width: 420px;
+  padding: 12px;
+  border: 2px solid #ffffff;
+  border-top-width: 0px;
+}
+
+.item::before {
+  content: " ";
+  border: 1px solid #ffffff;
+  width: 110px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.item::after {
+  content: " ";
+  border: 1px solid #ffffff;
+  width: 110px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.Item_Title {
+  margin: 10px 0px 10px 0px;
+  text-align: center;
+  font-size: 22px;
+}
+
+@media (min-width: 768px) {
+  .about_wrapper {
+    max-width: 650px;
+  }
+
+  .item {
+    max-width: 520px;
+  }
+
+  .item::before {
+    width: 160px;
+  }
+
+  .item::after {
+    width: 160px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .about_wrapper {
+    max-width: 1150px;
+  }
+
+  .item {
+    max-width: 720px;
+  }
+
+  .item::before {
+    width: 310px;
+  }
+
+  .item::after {
+    width: 310px;
+  }
+}
