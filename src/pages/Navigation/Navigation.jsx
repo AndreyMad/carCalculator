@@ -77,7 +77,11 @@ class Navigation extends Component {
           classNames={slide}
         >
           <>
-            <div className={style.overlay} onClick={this.togleHelper}>
+            <div
+              className={style.overlay}
+              onClick={this.togleHelper}
+              role="presentation"
+            >
               <ul className={style.menuList}>
                 <li className={style.menuItem}>
                   <img src={homeIcon} className={style.icon} alt="search" />

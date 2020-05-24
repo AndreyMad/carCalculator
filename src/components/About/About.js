@@ -77,6 +77,7 @@ const About = () => {
               </p>
             </li>
           </ul>
+          <CallBackBtn styles={{ margin: "30px auto" }} />
         </div>
       </section>
       <Footer />
