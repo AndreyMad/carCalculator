@@ -9,15 +9,17 @@
   background-position-x: center;
   line-height: 1.55;
   color: #ffffff;
-  padding-bottom: 15px;
 }
 
 .about_wrapper {
-  max-width: 450px;
   margin: 0 auto;
   padding: 10px;
   display: flex;
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.about {
+  max-width: 410px;
 }
 
 .Title {
@@ -27,7 +29,7 @@
 }
 
 .about {
-  text-align: justify;
+  text-align: center;
   margin: 0px auto;
   font-size: 18px;
 }
@@ -77,9 +79,9 @@
 }
 
 @media (min-width: 768px) {
-  .about_wrapper {
+  /* .about_wrapper {
     max-width: 650px;
-  }
+  } */
 
   .item {
     max-width: 520px;

@@ -22,7 +22,7 @@
 }
 
 .causes {
-  max-width: 450px;
+  max-width: 600px;
   width: 100%;
 
   margin: 0px auto;
@@ -98,7 +98,7 @@
   width: 100%;
   min-height: 350px;
   position: relative;
-  max-width: 450px;
+  max-width: 600px;
   margin: -10px auto 0px;
 }
 

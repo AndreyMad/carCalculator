@@ -58,6 +58,7 @@
 .formWrappe > form > label {
   font-family: "Montserrat", sans-serif;
   font-size: 22px;
+  color: #000000;
 }
 .textArea {
   width: 100%;
@@ -73,6 +74,7 @@
   font-family: "Montserrat", sans-serif;
   text-align: center;
   margin: 70px auto 40px;
+  color: #000000;
 }
 .closeButton {
   width: 35px;
