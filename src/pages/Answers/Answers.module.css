@@ -1,6 +1,7 @@
 .spoiler {
-  min-height: 30px;
+  min-height: 40px;
   height: auto;
+
   width: 100%;
   position: relative;
   margin-top: 10px;
@@ -21,6 +22,7 @@
 }
 input:checked ~ .listInner {
   max-height: 300px;
+
   transition: 600ms ease-in-out;
 }
 .question {
@@ -28,25 +30,27 @@ input:checked ~ .listInner {
   width: 100%;
   display: block;
   height: 100%;
+  padding-right: 30px;
 }
 .question::after {
   background: #233682;
   border-radius: 50%;
   content: "+";
-  font-size: 45px;
+  font-size: 31px;
   font-weight: bold;
   margin: -5px 10px 0 0;
   padding: 0;
   text-align: center;
-  width: 50px;
+  width: 36px;
   position: absolute;
-  transition: 400ms ease-in-out;
+  transition: 600ms ease-in-out;
   z-index: 10;
   right: 0px;
   color: #ffffff;
+  top: 5px;
 }
 input:checked ~ .question::after {
   transform: rotateZ(135deg);
   content: "+";
-  transition: 400ms ease-in-out;
+  transition: 600ms ease-in-out;
 }
