@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../Footer/Footer";
 import styles from "./About.module.css";
 import CallBackBtn from "../CallBack/CallBackBtn";
+import SVG from "../../assets/svg/index";
 
 const About = () => {
   return (
@@ -20,6 +21,11 @@ const About = () => {
           <h2 className={styles.Title}>Переваги роботи з нами:</h2>
           <ul className={styles.list}>
             <li className={styles.item}>
+              <img
+                src={SVG.quality}
+                alt="presentation"
+                className={styles.svg}
+              />
               <h2 className={styles.Item_Title}>
                 Найвищий рівень обслуговування
               </h2>
@@ -31,6 +37,7 @@ const About = () => {
               </p>
             </li>
             <li className={styles.item}>
+              <img src={SVG.sale} alt="presentation" className={styles.svg} />
               <h2 className={styles.Item_Title}>
                 Одні з найкращих тарифів на ринку
               </h2>
@@ -42,6 +49,11 @@ const About = () => {
               </p>
             </li>
             <li className={styles.item}>
+              <img
+                src={SVG.insurance}
+                alt="presentation"
+                className={styles.svg}
+              />
               <h2 className={styles.Item_Title}>
                 Гарантія безпеки та збереження авто до отримання власником
               </h2>
@@ -53,6 +65,7 @@ const About = () => {
               </p>
             </li>
             <li className={styles.item}>
+              <img src={SVG.dealer} alt="presentation" className={styles.svg} />
               <h2 className={styles.Item_Title}>
                 Гнучкі умови дилерського співробітництва
               </h2>
@@ -64,8 +77,13 @@ const About = () => {
               </p>
             </li>
             <li className={styles.item}>
+              <img
+                src={SVG.bestPrice}
+                alt="presentation"
+                className={styles.svg}
+              />
               <h2 className={styles.Item_Title}>
-                Найкращі ціни на автозапчастини
+                Найкращі ціни на автозaaапчастини
               </h2>
 
               <p className={styles.about}>

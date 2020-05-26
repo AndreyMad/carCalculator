@@ -47,6 +47,7 @@ class SearchCalc extends Component {
 
   componentDidMount() {
     const { selectedAuction, lotPrice, car } = this.props;
+
     this.setState(
       {
         selectedAuction,

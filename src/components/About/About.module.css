@@ -23,7 +23,7 @@
 }
 
 .Title {
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0px 30px 0px;
   text-align: center;
   font-size: 30px;
 }
@@ -46,10 +46,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0px 20px 0px;
+  margin: 30px 0px;
   justify-content: center;
   max-width: 420px;
-  padding: 12px;
+  padding: 25px 12px;
   border: 2px solid #ffffff;
   border-top-width: 0px;
 }
@@ -76,6 +76,11 @@
   margin: 10px 0px 10px 0px;
   text-align: center;
   font-size: 22px;
+}
+.svg {
+  width: 73px;
+  position: absolute;
+  top: -39px;
 }
 
 @media (min-width: 768px) {

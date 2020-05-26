@@ -51,6 +51,10 @@ class SearchPage extends Component {
     selectedAuction: ""
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { averagePriceCar, car } = this.state;
 

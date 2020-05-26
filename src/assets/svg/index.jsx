@@ -23,6 +23,11 @@ import year from "./year.svg";
 import fuel from "./fuel.svg";
 import viberWhite from "./viberWhite.svg";
 import telegramWhite from "./telegramWhite.svg";
+import quality from "./quality.svg";
+import sale from "./sale.svg";
+import insurance from "./insurance.svg";
+import dealer from "./dealer.svg";
+import bestPrice from "./bestPrice.svg";
 
 export default {
   calculator,
@@ -49,5 +54,10 @@ export default {
   engineCapacity,
   odometer,
   fuel,
-  year
+  year,
+  sale,
+  quality,
+  insurance,
+  dealer,
+  bestPrice
 };
