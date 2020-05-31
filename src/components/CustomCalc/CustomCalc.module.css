@@ -29,7 +29,7 @@
 .customContainer {
   width: 100%;
   display: flex;
-  max-width: 450px;
+  max-width: 600px;
 
   margin: 40px auto;
   flex-wrap: wrap;

@@ -28,6 +28,7 @@ import sale from "./sale.svg";
 import insurance from "./insurance.svg";
 import dealer from "./dealer.svg";
 import bestPrice from "./bestPrice.svg";
+import carDoors from "./carDoors.svg";
 
 export default {
   calculator,
@@ -59,5 +60,6 @@ export default {
   quality,
   insurance,
   dealer,
-  bestPrice
+  bestPrice,
+  carDoors
 };

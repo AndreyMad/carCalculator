@@ -3,6 +3,8 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  max-width: 600px;
+  margin: 0px auto;
 }
 .wrapper {
   min-height: 92vh;

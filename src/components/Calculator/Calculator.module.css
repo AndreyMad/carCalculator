@@ -2,7 +2,7 @@
 .priceContainer {
   width: 100%;
   display: flex;
-  max-width: 450px;
+  max-width: 600px;
 
   margin: 00px auto;
   padding-top: 20px;
@@ -121,9 +121,9 @@
 }
 @media (min-width: 768px) {
   .deliveryContainer {
-    max-width: 700px;
+    max-width: 600px;
   }
   .departWrapper {
-    max-width: 340px;
+    max-width: 600px;
   }
 }
