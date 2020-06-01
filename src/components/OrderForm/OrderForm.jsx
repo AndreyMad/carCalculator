@@ -32,7 +32,7 @@ class OrderForm extends Component {
               onChange={this.handleChange}
               placeholder="Ваш телефон"
             />
-            <input
+            <textarea
               type="text"
               id="comment"
               className={style.inputComment}
@@ -46,7 +46,7 @@ class OrderForm extends Component {
             />
           </form>
           <p className={style.text}>
-            Залиште заявку і наші менеджери підберуть Вам пропозицію протяном
+            *Залиште заявку і наші менеджери підберуть Вам пропозицію протяном
             30хв
           </p>
         </div>

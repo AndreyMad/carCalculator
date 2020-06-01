@@ -30,8 +30,8 @@ class MainPage extends Component {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
+      // autoplay: true,
+      // autoplaySpeed: 3000,
       arrows: false,
       dots: false
     };
@@ -199,7 +199,7 @@ class MainPage extends Component {
                   сподобалось авто яке наразі трохи не по кишені.
                 </span>
               </li>
-              <li>
+              <li className={style.submitButton}>
                 <CallBackBtn styles={{ margin: "20px auto 30px" }} />
               </li>
             </ul>

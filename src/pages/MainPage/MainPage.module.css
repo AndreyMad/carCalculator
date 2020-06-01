@@ -26,8 +26,7 @@
   width: 100%;
 
   margin: 0px auto;
-}
-.causes {
+
   background-image: url(../../assets//img/7222.jpg);
   background-attachment: fixed;
   background-size: cover;
@@ -163,4 +162,62 @@
 }
 .callBackBtn {
   width: 200px;
+}
+@media (min-width: 1200px) {
+  .headWrapper {
+    max-width: 1400px;
+    height: 700px;
+  }
+  .backgroundImg {
+    height: 100%;
+  }
+  .backgroundShadow {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .title {
+    font-size: 60px;
+    max-width: 835px;
+  }
+  .aboutBigNumber {
+    font-size: 170px;
+  }
+  .causes {
+    max-width: 1400px;
+  }
+  .subtitle {
+    font-size: 38px;
+    margin: 30px auto 40px;
+  }
+  .causesList {
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto 0px;
+    justify-content: space-between;
+  }
+  .listItem {
+    margin: 40px 30px;
+    max-width: 410px;
+    padding: 30px;
+  }
+  .CallBackButton {
+    width: 305px;
+    margin: 10px auto;
+  }
+  .submitButton {
+    width: 301px;
+    margin: 40px auto 20px;
+  }
+  .listItem > p {
+    font-size: 22px;
+  }
+  .listInnerItem {
+    font-size: 20px;
+  }
+  .causesIcon {
+    width: 70px;
+    height: 70px;
+
+    margin-top: -75px;
+  }
 }

@@ -96,3 +96,44 @@
 .navButton:hover {
   cursor: pointer;
 }
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;
+    height: 700px;
+  }
+  .title {
+    font-size: 38px;
+    margin: 30px auto 40px;
+    max-width: 550px;
+  }
+  .item {
+    max-width: 900px;
+    font-size: 28px;
+  }
+  .iconsWrapper {
+    max-width: 900px;
+    height: 80px;
+    width: 900px;
+    margin: 45px auto;
+    padding-right: 30px;
+  }
+  .link {
+    width: 200px;
+    margin: 0px 20px;
+    height: 80px;
+  }
+  .link:nth-last-of-type(2n) {
+    margin-right: -10px;
+  }
+  .navButton {
+    width: 270px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  .navLink {
+    line-height: 50px;
+  }
+}
