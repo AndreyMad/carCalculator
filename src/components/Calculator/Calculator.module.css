@@ -13,6 +13,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
   position: relative;
   background-image: url(../../assets//img/255308.jpg);
   background-attachment: fixed;
@@ -125,5 +126,29 @@
   }
   .departWrapper {
     max-width: 600px;
+  }
+}
+@media (min-width: 1200px) {
+  .deliveryContainer {
+    padding-top: 80px;
+    max-width: 1200px;
+  }
+  .departWrapper {
+    max-width: 1200px;
+    height: 700px;
+  }
+  .title {
+    font-size: 36px;
+    width: 100%;
+    margin: 30px auto;
+  }
+  .mapImg {
+    max-width: 800px;
+  }
+  .delivImg {
+    max-width: 600px;
+  }
+  .priceInput {
+    max-width: 700px;
   }
 }

@@ -256,7 +256,8 @@ class Calculator extends Component {
       container: base => ({
         ...base,
         width: "100%",
-        margin: "10px auto"
+        margin: "10px auto",
+        maxWidth: "600px"
       }),
       control: base => ({
         ...base,
@@ -347,68 +348,71 @@ class Calculator extends Component {
                   Iaai
                 </label>
               </div>
-            </div>
-            <div className={style.priceContainer}>
-              <div className={style.priceWrapper}>
-                <span className={style.span}>
-                  Ціна лота:
-                  <span className={style.innerSpan}>{carPrice}</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Комісія аукціону:
-                  <span className={style.innerSpan}>
-                    {Math.round(aucComission)}$
-                  </span>
-                </span>
-                <br />
 
-                <span className={style.span}>
-                  Вартість доставки по США в порт
-                  {departurePorts[0] && departurePorts[0].name
-                    ? departurePorts[0].name
-                    : null}
-                  :
-                  <span className={style.innerSpan}>
+              <div className={style.priceContainer}>
+                <div className={style.priceWrapper}>
+                  <span className={style.span}>
+                    Ціна лота:
+                    <span className={style.innerSpan}>{carPrice}</span>
+                  </span>
+                  <br />
+                  <span className={style.span}>
+                    Комісія аукціону:
+                    <span className={style.innerSpan}>
+                      {Math.round(aucComission)}$
+                    </span>
+                  </span>
+                  <br />
+
+                  <span className={style.span}>
+                    Вартість доставки по США в порт
                     {departurePorts[0] && departurePorts[0].name
-                      ? overlandDeliveryCost
+                      ? departurePorts[0].name
                       : null}
-                    $
+                    :
+                    <span className={style.innerSpan}>
+                      {departurePorts[0] && departurePorts[0].name
+                        ? overlandDeliveryCost
+                        : null}
+                      $
+                    </span>
                   </span>
-                </span>
-                <br />
+                  <br />
 
-                <span className={style.span}>
-                  Ціна доставки морем:
-                  <span className={style.innerSpan}>{deliverySea}$</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Страховка:
-                  <span className={style.innerSpan}>{insurance}$</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Порт доставки:
-                  <span className={style.innerSpan}>Одеса</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Срок доставки:
-                  <span className={style.innerSpan}>55 днів</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Комісія компанії:
-                  <span className={style.innerSpan}>{companyСommission}$</span>
-                </span>
-                <br />
-                <span className={style.totalDeliveryCostWrappe}>
-                  <span className={style.totalDeliveryCost}>
-                    Загальна сума до порту Одеса:
-                    <span className={style.innerSpan}> {totalDelivery}</span>
+                  <span className={style.span}>
+                    Ціна доставки морем:
+                    <span className={style.innerSpan}>{deliverySea}$</span>
                   </span>
-                </span>
+                  <br />
+                  <span className={style.span}>
+                    Страховка:
+                    <span className={style.innerSpan}>{insurance}$</span>
+                  </span>
+                  <br />
+                  <span className={style.span}>
+                    Порт доставки:
+                    <span className={style.innerSpan}>Одеса</span>
+                  </span>
+                  <br />
+                  <span className={style.span}>
+                    Срок доставки:
+                    <span className={style.innerSpan}>55 днів</span>
+                  </span>
+                  <br />
+                  <span className={style.span}>
+                    Комісія компанії:
+                    <span className={style.innerSpan}>
+                      {companyСommission}$
+                    </span>
+                  </span>
+                  <br />
+                  <span className={style.totalDeliveryCostWrappe}>
+                    <span className={style.totalDeliveryCost}>
+                      Загальна сума до порту Одеса:
+                      <span className={style.innerSpan}> {totalDelivery}</span>
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>

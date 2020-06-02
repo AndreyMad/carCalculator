@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
 import Slider from "react-slick";
@@ -72,51 +73,62 @@ class carAvailability extends Component {
                 ))}
               </Slider>
             </div>
-            <h2 className={style.carName}>{car.carName}</h2>
-            <p className={style.carPrice}>{car.price}$</p>
-            <div className={style.innerWrapper}>
-              <div className={style.iconsContainer}>
-                <img src={SVG.year} alt="presentation" className={style.icon} />
-                <p className={style.iconText}>{car.carYear}р.</p>
+            <div className={style.textContainer}>
+              <h2 className={style.carName}>{car.carName}</h2>
+              <p className={style.carPrice}>{car.price}$</p>
+              <div className={style.innerWrapper}>
+                <div className={style.iconsContainer}>
+                  <img
+                    src={SVG.year}
+                    alt="presentation"
+                    className={style.icon}
+                  />
+                  <p className={style.iconText}>{car.carYear}р.</p>
+                </div>
+                <div className={style.iconsContainer}>
+                  <img
+                    src={SVG.fuel}
+                    alt="presentation"
+                    className={style.icon}
+                  />
+                  <p className={style.iconText}>{car.engineType}</p>
+                </div>
+                <div className={style.iconsContainer}>
+                  <img
+                    src={SVG.engineCapacity}
+                    alt="presentation"
+                    className={style.icon}
+                  />
+                  <p className={style.iconText}>{car.capacity}л.</p>
+                </div>
+                <div className={style.iconsContainer}>
+                  <img
+                    src={SVG.odometer}
+                    alt="presentation"
+                    className={style.icon}
+                  />
+                  <p className={style.iconText}>{car.odo}км.</p>
+                </div>
+                <div className={style.iconsContainer}>
+                  <img
+                    src={SVG.defAxle}
+                    alt="presentation"
+                    className={style.icon}
+                  />
+                  <p className={style.iconText}>{car.drive}</p>
+                </div>
               </div>
-              <div className={style.iconsContainer}>
-                <img src={SVG.fuel} alt="presentation" className={style.icon} />
-                <p className={style.iconText}>{car.engineType}</p>
-              </div>
-              <div className={style.iconsContainer}>
+              <p className={style.averagePrice}>
+                Середня ціна на
                 <img
-                  src={SVG.engineCapacity}
+                  className={style.avtoriaLogo}
+                  src={avtoriaLogo}
                   alt="presentation"
-                  className={style.icon}
                 />
-                <p className={style.iconText}>{car.capacity}л.</p>
-              </div>
-              <div className={style.iconsContainer}>
-                <img
-                  src={SVG.odometer}
-                  alt="presentation"
-                  className={style.icon}
-                />
-                <p className={style.iconText}>{car.odo}км.</p>
-              </div>
-              <div className={style.iconsContainer}>
-                <img
-                  src={SVG.defAxle}
-                  alt="presentation"
-                  className={style.icon}
-                />
-                <p className={style.iconText}>{car.drive}</p>
-              </div>
+                <span>{car.averagePrice}$</span>
+              </p>
             </div>
-            <p className={style.averagePrice}>
-              Середня ціна на
-              <img
-                className={style.avtoriaLogo}
-                src={avtoriaLogo}
-                alt="presentation"
-              />
-              <span>{car.averagePrice}$</span>
-            </p>
+
             <CallBackBtn text="Замовити авто" />
           </div>
         ))}

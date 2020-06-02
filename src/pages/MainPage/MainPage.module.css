@@ -165,7 +165,7 @@
 }
 @media (min-width: 1200px) {
   .headWrapper {
-    max-width: 1400px;
+    max-width: 1200px;
     height: 700px;
   }
   .backgroundImg {
@@ -182,7 +182,7 @@
     font-size: 170px;
   }
   .causes {
-    max-width: 1400px;
+    max-width: 1200px;
   }
   .subtitle {
     font-size: 38px;

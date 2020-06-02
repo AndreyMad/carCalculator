@@ -11,7 +11,7 @@ class PartsPage extends Component {
   };
 
   submit = () => {
-    console.log("work");
+    // console.log("work");
   };
 
   render() {
@@ -59,14 +59,18 @@ class PartsPage extends Component {
                   value={phone}
                   onChange={this.handleChange}
                 />
-                <input
+                <textarea
                   type="text"
                   id="coment"
                   value={coment}
                   placeholder="Коментар"
                   onChange={this.handleChange}
                 />
-                <input type="submit" value="Отримати консультацію" />
+                <input
+                  type="submit"
+                  className={style.submitBtn}
+                  value="Отримати консультацію"
+                />
               </form>
             </div>
           </div>

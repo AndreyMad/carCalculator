@@ -5,13 +5,13 @@
   text-align: center;
 }
 .title {
-  font-size: 26px;
+  font-size: 28px;
   width: 100%;
   color: #ffffff;
   margin-top: 60px;
 }
 .title2 {
-  font-size: 26px;
+  font-size: 25px;
   width: 100%;
   color: #ffffff;
   margin-top: 15px;
@@ -39,6 +39,9 @@
   z-index: 10;
   left: 0px;
   background: linear-gradient(to bottom, #000000, #999999);
+}
+.form > textarea {
+  min-height: 120px;
 }
 .shadow {
   width: 100%;
@@ -89,7 +92,8 @@
   padding: 20px 0px;
   background-color: rgba(35, 54, 130, 0.9);
 }
-.form > input {
+.form > input,
+form > textarea {
   width: 270px;
   border: none;
   height: 30px;
@@ -133,4 +137,50 @@
   list-style: none;
   width: 100%;
   position: relative;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    min-height: 600px;
+  }
+  .title {
+    margin-top: 100px;
+    font-size: 38px;
+  }
+  .title2 {
+    font-size: 34px;
+  }
+  .span {
+    font-size: 28px;
+    max-width: 600px;
+  }
+  .shadow {
+    min-height: 600px;
+  }
+  .formContainer {
+    min-width: 700px;
+    height: 850px;
+  }
+  .form {
+    width: 600px;
+    height: 430px;
+    margin: 20px auto;
+  }
+  .whiteShadow > p {
+    font-size: 28px;
+  }
+  .form > input,
+  .form > textarea {
+    height: 40px;
+    width: 300px;
+    padding: 3px 10px;
+    font-size: 24px;
+  }
+  .form > textarea {
+    min-height: 120px;
+    font-size: 24px;
+  }
+  .form > .submitBtn {
+    margin-top: 30px;
+  }
 }
