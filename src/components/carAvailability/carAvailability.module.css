@@ -50,7 +50,7 @@
   display: flex;
   position: relative;
   flex-wrap: wrap;
-  max-width: 600px;
+  max-width: 5500px;
   margin: 10px 20px;
 }
 .iconsContainer {
