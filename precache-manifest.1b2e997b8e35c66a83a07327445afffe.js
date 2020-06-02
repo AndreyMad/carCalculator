@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a73d387a912312941b127e6d8d63566c",
+    "revision": "20a19bcc7d38a6a730780189a096333f",
     "url": "/carCalculator/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/css/2.57d9a90a.chunk.css"
   },
   {
-    "revision": "d02a7350036c91b6b9c7",
-    "url": "/carCalculator/static/css/main.3a7f218a.chunk.css"
+    "revision": "8c599a55db47264a4a3c",
+    "url": "/carCalculator/static/css/main.c54ecb6b.chunk.css"
   },
   {
     "revision": "c787f96b609b35843f22",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/js/2.dbe0511d.chunk.js.LICENSE"
   },
   {
-    "revision": "d02a7350036c91b6b9c7",
-    "url": "/carCalculator/static/js/main.c6689aa3.chunk.js"
+    "revision": "8c599a55db47264a4a3c",
+    "url": "/carCalculator/static/js/main.aa460c87.chunk.js"
   },
   {
     "revision": "573505a3d7db1043cb8d",
