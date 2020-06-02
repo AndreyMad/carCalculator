@@ -163,7 +163,7 @@ form > textarea {
   }
   .form {
     width: 600px;
-    height: 430px;
+    min-height: 430px;
     margin: 20px auto;
   }
   .whiteShadow > p {
