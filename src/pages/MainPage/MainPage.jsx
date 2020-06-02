@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
 import Slider from "react-slick";
@@ -15,8 +16,10 @@ import OrderForm from "../../components/OrderForm/OrderForm";
 import SVG from "../../assets/svg/index";
 import audiImg from "../../assets/img/audi.png";
 import jaguar from "../../assets/img/jaguar.png";
+// eslint-disable-next-line import/no-cycle
 import SimpleBuy from "../../components/SimpleBuy/SimpleBuy";
 import CarAvailability from "../../components/carAvailability/carAvailability";
+// eslint-disable-next-line no-unused-vars
 import Reviews from "../../components/Reviews/Reviews";
 
 class MainPage extends Component {
@@ -30,8 +33,8 @@ class MainPage extends Component {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      // autoplay: true,
-      // autoplaySpeed: 3000,
+      autoplay: true,
+      autoplaySpeed: 3000,
       arrows: false,
       dots: false
     };
@@ -218,5 +221,3 @@ class MainPage extends Component {
 }
 
 export default MainPage;
-{
-}
