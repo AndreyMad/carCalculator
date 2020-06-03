@@ -61,7 +61,7 @@
 }
 .formContainer {
   background-image: url(../../assets/img//elise.jpg);
-  min-height: 600px;
+  min-height: 650px;
   background-position-y: 0;
 }
 .whiteShadow {
@@ -88,7 +88,7 @@
   align-items: center;
   border-radius: 20px;
   background-color: #fff;
-  min-height: 250px;
+  min-height: 330px;
   padding: 20px 0px;
   background-color: rgba(35, 54, 130, 0.9);
 }
@@ -159,7 +159,7 @@ form > textarea {
   }
   .formContainer {
     min-width: 700px;
-    height: 850px;
+    height: 900px;
   }
   .form {
     width: 600px;
