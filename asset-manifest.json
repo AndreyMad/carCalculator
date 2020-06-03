@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/carCalculator/static/css/main.f7a3a1f8.chunk.css",
+    "main.css": "/carCalculator/static/css/main.51157f6f.chunk.css",
     "main.js": "/carCalculator/static/js/main.7d9da99b.chunk.js",
     "main.js.map": "/carCalculator/static/js/main.7d9da99b.chunk.js.map",
     "runtime-main.js": "/carCalculator/static/js/runtime-main.13e4ffc5.js",
@@ -9,10 +9,10 @@
     "static/js/2.dbe0511d.chunk.js": "/carCalculator/static/js/2.dbe0511d.chunk.js",
     "static/js/2.dbe0511d.chunk.js.map": "/carCalculator/static/js/2.dbe0511d.chunk.js.map",
     "index.html": "/carCalculator/index.html",
-    "precache-manifest.943654dc8f7ef5345cf4aece397f9a53.js": "/carCalculator/precache-manifest.943654dc8f7ef5345cf4aece397f9a53.js",
+    "precache-manifest.d48a6e3da8244246af6271e96667a7e5.js": "/carCalculator/precache-manifest.d48a6e3da8244246af6271e96667a7e5.js",
     "service-worker.js": "/carCalculator/service-worker.js",
     "static/css/2.57d9a90a.chunk.css.map": "/carCalculator/static/css/2.57d9a90a.chunk.css.map",
-    "static/css/main.f7a3a1f8.chunk.css.map": "/carCalculator/static/css/main.f7a3a1f8.chunk.css.map",
+    "static/css/main.51157f6f.chunk.css.map": "/carCalculator/static/css/main.51157f6f.chunk.css.map",
     "static/js/2.dbe0511d.chunk.js.LICENSE": "/carCalculator/static/js/2.dbe0511d.chunk.js.LICENSE",
     "static/media/1200px-Copart_logo.svg.png": "/carCalculator/static/media/1200px-Copart_logo.svg.88adcdb7.png",
     "static/media/OrderForm.module.css": "/carCalculator/static/media/255308.27663750.jpg",
@@ -134,7 +134,7 @@
     "static/js/runtime-main.13e4ffc5.js",
     "static/css/2.57d9a90a.chunk.css",
     "static/js/2.dbe0511d.chunk.js",
-    "static/css/main.f7a3a1f8.chunk.css",
+    "static/css/main.51157f6f.chunk.css",
     "static/js/main.7d9da99b.chunk.js"
   ]
 }
