@@ -22,7 +22,7 @@ class PartsPage extends Component {
         <section className={style.container}>
           <div className={style.titleContainer}>
             <div className={style.shadow}>
-              <h2 className={style.title}>Запчастини з Америки.</h2>
+              <h2 className={style.title}>Запчастини з Америки</h2>
               <h2 className={style.title2}> Замовити автозапчастини з США.</h2>
 
               <p className={style.span}>
