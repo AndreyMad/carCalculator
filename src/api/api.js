@@ -1,12 +1,18 @@
 import axios from "axios";
 
+const requestFunc = axios.create({
+  timeout: 1000
+});
+
 export const getCarByLot = (lot, selectedAuction, price = 1000) => {
-  const car = axios
+  console.log(lot);
+  const car = requestFunc
     .post(
       `http://45.11.24.158/price${selectedAuction}`,
       `lot=${lot}&price=${price}`
     )
     .then(res => res.data);
+
   return car;
 };
 
