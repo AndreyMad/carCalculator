@@ -8,7 +8,7 @@ import a7 from "./7.jpg";
 import a8 from "./8.jpg";
 
 export default {
-  carName: "Jeep Patriot",
+  carName: "Jeep Patriot+",
   capacity: "2.4",
   carYear: "2016",
   engineType: "GAS",

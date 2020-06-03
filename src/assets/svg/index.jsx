@@ -29,9 +29,16 @@ import insurance from "./insurance.svg";
 import dealer from "./dealer.svg";
 import bestPrice from "./bestPrice.svg";
 import carDoors from "./carDoors.svg";
+import filter from "./filter.svg";
+import tyres from "./tyres.svg";
+import steering from "./steering.svg";
+import brake from "./brake.svg";
+import plug from "./plug.svg";
 
 export default {
   calculator,
+  brake,
+  plug,
   viberWhite,
   telegramWhite,
   close,
@@ -43,6 +50,9 @@ export default {
   parts,
   phone,
   search,
+  steering,
+  tyres,
+  filter,
   viberSvg,
   choice,
   history,

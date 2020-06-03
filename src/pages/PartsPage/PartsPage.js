@@ -93,7 +93,7 @@ class PartsPage extends Component {
                 </li>
                 <li className={style.item}>
                   <img
-                    src={SVG.carDoors}
+                    src={SVG.filter}
                     className={style.svg}
                     alt="presentation"
                   />
@@ -103,7 +103,7 @@ class PartsPage extends Component {
                 </li>
                 <li className={style.item}>
                   <img
-                    src={SVG.carDoors}
+                    src={SVG.tyres}
                     className={style.svg}
                     alt="presentation"
                   />
@@ -113,7 +113,7 @@ class PartsPage extends Component {
                 </li>
                 <li className={style.item}>
                   <img
-                    src={SVG.carDoors}
+                    src={SVG.steering}
                     className={style.svg}
                     alt="presentation"
                   />
@@ -123,7 +123,7 @@ class PartsPage extends Component {
                 </li>
                 <li className={style.item}>
                   <img
-                    src={SVG.carDoors}
+                    src={SVG.brake}
                     className={style.svg}
                     alt="presentation"
                   />
@@ -133,7 +133,7 @@ class PartsPage extends Component {
                 </li>
                 <li className={style.item}>
                   <img
-                    src={SVG.carDoors}
+                    src={SVG.plug}
                     className={style.svg}
                     alt="presentation"
                   />
