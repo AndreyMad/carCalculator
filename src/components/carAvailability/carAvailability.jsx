@@ -8,15 +8,27 @@ import SVG from "../../assets/svg/index";
 import CallBackBtn from "../CallBack/CallBackBtn";
 import hitImg from "../../assets/img/hit.webp";
 import avtoriaLogo from "../../assets/img/avtoriaLogo.jpg";
+import ModalPhoto from "../ModalPhoto/ModalPhoto";
 
 class carAvailability extends Component {
   state = {
-    cars: []
+    cars: [],
+    modalImage: ""
   };
 
   componentDidMount() {
     this.setState({ cars: [...allCars] });
   }
+
+  imageIncrease = photo => {
+    this.setState({ modalImage: photo });
+    document.body.style = " overflow: hidden ";
+  };
+
+  imageDecrease = () => {
+    this.setState({ modalImage: "" });
+    document.body.style = "";
+  };
 
   render() {
     const ArrowLeft = props => {
@@ -37,6 +49,7 @@ class carAvailability extends Component {
       arrows: true,
       prevArrow: <ArrowLeft />,
       nextArrow: <ArrowRight />,
+      afterChange: current => this.setState({ activeSlide: current }),
       appendDots: dots => (
         <div
           style={{
@@ -48,7 +61,7 @@ class carAvailability extends Component {
         </div>
       )
     };
-    const { cars } = this.state;
+    const { cars, modalImage } = this.state;
     return (
       <div className={style.container}>
         <h2 className={style.title}>Або замов авто з наявності</h2>
@@ -68,6 +81,9 @@ class carAvailability extends Component {
                       src={photo}
                       className={style.carPhoto}
                       alt="presentation"
+                      id={photo.toString()}
+                      onClick={() => this.imageIncrease(photo)}
+                      role="presentation"
                     />
                   </div>
                 ))}
@@ -128,7 +144,12 @@ class carAvailability extends Component {
                 <span>{car.averagePrice}$</span>
               </p>
             </div>
-
+            {modalImage ? (
+              <ModalPhoto
+                photo={modalImage}
+                imageDecrease={this.imageDecrease}
+              />
+            ) : null}
             <CallBackBtn text="Замовити авто" />
           </div>
         ))}
