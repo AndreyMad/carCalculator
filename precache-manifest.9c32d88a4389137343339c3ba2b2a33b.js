@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9ae0eb033deb1fcd29d94803d14c3842",
+    "revision": "238ea6e00cd8ad170fe45d664564a5c1",
     "url": "/carCalculator/index.html"
   },
   {
-    "revision": "74544bfff6a2894c1d89",
+    "revision": "1c24c87a4f4706a30f89",
     "url": "/carCalculator/static/css/2.57d9a90a.chunk.css"
   },
   {
-    "revision": "004450c5432835a0e4ed",
-    "url": "/carCalculator/static/css/main.120c641f.chunk.css"
+    "revision": "fbd17309086ddff05e6f",
+    "url": "/carCalculator/static/css/main.21449ce9.chunk.css"
   },
   {
-    "revision": "74544bfff6a2894c1d89",
-    "url": "/carCalculator/static/js/2.a071fa92.chunk.js"
+    "revision": "1c24c87a4f4706a30f89",
+    "url": "/carCalculator/static/js/2.9a0f3e39.chunk.js"
   },
   {
     "revision": "86afaa925e0f432774bf95b19b6933fb",
-    "url": "/carCalculator/static/js/2.a071fa92.chunk.js.LICENSE"
+    "url": "/carCalculator/static/js/2.9a0f3e39.chunk.js.LICENSE"
   },
   {
-    "revision": "004450c5432835a0e4ed",
-    "url": "/carCalculator/static/js/main.8e0ba71d.chunk.js"
+    "revision": "fbd17309086ddff05e6f",
+    "url": "/carCalculator/static/js/main.b905b257.chunk.js"
   },
   {
     "revision": "573505a3d7db1043cb8d",
@@ -256,6 +256,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/bmwback.71d69ed6.jpg"
   },
   {
+    "revision": "87d088a7885b3573b479b6e762130c30",
+    "url": "/carCalculator/static/media/brake.87d088a7.svg"
+  },
+  {
     "revision": "966e36e7ed4f27ec6fcd6265c395f477",
     "url": "/carCalculator/static/media/caMap.966e36e7.png"
   },
@@ -338,6 +342,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "f104d06899beefc85a05c887ce03389f",
     "url": "/carCalculator/static/media/falseSvg.f104d068.svg"
+  },
+  {
+    "revision": "832a256518637be597434f2de3761b98",
+    "url": "/carCalculator/static/media/filter.832a2565.svg"
   },
   {
     "revision": "0842cfcf123aff490c9fe940c01e03b4",
@@ -512,6 +520,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/phone.46fa0ed0.svg"
   },
   {
+    "revision": "6ab8a23248fbb343579f26c7a799c62f",
+    "url": "/carCalculator/static/media/plug.6ab8a232.svg"
+  },
+  {
     "revision": "68518d8d54d8df2ce193023730a8ea75",
     "url": "/carCalculator/static/media/quality.68518d8d.svg"
   },
@@ -556,6 +568,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/carCalculator/static/media/slick.f97e3bbf.svg"
   },
   {
+    "revision": "df2bfed08b555d33b3ab67d6523e1730",
+    "url": "/carCalculator/static/media/steering.df2bfed0.svg"
+  },
+  {
     "revision": "433e47b23a5ad9130d7a2be97c38186e",
     "url": "/carCalculator/static/media/telegramWhite.433e47b2.svg"
   },
@@ -566,6 +582,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "82d28f1b4d188b3d6ab4449c37f99a9b",
     "url": "/carCalculator/static/media/txMap.82d28f1b.png"
+  },
+  {
+    "revision": "60cfced9f2cb72012ace5f1482fc6c32",
+    "url": "/carCalculator/static/media/tyres.60cfced9.svg"
   },
   {
     "revision": "dce2cc28ddfba7376c5782452d9f2a21",
@@ -602,5 +622,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9cb81d13add05fa44b378b34f3faa53c",
     "url": "/carCalculator/static/media/year.9cb81d13.svg"
+  },
+  {
+    "revision": "63c9c6e83ece83d67adf905cfed84b7e",
+    "url": "/carCalculator/static/media/zoom.63c9c6e8.svg"
   }
 ]);
