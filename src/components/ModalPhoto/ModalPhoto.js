@@ -7,6 +7,7 @@ const ModalPhoto = ({ photo, imageDecrease }) => {
     <div
       className={style.container}
       onClick={imageDecrease}
+      onKeyDown={imageDecrease}
       role="presentation"
     >
       <img src={photo} className={style.image} alt="presentation" />

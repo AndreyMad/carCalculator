@@ -34,9 +34,11 @@ import tyres from "./tyres.svg";
 import steering from "./steering.svg";
 import brake from "./brake.svg";
 import plug from "./plug.svg";
+import zoom from "./zoom.svg";
 
 export default {
   calculator,
+  zoom,
   brake,
   plug,
   viberWhite,

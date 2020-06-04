@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
@@ -49,7 +51,6 @@ class carAvailability extends Component {
       arrows: true,
       prevArrow: <ArrowLeft />,
       nextArrow: <ArrowRight />,
-      afterChange: current => this.setState({ activeSlide: current }),
       appendDots: dots => (
         <div
           style={{
@@ -78,11 +79,16 @@ class carAvailability extends Component {
                     key={photo.indexOf()}
                   >
                     <img
+                      src={SVG.zoom}
+                      className={style.zoomSvg}
+                      alt="presentation"
+                      onClick={() => this.imageIncrease(photo)}
+                    />
+                    <img
                       src={photo}
                       className={style.carPhoto}
                       alt="presentation"
                       id={photo.toString()}
-                      onClick={() => this.imageIncrease(photo)}
                       role="presentation"
                     />
                   </div>
