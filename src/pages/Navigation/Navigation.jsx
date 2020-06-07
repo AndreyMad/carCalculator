@@ -124,7 +124,7 @@ class Navigation extends Component {
                     className={style.shadowLink}
                     to={routes.PARTS_PAGE.path}
                   >
-                    Підбір і доставка автозапчастин
+                    Автозапчастини
                   </NavLink>
                 </li>
                 <li className={style.menuItem}>

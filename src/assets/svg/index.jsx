@@ -35,9 +35,17 @@ import steering from "./steering.svg";
 import brake from "./brake.svg";
 import plug from "./plug.svg";
 import zoom from "./zoom.svg";
+import tel from "./tel.svg";
+import headerClose from "./headerClose.svg";
+import viberHeader from "./viberHeader.svg";
+import telegramHeader from "./telegramHeader.svg";
 
 export default {
   calculator,
+  headerClose,
+  telegramHeader,
+  viberHeader,
+  tel,
   zoom,
   brake,
   plug,

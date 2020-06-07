@@ -19,8 +19,8 @@ import jaguar from "../../assets/img/jaguar.png";
 // eslint-disable-next-line import/no-cycle
 import SimpleBuy from "../../components/SimpleBuy/SimpleBuy";
 import CarAvailability from "../../components/carAvailability/carAvailability";
-// eslint-disable-next-line no-unused-vars
-import Reviews from "../../components/Reviews/Reviews";
+import banw from "../../assets/img/banw.png";
+import question from "../../assets/img/question.png";
 
 class MainPage extends Component {
   state = {
@@ -33,8 +33,8 @@ class MainPage extends Component {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
+      // autoplay: true,
+      // autoplaySpeed: 3000,
       arrows: false,
       dots: false
     };
@@ -42,6 +42,36 @@ class MainPage extends Component {
       <div className={style.container}>
         <section className={style.headWrapper}>
           <Slider {...settings}>
+            <div className={style.headWrapper}>
+              <div className={style.backgroundShadow} />
+              <img
+                className={style.backgroundImg}
+                src={banw}
+                alt="presentation"
+              />
+
+              <div className={style.titleContainer}>
+                <h1 className={style.mainTitle}>
+                  хочеш <span className={style.yellowLetter}>авто</span> з
+                  <br /> <p>америки</p>
+                </h1>
+                <img
+                  alt="presentation"
+                  src={question}
+                  className={style.question}
+                />
+              </div>
+              <CallBackBtn
+                text="Оформити заявку"
+                styles={{
+                  position: "absolute",
+                  bottom: "20px",
+                  left: "50%",
+                  transform: "translateX(-50%)"
+                }}
+              />
+            </div>
+
             <div className={style.headWrapper}>
               <div className={style.backgroundShadow} />
 

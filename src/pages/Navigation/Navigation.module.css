@@ -27,7 +27,7 @@
   margin: 0px 0px 0px auto;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #343b4c;
+  background-color: #000000;
   max-width: 220px;
   padding-top: 60px;
 }
@@ -37,14 +37,13 @@
   position: relative;
   font-family: serif;
   color: #000000;
-  z-index: 301;
+  z-index: 201;
   width: 100%;
   min-height: 45px;
 
   padding-left: 10px;
   display: flex;
   align-items: center;
-  /* background-color: #fff; */
 }
 .menuItem :nth-last-of-type() {
   margin-top: 7px;
