@@ -19,6 +19,10 @@
   color: #ffffff;
   text-transform: uppercase;
 }
+.mainWrapper {
+  max-width: 600px;
+  margin: 0px auto;
+}
 .mainTitle > p {
   font-size: 25px;
   margin-top: 5px;
@@ -114,7 +118,12 @@
 
   object-fit: cover;
 }
-.backgroundShadow {
+.wrapper {
+  position: relative;
+  margin-bottom: -5px;
+}
+.backgroundShadow,
+.backgroundShadow2 {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
@@ -129,7 +138,7 @@
   min-height: 350px;
   position: relative;
   max-width: 600px;
-  margin: -10px auto 0px;
+  margin: 0px auto;
 }
 
 .carousel {
@@ -194,7 +203,15 @@
 .callBackBtn {
   width: 200px;
 }
+@media (min-width: 768px) {
+  .backgroundShadow2 {
+    background-color: transparent;
+  }
+}
 @media (min-width: 1200px) {
+  .mainWrapper {
+    max-width: 1200px;
+  }
   .headWrapper {
     max-width: 1200px;
     height: 700px;
@@ -202,9 +219,9 @@
   .backgroundImg {
     height: 100%;
   }
-  .backgroundShadow {
+  /* .backgroundShadow {
     background-color: rgba(0, 0, 0, 0.6);
-  }
+  } */
   .title {
     font-size: 60px;
     max-width: 835px;

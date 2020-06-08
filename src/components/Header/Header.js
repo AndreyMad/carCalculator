@@ -13,8 +13,15 @@ import slideLeft from "../../transitions/slideLeft.module.css";
 class Header extends Component {
   state = {
     isBurgerOpen: false,
-    scrolOn: true
+    scrolOn: true,
+    windowWidth: ""
   };
+
+  componentDidMount() {
+    this.setState({
+      windowWidth: window.innerWidth
+    });
+  }
 
   toggleModal = () => {
     this.setState(prevState => ({
@@ -34,7 +41,7 @@ class Header extends Component {
   };
 
   render() {
-    const { isBurgerOpen } = this.state;
+    const { isBurgerOpen, windowWidth } = this.state;
     return (
       <>
         <div className={style.container}>
@@ -43,19 +50,23 @@ class Header extends Component {
           </NavLink>
 
           <div className={style.feedbackContainer}>
-            <button
-              className={
-                isBurgerOpen ? style.feedbackButtonActive : style.feedbackButton
-              }
-              type="button"
-              onClick={this.toggleModal}
-            >
-              <img
-                className={style.feedbackBtnImg}
-                src={isBurgerOpen ? SVG.headerClose : SVG.tel}
-                alt="presentation"
-              />
-            </button>
+            {windowWidth < 768 ? (
+              <button
+                className={
+                  isBurgerOpen
+                    ? style.feedbackButtonActive
+                    : style.feedbackButton
+                }
+                type="button"
+                onClick={this.toggleModal}
+              >
+                <img
+                  className={style.feedbackBtnImg}
+                  src={isBurgerOpen ? SVG.headerClose : SVG.tel}
+                  alt="presentation"
+                />
+              </button>
+            ) : null}
             <CSSTransition
               in={isBurgerOpen}
               unmountOnExit

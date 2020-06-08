@@ -61,9 +61,13 @@
   background-color: #000000;
   width: 220px;
   height: 400px;
+  list-style: none;
   padding: 20px 5px;
   z-index: 304;
   position: fixed;
+}
+ul {
+  list-style: none;
 }
 .menuList {
   z-index: 400;
@@ -92,8 +96,10 @@
   margin-top: 10px;
 }
 @media (min-width: 768px) {
+  .container {
+    height: 120px;
+  }
   .tabletNav {
-    display: flex;
     position: absolute;
     z-index: 10;
     max-width: 1400px;
@@ -151,7 +157,7 @@
 }
 @media (min-width: 1200px) {
   .container {
-    height: 90px;
     max-width: 1400px;
+    background: linear-gradient(to bottom #000000, #000052);
   }
 }

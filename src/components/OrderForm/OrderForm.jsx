@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import style from "./OrderForm.module.css";
 
 class OrderForm extends Component {
@@ -8,15 +9,23 @@ class OrderForm extends Component {
     comment: ""
   };
 
+  static propTypes = {
+    title: PropTypes.string,
+    value: PropTypes.string
+  };
+
   handleChange = ({ target }) => {
     this.setState({ [target.id]: target.value });
   };
 
   render() {
+    const { title, value } = this.props;
     return (
       <div className={style.container}>
+        <h2 className={style.title}>
+          {title || "Замов авто зараз та заощадь до 50%"}
+        </h2>
         <div className={style.shadow}>
-          <h2 className={style.title}>Замов авто зараз та заощадь до 50%</h2>
           <form className={style.orderForm}>
             <input
               type="text"
@@ -41,14 +50,10 @@ class OrderForm extends Component {
             />
             <input
               type="button"
-              value="Замовити авто"
+              value={value || "Замовити авто"}
               className={style.submitBtn}
             />
           </form>
-          <p className={style.text}>
-            *Залиште заявку і наші менеджери підберуть Вам пропозицію протяном
-            30хв
-          </p>
         </div>
       </div>
     );

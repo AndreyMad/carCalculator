@@ -1,17 +1,26 @@
 import React from "react";
 import style from "./Answers.module.css";
 import Footer from "../../components/Footer/Footer";
+import OrderForm from "../../components/OrderForm/OrderForm";
+import disturbImage from "../../assets/img/ashish-joshi-e6mqDRqe7P8-unsplash.png";
 
 const Answers = () => {
   return (
     <>
       <section className={style.container}>
+        <div className={style.disturbWrapper}>
+          <h3 className={style.subTitle}>
+            Знайди відповіді тут або запитай у нас
+          </h3>
+          <img src={disturbImage} alt="sad man" />
+        </div>
         <div className={style.wrapper}>
           <ul className={style.shadowContainer}>
             <li className={style.spoiler}>
               <input type="checkbox" />
               <span className={style.question}>
                 Як відбувається процес покупки автомобіля
+                <img alt="presentation" className={style.svg} />
               </span>
 
               <div className={style.listInner}>
@@ -31,6 +40,7 @@ const Answers = () => {
               <input type="checkbox" />
               <span className={style.question}>
                 Чи можливо отримати відремонтоване і зареєстроване авто
+                <img alt="presentation" className={style.svg} />
               </span>
 
               <div className={style.listInner}>
@@ -47,6 +57,7 @@ const Answers = () => {
               <input type="checkbox" />
               <span className={style.question}>
                 В США можливо придбати авто тільки після ДТП
+                <img alt="presentation" className={style.svg} />
               </span>
 
               <div className={style.listInner}>
@@ -69,6 +80,7 @@ const Answers = () => {
               <input type="checkbox" />
               <span className={style.question}>
                 Які етапи та скільки часу займає доставка авто
+                <img alt="presentation" className={style.svg} />
               </span>
 
               <div className={style.listInner}>
@@ -85,13 +97,14 @@ const Answers = () => {
               <input type="checkbox" />
               <span className={style.question}>
                 Чи можу я повернути страховий депозит
+                <img alt="presentation" className={style.svg} />
               </span>
 
               <div className={style.listInner}>
                 <p>
                   Страховий депозит можливо повернути тільки до моменту покупки
                   авто на аукціоні. Після виграшу авто страховий депозит іде в
-                  рахунок оплати за авто або ж привідмові клієнта, на погашенні
+                  рахунок оплати за авто або ж при відмові клієнта, на погашення
                   штрафних санкцій аукціону.
                 </p>
               </div>
@@ -100,6 +113,7 @@ const Answers = () => {
               <input type="checkbox" />
               <span className={style.question}>
                 З якої ціни вигідно купувати авто в США
+                <img alt="presentation" className={style.svg} />
               </span>
 
               <div className={style.listInner}>
@@ -113,6 +127,7 @@ const Answers = () => {
             </li>
           </ul>
         </div>
+        <OrderForm title="Залишились питання?" value="Отримати відповідь" />
       </section>
       <Footer />
     </>

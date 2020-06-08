@@ -156,7 +156,10 @@ class carAvailability extends Component {
                 imageDecrease={this.imageDecrease}
               />
             ) : null}
-            <CallBackBtn text="Замовити авто" />
+            <CallBackBtn
+              text="Замовити авто"
+              carText={`Доброго дня, мене цікавить авто ${car.carName}, ${car.carYear} року `}
+            />
           </div>
         ))}
       </div>

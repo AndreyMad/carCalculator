@@ -25,7 +25,7 @@ import question from "../../assets/img/question.png";
 class MainPage extends Component {
   state = {
     // eslint-disable-next-line react/no-unused-state
-    isModalOpen: false
+    isModalOpen: true
   };
 
   render() {
@@ -40,38 +40,37 @@ class MainPage extends Component {
     };
     return (
       <div className={style.container}>
-        <section className={style.headWrapper}>
-          <Slider {...settings}>
-            <div className={style.headWrapper}>
-              <div className={style.backgroundShadow} />
-              <img
-                className={style.backgroundImg}
-                src={banw}
-                alt="presentation"
-              />
+        <section className={style.mainWrapper} style={{ marginBottom: "-5px" }}>
+          <div className={style.wrapper}>
+            <div className={style.backgroundShadow2} />
+            <img
+              className={style.backgroundImg}
+              src={banw}
+              alt="presentation"
+            />
 
-              <div className={style.titleContainer}>
-                <h1 className={style.mainTitle}>
-                  хочеш <span className={style.yellowLetter}>авто</span> з
-                  <br /> <p>америки</p>
-                </h1>
-                <img
-                  alt="presentation"
-                  src={question}
-                  className={style.question}
-                />
-              </div>
-              <CallBackBtn
-                text="Оформити заявку"
-                styles={{
-                  position: "absolute",
-                  bottom: "20px",
-                  left: "50%",
-                  transform: "translateX(-50%)"
-                }}
+            <div className={style.titleContainer}>
+              <h1 className={style.mainTitle}>
+                хочеш <span className={style.yellowLetter}>авто</span> з
+                <br /> <p>америки</p>
+              </h1>
+              <img
+                alt="presentation"
+                src={question}
+                className={style.question}
               />
             </div>
-
+            <CallBackBtn
+              text="Оформити заявку"
+              styles={{
+                position: "absolute",
+                bottom: "20px",
+                left: "50%",
+                transform: "translateX(-50%)"
+              }}
+            />
+          </div>
+          <Slider {...settings}>
             <div className={style.headWrapper}>
               <div className={style.backgroundShadow} />
 

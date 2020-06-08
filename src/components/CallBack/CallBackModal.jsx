@@ -8,7 +8,12 @@ class CallBackModal extends Component {
   };
 
   static propTypes = {
-    toggleModal: PropTypes.func.isRequired
+    toggleModal: PropTypes.func.isRequired,
+    carText: PropTypes.string
+  };
+
+  static defaultProps = {
+    carText: ""
   };
 
   componentDidMount() {
@@ -27,7 +32,7 @@ class CallBackModal extends Component {
 
   render() {
     const { formValues } = this.state;
-    const { toggleModal } = this.props;
+    const { toggleModal, text, carText } = this.props;
     return (
       <>
         <div className={style.overlay}>
@@ -57,7 +62,11 @@ class CallBackModal extends Component {
                 </label>
                 <label htmlFor="comment">
                   Коментар:
-                  <textarea className={style.textArea} id="comment" />
+                  <textarea
+                    className={style.textArea}
+                    value={carText || ""}
+                    id="comment"
+                  />
                 </label>
               </form>
               <button

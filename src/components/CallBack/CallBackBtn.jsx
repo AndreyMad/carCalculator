@@ -17,7 +17,7 @@ class CallBackBtn extends Component {
   };
 
   render() {
-    const { styles, text } = this.props;
+    const { styles, text, carText } = this.props;
     const { isModalOpen } = this.state;
     return (
       <>
@@ -37,6 +37,7 @@ class CallBackBtn extends Component {
           classNames={slideTop}
         >
           <CallBackModal
+            carText={carText}
             isModalOpen={isModalOpen}
             toggleModal={this.toggleModal}
           />
