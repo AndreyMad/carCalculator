@@ -49,166 +49,195 @@ class Header extends Component {
             <img src={logo} alt="autonom logo" />
           </NavLink>
 
-          <div className={style.feedbackContainer}>
-            {windowWidth < 768 ? (
-              <button
-                className={
-                  isBurgerOpen
-                    ? style.feedbackButtonActive
-                    : style.feedbackButton
-                }
-                type="button"
-                onClick={this.toggleModal}
-              >
-                <img
-                  className={style.feedbackBtnImg}
-                  src={isBurgerOpen ? SVG.headerClose : SVG.tel}
-                  alt="presentation"
-                />
-              </button>
-            ) : null}
-            <CSSTransition
-              in={isBurgerOpen}
-              unmountOnExit
-              timeout={250}
-              classNames={slideLeft}
+          {windowWidth < 768 ? (
+            <button
+              className={
+                isBurgerOpen ? style.feedbackButtonActive : style.feedbackButton
+              }
+              type="button"
+              onClick={this.toggleModal}
             >
-              <div className={style.feedbackWrapper}>
-                <ul className={style.list}>
-                  <li className={style.item}>
-                    <a
-                      className={style.itemLink}
-                      style={{
-                        color: "#7E98FF",
-                        fontSize: "16px"
-                      }}
-                      href="tel:+380979011449"
+              <img
+                className={style.feedbackBtnImg}
+                src={isBurgerOpen ? SVG.headerClose : SVG.tel}
+                alt="presentation"
+              />
+            </button>
+          ) : (
+            <>
+              <div className={style.feedbackTabletContainer}>
+                <ul className={style.menuList}>
+                  <li className={style.menuItem}>
+                    <NavLink
+                      exact
+                      className={style.shadowLink}
+                      to={routes.MAIN_PAGE.path}
                     >
-                      <img
-                        alt="presentation"
-                        src={SVG.tel}
-                        className={style.itemIcon}
-                      />
-                      +380979011449
-                    </a>
+                      Головна
+                    </NavLink>
                   </li>
-                  <li className={style.item}>
-                    <span className={style.subTitle}>Ми у соц мережах</span>
-                    <ul className={style.innerList}>
-                      <li className={style.iinerListItem}>
-                        <a className={style.itemLink} href="tel:+38097901414">
-                          <img
-                            alt="presentation"
-                            src={SVG.viberHeader}
-                            className={style.itemIcon}
-                          />
-                          Viber
-                        </a>
-                      </li>
-                      <li className={style.iinerListItem}>
-                        <a className={style.itemLink} href="tel:+38097901414">
-                          <img
-                            alt="presentation"
-                            src={SVG.telegramHeader}
-                            className={style.itemIcon}
-                          />
-                          Telegram
-                        </a>
-                      </li>
-                    </ul>
+                  <li className={style.menuItem}>
+                    <NavLink
+                      className={style.shadowLink}
+                      to={routes.SEARCH_PAGE.path}
+                    >
+                      Пошук
+                    </NavLink>
                   </li>
-                  <li className={style.item}>
-                    <span className={style.subTitle}>Чекаємо ваших листів</span>
+                  <li className={style.menuItem}>
+                    <NavLink
+                      className={style.shadowLink}
+                      to={routes.CALCULATOR_PAGE.path}
+                    >
+                      Калькулятор
+                    </NavLink>
+                  </li>
 
-                    <a
-                      className={style.itemLink}
-                      style={{
-                        color: "#7E98FF",
-                        fontSize: "16px",
-                        marginTop: "5px"
-                      }}
-                      href="mailto:andrey.mad.87@gmail.com"
+                  <li className={style.menuItem}>
+                    <NavLink
+                      className={style.shadowLink}
+                      to={routes.ANSWERS.path}
                     >
-                      <img
-                        alt="presentation"
-                        src={SVG.tel}
-                        className={style.itemIcon}
-                      />
-                      info@autonom.ua
-                    </a>
+                      Питання
+                    </NavLink>
+                  </li>
+                  <li className={style.menuItem}>
+                    <NavLink
+                      className={style.shadowLink}
+                      to={routes.ABOUT_US_PAGE.path}
+                    >
+                      Про нас
+                    </NavLink>
+                  </li>
+                  <li className={style.menuItem}>
+                    <NavLink
+                      className={style.shadowLink}
+                      to={routes.PARTS_PAGE.path}
+                    >
+                      Автозапчастини
+                    </NavLink>
                   </li>
                 </ul>
               </div>
-            </CSSTransition>
-            <CSSTransition
-              in={isBurgerOpen}
-              unmountOnExit
-              timeout={250}
-              classNames={fade}
-            >
-              <div className={style.shadow} onClick={this.toggleModal} />
-            </CSSTransition>
-          </div>
-        </div>
-        <div className={style.tabletNav}>
-          <ul className={style.menuList}>
-            <li className={style.menuItem}>
-              <NavLink
-                exact
-                className={style.menuLink}
-                activeClassName={style.menuLinkActive}
-                to={routes.MAIN_PAGE.path}
-              >
-                Головна
-              </NavLink>
-            </li>
-            <li className={style.menuItem}>
-              <NavLink
-                className={style.menuLink}
-                activeClassName={style.menuLinkActive}
-                to={routes.SEARCH_PAGE.path}
-              >
-                Пошук
-              </NavLink>
-            </li>
-            <li className={style.menuItem}>
-              <NavLink
-                className={style.menuLink}
-                activeClassName={style.menuLinkActive}
-                to={routes.CALCULATOR_PAGE.path}
-              >
-                Калькулятор
-              </NavLink>
-            </li>
+              <div className={style.feedbackTabletContainer}>
+                <div className={style.feedbackTabletWrapper}>
+                  <a href="tel:+380979011449" className={style.phoneLink}>
+                    +38 097 901 14 49
+                  </a>
+                  <img
+                    className={style.feedbackBtnImg}
+                    src={SVG.tel}
+                    alt="presentation"
+                  />
+                </div>
+                <div className={style.feedbackTabletWrapper}>
+                  <span>Контакти</span>
+                  <a href="tel:+380979011449" className={style.phoneLink}>
+                    <img
+                      className={style.feedbackBtnImg}
+                      src={SVG.viberWhite}
+                      alt="presentation"
+                    />
+                  </a>
+                  <a href="tel:+380979011449" className={style.phoneLink}>
+                    <img
+                      className={style.feedbackBtnImg}
+                      src={SVG.telegramWhite}
+                      alt="presentation"
+                    />
+                  </a>
+                  <a href="tel:+380979011449" className={style.phoneLink}>
+                    <img
+                      className={style.feedbackBtnImg}
+                      src={SVG.tel}
+                      alt="presentation"
+                    />
+                  </a>
+                </div>
+              </div>
+            </>
+          )}
+          <CSSTransition
+            in={isBurgerOpen}
+            unmountOnExit
+            timeout={250}
+            classNames={slideLeft}
+          >
+            <div className={style.feedbackWrapper}>
+              <ul className={style.list}>
+                <li className={style.item}>
+                  <a
+                    className={style.itemLink}
+                    style={{
+                      color: "#7E98FF",
+                      fontSize: "16px"
+                    }}
+                    href="tel:+380979011449"
+                  >
+                    <img
+                      alt="presentation"
+                      src={SVG.tel}
+                      className={style.itemIcon}
+                    />
+                    +380979011449
+                  </a>
+                </li>
+                <li className={style.item}>
+                  <span className={style.subTitle}>Ми у соц мережах</span>
+                  <ul className={style.innerList}>
+                    <li className={style.iinerListItem}>
+                      <a className={style.itemLink} href="tel:+38097901414">
+                        <img
+                          alt="presentation"
+                          src={SVG.viberHeader}
+                          className={style.itemIcon}
+                        />
+                        Viber
+                      </a>
+                    </li>
+                    <li className={style.iinerListItem}>
+                      <a className={style.itemLink} href="tel:+38097901414">
+                        <img
+                          alt="presentation"
+                          src={SVG.telegramHeader}
+                          className={style.itemIcon}
+                        />
+                        Telegram
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li className={style.item}>
+                  <span className={style.subTitle}>Чекаємо ваших листів</span>
 
-            <li className={style.menuItem}>
-              <NavLink
-                className={style.menuLink}
-                activeClassName={style.menuLinkActive}
-                to={routes.PARTS_PAGE.path}
-              >
-                Автозапчастини
-              </NavLink>
-            </li>
-            <li className={style.menuItem}>
-              <NavLink
-                className={style.menuLink}
-                activeClassName={style.menuLinkActive}
-                to={routes.ABOUT_US_PAGE.path}
-              >
-                Про нас
-              </NavLink>
-            </li>
-            <li className={style.menuItem}>
-              <NavLink
-                className={style.menuLink}
-                activeClassName={style.menuLinkActive}
-                to={routes.ANSWERS.path}
-              >
-                Питання
-              </NavLink>
-            </li>
-          </ul>
+                  <a
+                    className={style.itemLink}
+                    style={{
+                      color: "#7E98FF",
+                      fontSize: "16px",
+                      marginTop: "5px"
+                    }}
+                    href="mailto:andrey.mad.87@gmail.com"
+                  >
+                    <img
+                      alt="presentation"
+                      src={SVG.tel}
+                      className={style.itemIcon}
+                    />
+                    info@autonom.ua
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </CSSTransition>
+          <CSSTransition
+            in={isBurgerOpen}
+            unmountOnExit
+            timeout={250}
+            classNames={fade}
+          >
+            <div className={style.shadow} onClick={this.toggleModal} />
+          </CSSTransition>
         </div>
       </>
     );
