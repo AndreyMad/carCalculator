@@ -74,6 +74,8 @@
   background-color: #e74911;
   outline: none;
   color: #ffffff;
+  box-shadow: -6px 6px 4px 0px rgba(0, 0, 0, 0.75);
+
   border: none;
 }
 
@@ -88,11 +90,30 @@
     max-width: 900px;
     height: 450px;
   }
+  .submitBtn {
+    width: 250px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .title {
+    font-size: 30px;
+    max-width: 380px;
+  }
+  .inputName,
+  .inputNumber,
+  .inputComment {
+    max-width: 350px;
+    font-size: 18px;
+  }
+  .inputName,
+  .inputNumber {
+    height: 45px;
+  }
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1200px;
-    height: 600px;
+    max-width: 1400px;
+    height: 700px;
   }
   .orderForm {
     max-width: 500px;

@@ -18,7 +18,7 @@ class CustomCalc extends Component {
     brokerPrice: 400,
     esv: "",
     evacution: 250,
-    certification: 200,
+    certification: 250,
     accounting: 40,
     engineType: "",
     engineToSelect: {},
@@ -327,7 +327,7 @@ class CustomCalc extends Component {
             </span>
 
             <span className={style.span}>
-              ЄСВ:<span className={style.innerSpan}>{esv}$</span>
+              Пенсійний фонд:<span className={style.innerSpan}>{esv}$</span>
             </span>
 
             <span className={style.span}>

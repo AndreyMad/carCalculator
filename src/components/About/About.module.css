@@ -84,9 +84,9 @@
 }
 
 @media (min-width: 768px) {
-  /* .about_wrapper {
-    max-width: 650px;
-  } */
+  .about {
+    max-width: 600px;
+  }
 
   .item {
     max-width: 520px;

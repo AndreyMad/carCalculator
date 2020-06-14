@@ -142,10 +142,10 @@ ul {
     position: relative;
   }
   .menuItem {
-    font-size: 20px;
+    font-size: 16px;
     max-width: 150px;
     width: 80px;
-    font-size: 16px;
+
     text-decoration: none;
     color: #000000;
   }
@@ -206,7 +206,32 @@ ul {
   .menuList {
     height: 85px;
   }
-  .menuitem {
-    font-size: 20px;
+
+  .menuItem {
+    font-size: 24px;
+    width: 110px;
+  }
+  .feedbackTabletContainer {
+    height: 85px;
+    margin-left: 40px;
+    max-width: 400px;
+  }
+  .feedbackTabletWrapper {
+    min-width: 350px;
+    margin-right: 40px;
+  }
+  .feedbackTabletWrapper > span {
+    font-size: 36px;
+    line-height: 50px;
+  }
+  .feedbackTabletWrapper > div {
+    width: 165px;
+    margin-top: 10px;
+  }
+  .feedbackBtnImg {
+    width: 38px;
+  }
+  .phoneLink {
+    font-size: 32px;
   }
 }

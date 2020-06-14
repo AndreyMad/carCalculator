@@ -15,11 +15,7 @@
   transition: 1s;
   object-fit: cover;
 }
-.carPhoto:hover {
-  cursor: pointer;
-  transform: scale(1.05, 1.05);
-  transition: 1s;
-}
+
 .title {
   font-size: 26px;
   max-width: 300px;
@@ -177,12 +173,26 @@
   width: 30px;
   z-index: 20;
 }
+.zoomSvg:hover {
+  cursor: pointer;
+}
 @media (min-width: 768px) {
   .container {
     max-width: 900px;
   }
+  .carName {
+    font-size: 35px;
+    margin: 30px auto;
+  }
   .sliderWrapper {
     max-width: 800px;
+  }
+  .iconText {
+    font-size: 28px;
+    margin-top: 10px;
+  }
+  .iconsContainer {
+    width: 130px;
   }
   .sliderInnerWrapper {
     max-width: 800px;
@@ -191,16 +201,50 @@
   .carPhoto {
     max-width: 800px;
     max-height: 500px;
-    height: 40vw;
+    height: 65vw;
+  }
+  .carPrice {
+    font-size: 30px;
+  }
+  .icon {
+    height: 35px;
+  }
+  .next::before,
+  .prev::before {
+    font-size: 70px;
+  }
+  .next:hover::before,
+  .prev:hover:before {
+    font-size: 75px;
+  }
+  .next,
+  .prev {
+    width: 70px;
+    height: 70px;
+  }
+  .hitLogo {
+    width: 130px;
+  }
+  .zoomSvg {
+    width: 70px;
+  }
+  .averagePrice {
+    font-size: 35px;
+    margin: 25px auto;
+  }
+  .avtoriaLogo {
+    width: 120px;
+    height: 35px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    max-width: 1200px;
+    max-width: 1400px;
   }
   .sliderWrapper {
-    width: 700px;
+    width: 600px;
     margin: 20px;
+    max-width: 600px;
   }
   .textContainer {
     width: 500px;

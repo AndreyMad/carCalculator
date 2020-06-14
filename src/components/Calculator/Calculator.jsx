@@ -152,12 +152,10 @@ class Calculator extends Component {
       comissionArray.find((el, index) => {
         if (el[0] > Number(carPrice)) {
           aucComission = el[1];
-          console.log(aucComission);
           return aucComission;
         }
-        if (comissionArray.length - 1 === index && el[0] < carPrice) {
+        if (comissionArray.length - 1 === index && el[0] <= carPrice) {
           aucComission = Math.round(Number(carPrice) * 0.02);
-          console.log(aucComission);
 
           return aucComission;
         }
@@ -186,11 +184,10 @@ class Calculator extends Component {
       comissionArray.find((el, index) => {
         if (el[0] > Number(carPrice)) {
           aucComission = el[1];
-          console.log(aucComission);
           return aucComission;
         }
 
-        if (comissionArray.length - 1 === index && el[0] < carPrice) {
+        if (comissionArray.length - 1 === index && el[0] <= carPrice) {
           aucComission = Math.round(Number(carPrice) * 0.01 + 450);
           return aucComission;
         }
@@ -266,6 +263,7 @@ class Calculator extends Component {
         ...base,
         width: "100%",
         margin: "10px auto",
+        height: "35px",
         maxWidth: "600px"
       }),
       control: base => ({
@@ -291,16 +289,19 @@ class Calculator extends Component {
                 options={arrayOfDepartures}
                 onChange={this.handleChange}
               />
-              <img
-                src={this.imgStateHelper()}
-                className={style.mapImg}
-                alt="map"
-              />
-              {departurePorts.length > 0 ? (
+              <div className={style.mapImgWrapper}>
+                <img
+                  src={this.imgStateHelper()}
+                  className={style.mapImg}
+                  alt="map"
+                />
+              </div>
+
+              {/* {departurePorts.length > 0 ? (
                 <p className={style.departurePort}>
                   Порт відправки: {departurePorts[0].name}
                 </p>
-              ) : null}
+              ) : null} */}
             </div>
 
             <div className={style.departWrapper}>
