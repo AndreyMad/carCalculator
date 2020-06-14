@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import slide from "../../transitions/slide.module.css";
+import slideLeft from "../../transitions/slideLeft.module.css";
 import fade from "../../transitions/fade250.module.css";
 
 import routes from "../../routes/routes";
@@ -74,7 +74,7 @@ class Navigation extends Component {
           in={isBurgerOpen}
           unmountOnExit
           timeout={250}
-          classNames={slide}
+          classNames={slideLeft}
         >
           <>
             <div

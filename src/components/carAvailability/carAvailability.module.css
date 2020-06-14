@@ -177,6 +177,23 @@
   width: 30px;
   z-index: 20;
 }
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
+  .sliderWrapper {
+    max-width: 800px;
+  }
+  .sliderInnerWrapper {
+    max-width: 800px;
+    max-height: 500px;
+  }
+  .carPhoto {
+    max-width: 800px;
+    max-height: 500px;
+    height: 40vw;
+  }
+}
 @media (min-width: 1200px) {
   .container {
     max-width: 1200px;

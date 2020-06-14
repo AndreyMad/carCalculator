@@ -24,7 +24,7 @@
 
 .menuList {
   display: flex;
-  margin: 0px 0px 0px auto;
+  margin: 0px auto 0px 0px;
   flex-direction: column;
   align-items: flex-start;
   background-color: #000000;

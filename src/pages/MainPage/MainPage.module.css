@@ -211,6 +211,22 @@
   .backgroundShadow2 {
     background-color: transparent;
   }
+  .mainWrapper {
+    max-width: 900px;
+  }
+  .backgroundImg {
+    height: 400px;
+  }
+  .headWrapper {
+    max-width: 900px;
+    min-height: 400px;
+  }
+  .causes {
+    max-width: 900px;
+  }
+  .subtitle {
+    font-size: 30px;
+  }
 }
 @media (min-width: 1200px) {
   .mainWrapper {

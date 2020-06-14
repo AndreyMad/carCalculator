@@ -200,7 +200,7 @@ class CustomCalc extends Component {
       Number(certification) +
       Number(accounting);
     const totalCarPrice = Number(totalCustom) + Number(totalDelivery);
-    console.log(engineToSelect[15]);
+
     const selectStyles = {
       control: base => ({
         ...base,

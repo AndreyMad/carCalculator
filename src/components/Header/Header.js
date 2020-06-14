@@ -8,7 +8,7 @@ import logo from "../../assets/img/logo.4acaa253b517.png";
 import routes from "../../routes/routes";
 import SVG from "../../assets/svg/index";
 import fade from "../../transitions/fade250.module.css";
-import slideLeft from "../../transitions/slideLeft.module.css";
+import slide from "../../transitions/slide.module.css";
 
 class Header extends Component {
   state = {
@@ -132,27 +132,29 @@ class Header extends Component {
                 </div>
                 <div className={style.feedbackTabletWrapper}>
                   <span>Контакти</span>
-                  <a href="tel:+380979011449" className={style.phoneLink}>
-                    <img
-                      className={style.feedbackBtnImg}
-                      src={SVG.viberWhite}
-                      alt="presentation"
-                    />
-                  </a>
-                  <a href="tel:+380979011449" className={style.phoneLink}>
-                    <img
-                      className={style.feedbackBtnImg}
-                      src={SVG.telegramWhite}
-                      alt="presentation"
-                    />
-                  </a>
-                  <a href="tel:+380979011449" className={style.phoneLink}>
-                    <img
-                      className={style.feedbackBtnImg}
-                      src={SVG.tel}
-                      alt="presentation"
-                    />
-                  </a>
+                  <div>
+                    <a href="tel:+380979011449" className={style.phoneLink}>
+                      <img
+                        className={style.feedbackBtnImg}
+                        src={SVG.viberWhite}
+                        alt="presentation"
+                      />
+                    </a>
+                    <a href="tel:+380979011449" className={style.phoneLink}>
+                      <img
+                        className={style.feedbackBtnImg}
+                        src={SVG.telegramWhite}
+                        alt="presentation"
+                      />
+                    </a>
+                    <a href="tel:+380979011449" className={style.phoneLink}>
+                      <img
+                        className={style.feedbackBtnImg}
+                        src={SVG.tel}
+                        alt="presentation"
+                      />
+                    </a>
+                  </div>
                 </div>
               </div>
             </>
@@ -161,7 +163,7 @@ class Header extends Component {
             in={isBurgerOpen}
             unmountOnExit
             timeout={250}
-            classNames={slideLeft}
+            classNames={slide}
           >
             <div className={style.feedbackWrapper}>
               <ul className={style.list}>
@@ -174,12 +176,12 @@ class Header extends Component {
                     }}
                     href="tel:+380979011449"
                   >
+                    +380979011449
                     <img
                       alt="presentation"
                       src={SVG.tel}
                       className={style.itemIcon}
                     />
-                    +380979011449
                   </a>
                 </li>
                 <li className={style.item}>
@@ -187,22 +189,22 @@ class Header extends Component {
                   <ul className={style.innerList}>
                     <li className={style.iinerListItem}>
                       <a className={style.itemLink} href="tel:+38097901414">
+                        Viber
                         <img
                           alt="presentation"
                           src={SVG.viberHeader}
                           className={style.itemIcon}
                         />
-                        Viber
                       </a>
                     </li>
                     <li className={style.iinerListItem}>
                       <a className={style.itemLink} href="tel:+38097901414">
+                        Telegram
                         <img
                           alt="presentation"
                           src={SVG.telegramHeader}
                           className={style.itemIcon}
                         />
-                        Telegram
                       </a>
                     </li>
                   </ul>
@@ -219,12 +221,12 @@ class Header extends Component {
                     }}
                     href="mailto:andrey.mad.87@gmail.com"
                   >
+                    info@autonom.ua
                     <img
                       alt="presentation"
                       src={SVG.tel}
                       className={style.itemIcon}
                     />
-                    info@autonom.ua
                   </a>
                 </li>
               </ul>
