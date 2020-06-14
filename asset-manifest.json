@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/carCalculator/static/css/main.45695338.chunk.css",
-    "main.js": "/carCalculator/static/js/main.614b713a.chunk.js",
-    "main.js.map": "/carCalculator/static/js/main.614b713a.chunk.js.map",
+    "main.css": "/carCalculator/static/css/main.390aa901.chunk.css",
+    "main.js": "/carCalculator/static/js/main.706cbaac.chunk.js",
+    "main.js.map": "/carCalculator/static/js/main.706cbaac.chunk.js.map",
     "runtime-main.js": "/carCalculator/static/js/runtime-main.13e4ffc5.js",
     "runtime-main.js.map": "/carCalculator/static/js/runtime-main.13e4ffc5.js.map",
     "static/css/2.a2f92c16.chunk.css": "/carCalculator/static/css/2.a2f92c16.chunk.css",
-    "static/js/2.53feb0c3.chunk.js": "/carCalculator/static/js/2.53feb0c3.chunk.js",
-    "static/js/2.53feb0c3.chunk.js.map": "/carCalculator/static/js/2.53feb0c3.chunk.js.map",
+    "static/js/2.92e17d68.chunk.js": "/carCalculator/static/js/2.92e17d68.chunk.js",
+    "static/js/2.92e17d68.chunk.js.map": "/carCalculator/static/js/2.92e17d68.chunk.js.map",
     "index.html": "/carCalculator/index.html",
-    "precache-manifest.3288a73966cd0fcf6965cbd1e2eeb0a8.js": "/carCalculator/precache-manifest.3288a73966cd0fcf6965cbd1e2eeb0a8.js",
+    "precache-manifest.472e1dd3cb7f739ec5911c2bf7bd7a90.js": "/carCalculator/precache-manifest.472e1dd3cb7f739ec5911c2bf7bd7a90.js",
     "service-worker.js": "/carCalculator/service-worker.js",
     "static/css/2.a2f92c16.chunk.css.map": "/carCalculator/static/css/2.a2f92c16.chunk.css.map",
-    "static/css/main.45695338.chunk.css.map": "/carCalculator/static/css/main.45695338.chunk.css.map",
-    "static/js/2.53feb0c3.chunk.js.LICENSE": "/carCalculator/static/js/2.53feb0c3.chunk.js.LICENSE",
+    "static/css/main.390aa901.chunk.css.map": "/carCalculator/static/css/main.390aa901.chunk.css.map",
+    "static/js/2.92e17d68.chunk.js.LICENSE": "/carCalculator/static/js/2.92e17d68.chunk.js.LICENSE",
     "static/media/1.jpg": "/carCalculator/static/media/1.572409ab.jpg",
     "static/media/10.jpg": "/carCalculator/static/media/10.f60e136e.jpg",
     "static/media/11.jpg": "/carCalculator/static/media/11.f1c07536.jpg",
@@ -150,8 +150,8 @@
   "entrypoints": [
     "static/js/runtime-main.13e4ffc5.js",
     "static/css/2.a2f92c16.chunk.css",
-    "static/js/2.53feb0c3.chunk.js",
-    "static/css/main.45695338.chunk.css",
-    "static/js/main.614b713a.chunk.js"
+    "static/js/2.92e17d68.chunk.js",
+    "static/css/main.390aa901.chunk.css",
+    "static/js/main.706cbaac.chunk.js"
   ]
 }
