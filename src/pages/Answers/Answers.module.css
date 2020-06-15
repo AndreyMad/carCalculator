@@ -96,6 +96,10 @@ input:checked ~ span > .svg {
   display: flex;
   text-align: center;
 }
+.spoiler:hover,
+.spoiler > input:hover {
+  cursor: pointer;
+}
 .disturbWrapper > img {
   position: absolute;
   top: 50%;

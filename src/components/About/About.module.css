@@ -102,12 +102,15 @@
 }
 
 @media (min-width: 1200px) {
+  .advantage {
+    max-width: 1400px;
+  }
   .about_wrapper {
-    max-width: 1150px;
+    max-width: 1400px;
   }
 
   .item {
-    max-width: 720px;
+    max-width: 600px;
   }
 
   .item::before {
