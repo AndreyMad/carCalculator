@@ -1,10 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import {
+  NotificationContainer,
+  NotificationManager
+} from "react-notifications";
 import style from "./CallBack.module.css";
+import "react-notifications/lib/notifications.css";
 
 class CallBackModal extends Component {
   state = {
-    formValues: ""
+    name: "",
+    phone: "",
+    comment: ""
   };
 
   static propTypes = {
@@ -24,15 +31,38 @@ class CallBackModal extends Component {
     document.body.style = "";
   }
 
+  handleChange = ({ target }) => {
+    this.setState({ [target.id]: target.value });
+  };
+
   formSubmit = e => {
     e.preventDefault();
     const { toggleModal } = this.props;
+    const { name, phone } = this.state;
+    if (name.length < 3) {
+      NotificationManager.error(
+        "Не коректне ім'я! Mінімум 3 символи ",
+        "Помилка",
+        3000
+      );
+      return;
+    }
+    if (phone.length < 7) {
+      NotificationManager.error(
+        "Не коректний номер телефону!",
+        "Помилка",
+        3000
+      );
+
+      return;
+    }
+
     toggleModal();
   };
 
   render() {
-    const { formValues } = this.state;
-    const { toggleModal, text, carText } = this.props;
+    const { name, phone, comment } = this.state;
+    const { toggleModal, carText } = this.props;
     return (
       <>
         <div className={style.overlay}>
@@ -44,28 +74,32 @@ class CallBackModal extends Component {
             <div className={style.formWrappe}>
               <form onSubmit={this.formSubmit}>
                 <label htmlFor="phoneNumber">
-                  Номер телефону:
+                  Номер телефону:*
                   <input
                     type="number"
+                    id="phone"
                     className={style.input}
-                    id="pnoneNumber"
+                    value={phone}
+                    onChange={this.handleChange}
                   />
                 </label>
                 <label htmlFor="nameInput">
-                  Ваше імя:
+                  Ваше імя:*
                   <input
                     type="text"
-                    value={formValues}
+                    value={name}
                     className={style.input}
-                    id="nameInput"
+                    id="name"
+                    onChange={this.handleChange}
                   />
                 </label>
                 <label htmlFor="comment">
                   Коментар:
                   <textarea
                     className={style.textArea}
-                    value={carText || ""}
+                    value={carText || comment || ""}
                     id="comment"
+                    onChange={this.handleChange}
                   />
                 </label>
               </form>
@@ -83,6 +117,7 @@ class CallBackModal extends Component {
               Залишити заявку
             </button>
           </div>
+          <NotificationContainer />
         </div>
       </>
     );

@@ -26,6 +26,10 @@
 .mainTitle > p {
   font-size: 25px;
   margin-top: 5px;
+  display: inline;
+}
+.yellowLetter ~ p {
+  font-size: 19px;
 }
 .yellowLetter {
   color: #ff580b;
@@ -207,21 +211,97 @@
   .backgroundShadow2 {
     background-color: transparent;
   }
+  .mainWrapper {
+    max-width: 900px;
+  }
+  .backgroundImg {
+    height: 400px;
+  }
+  .headWrapper {
+    max-width: 900px;
+    min-height: 400px;
+  }
+  .causes {
+    max-width: 900px;
+  }
+  .subtitle {
+    font-size: 30px;
+  }
+  .titleContainer {
+    width: 270px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 35px 10px;
+    top: -8px;
+    left: 75px;
+  }
+  .mainTitle {
+    font-size: 40px;
+    /* margin-top: 50px; */
+    position: relative;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);
+  }
+  .yellowLetter {
+    font-size: 57px;
+    margin: 15px 0px;
+    color: #ffffff;
+    width: 100%;
+    display: block;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);
+  }
+  .mainTitle > br {
+    display: none;
+  }
+  .mainTitle > p {
+    font-size: 25px;
+    display: inline;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);
+  }
+  .question {
+    right: -15px;
+  }
 }
 @media (min-width: 1200px) {
   .mainWrapper {
-    max-width: 1200px;
+    max-width: 1400px;
   }
   .headWrapper {
-    max-width: 1200px;
+    max-width: 1400px;
     height: 700px;
   }
   .backgroundImg {
     height: 100%;
   }
-  /* .backgroundShadow {
-    background-color: rgba(0, 0, 0, 0.6);
-  } */
+
+  .titleContainer {
+    width: 400px;
+    height: 450px;
+
+    top: 85px;
+    left: 135px;
+  }
+  .question {
+    right: 0px;
+  }
+  .mainTitle {
+    font-size: 55px;
+    margin-top: 50px;
+  }
+
+  .yellowLetter {
+    font-size: 85px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    width: 100%;
+    display: block;
+  }
+  .mainTitle > p {
+    font-size: 35px;
+    display: inline;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);
+  }
   .title {
     font-size: 60px;
     max-width: 835px;
@@ -230,7 +310,7 @@
     font-size: 170px;
   }
   .causes {
-    max-width: 1200px;
+    max-width: 1400px;
   }
   .subtitle {
     font-size: 38px;

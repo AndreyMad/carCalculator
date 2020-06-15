@@ -33,8 +33,8 @@ class MainPage extends Component {
       infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      // autoplay: true,
-      // autoplaySpeed: 3000,
+      autoplay: true,
+      autoplaySpeed: 3000,
       arrows: false,
       dots: false
     };
@@ -51,12 +51,14 @@ class MainPage extends Component {
 
             <div className={style.titleContainer}>
               <h1 className={style.mainTitle}>
-                хочеш <span className={style.yellowLetter}>авто</span> з
-                <br /> <p>америки</p>
+                хочеш <span className={style.yellowLetter}>авто</span>
+                <p> з</p>
+                <br />
+                <p> америки</p>
               </h1>
               <img
                 alt="presentation"
-                src={question}
+                src={window.innerWidth < 768 ? question : SVG.question}
                 className={style.question}
               />
             </div>

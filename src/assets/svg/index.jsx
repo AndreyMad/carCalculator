@@ -40,9 +40,11 @@ import headerClose from "./headerClose.svg";
 import viberHeader from "./viberHeader.svg";
 import telegramHeader from "./telegramHeader.svg";
 import down from "./down.svg";
+import question from "./question.svg";
 
 export default {
   calculator,
+  question,
   headerClose,
   down,
   telegramHeader,

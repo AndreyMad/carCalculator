@@ -87,7 +87,7 @@ input:checked ~ span > .svg {
   height: 100%;
   list-style: none;
   padding: 10px 5px;
-  background-color: #232428;
+  background-color: #000000;
 }
 .disturbWrapper {
   height: 400px;
@@ -111,8 +111,44 @@ input:checked ~ span > .svg {
   margin: auto auto 30px;
   font-size: 28px;
 }
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
+  .disturbWrapper > img {
+    max-width: 900px;
+    top: 67%;
+  }
+  .wrapper {
+    max-width: 900px;
+  }
+  .spoiler {
+    max-width: 600px;
+  }
+}
 @media (min-width: 1200px) {
   .container {
-    max-width: 1200px;
+    max-width: 1400px;
+  }
+  .disturbWrapper > img {
+    max-width: 1400px;
+    top: 50%;
+  }
+  .disturbWrapper > h3 {
+    font-size: 48px;
+  }
+  .wrapper {
+    max-width: 1400px;
+  }
+  .spoiler {
+    max-width: 900px;
+  }
+  .question {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  li,
+  .listInner > p {
+    font-size: 26px;
   }
 }
