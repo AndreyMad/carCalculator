@@ -70,23 +70,26 @@ class Header extends Component {
                   <li className={style.menuItem}>
                     <NavLink
                       exact
-                      className={style.shadowLink}
+                      className={style.link}
                       to={routes.MAIN_PAGE.path}
+                      activeClassName={style.activeLink}
                     >
                       Головна
                     </NavLink>
                   </li>
                   <li className={style.menuItem}>
                     <NavLink
-                      className={style.shadowLink}
                       to={routes.SEARCH_PAGE.path}
+                      className={style.link}
+                      activeClassName={style.activeLink}
                     >
                       Пошук
                     </NavLink>
                   </li>
                   <li className={style.menuItem}>
                     <NavLink
-                      className={style.shadowLink}
+                      className={style.link}
+                      activeClassName={style.activeLink}
                       to={routes.CALCULATOR_PAGE.path}
                     >
                       Калькулятор
@@ -95,7 +98,8 @@ class Header extends Component {
 
                   <li className={style.menuItem}>
                     <NavLink
-                      className={style.shadowLink}
+                      className={style.link}
+                      activeClassName={style.activeLink}
                       to={routes.ANSWERS.path}
                     >
                       Питання
@@ -103,7 +107,8 @@ class Header extends Component {
                   </li>
                   <li className={style.menuItem}>
                     <NavLink
-                      className={style.shadowLink}
+                      className={style.link}
+                      activeClassName={style.activeLink}
                       to={routes.ABOUT_US_PAGE.path}
                     >
                       Про нас
@@ -111,7 +116,8 @@ class Header extends Component {
                   </li>
                   <li className={style.menuItem}>
                     <NavLink
-                      className={style.shadowLink}
+                      className={style.link}
+                      activeClassName={style.activeLink}
                       to={routes.PARTS_PAGE.path}
                     >
                       Автозапчастини

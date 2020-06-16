@@ -43,10 +43,11 @@ class OrderForm extends Component {
     const { title, value } = this.props;
     return (
       <div className={style.container}>
-        <h2 className={style.title}>
-          {title || "Замов авто зараз та заощадь до 50%"}
-        </h2>
         <div className={style.shadow}>
+          <h2 className={style.title}>
+            {title || "Замов авто зараз та заощадь до 50%"}
+          </h2>
+
           <form className={style.orderForm}>
             <input
               type="text"

@@ -13,6 +13,7 @@ import hitImg from "../../assets/img/hit.webp";
 import avtoriaLogo from "../../assets/img/avtoriaLogo.jpg";
 import ModalPhoto from "../ModalPhoto/ModalPhoto";
 import fade from "../../transitions/fade.module.css";
+import soldImg from "../../assets/img/sold.png";
 
 class carAvailability extends Component {
   state = {
@@ -80,6 +81,11 @@ class carAvailability extends Component {
                     className={style.sliderInnerWrapper}
                     key={photo.indexOf()}
                   >
+                    {car.sold ? (
+                      <div className={style.soldWrapper}>
+                        <img className={style.soldImg} src={soldImg} />
+                      </div>
+                    ) : null}
                     <img
                       src={SVG.zoom}
                       className={style.zoomSvg}

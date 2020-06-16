@@ -16,8 +16,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   padding: 0px 10px;
-  background-position-y: initial;
-  background-position: center;
+  background-position-y: 55px;
   background-image: url(../../assets/img/MaskGroup1.png);
   z-index: 0;
 }
@@ -75,7 +74,7 @@
   outline: none;
   color: #ffffff;
   box-shadow: -6px 6px 4px 0px rgba(0, 0, 0, 0.75);
-
+  cursor: pointer;
   border: none;
 }
 
