@@ -8,7 +8,7 @@ export const getCarByLot = (lot, selectedAuction, price = 1000) => {
   console.log(lot);
   const car = requestFunc
     .post(
-      `https://sweetcars.com.ua/andrei/parse${selectedAuction}`,
+      ` https://sweetcars.com.ua/andrey/228/${selectedAuction}`,
       `lot=${lot}&price=${price}`
     )
     .then(res => res.data);
