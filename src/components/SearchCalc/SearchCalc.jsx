@@ -34,8 +34,7 @@ class SearchCalc extends Component {
     selectedAuction: PropTypes.string,
     lotPrice: PropTypes.string,
     car: PropTypes.shape({
-      state: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired
+      location: PropTypes.string.isRequired
     })
   };
 
@@ -84,11 +83,16 @@ class SearchCalc extends Component {
 
   deaprtureFinder = () => {
     const { car } = this.props;
+    const state = car.location.slice(0, 2);
+    const city = car.location.substr(5);
+    console.log(state);
+    console.log(city);
+
     const arrayOfPlaces = Departures.filter(el => {
-      return el.state.toLowerCase() === car.state.toLowerCase();
+      return el.state.toLowerCase() === state;
     });
     const departurePlace = arrayOfPlaces.find(el => {
-      return el.city.toLowerCase() === car.city.toLowerCase();
+      return el.city.toLowerCase() === city();
     });
     const entries = Object.entries(departurePlace);
     let overlandDeliveryCost = "";

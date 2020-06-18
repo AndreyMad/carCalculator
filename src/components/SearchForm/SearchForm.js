@@ -7,7 +7,7 @@ class SearchForm extends Component {
   state = {
     lotNumber: "",
     lotPrice: "",
-    selectedAuction: "Copart"
+    selectedAuction: "copart"
   };
 
   static propTypes = {
@@ -66,7 +66,7 @@ class SearchForm extends Component {
                 <input
                   type="radio"
                   id="CopartBtn"
-                  checked={selectedAuction === "Copart"}
+                  checked={selectedAuction === "copart"}
                   value="Copart"
                   name="auctionRadio"
                   onChange={this.handleRadioCheck}
@@ -79,7 +79,7 @@ class SearchForm extends Component {
                   value="Iaai"
                   id="IaaiBtn"
                   name="auctionRadio"
-                  checked={selectedAuction === "Iaai"}
+                  checked={selectedAuction === "iaai"}
                   onChange={this.handleRadioCheck}
                 />
                 Iaai
