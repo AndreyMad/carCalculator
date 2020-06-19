@@ -24,8 +24,8 @@ class SearchPage extends Component {
       vin: "2FMDK39C57B******",
       name: "2007 FORD EDGE SEL PLUS",
       year: 2007,
-      // city: "SAVANNAH",
-      // state: "GA",
+      city: "SAVANNAH",
+      state: "GA",
       location: "CA - SUN VALLEY",
       seller: "State Farm Insurance",
       fuel: "GAS",
@@ -140,7 +140,13 @@ class SearchPage extends Component {
         if (res.err) {
           this.setState({ error: res.resp, isLoading: false });
         } else if (res.car) {
-          this.setState({ car: res.car, isLoading: false });
+          const { car } = res;
+          const { photos } = res;
+          this.setState({
+            car: { ...car, images: photos[0].split(",") },
+
+            isLoading: false
+          });
         }
       })
       // eslint-disable-next-line no-console

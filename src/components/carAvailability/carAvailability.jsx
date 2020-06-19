@@ -83,7 +83,11 @@ class carAvailability extends Component {
                   >
                     {car.sold ? (
                       <div className={style.soldWrapper}>
-                        <img className={style.soldImg} src={soldImg} />
+                        <img
+                          className={style.soldImg}
+                          src={soldImg}
+                          alt="presentation"
+                        />
                       </div>
                     ) : null}
                     <img

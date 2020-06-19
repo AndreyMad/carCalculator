@@ -7,9 +7,14 @@ const requestFunc = axios.create({
 export const getCarByLot = (lot, selectedAuction, price = 1000) => {
   const car = requestFunc
     .post(
-      `https://sweetcars.com.ua/andrey/228/${selectedAuction}`,
+      ` https://sweetcars.com.ua/andrey/228/${selectedAuction}`,
       `lot=${lot}&price=${price}`
     )
+    .then(res => {
+      console.log(res);
+      return res;
+    })
+
     .then(res => res.data);
 
   return car;

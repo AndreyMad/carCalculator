@@ -64,11 +64,11 @@ const CarInfo = ({ car, averagePrice }) => {
                 className={style.svg}
                 alt="presentational images"
               />
-            )}{" "}
+            )}
           </p>
           {averagePrice ? (
             <p className={style.text}>
-              Середня ціна такого авто:{" "}
+              Середня ціна такого авто:
               <span className={style.span}>{averagePrice}$</span>
             </p>
           ) : null}
