@@ -4,13 +4,13 @@
   transform-origin: 16px 11px;
   outline: 0;
   top: 3px;
-  right: 0px;
+  left: 0px;
   border: 0;
   padding: 10px;
   background: none;
-  background-color: #233682;
+
   border-radius: 10px;
-  z-index: 1000;
+  z-index: 301;
   position: fixed;
 }
 .burgerSpan {

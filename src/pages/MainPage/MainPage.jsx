@@ -19,13 +19,13 @@ import jaguar from "../../assets/img/jaguar.png";
 // eslint-disable-next-line import/no-cycle
 import SimpleBuy from "../../components/SimpleBuy/SimpleBuy";
 import CarAvailability from "../../components/carAvailability/carAvailability";
-// eslint-disable-next-line no-unused-vars
-import Reviews from "../../components/Reviews/Reviews";
+import banw from "../../assets/img/banw.png";
+import question from "../../assets/img/question.png";
 
 class MainPage extends Component {
   state = {
     // eslint-disable-next-line react/no-unused-state
-    isModalOpen: false
+    isModalOpen: true
   };
 
   render() {
@@ -40,7 +40,38 @@ class MainPage extends Component {
     };
     return (
       <div className={style.container}>
-        <section className={style.headWrapper}>
+        <section className={style.mainWrapper} style={{ marginBottom: "-5px" }}>
+          <div className={style.wrapper}>
+            <div className={style.backgroundShadow2} />
+            <img
+              className={style.backgroundImg}
+              src={banw}
+              alt="presentation"
+            />
+
+            <div className={style.titleContainer}>
+              <h1 className={style.mainTitle}>
+                хочеш <span className={style.yellowLetter}>авто</span>
+                <p> з</p>
+                <br />
+                <p> америки</p>
+              </h1>
+              <img
+                alt="presentation"
+                src={window.innerWidth < 768 ? question : SVG.question}
+                className={style.question}
+              />
+            </div>
+            <CallBackBtn
+              text="Оформити заявку"
+              styles={{
+                position: "absolute",
+                bottom: "20px",
+                left: "50%",
+                transform: "translateX(-50%)"
+              }}
+            />
+          </div>
           <Slider {...settings}>
             <div className={style.headWrapper}>
               <div className={style.backgroundShadow} />

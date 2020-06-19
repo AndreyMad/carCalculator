@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import {
+  NotificationContainer,
+  NotificationManager
+} from "react-notifications";
 import style from "./PartsPage.module.css";
 import Footer from "../../components/Footer/Footer";
 import SVG from "../../assets/svg/index";
+import "react-notifications/lib/notifications.css";
 
 class PartsPage extends Component {
   state = { name: "", phone: "", coment: "" };
@@ -10,8 +15,16 @@ class PartsPage extends Component {
     this.setState({ [target.id]: target.value });
   };
 
-  submit = () => {
-    // console.log("work");
+  submit = e => {
+    e.preventDefault();
+    const { name, phone } = this.state;
+    if (name.length < 3 || phone.length < 7) {
+      NotificationManager.error(
+        "Не коректне ім'я або номер телефону!",
+        "Помилка",
+        3000
+      );
+    }
   };
 
   render() {
@@ -22,7 +35,7 @@ class PartsPage extends Component {
         <section className={style.container}>
           <div className={style.titleContainer}>
             <div className={style.shadow}>
-              <h2 className={style.title}>Запчастини з Америки</h2>
+              <h2 className={style.title}>Замовити автозапчастини</h2>
               <h2 className={style.title2}> Замовити автозапчастини з США.</h2>
 
               <p className={style.span}>
@@ -48,13 +61,13 @@ class PartsPage extends Component {
                 <input
                   type="text"
                   value={name}
-                  placeholder="Ваше імя"
+                  placeholder="Ваше імя*"
                   id="name"
                   onChange={this.handleChange}
                 />
                 <input
                   type="number"
-                  placeholder="Ваш телефон"
+                  placeholder="Ваш телефон*"
                   id="phone"
                   value={phone}
                   onChange={this.handleChange}
@@ -145,6 +158,7 @@ class PartsPage extends Component {
               </ul>
             </div>
           </div>
+          <NotificationContainer />
         </section>
         <Footer />
       </>

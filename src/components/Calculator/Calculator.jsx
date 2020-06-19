@@ -21,12 +21,12 @@ class Calculator extends Component {
     arrayOfPorts: [],
     departurePorts: [],
     imgdDeliverySrc: containerImg.defaultImg,
-    carPrice: "",
+    carPrice: "0",
     deliverySea: "900",
-    overlandDeliveryCost: "",
-    totalDelivery: "",
+    overlandDeliveryCost: "0",
+    totalDelivery: "0",
     companyСommission: 700,
-    aucComission: "",
+    aucComission: "0",
     insurance: "0"
   };
 
@@ -132,12 +132,14 @@ class Calculator extends Component {
         carPrice: e.target.value,
         insurance: Math.round(Number(e.target.value * 0.04))
       },
-      () => this.totalDeliveryCalc()
+
+      () => this.comissionCalc()
     );
   };
 
   comissionCalc = () => {
     const { carPrice, selectedAuction } = this.state;
+
     let aucComission = "";
     let bidFee = "";
 
@@ -146,13 +148,14 @@ class Calculator extends Component {
       const bidFeeArray = prices.CopartArray[1].bidFee;
       const { gateFee } = prices.CopartArray[2];
 
-      comissionArray.find(el => {
-        if (el[0] > carPrice) {
+      comissionArray.find((el, index) => {
+        if (el[0] > Number(carPrice)) {
           aucComission = el[1];
           return aucComission;
         }
-        if (el[comissionArray.length < carPrice]) {
-          aucComission = Math.round(Number(carPrice) * 0.01 + 450);
+        if (comissionArray.length - 1 === index && el[0] <= carPrice) {
+          aucComission = Math.round(Number(carPrice) * 0.02);
+
           return aucComission;
         }
       });
@@ -162,6 +165,7 @@ class Calculator extends Component {
           return bidFee;
         }
       });
+
       this.setState(
         {
           aucComission: Math.round(
@@ -176,12 +180,13 @@ class Calculator extends Component {
       const bidFeeArray = prices.IaaiArray[1].bidFee;
       const { gateFee } = prices.IaaiArray[2];
 
-      comissionArray.find(el => {
-        if (el[0] > carPrice) {
+      comissionArray.find((el, index) => {
+        if (el[0] > Number(carPrice)) {
           aucComission = el[1];
           return aucComission;
         }
-        if (el[comissionArray.length < carPrice]) {
+
+        if (comissionArray.length - 1 === index && el[0] <= carPrice) {
           aucComission = Math.round(Number(carPrice) * 0.01 + 450);
           return aucComission;
         }
@@ -257,6 +262,7 @@ class Calculator extends Component {
         ...base,
         width: "100%",
         margin: "10px auto",
+        height: "35px",
         maxWidth: "600px"
       }),
       control: base => ({
@@ -282,16 +288,19 @@ class Calculator extends Component {
                 options={arrayOfDepartures}
                 onChange={this.handleChange}
               />
-              <img
-                src={this.imgStateHelper()}
-                className={style.mapImg}
-                alt="map"
-              />
-              {departurePorts.length > 0 ? (
+              <div className={style.mapImgWrapper}>
+                <img
+                  src={this.imgStateHelper()}
+                  className={style.mapImg}
+                  alt="map"
+                />
+              </div>
+
+              {/* {departurePorts.length > 0 ? (
                 <p className={style.departurePort}>
                   Порт відправки: {departurePorts[0].name}
                 </p>
-              ) : null}
+              ) : null} */}
             </div>
 
             <div className={style.departWrapper}>
@@ -353,7 +362,7 @@ class Calculator extends Component {
                 <div className={style.priceWrapper}>
                   <span className={style.span}>
                     Ціна лота:
-                    <span className={style.innerSpan}>{carPrice}</span>
+                    <span className={style.innerSpan}>{`${carPrice}$`}</span>
                   </span>
                   <br />
                   <span className={style.span}>
@@ -373,7 +382,7 @@ class Calculator extends Component {
                     <span className={style.innerSpan}>
                       {departurePorts[0] && departurePorts[0].name
                         ? overlandDeliveryCost
-                        : null}
+                        : 0}
                       $
                     </span>
                   </span>
@@ -409,7 +418,9 @@ class Calculator extends Component {
                   <span className={style.totalDeliveryCostWrappe}>
                     <span className={style.totalDeliveryCost}>
                       Загальна сума до порту Одеса:
-                      <span className={style.innerSpan}> {totalDelivery}</span>
+                      <span className={style.innerSpan}>
+                        {`${totalDelivery}$`}
+                      </span>
                     </span>
                   </span>
                 </div>

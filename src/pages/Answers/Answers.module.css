@@ -10,19 +10,20 @@
   min-height: 40px;
   height: auto;
   border-radius: 10px;
-  width: 100%;
-  padding: 5px;
+  width: 95%;
+  padding: 15px;
   font-size: 18px;
   position: relative;
+  box-shadow: -4px 4px 3px 0px rgba(191, 191, 191, 0.8);
+  max-width: 500px;
 
-  transform: translateY(-4%);
-  margin-top: 10px;
+  margin: 15px auto 0px;
   background-color: #ffffff;
 }
 .spoiler > input {
-  width: 100%;
+  width: calc(100% - 10px);
   position: absolute;
-  height: 100%;
+  height: calc(100% - 10px);
   font-size: 15px;
   opacity: 0;
   z-index: 10;
@@ -30,68 +31,128 @@
 .listInner {
   overflow: hidden;
   max-height: 0px;
-
   transition: 600ms ease-in-out;
   position: relative;
 }
 input:checked ~ .listInner {
-  max-height: 300px;
-
+  max-height: 600px;
   transition: 600ms ease-in-out;
+}
+input:checked ~ .listInner {
+  padding-top: 15px;
+}
+.listInner:after {
+  width: calc(100% - 10px);
+  content: "";
+
+  border: 1px solid black;
+  opacity: 0;
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  z-index: 10;
+}
+
+input:checked ~ .listInner:after {
+  transition-delay: 600ms;
+  opacity: 1;
 }
 .question {
   position: relative;
   width: 100%;
   display: block;
   height: 100%;
+  transition: 600ms;
   padding-right: 45px;
 }
-.question::after {
-  background: #233682;
-  border-radius: 50%;
-  content: "+";
-  font-size: 31px;
-  top: 50%;
-  font-weight: bold;
-  margin: 0px 10px;
-  padding: 0;
-  text-align: center;
-  width: 36px;
+.svg {
+  content: url(../../assets//svg/down.svg);
   position: absolute;
-  transform: translateY(-50%);
-  transition: 600ms ease-in-out;
-  z-index: 10;
-  right: 0px;
-  color: #ffffff;
-}
-input:checked ~ .question {
-  margin-bottom: 15px;
-  transition: 300ms;
-}
-input:checked ~ .question::after {
-  transform: rotateZ(135deg);
-  content: "+";
   top: 50%;
-  transition: 600ms ease-in-out;
+  right: 15px;
+  transform: translateY(-50%);
 }
+input:checked ~ span > .svg {
+  content: url(../../assets//svg/up.svg);
+}
+
 .wrapper {
   width: 100%;
   max-width: 600px;
-  min-height: 100vh;
+
   position: relative;
-  background-image: url(../../assets/img/audi.png);
 }
 .shadowContainer {
   width: 100%;
   height: 100%;
   list-style: none;
   padding: 10px 5px;
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #000000;
 }
-
+.disturbWrapper {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  display: flex;
+  text-align: center;
+}
+.spoiler:hover,
+.spoiler > input:hover {
+  cursor: pointer;
+}
+.disturbWrapper > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -66%);
+  width: 100%;
+  z-index: -1;
+  min-height: 420px;
+  max-width: 600px;
+}
+.disturbWrapper > h3 {
+  color: #ffffff;
+  margin: auto auto 30px;
+  font-size: 28px;
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
+  .disturbWrapper > img {
+    max-width: 900px;
+    top: 67%;
+  }
+  .wrapper {
+    max-width: 900px;
+  }
+  .spoiler {
+    max-width: 600px;
+  }
+}
 @media (min-width: 1200px) {
   .container {
-    max-width: 1200px;
+    max-width: 1400px;
+  }
+  .disturbWrapper > img {
+    max-width: 1400px;
+    top: 50%;
+  }
+  .disturbWrapper > h3 {
+    font-size: 48px;
+  }
+  .wrapper {
+    max-width: 1400px;
+  }
+  .spoiler {
+    max-width: 900px;
+  }
+  .question {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  li,
+  .listInner > p {
+    font-size: 26px;
   }
 }

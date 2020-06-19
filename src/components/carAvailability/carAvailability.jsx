@@ -4,6 +4,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
 import Slider from "react-slick";
+import { CSSTransition } from "react-transition-group";
 import allCars from "../../assets/img/availabCars/index";
 import style from "./carAvailability.module.css";
 import SVG from "../../assets/svg/index";
@@ -11,6 +12,8 @@ import CallBackBtn from "../CallBack/CallBackBtn";
 import hitImg from "../../assets/img/hit.webp";
 import avtoriaLogo from "../../assets/img/avtoriaLogo.jpg";
 import ModalPhoto from "../ModalPhoto/ModalPhoto";
+import fade from "../../transitions/fade.module.css";
+import soldImg from "../../assets/img/sold.png";
 
 class carAvailability extends Component {
   state = {
@@ -78,6 +81,15 @@ class carAvailability extends Component {
                     className={style.sliderInnerWrapper}
                     key={photo.indexOf()}
                   >
+                    {car.sold ? (
+                      <div className={style.soldWrapper}>
+                        <img
+                          className={style.soldImg}
+                          src={soldImg}
+                          alt="presentation"
+                        />
+                      </div>
+                    ) : null}
                     <img
                       src={SVG.zoom}
                       className={style.zoomSvg}
@@ -150,13 +162,29 @@ class carAvailability extends Component {
                 <span>{car.averagePrice}$</span>
               </p>
             </div>
-            {modalImage ? (
+
+            <CSSTransition
+              in={modalImage}
+              unmountOnExit
+              timeout={400}
+              classNames={fade}
+            >
               <ModalPhoto
                 photo={modalImage}
                 imageDecrease={this.imageDecrease}
               />
-            ) : null}
-            <CallBackBtn text="Замовити авто" />
+            </CSSTransition>
+
+            <CallBackBtn
+              text="Замовити авто"
+              carText={`Доброго дня, мене цікавить авто ${car.carName}, ${car.carYear} року `}
+              styles={{
+                width: "225px",
+                height: "35px",
+                margin: "30px auto 20px",
+                fontSize: "18px"
+              }}
+            />
           </div>
         ))}
       </div>

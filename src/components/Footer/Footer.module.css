@@ -1,5 +1,6 @@
 .footerContainer {
   width: 100%;
+  margin: 0px auto;
   height: 295px;
   background-color: #000000;
   display: flex;
@@ -117,5 +118,15 @@
   }
   .logoWrapper {
     max-width: 200px;
+  }
+}
+@media (min-width: 768px) {
+  .footerContainer {
+    max-width: 900px;
+  }
+}
+@media (min-width: 1200px) {
+  .footerContainer {
+    max-width: 1400px;
   }
 }

@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import slide from "../../transitions/slide.module.css";
+import slideLeft from "../../transitions/slideLeft.module.css";
 import fade from "../../transitions/fade250.module.css";
 
 import routes from "../../routes/routes";
@@ -39,7 +39,6 @@ class Navigation extends Component {
   };
 
   togleHelper = e => {
-    console.log(e.target);
     if (
       e.target.className.includes("menuButton") ||
       e.target.className.includes("overlay") ||
@@ -74,7 +73,7 @@ class Navigation extends Component {
           in={isBurgerOpen}
           unmountOnExit
           timeout={250}
-          classNames={slide}
+          classNames={slideLeft}
         >
           <>
             <div
@@ -124,7 +123,7 @@ class Navigation extends Component {
                     className={style.shadowLink}
                     to={routes.PARTS_PAGE.path}
                   >
-                    Підбір і доставка автозапчастин
+                    Автозапчастини
                   </NavLink>
                 </li>
                 <li className={style.menuItem}>

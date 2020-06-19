@@ -43,6 +43,20 @@
 .form > textarea {
   min-height: 120px;
 }
+.submitBtn {
+  background-color: #e74911;
+  cursor: pointer;
+  height: 35px;
+  display: block;
+  margin: 0px auto;
+  outline: none;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  color: #ffffff;
+  transition: 0.1s;
+  box-shadow: -6px 6px 4px 0px rgba(0, 0, 0, 0.75);
+}
 .shadow {
   width: 100%;
   height: 100%;
@@ -138,9 +152,55 @@ form > textarea {
   width: 100%;
   position: relative;
 }
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+    min-height: 600px;
+  }
+  .whiteShadow > p {
+    max-width: 600px;
+    font-size: 22px;
+  }
+  .span {
+    max-width: 600px;
+  }
+  .form {
+    max-width: 600px;
+    padding: 40px 80px;
+    margin: 0px auto;
+  }
+  .form > input,
+  form > textarea {
+    width: 350px;
+    height: 45px;
+    font-size: 18px;
+  }
+  .subTitle {
+    font-size: 32px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  .svg {
+    width: 45px;
+
+    height: 45px;
+  }
+  .item {
+    margin-left: 35px;
+    font-size: 32px;
+  }
+  .item > span:first-of-type {
+    font-size: 28px;
+  }
+  .item > span:last-of-type {
+    font-size: 26px;
+    margin-left: 55px;
+  }
+}
 @media (min-width: 1200px) {
   .container {
-    max-width: 1200px;
+    max-width: 1400px;
     min-height: 600px;
   }
   .title {
@@ -152,7 +212,7 @@ form > textarea {
   }
   .span {
     font-size: 28px;
-    max-width: 600px;
+    max-width: 700px;
   }
   .shadow {
     min-height: 600px;

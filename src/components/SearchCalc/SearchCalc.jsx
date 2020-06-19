@@ -34,14 +34,13 @@ class SearchCalc extends Component {
     selectedAuction: PropTypes.string,
     lotPrice: PropTypes.string,
     car: PropTypes.shape({
-      state: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired
+      location: PropTypes.string.isRequired
     })
   };
 
   static defaultProps = {
     selectedAuction: "",
-    lotPrice: "",
+    lotPrice: "1000",
     car: {}
   };
 
@@ -84,13 +83,19 @@ class SearchCalc extends Component {
 
   deaprtureFinder = () => {
     const { car } = this.props;
+    const state = car.location.slice(0, 2);
+    const city = car.location.substr(5);
+
     const arrayOfPlaces = Departures.filter(el => {
-      return el.state.toLowerCase() === car.state.toLowerCase();
+      return el.state.toLowerCase() === state.toLowerCase();
     });
+
     const departurePlace = arrayOfPlaces.find(el => {
-      return el.city.toLowerCase() === car.city.toLowerCase();
+      return el.city.toLowerCase() === city.toLowerCase();
     });
+
     const entries = Object.entries(departurePlace);
+
     let overlandDeliveryCost = "";
     entries.map(el => {
       if (el[0].length === 2 && el[1] !== null) {
@@ -111,19 +116,19 @@ class SearchCalc extends Component {
     let aucComission = "";
     let bidFee = "";
 
-    if (selectedAuction === "Copart") {
+    if (selectedAuction === "copart") {
       const comissionArray = prices.CopartArray[0].comission;
       const bidFeeArray = prices.CopartArray[1].bidFee;
       const { gateFee } = prices.CopartArray[2];
 
-      comissionArray.find(el => {
-        if (el[0] > lotPrice) {
+      comissionArray.find((el, index) => {
+        if (el[0] > Number(lotPrice)) {
           aucComission = el[1];
-
           return aucComission;
         }
-        if (el[comissionArray.length < lotPrice]) {
-          aucComission = Math.round(Number(lotPrice) * 0.01 + 450);
+        if (comissionArray.length - 1 === index && el[0] <= lotPrice) {
+          aucComission = Math.round(Number(lotPrice) * 0.02);
+
           return aucComission;
         }
       });
@@ -138,8 +143,6 @@ class SearchCalc extends Component {
         Number(bidFee) + Number(aucComission) + Number(gateFee);
       const totalCarPrice = Number(lotPrice) + Number(totalAucComission);
 
-      // console.log(object);
-
       this.setState({
         aucComission: Math.round(
           Number(gateFee) + Number(bidFee) + Number(aucComission)
@@ -147,18 +150,19 @@ class SearchCalc extends Component {
         importDuty: Math.round(totalCarPrice * 0.1)
       });
     }
-    if (selectedAuction === "Iaai") {
+    if (selectedAuction === "iaai") {
       const comissionArray = prices.IaaiArray[0].comission;
       const bidFeeArray = prices.IaaiArray[1].bidFee;
       const { gateFee } = prices.IaaiArray[2];
 
-      comissionArray.find(el => {
-        if (el[0] > lotPrice) {
+      comissionArray.find((el, index) => {
+        if (el[0] > Number(lotPrice)) {
           aucComission = el[1];
           return aucComission;
         }
-        if (el[comissionArray.length < lotPrice]) {
-          aucComission = Math.round(Number(lotPrice) * 0.01 + 450);
+        if (comissionArray.length - 1 === index && el[0] <= lotPrice) {
+          aucComission = Math.round(Number(lotPrice) * 0.02);
+
           return aucComission;
         }
       });
@@ -180,7 +184,7 @@ class SearchCalc extends Component {
   taxesCalc = () => {
     const { lotPrice, aucComission, importDuty, car } = this.state;
 
-    if (car.year > 1 && car.capacity >= 0) {
+    if (car.year > 1 && car.vol >= 0) {
       let coeficient = 50;
       const ageOfCar = 2020 - Number(car.year);
       let exise = "";
@@ -189,11 +193,11 @@ class SearchCalc extends Component {
 
       switch (car.fuel) {
         case "GAS":
-          if (Number(car.capacity) > 3.5) {
+          if (Number(car.vol) > 3.5) {
             coeficient = 100;
           }
           exise = Math.round(
-            Number(ageOfCar) * Number(car.capacity) * Number(coeficient)
+            Number(ageOfCar) * Number(car.vol) * Number(coeficient)
           );
           totalCustomPrice =
             Number(lotPrice) +
@@ -203,11 +207,11 @@ class SearchCalc extends Component {
           nds = Math.round(totalCustomPrice * 0.2);
           break;
         case "DIESEL":
-          if (Number(car.capacity) > 3.5) {
+          if (Number(car.vol) > 3.5) {
             coeficient = 150;
           } else coeficient = 75;
           exise = Math.round(
-            Number(ageOfCar) * Number(car.capacity) * Number(coeficient)
+            Number(ageOfCar) * Number(car.vol) * Number(coeficient)
           );
           totalCustomPrice =
             Number(lotPrice) +

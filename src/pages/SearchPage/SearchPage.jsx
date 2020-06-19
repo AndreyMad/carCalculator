@@ -17,27 +17,28 @@ import style from "./SearchPage.module.css";
 class SearchPage extends Component {
   state = {
     car: {
-      // currentBid: 0,
-      // buyNow: 0,
-      // lot: 26098920,
-      // aucDate: 1587996000000,
-      // vin: "2FMDK39C57B******",
-      // name: "2007 FORD EDGE SEL PLUS",
-      // year: 2007,
-      // city: "SAVANNAH",
-      // state: "GA",
-      // seller: "State Farm Insurance",
-      // fuel: "GAS",
-      // engine: "3.5L  6",
-      // highlights: "RUNS AND DRIVES",
-      // odo: 183964,
-      // capacity: 3.5,
-      // images: [
-      //   "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
-      //   "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
-      //   "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
-      // ],
-      // doc: "GA - CERT OF TITLE-SALVAGE"
+      currentBid: 0,
+      buyNow: 0,
+      lot: 26098920,
+      aucDate: 1587996000000,
+      vin: "2FMDK39C57B******",
+      name: "2007 FORD EDGE SEL PLUS",
+      year: 2007,
+      city: "SAVANNAH",
+      state: "GA",
+      location: "CA - SUN VALLEY",
+      seller: "State Farm Insurance",
+      fuel: "GAS",
+      engine: "3.5L  6",
+      highlights: "RUNS AND DRIVES",
+      odo: 183964,
+      capacity: 3.5,
+      images: [
+        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
+        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
+        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
+      ],
+      doc: "GA - CERT OF TITLE-SALVAGE"
     },
     averagePriceCar: {
       make: "",
@@ -139,7 +140,13 @@ class SearchPage extends Component {
         if (res.err) {
           this.setState({ error: res.resp, isLoading: false });
         } else if (res.car) {
-          this.setState({ car: res.car, isLoading: false });
+          const { car } = res;
+          const { photos } = res;
+          this.setState({
+            car: { ...car, images: photos[0].split(",") },
+
+            isLoading: false
+          });
         }
       })
       // eslint-disable-next-line no-console
