@@ -1,14 +1,25 @@
 import axios from "axios";
 
-const requestFunc = axios.create({
-  timeout: 1000
-});
-
 export const getCarByLot = (lot, selectedAuction, price = 1000) => {
-  const car = requestFunc
+  const car = axios
     .post(
       ` https://sweetcars.com.ua/andrey/228/${selectedAuction}`,
       `lot=${lot}&price=${price}`
+    )
+    .then(res => {
+      console.log(res);
+      return res;
+    })
+
+    .then(res => res.data);
+
+  return car;
+};
+export const getCarByVin = (vin, selectedAuction, price = 1000) => {
+  const car = axios
+    .post(
+      ` https://sweetcars.com.ua/andrey/228/${selectedAuction}`,
+      `vin=${vin}&price=${price}`
     )
     .then(res => {
       console.log(res);

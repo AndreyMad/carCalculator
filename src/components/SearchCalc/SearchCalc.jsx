@@ -5,8 +5,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import style from "./SearchCalc.module.css";
-import { Departures } from "../../assets/data/places.json";
-import { portsDepart } from "../../assets/data/portDeparture.json";
+import departures from "../../assets/data/places.json";
 import prices from "../../assets/data/comissionPrice.json";
 
 class SearchCalc extends Component {
@@ -16,6 +15,7 @@ class SearchCalc extends Component {
     deliverySea: "900",
     overlandDeliveryCost: "0",
     companyСommission: 900,
+    deaprturePort: "",
     aucComission: "0",
     insurance: "0",
     portExpedition: "450",
@@ -83,32 +83,21 @@ class SearchCalc extends Component {
 
   deaprtureFinder = () => {
     const { car } = this.props;
-    const state = car.location.slice(0, 2);
     const city = car.location.substr(5);
-
-    const arrayOfPlaces = Departures.filter(el => {
-      return el.state.toLowerCase() === state.toLowerCase();
+    const departurePlace = departures.find(el => {
+      return el.city === city;
     });
-
-    const departurePlace = arrayOfPlaces.find(el => {
-      return el.city.toLowerCase() === city.toLowerCase();
-    });
-
-    const entries = Object.entries(departurePlace);
-
-    let overlandDeliveryCost = "";
-    entries.map(el => {
-      if (el[0].length === 2 && el[1] !== null) {
-        overlandDeliveryCost = el[1];
-        const deaprturePort = portsDepart.filter(port => {
-          return port.value === el[0];
-        });
-        this.setState({
-          deaprturePort: deaprturePort[0].name,
-          overlandDeliveryCost
-        });
-      }
-    });
+    if (departurePlace) {
+      const sortedDeparturePlaces = Object.values(departurePlace.land).sort(
+        (a, b) => {
+          return a.amount - b.amount;
+        }
+      );
+      this.setState({
+        deaprturePort: sortedDeparturePlaces[0].name,
+        overlandDeliveryCost: sortedDeparturePlaces[0].amount
+      });
+    }
   };
 
   comissionCalc = () => {

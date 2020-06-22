@@ -16,30 +16,7 @@ import style from "./SearchPage.module.css";
 
 class SearchPage extends Component {
   state = {
-    car: {
-      currentBid: 0,
-      buyNow: 0,
-      lot: 26098920,
-      aucDate: 1587996000000,
-      vin: "2FMDK39C57B******",
-      name: "2007 FORD EDGE SEL PLUS",
-      year: 2007,
-      city: "SAVANNAH",
-      state: "GA",
-      location: "CA - SUN VALLEY",
-      seller: "State Farm Insurance",
-      fuel: "GAS",
-      engine: "3.5L  6",
-      highlights: "RUNS AND DRIVES",
-      odo: 183964,
-      capacity: 3.5,
-      images: [
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
-        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
-      ],
-      doc: "GA - CERT OF TITLE-SALVAGE"
-    },
+    car: {},
     averagePriceCar: {
       make: "",
       model: "",
@@ -67,6 +44,12 @@ class SearchPage extends Component {
       this.getAveragePrice(averagePriceCar);
     }
   }
+
+  abortLoading = () => {
+    this.setState({
+      isLoading: false
+    });
+  };
 
   averagePriceHelper = car => {
     const arrayData = car.split(" ");
@@ -120,14 +103,13 @@ class SearchPage extends Component {
   };
 
   getAveragePrice = car => {
-    // const { car } = this.state;
     this.averagePriceHelper(car.name);
     return API.getAveragePrice(car).then(res => {
       this.setState({ averagePrice: res.data.price });
     });
   };
 
-  formSubmit = (value, selectedAuction, lotPrice) => {
+  formSubmit = (formValue, selectedAuction, lotPrice) => {
     this.setState({
       isLoading: true,
       lotPrice,
@@ -135,22 +117,51 @@ class SearchPage extends Component {
       car: {},
       error: ""
     });
-    API.getCarByLot(value, selectedAuction)
-      .then(res => {
-        if (res.err) {
-          this.setState({ error: res.resp, isLoading: false });
-        } else if (res.car) {
-          const { car } = res;
-          const { photos } = res;
-          this.setState({
-            car: { ...car, images: photos[0].split(",") },
+    if (formValue.length === 8) {
+      API.getCarByLot(formValue, selectedAuction)
+        .then(res => {
+          if (res.error) {
+            this.setState({ error: res.error, isLoading: false });
+            return;
+          }
+          if (res.car) {
+            const { car } = res;
+            const { photos } = res;
+            const photoArray = photos.substr(1, photos.length - 2).split(",");
+            const newPhotoArray = photoArray.map(el => {
+              return el.substr(1, el.length - 2);
+            });
+            this.setState({
+              car: { ...car, images: newPhotoArray },
 
-            isLoading: false
-          });
-        }
-      })
-      // eslint-disable-next-line no-console
-      .catch(err => console.log(err));
+              isLoading: false
+            });
+          }
+        })
+        // eslint-disable-next-line no-console
+        .catch(err => console.log(err));
+    } else if (formValue.length === 17) {
+      API.getCarByVin(formValue, selectedAuction)
+        .then(res => {
+          if (res.err) {
+            this.setState({ error: res.resp, isLoading: false });
+          } else if (res.car) {
+            const { car } = res;
+            const { photos } = res;
+            const photoArray = photos.substr(1, photos.length - 2).split(",");
+            const newPhotoArray = photoArray.map(el => {
+              return el.substr(1, el.length - 2);
+            });
+            this.setState({
+              car: { ...car, images: newPhotoArray },
+
+              isLoading: false
+            });
+          }
+        })
+        // eslint-disable-next-line no-console
+        .catch(err => console.log(err));
+    }
   };
 
   render() {
@@ -164,20 +175,22 @@ class SearchPage extends Component {
     } = this.state;
     return (
       <>
-        {isLoading ? <Loader /> : null}
+        {isLoading ? <Loader abortLoading={this.abortLoading} /> : null}
         <div className={style.container}>
           <div className={style.wrapper}>
             <div className={style.shadow}>
-              {car.lot ? null : <div className={style.marginContainer} />}
+              {car && car.lot && car.lot ? null : (
+                <div className={style.marginContainer} />
+              )}
               <SearchForm formSubmit={this.formSubmit} />
 
-              {car ? (
+              {error.length === 0 && car ? (
                 <>
                   {car.images ? (
                     <CarInfo car={car} averagePrice={averagePrice} />
                   ) : null}
 
-                  {car.lot > 5 ? (
+                  {car.lot ? (
                     <SearchCalc
                       car={car}
                       lotPrice={lotPrice}
@@ -197,9 +210,13 @@ class SearchPage extends Component {
                   )}
                 </>
               ) : null}
-              {/* {error ? <ErrorNotif error={error} /> : null} */}
+              {error ? <ErrorNotif error={error} /> : null}
 
-              {car.lot && error.length === 0 ? <CallBackBtn /> : null}
+              {car && car.lot && error.length === 0 ? (
+                <CallBackBtn
+                  carText={`Доброго дня, мене зацікавив автомобіль ${car.name}, за номером лоту №${car.lot}`}
+                />
+              ) : null}
             </div>
           </div>
 

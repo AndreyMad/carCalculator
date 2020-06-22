@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "express": "^4.17.1",
     "fast-levenshtein": "^2.0.6",
     "gh-pages": "^2.2.0",
     "react": "^16.13.1",
@@ -30,14 +31,11 @@
     "video-react": "^0.14.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://andreymad.github.io/carCalculator/",
   "eslintConfig": {
     "extends": "react-app"
   },
