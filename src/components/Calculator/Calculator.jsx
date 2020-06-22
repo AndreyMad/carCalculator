@@ -154,7 +154,7 @@ class Calculator extends Component {
           return aucComission;
         }
         if (comissionArray.length - 1 === index && el[0] <= carPrice) {
-          aucComission = Math.round(Number(carPrice) * 0.02);
+          aucComission = Math.round(Number(carPrice) * 0.04);
 
           return aucComission;
         }
@@ -182,12 +182,17 @@ class Calculator extends Component {
 
       comissionArray.find((el, index) => {
         if (el[0] > Number(carPrice)) {
+          if (Number(carPrice) < 7499 && Number(carPrice) < 20000) {
+            aucComission = el[1] + Number(carPrice) * 0.01;
+            console.log(aucComission);
+            return aucComission;
+          }
           aucComission = el[1];
           return aucComission;
         }
 
         if (comissionArray.length - 1 === index && el[0] <= carPrice) {
-          aucComission = Math.round(Number(carPrice) * 0.01 + 450);
+          aucComission = Math.round(Number(carPrice) * 0.04);
           return aucComission;
         }
       });
