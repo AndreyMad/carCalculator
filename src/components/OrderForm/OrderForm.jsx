@@ -14,7 +14,7 @@ class OrderForm extends Component {
     name: "",
     phone: "",
     comment: "",
-    isLoading: true
+    isLoading: false
   };
 
   static propTypes = {
@@ -25,6 +25,12 @@ class OrderForm extends Component {
   static defaultProps = {
     title: "",
     value: ""
+  };
+
+  abortLoading = () => {
+    this.setState({
+      isLoading: false
+    });
   };
 
   handleChange = ({ target }) => {
@@ -68,7 +74,7 @@ class OrderForm extends Component {
     const { name, phone, comment, isLoading } = this.state;
     return (
       <>
-        {isLoading && <Loader />}
+        {isLoading && <Loader abortLoading={this.abortLoading} />}
         <div className={style.container}>
           <div className={style.shadow}>
             <h2 className={style.title}>

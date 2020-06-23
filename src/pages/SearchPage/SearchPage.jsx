@@ -143,6 +143,7 @@ class SearchPage extends Component {
     if (formValue.length === 8) {
       API.getCarByLot(formValue, selectedAuction)
         .then(res => {
+          console.log(res);
           if (res.error) {
             this.setState({ error: res.error, isLoading: false });
             return;
