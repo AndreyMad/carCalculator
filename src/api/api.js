@@ -9,7 +9,20 @@ export const getCarByLot = (lot, selectedAuction, price = 1000) => {
       `lot=${lot}&price=${price}`
     )
     .then(res => {
-      console.log(res);
+      return res;
+    })
+
+    .then(res => res.data);
+
+  return car;
+};
+export const getCarByVin = (vin, selectedAuction, price = 1000) => {
+  const car = axios
+    .post(
+      ` https://sweetcars.com.ua/andrey/228/${selectedAuction}`,
+      `vin=${vin}&price=${price}`
+    )
+    .then(res => {
       return res;
     })
 

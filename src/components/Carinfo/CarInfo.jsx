@@ -39,23 +39,29 @@ const CarInfo = ({ car, averagePrice }) => {
             Номер лоту: <span className={style.span}>{car.lot}</span>
           </p>
           <p className={style.text}>
-            Дата аукціону:{" "}
-            <span className={style.span}>{auctionDateTime(car.aucDate)}</span>
+            VIN:
+            <span className={style.span}>{car.vin}</span>
           </p>
           <p className={style.text}>
-            Двигун: <span className={style.span}>{car.engine}</span>
+            Двигун: <span className={style.span}>{car.vol.toFixed(1)}</span>
           </p>
           <p className={style.text}>
             Паливо: <span className={style.span}>{car.fuel}</span>
           </p>
           <p className={style.text}>
-            Пробіг: <span className={style.span}>{car.odo}</span>
+            Пробіг: <span className={style.span}>{car.miles}</span>
           </p>
           <p className={style.text}>
-            Тайтл: <span className={style.span}>{car.doc}</span>
+            Привід: <span className={style.span}>{car.privod}</span>
           </p>
           <p className={style.text}>
-            Run and Drive:{" "}
+            Тайтл: <span className={style.span}>{car.docs}</span>
+          </p>
+          <p className={style.text}>
+            Продавець: <span className={style.span}>{car.seller}</span>
+          </p>
+          <p className={style.text}>
+            Run and Drive:
             {runAndDrive ? (
               <img src={okSvg} className={style.svg} alt="ok" />
             ) : (
@@ -66,12 +72,12 @@ const CarInfo = ({ car, averagePrice }) => {
               />
             )}
           </p>
-          {averagePrice ? (
+          {car.avgPrice && (
             <p className={style.text}>
-              Середня ціна такого авто:
-              <span className={style.span}>{averagePrice}$</span>
+              Середня авто на аукціоні:
+              <span className={style.span}>{car.avgPrice}$</span>
             </p>
-          ) : null}
+          )}
         </div>
       </div>
       <ShowMoreBtn images={car.images} />

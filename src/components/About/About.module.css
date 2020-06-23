@@ -84,8 +84,11 @@
 }
 
 @media (min-width: 768px) {
+  .advantage {
+    max-width: 900px;
+  }
   .about {
-    max-width: 600px;
+    max-width: 900px;
   }
 
   .item {
