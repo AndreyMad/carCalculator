@@ -139,14 +139,21 @@ class Header extends Component {
                 <div className={style.feedbackTabletWrapper}>
                   <span>Контакти</span>
                   <div>
-                    <a href="tel:+380979011449" className={style.phoneLink}>
+                    <a
+                      href="viber://chat?number=%2B80979011449"
+                      className={style.phoneLink}
+                    >
                       <img
                         className={style.feedbackBtnImg}
                         src={SVG.viberWhite}
                         alt="presentation"
                       />
                     </a>
-                    <a href="tel:+380979011449" className={style.phoneLink}>
+
+                    <a
+                      href="tg://resolve?domain=andreyMad87"
+                      className={style.phoneLink}
+                    >
                       <img
                         className={style.feedbackBtnImg}
                         src={SVG.telegramWhite}
@@ -194,7 +201,10 @@ class Header extends Component {
                   <span className={style.subTitle}>Ми у соц мережах</span>
                   <ul className={style.innerList}>
                     <li className={style.iinerListItem}>
-                      <a className={style.itemLink} href="tel:+38097901414">
+                      <a
+                        className={style.itemLink}
+                        href="viber://chat?number=%2B80979011449"
+                      >
                         Viber
                         <img
                           alt="presentation"
@@ -204,7 +214,10 @@ class Header extends Component {
                       </a>
                     </li>
                     <li className={style.iinerListItem}>
-                      <a className={style.itemLink} href="tel:+38097901414">
+                      <a
+                        className={style.itemLink}
+                        href="tg://resolve?domain=andreyMad87"
+                      >
                         Telegram
                         <img
                           alt="presentation"

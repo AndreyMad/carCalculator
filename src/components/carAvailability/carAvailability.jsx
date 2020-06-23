@@ -164,7 +164,7 @@ class carAvailability extends Component {
             </div>
 
             <CSSTransition
-              in={modalImage}
+              in={!!modalImage}
               unmountOnExit
               timeout={400}
               classNames={fade}

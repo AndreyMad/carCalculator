@@ -143,30 +143,40 @@ class SearchPage extends Component {
     if (formValue.length === 8) {
       API.getCarByLot(formValue, selectedAuction)
         .then(res => {
-          console.log(res);
+          const { car } = res;
           if (res.error) {
             this.setState({ error: res.error, isLoading: false });
             return;
           }
           if (res.car) {
-            const { car } = res;
             const { photos } = res;
-            const photoArray = photos.substr(1, photos.length - 2).split(",");
-            const newPhotoArray = photoArray.map(el => {
-              return el.substr(1, el.length - 2);
-            });
-            this.setState({
-              car: { ...car, images: newPhotoArray },
 
-              isLoading: false
-            });
+            if (photos.length > 1) {
+              const photoArray = photos.substr(1, photos.length - 2).split(",");
+              const newPhotoArray = photoArray.map(el => {
+                return el.substr(1, el.length - 2);
+              });
+
+              this.setState({
+                car: { ...car, images: newPhotoArray },
+
+                isLoading: false
+              });
+              return;
+            }
           }
+          this.setState({
+            car: { ...car },
+
+            isLoading: false
+          });
         })
         // eslint-disable-next-line no-console
         .catch(err => console.log(err));
     } else if (formValue.length === 17) {
       API.getCarByVin(formValue, selectedAuction)
         .then(res => {
+          console.log(!!res.car);
           if (res.err) {
             this.setState({ error: res.resp, isLoading: false });
           } else if (res.car) {

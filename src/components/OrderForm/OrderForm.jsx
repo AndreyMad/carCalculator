@@ -50,16 +50,13 @@ class OrderForm extends Component {
       return;
     }
     this.setState({ isLoading: true });
-    const message = {
-      name,
-      phone,
-      comment
-    };
 
-    API.sendMessageTelegram(JSON.stringify(message))
+    API.sendMessageTelegram(
+      `Імя: ${name}, Телефон: ${phone}, Коментар: ${comment}`
+    )
       .then(res => {
         return res.data.ok ? (
-          this.setState({ isLoading: false })
+          this.setState({ isLoading: false, name: "", phone: "", comment: "" })
         ) : (
           <span>Щось пішло не так. Спробуйте ще раз</span>
         );
@@ -88,7 +85,7 @@ class OrderForm extends Component {
                 className={style.inputName}
                 onChange={this.handleChange}
                 value={name}
-                placeholder="Ваше ім'я"
+                placeholder="Ваше ім'я*"
               />
               <input
                 type="number"
@@ -96,7 +93,7 @@ class OrderForm extends Component {
                 className={style.inputNumber}
                 onChange={this.handleChange}
                 value={phone}
-                placeholder="Ваш телефон"
+                placeholder="Ваш телефон*"
               />
               <textarea
                 type="text"

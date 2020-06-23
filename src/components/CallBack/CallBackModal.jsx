@@ -4,6 +4,8 @@ import {
   NotificationContainer,
   NotificationManager
 } from "react-notifications";
+import * as API from "../../api/api";
+import Loader from "../Loader/Loader";
 import style from "./CallBack.module.css";
 import "react-notifications/lib/notifications.css";
 
@@ -11,7 +13,8 @@ class CallBackModal extends Component {
   state = {
     name: "",
     phone: "",
-    comment: ""
+    comment: "",
+    isLoading: false
   };
 
   static propTypes = {
@@ -24,12 +27,20 @@ class CallBackModal extends Component {
   };
 
   componentDidMount() {
+    const { carText } = this.props;
+    this.setState({ comment: carText });
     document.body.style = " overflow: hidden ";
   }
 
   componentWillUnmount() {
     document.body.style = "";
   }
+
+  abortLoading = () => {
+    this.setState({
+      isLoading: false
+    });
+  };
 
   handleChange = ({ target }) => {
     this.setState({ [target.id]: target.value });
@@ -38,7 +49,7 @@ class CallBackModal extends Component {
   formSubmit = e => {
     e.preventDefault();
     const { toggleModal } = this.props;
-    const { name, phone } = this.state;
+    const { name, phone, comment } = this.state;
     if (name.length < 3) {
       NotificationManager.error(
         "Не коректне ім'я! Mінімум 3 символи ",
@@ -56,15 +67,32 @@ class CallBackModal extends Component {
 
       return;
     }
+    this.setState({ isLoading: true });
 
-    toggleModal();
+    API.sendMessageTelegram(
+      `Імя: ${name}, Телефон: ${phone}, Коментар: ${comment}`
+    )
+      .then(res => {
+        return res.data.ok ? (
+          this.setState(
+            { isLoading: false, name: "", phone: "", comment: "" },
+            () => toggleModal()
+          )
+        ) : (
+          <span>Щось пішло не так. Спробуйте ще раз</span>
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
-    const { name, phone, comment } = this.state;
+    const { name, phone, comment, isLoading } = this.state;
     const { toggleModal, carText } = this.props;
     return (
       <>
+        {isLoading && <Loader abortLoading={this.abortLoading} />}
         <div className={style.overlay}>
           <div className={style.container}>
             <h3 className={style.title}>
