@@ -64,7 +64,7 @@ class App extends Component {
             exact
             component={routes.ANSWERS.component}
           />
-          <Redirect to={routes.ANSWERS.path} />
+          <Redirect to={routes.MAIN_PAGE.path} />
         </Switch>
       </>
     );

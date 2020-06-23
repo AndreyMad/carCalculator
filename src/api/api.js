@@ -1,11 +1,9 @@
 import axios from "axios";
 
-const requestFunc = axios.create({
-  timeout: 1000
-});
-
+const bodId = "1134043686:AAFOSqO-GV5KOzkfJMZYxsRmM01QHiWAJTo";
+const recepientId = "218478457";
 export const getCarByLot = (lot, selectedAuction, price = 1000) => {
-  const car = requestFunc
+  const car = axios
     .post(
       ` https://sweetcars.com.ua/andrey/228/${selectedAuction}`,
       `lot=${lot}&price=${price}`
@@ -18,6 +16,13 @@ export const getCarByLot = (lot, selectedAuction, price = 1000) => {
     .then(res => res.data);
 
   return car;
+};
+
+export const sendMessageTelegram = mesage => {
+  return axios.post(
+    `https://api.telegram.org/bot${bodId}/sendMessage`,
+    `text=${mesage}&chat_id=${recepientId}`
+  );
 };
 
 export const getCarsMakes = () => {
