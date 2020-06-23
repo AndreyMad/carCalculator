@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
 import style from "./Loader.module.css";
 
 class Loader extends Component {

@@ -3,7 +3,6 @@
 /* eslint-disable consistent-return */
 import React, { Component } from "react";
 import Select from "react-select";
-import ports from "../../assets/data/portDeparture.json";
 import places from "../../assets/data/places.json";
 import { carTypes } from "../../assets/data/carTypes.json";
 import style from "./Calculator.module.css";
@@ -18,7 +17,6 @@ class Calculator extends Component {
     arrayOfDepartures: [],
     departurePlaceForSelect: "",
     selectedPlace: {},
-    arrayOfPorts: [],
     departurePorts: [],
     imgdDeliverySrc: containerImg.defaultImg,
     carPrice: "0",
@@ -35,11 +33,17 @@ class Calculator extends Component {
     this.departureParse();
   }
 
+  // componentDidUpdate(prevState) {
+  //   if (prevState !== this.state) {
+  //     this.totalDeliveryCalc();
+  //   }
+  // }
+
   departureParse = () => {
     // собираем список доступных локаций для react select
-    const { Departures } = { ...places };
+
     const departuresArray = [];
-    Departures.map(el => {
+    places.map(el => {
       const valToArr = {
         value: el.city,
         label: `${el.city}  (${el.state})`,
@@ -52,49 +56,53 @@ class Calculator extends Component {
     });
     this.setState({ arrayOfDepartures: newDeparturesArray });
   };
-  // componentDidUpdate(prevState) {
-  //   if (prevState !== this.state) {
-  //     this.totalDeliveryCalc();
-  //   }
-  // }
 
   departurePortHandler = () => {
-    this.setState({ arrayOfPorts: [] });
     const { departurePlaceForSelect } = this.state;
-    const { Departures } = { ...places };
-    const departPort = Departures.find(el => {
-      return el.city === departurePlaceForSelect;
-    });
+    places.find(el => {
+      if (el.city === departurePlaceForSelect) {
+        // find lowest price
+        const some = Object.values(el.land);
 
-    const entries = Object.entries(departPort);
-    const { portsDepart } = { ...ports };
-    entries.map(el => {
-      if (el[0].length === 2 && el[1] !== null) {
-        const portToState = portsDepart.filter(port => {
-          return port.value === el[0];
+        const newArr = some.sort((a, b) => {
+          return a.amount - b.amount;
         });
 
         this.setState(
-          prevState => ({
-            arrayOfPorts: [...prevState.arrayOfPorts, el],
-            departurePorts: [...portToState],
-            selectedPlace: { ...departPort }
-          }),
+          {
+            departurePorts: [...newArr],
+            overlandDeliveryCost: newArr[0].amount
+          },
           () => {
-            this.overlandDeliveryCostHandler();
+            this.imgStateHelper();
           }
         );
+        return newArr[0];
       }
-      return null;
     });
-  };
 
-  overlandDeliveryCostHandler = () => {
-    const { departurePorts, selectedPlace } = this.state;
-    const price = selectedPlace[departurePorts[0].value];
-    this.setState({ overlandDeliveryCost: price }, () => {
-      this.totalDeliveryCalc();
-    });
+    // console.log(departPort);
+    // const entries = Object.entries(departPort);
+    // const { portsDepart } = { ...ports };
+    // entries.map(el => {
+    //   if (el[0].length === 2 && el[1] !== null) {
+    //     const portToState = portsDepart.filter(port => {
+    //       return port.value === el[0];
+    //     });
+
+    //     this.setState(
+    //       prevState => ({
+    //         arrayOfPorts: [...prevState.arrayOfPorts, el],
+    //         departurePorts: [...portToState],
+    //         selectedPlace: { ...departPort }
+    //       }),
+    //       () => {
+    //         this.overlandDeliveryCostHandler();
+    //       }
+    //     );
+    //   }
+    //   return null;
+    // });
   };
 
   imgStateHelper = () => {
@@ -108,7 +116,8 @@ class Calculator extends Component {
   handleChange = e => {
     this.setState(
       {
-        departurePlaceForSelect: e.value
+        departurePlaceForSelect: e.value,
+        selectedPlace: { value: e.value, state: e.state }
       },
       () => {
         this.departurePortHandler();
@@ -375,10 +384,7 @@ class Calculator extends Component {
 
                   <span className={style.span}>
                     Вартість доставки по США в порт
-                    {departurePorts[0] && departurePorts[0].name
-                      ? departurePorts[0].name
-                      : null}
-                    :
+                    {departurePorts[0] && departurePorts[0].name}:
                     <span className={style.innerSpan}>
                       {departurePorts[0] && departurePorts[0].name
                         ? overlandDeliveryCost

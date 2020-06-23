@@ -4,22 +4,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/extensions */
 import React, { Component } from "react";
-import { CSSTransition } from "react-transition-group";
-import { connect } from "react-redux";
-import levenshtein from "fast-levenshtein";
 import { Switch, Route, Redirect } from "react-router-dom";
-import style from "./App.module.css";
-import pop from "../transitions/pop.module.css";
-import fade from "../transitions/fade.module.css";
-import * as selector from "../redux/Phonebook/selectors";
-import * as action from "../redux/Phonebook/actions";
-import CarInfo from "./Carinfo/CarInfo";
 import Header from "./Header/Header";
-import * as API from "../api/api";
 import Loader from "./Loader/Loader";
-import SearchForm from "./SearchForm/SearchForm";
-import ErrorNotif from "./ErrorNotif/ErrorNotif";
-import makes from "../assets/data/makes.json";
 import routes from "../routes/routes";
 import Navigation from "../pages/Navigation/Navigation";
 

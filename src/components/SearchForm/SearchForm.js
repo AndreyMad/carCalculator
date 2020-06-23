@@ -10,7 +10,7 @@ import "react-notifications/lib/notifications.css";
 
 class SearchForm extends Component {
   state = {
-    lotNumber: "",
+    formValue: "",
     lotPrice: "",
     selectedAuction: "copart"
   };
@@ -26,7 +26,7 @@ class SearchForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { formSubmit } = this.props;
-    const { lotNumber, lotPrice, selectedAuction } = this.state;
+    const { formValue, lotPrice, selectedAuction } = this.state;
     if (!selectedAuction) {
       NotificationManager.warning(
         "Оберіть аукціон!",
@@ -35,7 +35,7 @@ class SearchForm extends Component {
       );
       return;
     }
-    if (lotNumber < 8) {
+    if (formValue.length < 8) {
       NotificationManager.warning(
         "Не менш 8 символів",
         "Не вірний номер лота",
@@ -43,15 +43,8 @@ class SearchForm extends Component {
       );
       return;
     }
-    if (selectedAuction === "iaai") {
-      NotificationManager.warning(
-        "На даний момент функціонал Iaai нажаль не доступний",
-        "",
-        3000
-      );
-      return;
-    }
-    formSubmit(lotNumber, selectedAuction, lotPrice || 1000);
+
+    formSubmit(formValue, selectedAuction, lotPrice || 1000);
   };
 
   handleRadioCheck = e => {
@@ -61,15 +54,15 @@ class SearchForm extends Component {
   };
 
   render() {
-    const { lotNumber, selectedAuction, lotPrice } = this.state;
+    const { formValue, selectedAuction, lotPrice } = this.state;
     return (
       <>
         <form onSubmit={this.handleSubmit} className={style.form}>
           <div className={style.inputWrapper}>
             <input
-              type="number"
-              value={lotNumber}
-              name="lotNumber"
+              type="text"
+              value={formValue}
+              name="formValue"
               className={style.input}
               placeholder="Номер лота"
               onChange={this.handleChange}

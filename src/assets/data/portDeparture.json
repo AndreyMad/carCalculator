@@ -12,6 +12,10 @@
       "name": "California",
       "value": "ca"
     },
-    { "name": "Texas", "value": "tx" }
+    { "name": "Texas", "value": "tx" },
+    { "name": "Miame", "value": "mi" },
+    { "name": "Los Angeles", "value": "la" },
+    { "name": "San Francisco", "value": "sa" },
+    { "name": "Seattle", "value": "se" }
   ]
 }
