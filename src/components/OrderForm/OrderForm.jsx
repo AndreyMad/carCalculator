@@ -56,7 +56,11 @@ class OrderForm extends Component {
     )
       .then(res => {
         return res.data.ok ? (
-          this.setState({ isLoading: false, name: "", phone: "", comment: "" })
+          (NotificationManager.success(
+            "Дякуюмо за звернення, ми зв'яжемось з Вами найближчим часом.",
+            "Успішно"
+          ),
+          this.setState({ isLoading: false, name: "", phone: "", comment: "" }))
         ) : (
           <span>Щось пішло не так. Спробуйте ще раз</span>
         );

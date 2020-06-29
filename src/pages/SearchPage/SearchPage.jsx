@@ -144,6 +144,7 @@ class SearchPage extends Component {
       API.getCarByLot(formValue, selectedAuction)
         .then(res => {
           const { car } = res;
+          console.log(res);
           if (res.error) {
             this.setState({ error: res.error, isLoading: false });
             return;
@@ -152,13 +153,8 @@ class SearchPage extends Component {
             const { photos } = res;
 
             if (photos.length > 1) {
-              const photoArray = photos.substr(1, photos.length - 2).split(",");
-              const newPhotoArray = photoArray.map(el => {
-                return el.substr(1, el.length - 2);
-              });
-
               this.setState({
-                car: { ...car, images: newPhotoArray },
+                car: { ...car, images: photos },
 
                 isLoading: false
               });
@@ -174,20 +170,16 @@ class SearchPage extends Component {
         // eslint-disable-next-line no-console
         .catch(err => console.log(err));
     } else if (formValue.length === 17) {
-      API.getCarByVin(formValue, selectedAuction)
+      API.getCarByVin(formValue.toUpperCase(), selectedAuction)
         .then(res => {
-          console.log(!!res.car);
-          if (res.err) {
-            this.setState({ error: res.resp, isLoading: false });
+          console.log(res);
+          if (res.err || res.error) {
+            this.setState({ error: res.err || res.error, isLoading: false });
           } else if (res.car) {
-            const { car } = res;
-            const { photos } = res;
-            const photoArray = photos.substr(1, photos.length - 2).split(",");
-            const newPhotoArray = photoArray.map(el => {
-              return el.substr(1, el.length - 2);
-            });
+            const { car, photos } = res;
+
             this.setState({
-              car: { ...car, images: newPhotoArray },
+              car: { ...car, images: photos },
 
               isLoading: false
             });
@@ -220,7 +212,7 @@ class SearchPage extends Component {
 
               {error.length === 0 && car ? (
                 <>
-                  {car.images ? (
+                  {car.vin ? (
                     <CarInfo car={car} averagePrice={averagePrice} />
                   ) : null}
 

@@ -74,10 +74,14 @@ class CallBackModal extends Component {
     )
       .then(res => {
         return res.data.ok ? (
+          (NotificationManager.success(
+            "Дякуюмо за звернення, ми зв'яжемось з Вами найближчим часом.",
+            "Успішно"
+          ),
           this.setState(
             { isLoading: false, name: "", phone: "", comment: "" },
             () => toggleModal()
-          )
+          ))
         ) : (
           <span>Щось пішло не так. Спробуйте ще раз</span>
         );

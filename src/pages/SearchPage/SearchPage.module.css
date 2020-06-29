@@ -38,13 +38,13 @@
     font-size: 35px;
   }
   .shadow {
-    padding: 0px 30px;
+    padding: 1px 30px;
   }
 }
 @media (min-width: 1200px) {
   .container {
     max-width: 1400px;
     margin: 0px auto;
-    padding: 0px;
+    padding: 1px;
   }
 }

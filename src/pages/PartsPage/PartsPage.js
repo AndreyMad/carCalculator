@@ -7,6 +7,7 @@ import style from "./PartsPage.module.css";
 import Footer from "../../components/Footer/Footer";
 import SVG from "../../assets/svg/index";
 import "react-notifications/lib/notifications.css";
+import * as API from "../../api/api";
 
 class PartsPage extends Component {
   state = { name: "", phone: "", coment: "" };
@@ -17,14 +18,33 @@ class PartsPage extends Component {
 
   submit = e => {
     e.preventDefault();
-    const { name, phone } = this.state;
+    const { name, phone, comment } = this.state;
     if (name.length < 3 || phone.length < 7) {
       NotificationManager.error(
         "Не коректне ім'я або номер телефону!",
         "Помилка",
         3000
       );
+      return;
     }
+
+    API.sendMessageTelegram(
+      `Імя: ${name}, Телефон: ${phone}, Коментар: ${comment}`
+    )
+      .then(res => {
+        return res.data.ok ? (
+          (NotificationManager.success(
+            "Дякуюмо за звернення, ми зв'яжемось з Вами найближчим часом.",
+            "Успішно"
+          ),
+          this.setState({ name: "", phone: "", comment: "" }))
+        ) : (
+          <span>Щось пішло не так. Спробуйте ще раз</span>
+        );
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {

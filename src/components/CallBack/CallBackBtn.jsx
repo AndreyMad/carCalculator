@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { CSSTransition } from "react-transition-group";
+import PropTypes from "prop-types";
 import style from "./CallBack.module.css";
 import CallBackModal from "./CallBackModal";
 import fade from "../../transitions/fade.module.css";
@@ -10,7 +11,19 @@ class CallBackBtn extends Component {
     isModalOpen: false
   };
 
-  toggleModal = e => {
+  static propTypes = {
+    styles: PropTypes.string,
+    text: PropTypes.string,
+    carText: PropTypes.string
+  };
+
+  static defaultProps = {
+    styles: "",
+    text: "",
+    carText: ""
+  };
+
+  toggleModal = () => {
     this.setState(prevState => ({
       isModalOpen: !prevState.isModalOpen
     }));

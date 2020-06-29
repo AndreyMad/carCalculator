@@ -6,6 +6,7 @@ import * as API from "../../api/api";
 import okSvg from "../../assets/svg/ok.svg";
 import falseSvg from "../../assets/svg/falseSvg.svg";
 import ShowMoreBtn from "../ShowMore/ShowMoreBtn";
+import noPhoto from "../../assets/img/noPhoto.png";
 
 const CarInfo = ({ car, averagePrice }) => {
   const auctionDateTime = aucDate => {
@@ -22,9 +23,13 @@ const CarInfo = ({ car, averagePrice }) => {
     }`;
   };
   const runAndDrive = car.highlights === "RUNS AND DRIVES";
-  const imgSrc = car.images[0]
-    .replace("width=161", "width=1200")
-    .replace("height=120", "height=800");
+  const imgSrc =
+    (car.images &&
+      car.images[0]
+        .replace("width=161", "width=1200")
+        .replace("height=120", "height=800")) ||
+    noPhoto;
+  const engineCapacity = car.vol || (car.engine && car.engine.slice(0, 3));
   return (
     <div className={style.container}>
       <div className={style.outWrapper}>
@@ -43,23 +48,29 @@ const CarInfo = ({ car, averagePrice }) => {
             <span className={style.span}>{car.vin}</span>
           </p>
           <p className={style.text}>
-            Двигун: <span className={style.span}>{car.vol.toFixed(1)}</span>
+            Двигун: <span className={style.span}>{engineCapacity}</span>
           </p>
           <p className={style.text}>
             Паливо: <span className={style.span}>{car.fuel}</span>
           </p>
           <p className={style.text}>
-            Пробіг: <span className={style.span}>{car.miles}</span>
+            Пробіг:
+            <span className={style.span}>{car.miles || car.odometer}</span>
           </p>
           <p className={style.text}>
             Привід: <span className={style.span}>{car.privod}</span>
           </p>
-          <p className={style.text}>
-            Тайтл: <span className={style.span}>{car.docs}</span>
-          </p>
-          <p className={style.text}>
-            Продавець: <span className={style.span}>{car.seller}</span>
-          </p>
+          {car.docs && (
+            <p className={style.text}>
+              Тайтл: <span className={style.span}>{car.docs}</span>
+            </p>
+          )}
+          {car.seller && (
+            <p className={style.text}>
+              Продавець: <span className={style.span}>{car.seller}</span>
+            </p>
+          )}
+
           <p className={style.text}>
             Run and Drive:
             {runAndDrive ? (
@@ -80,7 +91,7 @@ const CarInfo = ({ car, averagePrice }) => {
           )}
         </div>
       </div>
-      <ShowMoreBtn images={car.images} />
+      {car.images && <ShowMoreBtn images={car.images} />}
     </div>
   );
 };
