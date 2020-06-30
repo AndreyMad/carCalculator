@@ -29,9 +29,9 @@
 .customContainer {
   width: 100%;
   display: flex;
-  max-width: 450px;
+  max-width: 600px;
 
-  margin: 40px auto;
+  margin: 00px auto;
   flex-wrap: wrap;
   justify-content: center;
 
@@ -93,12 +93,17 @@
   text-align: center;
   border: 1px solid #ffffff;
   color: #ffffff;
-
   border-radius: 10px 10px 0px 0px;
   border-bottom: none;
+  transition: 600ms;
+}
+.checkmark:hover {
+  cursor: pointer;
+  background-color: #3e60e7;
 }
 .engineTypeRadioWrapper > label > input:checked ~ .checkmark {
   background-color: #233682;
+  transition: 600ms;
   color: #ffffff;
 }
 .selectWrapper {
@@ -119,5 +124,45 @@
   .engineTypeRadioWrapper {
     width: 100%;
     min-width: 380px;
+  }
+}
+@media (min-width: 768px) {
+  .customContainer {
+    max-width: 900px;
+  }
+  .span {
+    max-width: 600px;
+    margin: 10px auto;
+    font-size: 16px;
+  }
+  .totalCustomCost {
+    font-size: 18px;
+    text-decoration: underline;
+    max-width: 600px;
+    margin: 0px auto;
+  }
+  .selectWrapper {
+    max-width: 600px;
+    margin: 0px auto;
+  }
+}
+@media (min-width: 1200px) {
+  .customContainer {
+    max-width: 1400px;
+  }
+  .customTitle {
+    font-size: 35px;
+    margin: 25px auto;
+  }
+  .span {
+    max-width: 600px;
+    margin: 15px auto;
+    font-size: 18px;
+  }
+  .totalCustomCost {
+    font-size: 20px;
+  }
+  .selectWrapper {
+    max-width: 600px;
   }
 }

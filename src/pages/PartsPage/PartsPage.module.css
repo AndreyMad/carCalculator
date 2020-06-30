@@ -1,0 +1,246 @@
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0px auto;
+  text-align: center;
+}
+.title {
+  font-size: 28px;
+  width: 100%;
+  color: #ffffff;
+  margin-top: 60px;
+}
+.title2 {
+  font-size: 25px;
+  width: 100%;
+  color: #ffffff;
+  margin-top: 15px;
+}
+.titleContainer {
+  background-image: url(../../assets/img//bmw.jpg);
+  background-position-y: -100px;
+}
+.titleContainer,
+.formContainer,
+.listContainer {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 450px;
+  position: relative;
+}
+.titleContainer:after {
+  content: "";
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: -10px;
+  z-index: 10;
+  left: 0px;
+  background: linear-gradient(to bottom, #000000, #999999);
+}
+.form > textarea {
+  min-height: 120px;
+}
+.submitBtn {
+  background-color: #e74911;
+  cursor: pointer;
+  height: 35px;
+  display: block;
+  margin: 0px auto;
+  outline: none;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  color: #ffffff;
+  transition: 0.1s;
+  box-shadow: -6px 6px 4px 0px rgba(0, 0, 0, 0.75);
+}
+.shadow {
+  width: 100%;
+  height: 100%;
+  padding: 7px;
+  min-height: 450px;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.span {
+  font-size: 19px;
+  color: #ffffff;
+  margin-top: 60px;
+}
+.formContainer {
+  background-image: url(../../assets/img//elise.jpg);
+  min-height: 720px;
+  background-position-y: 0;
+}
+.whiteShadow {
+  width: 100%;
+  height: 100%;
+  padding: 7px;
+
+  position: absolute;
+  background-color: rgba(191, 191, 191, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+.whiteShadow > p {
+  margin: 30px auto;
+  font-size: 19px;
+  font-weight: bold;
+}
+.whiteShadow > p:first-of-type {
+  margin-bottom: 0px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #fff;
+  min-height: 330px;
+  padding: 20px 0px;
+  background-color: rgba(35, 54, 130, 0.9);
+}
+.form > input,
+form > textarea {
+  width: 270px;
+  border: none;
+  height: 30px;
+  font-size: 19px;
+  padding: 2px 8px;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+.listContainer {
+  background-image: url(../../assets//img/bmwback.jpg);
+}
+.subTitle {
+  color: #ffffff;
+  font-size: 21px;
+  margin-top: 20px;
+}
+.item {
+  color: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 10px;
+  text-align-last: left;
+  align-items: center;
+}
+.svg {
+  width: 19px;
+  height: 19px;
+
+  margin-right: 10px;
+}
+.item > span:first-of-type {
+  font-size: 19px;
+}
+.item > span:last-of-type {
+  width: 100%;
+  margin-top: 7px;
+}
+.list {
+  list-style: none;
+  width: 100%;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+    min-height: 600px;
+  }
+  .whiteShadow > p {
+    max-width: 600px;
+    font-size: 22px;
+  }
+  .span {
+    max-width: 600px;
+  }
+  .form {
+    max-width: 600px;
+    padding: 40px 80px;
+    margin: 0px auto;
+  }
+  .form > input,
+  form > textarea {
+    width: 350px;
+    height: 45px;
+    font-size: 18px;
+  }
+  .subTitle {
+    font-size: 32px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  .svg {
+    width: 45px;
+
+    height: 45px;
+  }
+  .item {
+    margin-left: 35px;
+    font-size: 32px;
+  }
+  .item > span:first-of-type {
+    font-size: 28px;
+  }
+  .item > span:last-of-type {
+    font-size: 26px;
+    margin-left: 55px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;
+    min-height: 600px;
+  }
+  .title {
+    margin-top: 100px;
+    font-size: 38px;
+  }
+  .title2 {
+    font-size: 34px;
+  }
+  .span {
+    font-size: 28px;
+    max-width: 700px;
+  }
+  .shadow {
+    min-height: 600px;
+  }
+  .formContainer {
+    min-width: 700px;
+    height: 900px;
+  }
+  .form {
+    width: 600px;
+    min-height: 430px;
+    margin: 20px auto;
+  }
+  .whiteShadow > p {
+    font-size: 28px;
+  }
+  .form > input,
+  .form > textarea {
+    height: 40px;
+    width: 300px;
+    padding: 3px 10px;
+    font-size: 24px;
+  }
+  .form > textarea {
+    min-height: 120px;
+    font-size: 24px;
+  }
+  .form > .submitBtn {
+    margin-top: 30px;
+  }
+}

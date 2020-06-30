@@ -3,9 +3,11 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  max-width: 600px;
+  margin: 0px auto;
 }
 .wrapper {
-  min-height: 400px;
+  min-height: 92vh;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -28,10 +30,21 @@
   width: 100%;
   min-height: 70px;
 }
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+  }
+  .infoText {
+    font-size: 35px;
+  }
+  .shadow {
+    padding: 1px 30px;
+  }
+}
 @media (min-width: 1200px) {
   .container {
     max-width: 1400px;
     margin: 0px auto;
-    padding: 0px;
+    padding: 1px;
   }
 }

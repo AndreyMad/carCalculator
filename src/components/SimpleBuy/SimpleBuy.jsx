@@ -13,7 +13,7 @@ const SimpleBuy = () => {
     <div className={style.container}>
       <div className={style.shadow}>
         <h2 className={style.title}>
-          Придбати авто з США, простіше ніж ти думаєш
+          Придбати авто з США, простіше ніж ти думаєш!!!
         </h2>
 
         <ul className={style.list}>

@@ -2,7 +2,7 @@
 .priceContainer {
   width: 100%;
   display: flex;
-  max-width: 450px;
+  max-width: 600px;
 
   margin: 00px auto;
   padding-top: 20px;
@@ -13,6 +13,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
   position: relative;
   background-image: url(../../assets//img/255308.jpg);
   background-attachment: fixed;
@@ -32,9 +33,12 @@
 }
 .mapImg {
   width: 90%;
-  margin: 30px auto;
 }
-
+.mapImgWrapper {
+  width: 90%;
+  margin: 30px auto;
+  max-width: 530px;
+}
 .priceInput {
   width: 100%;
   max-width: 400px;
@@ -121,9 +125,104 @@
 }
 @media (min-width: 768px) {
   .deliveryContainer {
-    max-width: 700px;
+    max-width: 900px;
+  }
+  .priceInput {
+    display: block;
   }
   .departWrapper {
-    max-width: 340px;
+    max-width: 900px;
+    min-height: 450px;
+  }
+  .delivImg {
+    height: 200px;
+    width: auto;
+  }
+  .priceContainer {
+    max-width: 900px;
+  }
+  .priceWrapper {
+    max-width: 600px;
+  }
+  .mapImg {
+    max-width: 530px;
+  }
+  .title {
+    width: 100%;
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  .delivImgWrapper {
+    margin: 0px auto;
+  }
+  .checkboxWrapper {
+    width: 170px;
+  }
+  .checkboxWrapper > label {
+    font-size: 22px;
+  }
+  .checkboxWrapper > label > input {
+    width: 16px;
+    height: 16px;
+  }
+  .span {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .totalDeliveryCost {
+    font-size: 18px;
+    text-decoration: underline;
+  }
+  .delivImg {
+    margin: 0px auto;
+  }
+}
+@media (min-width: 1200px) {
+  .deliveryContainer {
+    padding-top: 80px;
+    max-width: 1400px;
+  }
+  .shadow {
+    width: 1400px;
+  }
+  .departWrapper {
+    max-width: 1400px;
+    /* height: 730px; */
+    display: block;
+    text-align: center;
+  }
+  .mapImgWrapper {
+    max-width: 800px;
+  }
+  .title {
+    height: 60px;
+    font-size: 35px;
+  }
+  .mapImg {
+    max-width: 800px;
+  }
+  .checkboxWrapper {
+    margin: 15px auto;
+  }
+  .priceInput {
+    margin: 20px auto;
+    font-size: 22px;
+  }
+  .checkboxWrapper {
+    width: 260px;
+  }
+  .checkboxWrapper > label {
+    font-size: 26px;
+  }
+  .checkboxWrapper > label > input {
+    width: 20px;
+    height: 20px;
+  }
+  .span {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+  .totalDeliveryCost {
+    font-size: 22px;
   }
 }

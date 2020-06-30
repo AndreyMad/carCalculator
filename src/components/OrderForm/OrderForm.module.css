@@ -1,45 +1,50 @@
 .container {
   width: 100%;
-  background-image: url(../../assets/img/255308.jpg);
-  background-color: rgba(0, 0, 0, 0.4);
-
+  flex-wrap: wrap;
+  background-color: #000000;
   text-align: center;
-
-  max-width: 450px;
-  margin: -10px auto 0px;
+  max-width: 600px;
   display: flex;
+  margin: 0px auto;
+  box-shadow: inset 1px 145px 25px 1px rgba(0, 0, 0, 1);
+
   position: relative;
 }
 .shadow {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 0px 10px;
+  background-position-y: 55px;
+  background-image: url(../../assets/img/MaskGroup1.png);
   z-index: 0;
-  padding: 40px 10px;
 }
 .title {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   font-size: 19px;
-  margin: 0px auto 10px;
+  margin: 15px auto;
   color: #ffffff;
   max-width: 280px;
+  box-shadow: 2px 108px 28px 1px rgba(0, 0, 0, 0.63);
 }
 .orderForm {
   width: 100%;
   display: flex;
   height: 100%;
   flex-wrap: wrap;
-
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
 }
 .inputName,
 .inputNumber {
-  width: 43%;
+  width: 100%;
+  max-width: 250px;
   height: 35px;
   font-size: 14px;
   border-radius: 5px;
-
+  border: 1px solid black;
   outline: none;
   -moz-appearance: textfield;
   font-family: "Montserrat", sans-serif;
@@ -48,30 +53,100 @@
 }
 .inputComment {
   width: 100%;
-  height: 35px;
+  height: 85px;
   font-size: 14px;
   border-radius: 5px;
-
+  resize: none;
+  border: 1px solid black;
+  max-width: 250px;
   outline: none;
   -moz-appearance: textfield;
   font-family: "Montserrat", sans-serif;
   margin: 10px 10px;
-  padding: 2px 8px;
+  padding: 8px;
 }
 .submitBtn {
   width: 150px;
   height: 35px;
-  border-radius: 5px;
-  margin: 15px auto;
-  background-color: #233682;
+  border-radius: 8px;
+  margin: 20px auto 40px;
+  background-color: #e74911;
   outline: none;
   color: #ffffff;
+  box-shadow: -6px 6px 4px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
   border: none;
-  box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 1);
 }
+
 .text {
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   margin: 10px 10px;
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 900px;
+    height: 450px;
+  }
+  .submitBtn {
+    width: 250px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .title {
+    font-size: 30px;
+    max-width: 380px;
+  }
+  .inputName,
+  .inputNumber,
+  .inputComment {
+    max-width: 350px;
+    font-size: 18px;
+  }
+  .inputName,
+  .inputNumber {
+    height: 45px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;
+    height: 700px;
+  }
+  .orderForm {
+    max-width: 500px;
+    background-color: #fff;
+    height: 450px;
+    margin: 0px auto;
+    padding: 40px 40px 0px;
+    border-radius: 15px;
+  }
+  .shadow {
+    padding-top: 10px;
+  }
+  .title {
+    font-size: 32px;
+    max-width: 380px;
+    margin-bottom: 25px;
+  }
+  .inputComment {
+    height: 150px;
+    padding: 10px;
+    font-size: 18px;
+  }
+  .inputName,
+  .inputNumber {
+    height: 40px;
+    font-size: 18px;
+  }
+  .submitBtn {
+    width: 220px;
+    height: 50px;
+    font-size: 18px;
+  }
+  .text {
+    font-size: 20px;
+    margin: 15px auto;
+  }
 }

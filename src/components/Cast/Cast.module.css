@@ -1,0 +1,17 @@
+.castWrapper {
+  display: flex;
+  max-width: 100vw;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: center;
+}
+.castWrapper > li {
+  width: 15%;
+
+  margin: 10px;
+  text-align: center;
+}
+.castWrapper > li > img {
+  width: 100%;
+  height: auto;
+}

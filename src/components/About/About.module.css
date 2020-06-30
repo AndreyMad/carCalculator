@@ -1,0 +1,126 @@
+.advantage {
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  background-image: url(../../assets/img/searchbackgr.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  line-height: 1.55;
+  color: #ffffff;
+}
+
+.about_wrapper {
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.about {
+  max-width: 410px;
+}
+
+.Title {
+  margin: 50px 0px 30px 0px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.about {
+  text-align: center;
+  margin: 0px auto;
+  font-size: 18px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0px;
+  justify-content: center;
+  max-width: 420px;
+  padding: 25px 12px;
+  border: 2px solid #ffffff;
+  border-top-width: 0px;
+}
+
+.item::before {
+  content: " ";
+  border: 1px solid #ffffff;
+  width: 110px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.item::after {
+  content: " ";
+  border: 1px solid #ffffff;
+  width: 110px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.Item_Title {
+  margin: 10px 0px 10px 0px;
+  text-align: center;
+  font-size: 22px;
+}
+.svg {
+  width: 73px;
+  position: absolute;
+  top: -39px;
+}
+
+@media (min-width: 768px) {
+  .advantage {
+    max-width: 900px;
+  }
+  .about {
+    max-width: 900px;
+  }
+
+  .item {
+    max-width: 520px;
+  }
+
+  .item::before {
+    width: 160px;
+  }
+
+  .item::after {
+    width: 160px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .advantage {
+    max-width: 1400px;
+  }
+  .about_wrapper {
+    max-width: 1400px;
+  }
+
+  .item {
+    max-width: 600px;
+  }
+
+  .item::before {
+    width: 310px;
+  }
+
+  .item::after {
+    width: 310px;
+  }
+}

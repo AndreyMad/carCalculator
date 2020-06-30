@@ -9,7 +9,7 @@
   height: 30px;
   border-radius: 30px;
   margin: 20px auto;
-  background-color: #233682;
+  background-color: #3f61e7;
   width: 100px;
   border: none;
   color: #ffffff;
@@ -23,7 +23,7 @@
 }
 .overlay {
   width: 100vw;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
   position: absolute;
   top: 0px;
   left: 0px;
@@ -32,6 +32,7 @@
 .modalContainer {
   position: relative;
   width: 100%;
+  background-color: #fff;
   border-radius: 10px;
   padding-top: 15px;
   display: flex;
@@ -67,7 +68,6 @@
   }
   .modalContainer {
     max-width: 650px;
-    margin-top: 75px;
   }
   .showMoreBtn {
     width: 130px;
@@ -80,7 +80,6 @@
   .modalContainer {
     padding-top: 30px;
     max-width: 1000px;
-    margin-top: 110px;
   }
   .overlay {
     width: 100%;

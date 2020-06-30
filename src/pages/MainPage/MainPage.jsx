@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
 import Slider from "react-slick";
@@ -15,14 +16,16 @@ import OrderForm from "../../components/OrderForm/OrderForm";
 import SVG from "../../assets/svg/index";
 import audiImg from "../../assets/img/audi.png";
 import jaguar from "../../assets/img/jaguar.png";
+// eslint-disable-next-line import/no-cycle
 import SimpleBuy from "../../components/SimpleBuy/SimpleBuy";
 import CarAvailability from "../../components/carAvailability/carAvailability";
-import Reviews from "../../components/Reviews/Reviews";
+import banw from "../../assets/img/banw.png";
+import question from "../../assets/img/question.png";
 
 class MainPage extends Component {
   state = {
     // eslint-disable-next-line react/no-unused-state
-    isModalOpen: false
+    isModalOpen: true
   };
 
   render() {
@@ -31,13 +34,44 @@ class MainPage extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 2000,
+      autoplaySpeed: 3000,
       arrows: false,
       dots: false
     };
     return (
       <div className={style.container}>
-        <section className={style.headWrapper}>
+        <section className={style.mainWrapper} style={{ marginBottom: "-5px" }}>
+          <div className={style.wrapper}>
+            <div className={style.backgroundShadow2} />
+            <img
+              className={style.backgroundImg}
+              src={banw}
+              alt="presentation"
+            />
+
+            <div className={style.titleContainer}>
+              <h1 className={style.mainTitle}>
+                хочеш <span className={style.yellowLetter}>авто</span>
+                <p> з</p>
+                <br />
+                <p> америки</p>
+              </h1>
+              <img
+                alt="presentation"
+                src={window.innerWidth < 768 ? question : SVG.question}
+                className={style.question}
+              />
+            </div>
+            <CallBackBtn
+              text="Оформити заявку"
+              styles={{
+                position: "absolute",
+                bottom: "20px",
+                left: "50%",
+                transform: "translateX(-50%)"
+              }}
+            />
+          </div>
           <Slider {...settings}>
             <div className={style.headWrapper}>
               <div className={style.backgroundShadow} />
@@ -199,7 +233,7 @@ class MainPage extends Component {
                   сподобалось авто яке наразі трохи не по кишені.
                 </span>
               </li>
-              <li>
+              <li className={style.submitButton}>
                 <CallBackBtn styles={{ margin: "20px auto 30px" }} />
               </li>
             </ul>
@@ -218,5 +252,3 @@ class MainPage extends Component {
 }
 
 export default MainPage;
-{
-}

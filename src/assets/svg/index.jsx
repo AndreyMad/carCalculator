@@ -23,9 +23,36 @@ import year from "./year.svg";
 import fuel from "./fuel.svg";
 import viberWhite from "./viberWhite.svg";
 import telegramWhite from "./telegramWhite.svg";
+import quality from "./quality.svg";
+import sale from "./sale.svg";
+import insurance from "./insurance.svg";
+import dealer from "./dealer.svg";
+import bestPrice from "./bestPrice.svg";
+import carDoors from "./carDoors.svg";
+import filter from "./filter.svg";
+import tyres from "./tyres.svg";
+import steering from "./steering.svg";
+import brake from "./brake.svg";
+import plug from "./plug.svg";
+import zoom from "./zoom.svg";
+import tel from "./tel.svg";
+import headerClose from "./headerClose.svg";
+import viberHeader from "./viberHeader.svg";
+import telegramHeader from "./telegramHeader.svg";
+import down from "./down.svg";
+import question from "./question.svg";
 
 export default {
   calculator,
+  question,
+  headerClose,
+  down,
+  telegramHeader,
+  viberHeader,
+  tel,
+  zoom,
+  brake,
+  plug,
   viberWhite,
   telegramWhite,
   close,
@@ -37,6 +64,9 @@ export default {
   parts,
   phone,
   search,
+  steering,
+  tyres,
+  filter,
   viberSvg,
   choice,
   history,
@@ -49,5 +79,11 @@ export default {
   engineCapacity,
   odometer,
   fuel,
-  year
+  year,
+  sale,
+  quality,
+  insurance,
+  dealer,
+  bestPrice,
+  carDoors
 };

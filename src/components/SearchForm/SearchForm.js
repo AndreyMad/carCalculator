@@ -1,13 +1,18 @@
 /* eslint-disable no-alert */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import {
+  NotificationContainer,
+  NotificationManager
+} from "react-notifications";
 import style from "./SearchForm.module.css";
+import "react-notifications/lib/notifications.css";
 
 class SearchForm extends Component {
   state = {
-    lotNumber: "",
+    formValue: "",
     lotPrice: "",
-    selectedAuction: "Copart"
+    selectedAuction: "copart"
   };
 
   static propTypes = {
@@ -21,16 +26,25 @@ class SearchForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { formSubmit } = this.props;
-    const { lotNumber, lotPrice, selectedAuction } = this.state;
+    const { formValue, lotPrice, selectedAuction } = this.state;
     if (!selectedAuction) {
-      alert("Выберите аукцион");
+      NotificationManager.warning(
+        "Оберіть аукціон!",
+        "Аукціон не обраний",
+        3000
+      );
       return;
     }
-    if (selectedAuction === "Iaai") {
-      alert("Я ж казав з Iaai поки не працює)))");
+    if (formValue.length < 8) {
+      NotificationManager.warning(
+        "Не менш 8 символів",
+        "Не вірний номер лота",
+        3000
+      );
       return;
     }
-    formSubmit(lotNumber, selectedAuction, lotPrice);
+
+    formSubmit(formValue, selectedAuction, lotPrice || 1000);
   };
 
   handleRadioCheck = e => {
@@ -40,15 +54,15 @@ class SearchForm extends Component {
   };
 
   render() {
-    const { lotNumber, selectedAuction, lotPrice } = this.state;
+    const { formValue, selectedAuction, lotPrice } = this.state;
     return (
       <>
         <form onSubmit={this.handleSubmit} className={style.form}>
           <div className={style.inputWrapper}>
             <input
-              type="number"
-              value={lotNumber}
-              name="lotNumber"
+              type="text"
+              value={formValue}
+              name="formValue"
               className={style.input}
               placeholder="Номер лота"
               onChange={this.handleChange}
@@ -66,8 +80,8 @@ class SearchForm extends Component {
                 <input
                   type="radio"
                   id="CopartBtn"
-                  checked={selectedAuction === "Copart"}
-                  value="Copart"
+                  checked={selectedAuction === "copart"}
+                  value="copart"
                   name="auctionRadio"
                   onChange={this.handleRadioCheck}
                 />
@@ -76,10 +90,10 @@ class SearchForm extends Component {
               <label htmlFor="IaaiBtn">
                 <input
                   type="radio"
-                  value="Iaai"
+                  value="iaai"
                   id="IaaiBtn"
                   name="auctionRadio"
-                  checked={selectedAuction === "Iaai"}
+                  checked={selectedAuction === "iaai"}
                   onChange={this.handleRadioCheck}
                 />
                 Iaai
@@ -89,6 +103,7 @@ class SearchForm extends Component {
             <input type="submit" className={style.submitBtn} value="Пошук" />
           </div>
         </form>
+        <NotificationContainer />
       </>
     );
   }

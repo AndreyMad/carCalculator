@@ -11,6 +11,29 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.mainTitle {
+  font-size: 19px;
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.mainWrapper {
+  max-width: 600px;
+  margin: 0px auto;
+}
+.mainTitle > p {
+  font-size: 25px;
+  margin-top: 5px;
+  display: inline;
+}
+.yellowLetter ~ p {
+  font-size: 19px;
+}
+.yellowLetter {
+  color: #ff580b;
+}
 .aboutBigNumber {
   font-size: 90px;
   font-family: sans-serif;
@@ -20,14 +43,27 @@
   top: 50%;
   transform: translate(-50%, -100%);
 }
-
+.titleContainer {
+  width: 210px;
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  margin-top: 35px;
+  height: 70px;
+}
+.question {
+  position: absolute;
+  top: 50%;
+  height: 160px;
+  transform: translateY(-50%);
+  right: -30px;
+}
 .causes {
-  max-width: 450px;
+  max-width: 600px;
   width: 100%;
 
   margin: 0px auto;
-}
-.causes {
+
   background-image: url(../../assets//img/7222.jpg);
   background-attachment: fixed;
   background-size: cover;
@@ -83,9 +119,15 @@
 .backgroundImg {
   width: 100%;
   height: 350px;
+
   object-fit: cover;
 }
-.backgroundShadow {
+.wrapper {
+  position: relative;
+  margin-bottom: -5px;
+}
+.backgroundShadow,
+.backgroundShadow2 {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
@@ -94,12 +136,13 @@
   top: 0;
   left: 0;
 }
+
 .headWrapper {
   width: 100%;
   min-height: 350px;
   position: relative;
-  max-width: 450px;
-  margin: -10px auto 0px;
+  max-width: 600px;
+  margin: 0px auto;
 }
 
 .carousel {
@@ -163,4 +206,146 @@
 }
 .callBackBtn {
   width: 200px;
+}
+@media (min-width: 768px) {
+  .backgroundShadow2 {
+    background-color: transparent;
+  }
+  .mainWrapper {
+    max-width: 900px;
+  }
+  .backgroundImg {
+    height: 400px;
+  }
+  .headWrapper {
+    max-width: 900px;
+    min-height: 400px;
+  }
+  .causes {
+    max-width: 900px;
+  }
+  .subtitle {
+    font-size: 30px;
+  }
+  .titleContainer {
+    width: 270px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 35px 10px;
+    top: -8px;
+    left: 75px;
+  }
+  .mainTitle {
+    font-size: 40px;
+    /* margin-top: 50px; */
+    position: relative;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);
+  }
+  .yellowLetter {
+    font-size: 57px;
+    margin: 15px 0px;
+    color: #ffffff;
+    width: 100%;
+    display: block;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);
+  }
+  .mainTitle > br {
+    display: none;
+  }
+  .mainTitle > p {
+    font-size: 25px;
+    display: inline;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);
+  }
+  .question {
+    right: -15px;
+  }
+}
+@media (min-width: 1200px) {
+  .mainWrapper {
+    max-width: 1400px;
+  }
+  .headWrapper {
+    max-width: 1400px;
+    height: 700px;
+  }
+  .backgroundImg {
+    height: 100%;
+  }
+
+  .titleContainer {
+    width: 400px;
+    height: 450px;
+
+    top: 85px;
+    left: 135px;
+  }
+  .question {
+    right: 0px;
+  }
+  .mainTitle {
+    font-size: 55px;
+    margin-top: 50px;
+  }
+
+  .yellowLetter {
+    font-size: 85px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    width: 100%;
+    display: block;
+  }
+  .mainTitle > p {
+    font-size: 35px;
+    display: inline;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.6);
+  }
+  .title {
+    font-size: 60px;
+    max-width: 835px;
+  }
+  .aboutBigNumber {
+    font-size: 170px;
+  }
+  .causes {
+    max-width: 1400px;
+  }
+  .subtitle {
+    font-size: 38px;
+    margin: 30px auto 40px;
+  }
+  .causesList {
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto 0px;
+    justify-content: space-between;
+  }
+  .listItem {
+    margin: 40px 30px;
+    max-width: 410px;
+    padding: 30px;
+  }
+  .CallBackButton {
+    width: 305px;
+    margin: 10px auto;
+  }
+  .submitButton {
+    width: 301px;
+    margin: 40px auto 20px;
+  }
+  .listItem > p {
+    font-size: 22px;
+  }
+  .listInnerItem {
+    font-size: 20px;
+  }
+  .causesIcon {
+    width: 70px;
+    height: 70px;
+
+    margin-top: -75px;
+  }
 }

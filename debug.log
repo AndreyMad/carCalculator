@@ -103,3 +103,17 @@
 [0513/013147.798:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
 [0513/013147.798:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
 [0513/013147.798:ERROR:exception_snapshot_win.cc(98)] thread ID 11752 not found in process
+[0621/002901.203:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0621/002901.208:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0621/002901.208:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0621/002901.211:ERROR:exception_snapshot_win.cc(98)] thread ID 3692 not found in process
+[0630/210845.712:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0630/210845.712:ERROR:exception_snapshot_win.cc(98)] thread ID 11740 not found in process
+[0630/210845.727:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0630/210845.727:ERROR:exception_snapshot_win.cc(98)] thread ID 10516 not found in process
+[0630/210845.727:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0630/210845.727:ERROR:exception_snapshot_win.cc(98)] thread ID 14780 not found in process
+[0630/210845.712:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0630/210845.727:ERROR:exception_snapshot_win.cc(98)] thread ID 3060 not found in process
+[0630/210845.743:ERROR:process_reader_win.cc(123)] NtOpenThread: {Отказано в доступе} Процесс запросил доступ к объекту, но права на доступ не предоставлены. (0xc0000022)
+[0630/210845.743:ERROR:exception_snapshot_win.cc(98)] thread ID 9324 not found in process

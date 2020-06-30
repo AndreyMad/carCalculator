@@ -3,7 +3,6 @@
 /* eslint-disable consistent-return */
 import React, { Component } from "react";
 import Select from "react-select";
-import ports from "../../assets/data/portDeparture.json";
 import places from "../../assets/data/places.json";
 import { carTypes } from "../../assets/data/carTypes.json";
 import style from "./Calculator.module.css";
@@ -18,15 +17,14 @@ class Calculator extends Component {
     arrayOfDepartures: [],
     departurePlaceForSelect: "",
     selectedPlace: {},
-    arrayOfPorts: [],
     departurePorts: [],
     imgdDeliverySrc: containerImg.defaultImg,
-    carPrice: "",
+    carPrice: "0",
     deliverySea: "900",
-    overlandDeliveryCost: "",
-    totalDelivery: "",
+    overlandDeliveryCost: "0",
+    totalDelivery: "0",
     companyСommission: 700,
-    aucComission: "",
+    aucComission: "0",
     insurance: "0"
   };
 
@@ -35,11 +33,17 @@ class Calculator extends Component {
     this.departureParse();
   }
 
+  // componentDidUpdate(prevState) {
+  //   if (prevState !== this.state) {
+  //     this.totalDeliveryCalc();
+  //   }
+  // }
+
   departureParse = () => {
     // собираем список доступных локаций для react select
-    const { Departures } = { ...places };
+
     const departuresArray = [];
-    Departures.map(el => {
+    places.map(el => {
       const valToArr = {
         value: el.city,
         label: `${el.city}  (${el.state})`,
@@ -52,49 +56,53 @@ class Calculator extends Component {
     });
     this.setState({ arrayOfDepartures: newDeparturesArray });
   };
-  // componentDidUpdate(prevState) {
-  //   if (prevState !== this.state) {
-  //     this.totalDeliveryCalc();
-  //   }
-  // }
 
   departurePortHandler = () => {
-    this.setState({ arrayOfPorts: [] });
     const { departurePlaceForSelect } = this.state;
-    const { Departures } = { ...places };
-    const departPort = Departures.find(el => {
-      return el.city === departurePlaceForSelect;
-    });
+    places.find(el => {
+      if (el.city === departurePlaceForSelect) {
+        // find lowest price
+        const some = Object.values(el.land);
 
-    const entries = Object.entries(departPort);
-    const { portsDepart } = { ...ports };
-    entries.map(el => {
-      if (el[0].length === 2 && el[1] !== null) {
-        const portToState = portsDepart.filter(port => {
-          return port.value === el[0];
+        const newArr = some.sort((a, b) => {
+          return a.amount - b.amount;
         });
 
         this.setState(
-          prevState => ({
-            arrayOfPorts: [...prevState.arrayOfPorts, el],
-            departurePorts: [...portToState],
-            selectedPlace: { ...departPort }
-          }),
+          {
+            departurePorts: [...newArr],
+            overlandDeliveryCost: newArr[0].amount
+          },
           () => {
-            this.overlandDeliveryCostHandler();
+            this.imgStateHelper();
           }
         );
+        return newArr[0];
       }
-      return null;
     });
-  };
 
-  overlandDeliveryCostHandler = () => {
-    const { departurePorts, selectedPlace } = this.state;
-    const price = selectedPlace[departurePorts[0].value];
-    this.setState({ overlandDeliveryCost: price }, () => {
-      this.totalDeliveryCalc();
-    });
+    // console.log(departPort);
+    // const entries = Object.entries(departPort);
+    // const { portsDepart } = { ...ports };
+    // entries.map(el => {
+    //   if (el[0].length === 2 && el[1] !== null) {
+    //     const portToState = portsDepart.filter(port => {
+    //       return port.value === el[0];
+    //     });
+
+    //     this.setState(
+    //       prevState => ({
+    //         arrayOfPorts: [...prevState.arrayOfPorts, el],
+    //         departurePorts: [...portToState],
+    //         selectedPlace: { ...departPort }
+    //       }),
+    //       () => {
+    //         this.overlandDeliveryCostHandler();
+    //       }
+    //     );
+    //   }
+    //   return null;
+    // });
   };
 
   imgStateHelper = () => {
@@ -108,7 +116,8 @@ class Calculator extends Component {
   handleChange = e => {
     this.setState(
       {
-        departurePlaceForSelect: e.value
+        departurePlaceForSelect: e.value,
+        selectedPlace: { value: e.value, state: e.state }
       },
       () => {
         this.departurePortHandler();
@@ -132,12 +141,14 @@ class Calculator extends Component {
         carPrice: e.target.value,
         insurance: Math.round(Number(e.target.value * 0.04))
       },
-      () => this.totalDeliveryCalc()
+
+      () => this.comissionCalc()
     );
   };
 
   comissionCalc = () => {
     const { carPrice, selectedAuction } = this.state;
+
     let aucComission = "";
     let bidFee = "";
 
@@ -146,13 +157,14 @@ class Calculator extends Component {
       const bidFeeArray = prices.CopartArray[1].bidFee;
       const { gateFee } = prices.CopartArray[2];
 
-      comissionArray.find(el => {
-        if (el[0] > carPrice) {
+      comissionArray.find((el, index) => {
+        if (el[0] > Number(carPrice)) {
           aucComission = el[1];
           return aucComission;
         }
-        if (el[comissionArray.length < carPrice]) {
-          aucComission = Math.round(Number(carPrice) * 0.01 + 450);
+        if (comissionArray.length - 1 === index && el[0] <= carPrice) {
+          aucComission = Math.round(Number(carPrice) * 0.04);
+
           return aucComission;
         }
       });
@@ -162,6 +174,7 @@ class Calculator extends Component {
           return bidFee;
         }
       });
+
       this.setState(
         {
           aucComission: Math.round(
@@ -176,13 +189,19 @@ class Calculator extends Component {
       const bidFeeArray = prices.IaaiArray[1].bidFee;
       const { gateFee } = prices.IaaiArray[2];
 
-      comissionArray.find(el => {
-        if (el[0] > carPrice) {
+      comissionArray.find((el, index) => {
+        if (el[0] > Number(carPrice)) {
+          if (Number(carPrice) < 7499 && Number(carPrice) < 20000) {
+            aucComission = el[1] + Number(carPrice) * 0.01;
+            console.log(aucComission);
+            return aucComission;
+          }
           aucComission = el[1];
           return aucComission;
         }
-        if (el[comissionArray.length < carPrice]) {
-          aucComission = Math.round(Number(carPrice) * 0.01 + 450);
+
+        if (comissionArray.length - 1 === index && el[0] <= carPrice) {
+          aucComission = Math.round(Number(carPrice) * 0.04);
           return aucComission;
         }
       });
@@ -256,7 +275,9 @@ class Calculator extends Component {
       container: base => ({
         ...base,
         width: "100%",
-        margin: "10px auto"
+        margin: "10px auto",
+        height: "35px",
+        maxWidth: "600px"
       }),
       control: base => ({
         ...base,
@@ -281,16 +302,19 @@ class Calculator extends Component {
                 options={arrayOfDepartures}
                 onChange={this.handleChange}
               />
-              <img
-                src={this.imgStateHelper()}
-                className={style.mapImg}
-                alt="map"
-              />
-              {departurePorts.length > 0 ? (
+              <div className={style.mapImgWrapper}>
+                <img
+                  src={this.imgStateHelper()}
+                  className={style.mapImg}
+                  alt="map"
+                />
+              </div>
+
+              {/* {departurePorts.length > 0 ? (
                 <p className={style.departurePort}>
                   Порт відправки: {departurePorts[0].name}
                 </p>
-              ) : null}
+              ) : null} */}
             </div>
 
             <div className={style.departWrapper}>
@@ -347,68 +371,70 @@ class Calculator extends Component {
                   Iaai
                 </label>
               </div>
-            </div>
-            <div className={style.priceContainer}>
-              <div className={style.priceWrapper}>
-                <span className={style.span}>
-                  Ціна лота:
-                  <span className={style.innerSpan}>{carPrice}</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Комісія аукціону:
-                  <span className={style.innerSpan}>
-                    {Math.round(aucComission)}$
-                  </span>
-                </span>
-                <br />
 
-                <span className={style.span}>
-                  Вартість доставки по США в порт
-                  {departurePorts[0] && departurePorts[0].name
-                    ? departurePorts[0].name
-                    : null}
-                  :
-                  <span className={style.innerSpan}>
-                    {departurePorts[0] && departurePorts[0].name
-                      ? overlandDeliveryCost
-                      : null}
-                    $
+              <div className={style.priceContainer}>
+                <div className={style.priceWrapper}>
+                  <span className={style.span}>
+                    Ціна лота:
+                    <span className={style.innerSpan}>{`${carPrice}$`}</span>
                   </span>
-                </span>
-                <br />
+                  <br />
+                  <span className={style.span}>
+                    Комісія аукціону:
+                    <span className={style.innerSpan}>
+                      {Math.round(aucComission)}$
+                    </span>
+                  </span>
+                  <br />
 
-                <span className={style.span}>
-                  Ціна доставки морем:
-                  <span className={style.innerSpan}>{deliverySea}$</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Страховка:
-                  <span className={style.innerSpan}>{insurance}$</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Порт доставки:
-                  <span className={style.innerSpan}>Одеса</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Срок доставки:
-                  <span className={style.innerSpan}>55 днів</span>
-                </span>
-                <br />
-                <span className={style.span}>
-                  Комісія компанії:
-                  <span className={style.innerSpan}>{companyСommission}$</span>
-                </span>
-                <br />
-                <span className={style.totalDeliveryCostWrappe}>
-                  <span className={style.totalDeliveryCost}>
-                    Загальна сума до порту Одеса:
-                    <span className={style.innerSpan}> {totalDelivery}</span>
+                  <span className={style.span}>
+                    Вартість доставки по США в порт
+                    {departurePorts[0] && departurePorts[0].name}:
+                    <span className={style.innerSpan}>
+                      {departurePorts[0] && departurePorts[0].name
+                        ? overlandDeliveryCost
+                        : 0}
+                      $
+                    </span>
                   </span>
-                </span>
+                  <br />
+
+                  <span className={style.span}>
+                    Ціна доставки морем:
+                    <span className={style.innerSpan}>{deliverySea}$</span>
+                  </span>
+                  <br />
+                  <span className={style.span}>
+                    Страховка:
+                    <span className={style.innerSpan}>{insurance}$</span>
+                  </span>
+                  <br />
+                  <span className={style.span}>
+                    Порт доставки:
+                    <span className={style.innerSpan}>Одеса</span>
+                  </span>
+                  <br />
+                  <span className={style.span}>
+                    Срок доставки:
+                    <span className={style.innerSpan}>55 днів</span>
+                  </span>
+                  <br />
+                  <span className={style.span}>
+                    Комісія компанії:
+                    <span className={style.innerSpan}>
+                      {companyСommission}$
+                    </span>
+                  </span>
+                  <br />
+                  <span className={style.totalDeliveryCostWrappe}>
+                    <span className={style.totalDeliveryCost}>
+                      Загальна сума до порту Одеса:
+                      <span className={style.innerSpan}>
+                        {`${totalDelivery}$`}
+                      </span>
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
           </div>

@@ -26,6 +26,7 @@ class SearchPage extends Component {
       // year: 2007,
       // city: "SAVANNAH",
       // state: "GA",
+      // location: "CA - SUN VALLEY",
       // seller: "State Farm Insurance",
       // fuel: "GAS",
       // engine: "3.5L  6",
@@ -51,6 +52,10 @@ class SearchPage extends Component {
     selectedAuction: ""
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { averagePriceCar, car } = this.state;
 
@@ -62,6 +67,12 @@ class SearchPage extends Component {
       this.getAveragePrice(averagePriceCar);
     }
   }
+
+  abortLoading = () => {
+    this.setState({
+      isLoading: false
+    });
+  };
 
   averagePriceHelper = car => {
     const arrayData = car.split(" ");
@@ -115,14 +126,13 @@ class SearchPage extends Component {
   };
 
   getAveragePrice = car => {
-    // const { car } = this.state;
     this.averagePriceHelper(car.name);
     return API.getAveragePrice(car).then(res => {
       this.setState({ averagePrice: res.data.price });
     });
   };
 
-  formSubmit = (value, selectedAuction, lotPrice) => {
+  formSubmit = (formValue, selectedAuction, lotPrice) => {
     this.setState({
       isLoading: true,
       lotPrice,
@@ -130,16 +140,54 @@ class SearchPage extends Component {
       car: {},
       error: ""
     });
-    API.getCarByLot(value, selectedAuction)
-      .then(res => {
-        if (res.err) {
-          this.setState({ error: res.resp, isLoading: false });
-        } else if (res.car) {
-          this.setState({ car: res.car, isLoading: false });
-        }
-      })
-      // eslint-disable-next-line no-console
-      .catch(err => console.log(err));
+    if (formValue.length === 8) {
+      API.getCarByLot(formValue, selectedAuction)
+        .then(res => {
+          const { car } = res;
+          console.log(res);
+          if (res.error) {
+            this.setState({ error: res.error, isLoading: false });
+            return;
+          }
+          if (res.car) {
+            const { photos } = res;
+
+            if (photos.length > 1) {
+              this.setState({
+                car: { ...car, images: photos },
+
+                isLoading: false
+              });
+              return;
+            }
+          }
+          this.setState({
+            car: { ...car },
+
+            isLoading: false
+          });
+        })
+        // eslint-disable-next-line no-console
+        .catch(err => console.log(err));
+    } else if (formValue.length === 17) {
+      API.getCarByVin(formValue.toUpperCase(), selectedAuction)
+        .then(res => {
+          console.log(res);
+          if (res.err || res.error) {
+            this.setState({ error: res.err || res.error, isLoading: false });
+          } else if (res.car) {
+            const { car, photos } = res;
+
+            this.setState({
+              car: { ...car, images: photos },
+
+              isLoading: false
+            });
+          }
+        })
+        // eslint-disable-next-line no-console
+        .catch(err => console.log(err));
+    }
   };
 
   render() {
@@ -153,20 +201,22 @@ class SearchPage extends Component {
     } = this.state;
     return (
       <>
-        {isLoading ? <Loader /> : null}
+        {isLoading ? <Loader abortLoading={this.abortLoading} /> : null}
         <div className={style.container}>
           <div className={style.wrapper}>
             <div className={style.shadow}>
-              {car.lot ? null : <div className={style.marginContainer} />}
+              {car && car.lot && car.lot ? null : (
+                <div className={style.marginContainer} />
+              )}
               <SearchForm formSubmit={this.formSubmit} />
 
-              {car ? (
+              {error.length === 0 && car ? (
                 <>
-                  {car.images ? (
+                  {car.vin ? (
                     <CarInfo car={car} averagePrice={averagePrice} />
                   ) : null}
 
-                  {car.lot > 5 ? (
+                  {car.lot ? (
                     <SearchCalc
                       car={car}
                       lotPrice={lotPrice}
@@ -186,9 +236,13 @@ class SearchPage extends Component {
                   )}
                 </>
               ) : null}
-              {/* {error ? <ErrorNotif error={error} /> : null} */}
+              {error ? <ErrorNotif error={error} /> : null}
 
-              {car.lot && error.length === 0 ? <CallBackBtn /> : null}
+              {car && car.lot && error.length === 0 ? (
+                <CallBackBtn
+                  carText={`Доброго дня, мене зацікавив автомобіль ${car.name}, за номером лоту №${car.lot}`}
+                />
+              ) : null}
             </div>
           </div>
 
