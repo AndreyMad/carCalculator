@@ -3,6 +3,8 @@
 /* eslint-disable no-restricted-syntax */
 import React, { Component } from "react";
 import levenshtein from "fast-levenshtein";
+import { Route } from "react-router-dom";
+import PropTypes from "prop-types";
 import * as API from "../../api/api";
 import makes from "../../assets/data/makes.json";
 import SearchForm from "../../components/SearchForm/SearchForm";
@@ -13,32 +15,33 @@ import SearchCalc from "../../components/SearchCalc/SearchCalc";
 import Footer from "../../components/Footer/Footer";
 import CallBackBtn from "../../components/CallBack/CallBackBtn";
 import style from "./SearchPage.module.css";
+import CarDetails from "../../components/CarDetails/CarDetails";
 
 class SearchPage extends Component {
   state = {
     car: {
-      // currentBid: 0,
-      // buyNow: 0,
-      // lot: 26098920,
-      // aucDate: 1587996000000,
-      // vin: "2FMDK39C57B******",
-      // name: "2007 FORD EDGE SEL PLUS",
-      // year: 2007,
-      // city: "SAVANNAH",
-      // state: "GA",
-      // location: "CA - SUN VALLEY",
-      // seller: "State Farm Insurance",
-      // fuel: "GAS",
-      // engine: "3.5L  6",
-      // highlights: "RUNS AND DRIVES",
-      // odo: 183964,
-      // capacity: 3.5,
-      // images: [
-      //   "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
-      //   "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
-      //   "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
-      // ],
-      // doc: "GA - CERT OF TITLE-SALVAGE"
+      currentBid: 0,
+      buyNow: 0,
+      lot: 26098920,
+      aucDate: 1587996000000,
+      vin: "2FMDK39C57B******",
+      name: "2007 FORD EDGE SEL PLUS",
+      year: 2007,
+      city: "SAVANNAH",
+      state: "GA",
+      location: "CA - SUN VALLEY",
+      seller: "State Farm Insurance",
+      fuel: "GAS",
+      engine: "3.5L  6",
+      highlights: "RUNS AND DRIVES",
+      odo: 183964,
+      capacity: 3.5,
+      images: [
+        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX236/6d16dcf5-cd4c-4bf2-ba6e-e2f7f383b1e6.JPG",
+        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/9db09217-40dc-4c08-84a4-77d61c06483a.JPG",
+        "https://cs.copart.com/v1/AUTH_svc.pdoc00001/PIX244/e83a2570-9914-4cc2-92fd-2ed5bca19c2d.JPG"
+      ],
+      doc: "GA - CERT OF TITLE-SALVAGE"
     },
     averagePriceCar: {
       make: "",
@@ -50,6 +53,16 @@ class SearchPage extends Component {
     error: "",
     lotPrice: "",
     selectedAuction: ""
+  };
+
+  static propTypes = {
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }).isRequired,
+    match: PropTypes.shape({
+      url: PropTypes.string.isRequired
+    }).isRequired,
+    location: PropTypes.shape({}).isRequired
   };
 
   componentDidMount() {
@@ -133,6 +146,9 @@ class SearchPage extends Component {
   };
 
   formSubmit = (formValue, selectedAuction, lotPrice) => {
+    const { history, match, location } = this.props;
+    history.push(`${match.url}/${formValue}`);
+
     this.setState({
       isLoading: true,
       lotPrice,
@@ -144,18 +160,17 @@ class SearchPage extends Component {
       API.getCarByLot(formValue, selectedAuction)
         .then(res => {
           const { car } = res;
-          console.log(res);
+
           if (res.error) {
-            this.setState({ error: res.error, isLoading: false });
+            this.setState({ error: res.error, isLoading: false, formValue });
             return;
           }
           if (res.car) {
             const { photos } = res;
-
             if (photos.length > 1) {
               this.setState({
-                car: { ...car, images: photos },
-
+                car: { ...car, images: [...photos] },
+                formValue,
                 isLoading: false
               });
               return;
@@ -163,7 +178,7 @@ class SearchPage extends Component {
           }
           this.setState({
             car: { ...car },
-
+            formValue,
             isLoading: false
           });
         })
@@ -172,15 +187,18 @@ class SearchPage extends Component {
     } else if (formValue.length === 17) {
       API.getCarByVin(formValue.toUpperCase(), selectedAuction)
         .then(res => {
-          console.log(res);
           if (res.err || res.error) {
-            this.setState({ error: res.err || res.error, isLoading: false });
+            this.setState({
+              error: res.err || res.error,
+              isLoading: false,
+              formValue
+            });
           } else if (res.car) {
             const { car, photos } = res;
 
             this.setState({
               car: { ...car, images: photos },
-
+              formValue,
               isLoading: false
             });
           }
@@ -197,8 +215,11 @@ class SearchPage extends Component {
       averagePrice,
       error,
       lotPrice,
-      selectedAuction
+      selectedAuction,
+      formValue
     } = this.state;
+    const { match } = this.props;
+    const url = `${match.url}/${formValue}`;
     return (
       <>
         {isLoading ? <Loader abortLoading={this.abortLoading} /> : null}
@@ -208,41 +229,23 @@ class SearchPage extends Component {
               {car && car.lot && car.lot ? null : (
                 <div className={style.marginContainer} />
               )}
+
               <SearchForm formSubmit={this.formSubmit} />
 
-              {error.length === 0 && car ? (
-                <>
-                  {car.vin ? (
-                    <CarInfo car={car} averagePrice={averagePrice} />
-                  ) : null}
-
-                  {car.lot ? (
-                    <SearchCalc
-                      car={car}
+              <Route
+                path={url}
+                render={() => {
+                  return (
+                    <CarDetails
+                      averagePrice={averagePrice}
+                      error={error}
                       lotPrice={lotPrice}
                       selectedAuction={selectedAuction}
+                      car={car}
                     />
-                  ) : (
-                    <>
-                      {error.length === 0 ? (
-                        <p className={style.infoText}>
-                          Для отримання повної вартості введіть номер лоту та
-                          очікувану виграшну ставку
-                        </p>
-                      ) : (
-                        <ErrorNotif error={error} />
-                      )}
-                    </>
-                  )}
-                </>
-              ) : null}
-              {error ? <ErrorNotif error={error} /> : null}
-
-              {car && car.lot && error.length === 0 ? (
-                <CallBackBtn
-                  carText={`Доброго дня, мене зацікавив автомобіль ${car.name}, за номером лоту №${car.lot}`}
-                />
-              ) : null}
+                  );
+                }}
+              />
             </div>
           </div>
 

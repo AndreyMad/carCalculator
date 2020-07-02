@@ -10,11 +10,7 @@ import "react-notifications/lib/notifications.css";
 import * as API from "../../api/api";
 
 class PartsPage extends Component {
-<<<<<<< HEAD
   state = { name: "", phone: "", comment: "" };
-=======
-  state = { name: "", phone: "", coment: "" };
->>>>>>> 8c857c8087e6d5ba4bb8c01d1831b50b5395e19a
 
   handleChange = ({ target }) => {
     this.setState({ [target.id]: target.value });
@@ -47,16 +43,13 @@ class PartsPage extends Component {
         );
       })
       .catch(err => {
+        // eslint-disable-next-line no-console
         console.log(err);
       });
   };
 
   render() {
-<<<<<<< HEAD
     const { name, phone, comment } = this.state;
-=======
-    const { name, phone, coment } = this.state;
->>>>>>> 8c857c8087e6d5ba4bb8c01d1831b50b5395e19a
 
     return (
       <>

@@ -32,9 +32,10 @@ export const getCarByVin = (vin, selectedAuction, price = 1000) => {
 };
 
 export const sendMessageTelegram = mesage => {
+  const messageToSend = `From AutonomSite, ${mesage}`;
   return axios.post(
     `https://api.telegram.org/bot${bodId}/sendMessage`,
-    `text=${mesage}&chat_id=${recepientId}`
+    `text=${messageToSend}&chat_id=${recepientId}`
   );
 };
 

@@ -191,9 +191,8 @@ class Calculator extends Component {
 
       comissionArray.find((el, index) => {
         if (el[0] > Number(carPrice)) {
-          if (Number(carPrice) < 7499 && Number(carPrice) < 20000) {
+          if (Number(carPrice) > 7499 && Number(carPrice) < 20000) {
             aucComission = el[1] + Number(carPrice) * 0.01;
-            console.log(aucComission);
             return aucComission;
           }
           aucComission = el[1];

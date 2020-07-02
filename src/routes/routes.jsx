@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import MainPage from "../pages/MainPage/MainPage";
 import CalculatorPage from "../pages/CalculatorPage/CalculatorPage";
 import SearchPage from "../pages/SearchPage/SearchPage";
@@ -15,11 +16,12 @@ export default {
     component: CalculatorPage
   },
   SEARCH_PAGE: {
-    path: "/search",
+    path: `/search`,
     component: SearchPage
   },
+
   PARTS_PAGE: {
-    path: "/parts",
+    path: "/parts/",
     component: PartsPage
   },
   ABOUT_US_PAGE: {

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from "react";
+
 import style from "./CarInfo.module.css";
 import * as API from "../../api/api";
 import okSvg from "../../assets/svg/ok.svg";
@@ -48,7 +49,10 @@ const CarInfo = ({ car, averagePrice }) => {
             <span className={style.span}>{car.vin}</span>
           </p>
           <p className={style.text}>
-            Двигун: <span className={style.span}>{engineCapacity}</span>
+            Двигун:{" "}
+            <span className={style.span}>
+              {Math.round(engineCapacity * 100) / 100}л.
+            </span>
           </p>
           <p className={style.text}>
             Паливо: <span className={style.span}>{car.fuel}</span>
@@ -91,6 +95,7 @@ const CarInfo = ({ car, averagePrice }) => {
           )}
         </div>
       </div>
+
       {car.images && <ShowMoreBtn images={car.images} />}
     </div>
   );

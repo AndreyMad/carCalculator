@@ -33,7 +33,6 @@ class App extends Component {
           />
           <Route
             path={routes.SEARCH_PAGE.path}
-            exact
             component={routes.SEARCH_PAGE.component}
           />
           <Route
