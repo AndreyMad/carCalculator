@@ -30,6 +30,7 @@
     "uuid-apikey": "^1.4.6",
     "video-react": "^0.14.1"
   },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -12,7 +12,7 @@ import CallBackBtn from "../CallBack/CallBackBtn";
 import hitImg from "../../assets/img/hit.webp";
 import avtoriaLogo from "../../assets/img/avtoriaLogo.jpg";
 import ModalPhoto from "../ModalPhoto/ModalPhoto";
-import fade from "../../transitions/fade.module.css";
+import fade from "../../transitions/fade250.module.css";
 import soldImg from "../../assets/img/sold.png";
 
 class carAvailability extends Component {
@@ -164,9 +164,9 @@ class carAvailability extends Component {
             </div>
 
             <CSSTransition
-              in={!!modalImage}
+              in={modalImage}
               unmountOnExit
-              timeout={400}
+              timeout={250}
               classNames={fade}
             >
               <ModalPhoto

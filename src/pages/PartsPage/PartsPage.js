@@ -56,11 +56,12 @@ class PartsPage extends Component {
         <section className={style.container}>
           <div className={style.titleContainer}>
             <div className={style.shadow}>
-              <h2 className={style.title}>Замовити автозапчастини</h2>
-              <h2 className={style.title2}> Замовити автозапчастини з США.</h2>
+              <h2 className={style.title}>
+                Замовити автозапчастини по наявності та під замовлення
+              </h2>
 
               <p className={style.span}>
-                Окрім безпосередньої покукпи авто з США, багато власників хотіли
+                Окрім безпосередньої купівлі авто з США, багато власників хотіли
                 б придбати автозапчастини для ремонту та обслуговування свого
                 авто
               </p>
@@ -71,8 +72,8 @@ class PartsPage extends Component {
             <div className={style.whiteShadow}>
               <p>
                 Ми співпрацюємо з постачальниками з Європи, США, Японії,
-                Арабських Еміратів та інших. Тому ви зможете бути впевенні що
-                отримаєте тільки якісні деталі за найнижчоюб ціною.
+                Арабських Еміратів та інших країн. Тому ви зможете бути впевенні
+                що отримаєте тільки якісні деталі за найнижчою ціною.
               </p>
               <p>
                 Заповніть форму нижче і наші співробітники нададуть вам
@@ -82,7 +83,7 @@ class PartsPage extends Component {
                 <input
                   type="text"
                   value={name}
-                  placeholder="Ваше імя*"
+                  placeholder="Ваше ім'я*"
                   id="name"
                   onChange={this.handleChange}
                 />
@@ -111,7 +112,7 @@ class PartsPage extends Component {
           <div className={style.listContainer}>
             <div className={style.shadow}>
               <h3 className={style.subTitle}>
-                Наявність на наших складах більш 100000 позиці, серед яких такі
+                Наявність на наших складах більш 100000 позицій, серед яких такі
                 групи деталей:
               </h3>
               <ul className={style.list}>
@@ -141,7 +142,7 @@ class PartsPage extends Component {
                     className={style.svg}
                     alt="presentation"
                   />
-                  <span> елементи шассі:</span>
+                  <span> елементи шасі:</span>
 
                   <span> амортизатори, пружини, пневмобалони</span>
                 </li>
@@ -171,7 +172,7 @@ class PartsPage extends Component {
                     className={style.svg}
                     alt="presentation"
                   />
-                  <span> елементи сисеми запалювання:</span>
+                  <span> елементи системи запалювання:</span>
 
                   <span> свічки, катушки, модулі</span>
                 </li>

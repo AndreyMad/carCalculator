@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
@@ -101,7 +102,7 @@ class CallBackModal extends Component {
         <div className={style.overlay}>
           <div className={style.container}>
             <h3 className={style.title}>
-              Залиште Ваші контактні дані і наш менеджер звяжеться з вами
+              Залиште Ваші контактні дані і наш менеджер зв'яжеться з вами
               протягом 30хв
             </h3>
             <div className={style.formWrappe}>
@@ -117,7 +118,7 @@ class CallBackModal extends Component {
                   />
                 </label>
                 <label htmlFor="nameInput">
-                  Ваше імя:*
+                  Ваше ім'я:*
                   <input
                     type="text"
                     value={name}

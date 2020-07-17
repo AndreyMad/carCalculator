@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable consistent-return */
 /* eslint-disable array-callback-return */
 /* eslint-disable prefer-destructuring */
@@ -10,6 +11,7 @@ import prices from "../../assets/data/comissionPrice.json";
 
 class SearchCalc extends Component {
   state = {
+    isMediumCustomValue: false,
     selectedAuction: "",
     lotPrice: "0",
     deliverySea: "900",
@@ -269,7 +271,20 @@ class SearchCalc extends Component {
           nds = 0;
           break;
         default:
-          return coeficient;
+          if (Number(carVol) > 3.5) {
+            coeficient = 100;
+          }
+          exise = Math.round(
+            Number(ageOfCar) * Number(carVol || 2.0) * Number(coeficient)
+          );
+          totalCustomPrice =
+            Number(lotPrice) +
+            Number(aucComission) +
+            Number(exise) +
+            Number(importDuty);
+          nds = Math.round(totalCustomPrice * 0.2);
+          this.setState({ isMediumCustomValue: true });
+          break;
       }
 
       const esv = Math.round(totalCustomPrice * 0.04);
@@ -294,7 +309,8 @@ class SearchCalc extends Component {
       esv,
       nds,
       certification,
-      accounting
+      accounting,
+      isMediumCustomValue
     } = this.state;
     const totalDelivery =
       Number(lotPrice) +
@@ -320,7 +336,7 @@ class SearchCalc extends Component {
       <>
         <div className={style.outWrapper}>
           <div className={style.container}>
-            <h2 className={style.title}>Оплата після покупки</h2>
+            <h2 className={style.title}>Оплата після купівлі</h2>
             <div className={style.deliveryWrapper}>
               <span className={style.span}>
                 Ціна лота:
@@ -389,13 +405,24 @@ class SearchCalc extends Component {
               <span className={style.innerSpan}>{importDuty}$</span>
             </span>
             <span className={style.span}>
-              Акцизний збір:<span className={style.innerSpan}>{exise}$</span>
+              Акцизний збір:
+              <span className={style.innerSpan}>
+                {isMediumCustomValue && "*"}
+                {exise}$
+              </span>
             </span>
             <span className={style.span}>
-              ПДВ:<span className={style.innerSpan}>{nds}$</span>
+              ПДВ:
+              <span className={style.innerSpan}>
+                {isMediumCustomValue && "*"} {nds}$
+              </span>
             </span>
             <span className={style.span}>
-              Пенсійний фонд:<span className={style.innerSpan}>{esv}$</span>
+              Пенсійний фонд:
+              <span className={style.innerSpan}>
+                {isMediumCustomValue && "*"}
+                {esv}$
+              </span>
             </span>
             <span className={style.span}>
               Евакуатор до адреси клієнта:
@@ -417,6 +444,11 @@ class SearchCalc extends Component {
               Загальна вартість:
               <span className={style.innerSpan}> {totalPrice}$</span>
             </span>
+            {isMediumCustomValue && (
+              <span>
+                Значення обчислені для бензинового двигуна об'ємом 2.0л.
+              </span>
+            )}
           </div>
         </div>
       </>

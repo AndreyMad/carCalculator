@@ -48,22 +48,29 @@ const CarInfo = ({ car, averagePrice }) => {
             VIN:
             <span className={style.span}>{car.vin}</span>
           </p>
-          <p className={style.text}>
-            Двигун:{" "}
-            <span className={style.span}>
-              {Math.round(engineCapacity * 100) / 100}л.
-            </span>
-          </p>
-          <p className={style.text}>
-            Паливо: <span className={style.span}>{car.fuel}</span>
-          </p>
+          {engineCapacity && (
+            <p className={style.text}>
+              Двигун:
+              <span className={style.span}>
+                {Math.round(engineCapacity * 100) / 100}л.
+              </span>
+            </p>
+          )}
+          {car.fuel && (
+            <p className={style.text}>
+              Паливо: <span className={style.span}>{car.fuel}</span>
+            </p>
+          )}
+          {}{" "}
           <p className={style.text}>
             Пробіг:
             <span className={style.span}>{car.miles || car.odometer}</span>
           </p>
-          <p className={style.text}>
-            Привід: <span className={style.span}>{car.privod}</span>
-          </p>
+          {car.privod && (
+            <p className={style.text}>
+              Привід: <span className={style.span}>{car.privod}</span>
+            </p>
+          )}
           {car.docs && (
             <p className={style.text}>
               Тайтл: <span className={style.span}>{car.docs}</span>
@@ -74,7 +81,6 @@ const CarInfo = ({ car, averagePrice }) => {
               Продавець: <span className={style.span}>{car.seller}</span>
             </p>
           )}
-
           <p className={style.text}>
             Run and Drive:
             {runAndDrive ? (

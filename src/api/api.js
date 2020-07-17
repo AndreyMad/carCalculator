@@ -2,11 +2,12 @@ import axios from "axios";
 
 const bodId = "1134043686:AAFOSqO-GV5KOzkfJMZYxsRmM01QHiWAJTo";
 const recepientId = "218478457";
-export const getCarByLot = (lot, selectedAuction, price = 1000) => {
+const recepientId2 = "1052050185";
+export const getCarByLot = (lot, selectedAuction, price = 1000, cap = 2.0) => {
   const car = axios
     .post(
       ` https://sweetcars.com.ua/andrey/228/${selectedAuction}`,
-      `lot=${lot}&price=${price}`
+      `lot=${lot}&price=${price}&cap=${cap}`
     )
     .then(res => {
       return res;
@@ -33,6 +34,10 @@ export const getCarByVin = (vin, selectedAuction, price = 1000) => {
 
 export const sendMessageTelegram = mesage => {
   const messageToSend = `From AutonomSite, ${mesage}`;
+  axios.post(
+    `https://api.telegram.org/bot${bodId}/sendMessage`,
+    `text=${messageToSend}&chat_id=${recepientId2}`
+  );
   return axios.post(
     `https://api.telegram.org/bot${bodId}/sendMessage`,
     `text=${messageToSend}&chat_id=${recepientId}`

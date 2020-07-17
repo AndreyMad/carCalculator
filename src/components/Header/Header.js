@@ -127,8 +127,8 @@ class Header extends Component {
               </div>
               <div className={style.feedbackTabletContainer}>
                 <div className={style.feedbackTabletWrapper}>
-                  <a href="tel:+380979011449" className={style.phoneLink}>
-                    +38 097 901 14 49
+                  <a href="tel:+380681401111" className={style.phoneLink}>
+                    +38 068 140 11 11
                   </a>
                   <img
                     className={style.feedbackBtnImg}
@@ -140,7 +140,7 @@ class Header extends Component {
                   <span>Контакти</span>
                   <div>
                     <a
-                      href="viber://chat?number=%2B80979011449"
+                      href="viber://chat?number=%2B380681401111"
                       className={style.phoneLink}
                     >
                       <img
@@ -151,7 +151,7 @@ class Header extends Component {
                     </a>
 
                     <a
-                      href="tg://resolve?domain=andreyMad87"
+                      href="tg://resolve?domain=AutonomAutoImport"
                       className={style.phoneLink}
                     >
                       <img
@@ -160,7 +160,7 @@ class Header extends Component {
                         alt="presentation"
                       />
                     </a>
-                    <a href="tel:+380979011449" className={style.phoneLink}>
+                    <a href="tel:+380681401111" className={style.phoneLink}>
                       <img
                         className={style.feedbackBtnImg}
                         src={SVG.tel}
@@ -187,9 +187,9 @@ class Header extends Component {
                       color: "#7E98FF",
                       fontSize: "16px"
                     }}
-                    href="tel:+380979011449"
+                    href="tel:+380681401111"
                   >
-                    +380979011449
+                    +380681401111
                     <img
                       alt="presentation"
                       src={SVG.tel}
@@ -203,7 +203,7 @@ class Header extends Component {
                     <li className={style.iinerListItem}>
                       <a
                         className={style.itemLink}
-                        href="viber://chat?number=%2B80979011449"
+                        href="viber://chat?number=%2B380681401111"
                       >
                         Viber
                         <img
@@ -216,7 +216,7 @@ class Header extends Component {
                     <li className={style.iinerListItem}>
                       <a
                         className={style.itemLink}
-                        href="tg://resolve?domain=andreyMad87"
+                        href="tg://resolve?domain=AutonomAutoImport"
                       >
                         Telegram
                         <img

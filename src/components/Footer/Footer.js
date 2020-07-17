@@ -15,18 +15,18 @@ const componentName = () => {
       <div className={style.innerWraper}>
         <h4 className={style.title}>З нами по дорозі</h4>
         <div className={style.contactsWrapper}>
-          <a className={style.link} href="tel: +380979011449">
-            380979011449
+          <a className={style.link} href="tel: +380681401111">
+            +380681401111
           </a>
           <p className={style.linkAbs}>Контакти</p>
-          <a className={style.link} href="mailto: mail@autonom.ua">
-            mail@autonom.ua
+          <a className={style.link} href="mailto: andrey.mad.87@gmail.com">
+            Написати лист
           </a>
         </div>
         <div className={style.logoWrapper}>
           <a
             className={style.logoLink}
-            href="viber://chat?number=+380979011449"
+            href="viber://chat?number=%2B380681401111"
           >
             <img
               src={SVG.viberWhite}
@@ -34,7 +34,10 @@ const componentName = () => {
               alt="presentation"
             />
           </a>
-          <a className={style.logoLink} href="tg://resolve?domain=andreyMad87">
+          <a
+            className={style.logoLink}
+            href="tg://resolve?domain=AutonomAutoImport"
+          >
             <img
               src={SVG.telegramWhite}
               className={style.miniLogo}
