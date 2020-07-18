@@ -30,8 +30,11 @@
     "uuid-apikey": "^1.4.6",
     "video-react": "^0.14.1"
   },
+  "homepage": "https://AndreyMad.github.io/carCalculator",
 
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

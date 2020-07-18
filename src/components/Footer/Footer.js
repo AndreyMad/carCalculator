@@ -13,7 +13,7 @@ const componentName = () => {
         <img className={style.rightImg} src={bmwRight} alt="presentation" />
       </div>
       <div className={style.innerWraper}>
-        <h4 className={style.title}>З нами по дорозі</h4>
+        <h4 className={style.title}>З нами по дорозі!</h4>
         <div className={style.contactsWrapper}>
           <a className={style.link} href="tel: +380681401111">
             +380681401111
