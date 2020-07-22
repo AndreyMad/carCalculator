@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from "../config";
 
 const bodId = "1134043686:AAFOSqO-GV5KOzkfJMZYxsRmM01QHiWAJTo";
 const recepientId = "218478457";
@@ -57,4 +58,12 @@ export const getAveragePrice = ({ make, model, year }) => {
       `http://45.11.24.158/priceAvg?make=${make}&model=${model}&year=${year}`
     )
     .then(res => res);
+};
+export const adminAuthorization = (userName, password) => {
+  console.log(userName);
+  console.log(password);
+  const user = JSON.stringify({ userName, password });
+  console.log(user);
+
+  return axios.post(`${config.IP}auth`, user).then(res => res);
 };
