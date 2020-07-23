@@ -7,9 +7,11 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "fast-levenshtein": "^2.0.6",
     "gh-pages": "^2.2.0",
+    "mongoose": "^5.9.25",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-elastic-carousel": "^0.4.1",
@@ -30,8 +32,6 @@
     "uuid-apikey": "^1.4.6",
     "video-react": "^0.14.1"
   },
-  "homepage": "https://AndreyMad.github.io/carCalculator",
-
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -64,6 +64,7 @@
     "eslint-plugin-react": "^7.20.0",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
+    "nodemon": "^2.0.4",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2"
   }
