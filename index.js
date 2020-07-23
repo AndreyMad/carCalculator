@@ -16,10 +16,7 @@ mongoose
   .catch(err => console.log(err));
 
 app.use(express.static("build"));
-const corsOptions = {
-  origin: "http://localhost:3000",
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+app.use(cors());
 
 const userSchema = mongoose.Schema({
   name: String,
@@ -29,11 +26,14 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-app.post("/auth", cors(corsOptions), (req, res) => {
+app.post("/auth", (req, res) => {
   // const user = JSON.parse(req);
   // console.log(user);
   // User.find()
-  res.send(req.body);
+  console.log(req.body.userName);
+  const { data } = req;
+  res.sendStatus(200);
+  res.send(data);
 });
 
 app.get("*", (req, res) => {
