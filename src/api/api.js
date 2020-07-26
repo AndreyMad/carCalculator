@@ -60,10 +60,13 @@ export const getAveragePrice = ({ make, model, year }) => {
     .then(res => res);
 };
 export const adminAuthorization = (userName, password) => {
-  console.log(userName);
-  console.log(password);
   const user = JSON.stringify({ userName, password });
-  console.log(user);
 
-  return axios.post(`${config.IP}auth`, user).then(res => res);
+  const req = {
+    method: "post",
+    url: `${config.IP}auth`,
+    data: { userName, password }
+  };
+
+  return axios(req).then(res => res);
 };

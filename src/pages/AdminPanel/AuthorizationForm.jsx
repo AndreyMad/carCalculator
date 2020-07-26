@@ -16,9 +16,8 @@ class AuthorizationForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     const { userName, password } = this.state;
-    console.log(userName);
-    console.log(password);
-    API.adminAuthorization(userName, password).then(res => console.log(res));
+
+    const user = API.adminAuthorization(userName, password).then(res => res);
   };
 
   render() {
