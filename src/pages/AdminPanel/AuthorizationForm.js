@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import * as API from "../../api/api";
+import PropTypes from "prop-types";
 
 class AuthorizationForm extends Component {
   state = {
     userName: "",
     password: ""
+  };
+
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired
   };
 
   handleChange = ({ target }) => {
@@ -13,22 +17,13 @@ class AuthorizationForm extends Component {
     });
   };
 
-  onSubmit = e => {
-    e.preventDefault();
-    const { userName, password } = this.state;
-
-    // eslint-disable-next-line no-console
-    API.adminAuthorization(userName, password).then(res =>
-      console.log(res.config.data)
-    );
-  };
-
   render() {
     const { userName, password } = this.state;
+    const { onSubmit } = this.props;
     return (
       <div>
         <form
-          onSubmit={this.onSubmit}
+          onSubmit={onSubmit.bind(this)}
           style={{
             width: "400px",
             height: "250px",

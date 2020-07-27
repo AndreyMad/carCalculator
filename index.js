@@ -1,37 +1,25 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const jwt = require("jsonwebtoken");
+const db = require("./src/mongoDb/index");
 
+const jsonParser = bodyParser.json();
 const app = express();
 
-const mongoose = require("mongoose");
-
-const uri =
-  "mongodb+srv://andrey:598741@cluster0.c5cyn.gcp.mongodb.net/AdminUsers?retryWrites=true&w=majority";
-app.use(express.static("build"));
-
-mongoose
-  .connect(uri, { useUnifiedTopology: true, useNewUrlParser: true })
-  .then(() => console.log("mongoose connected"))
-  .catch(err => console.log(err));
-
+// Middlewares
 app.use(express.static("build"));
 app.use(cors());
-
-const userSchema = mongoose.Schema({
-  name: String,
-  password: String,
-  dateCreating: { type: Date, default: Date.now() }
-});
-
-const User = mongoose.model("User", userSchema);
-
-app.post("/auth", (req, res) => {
-
-  console.log(req.body);
- 
-  res.sendStatus(200);
-  res.send(req.body);
+app.use(jsonParser);
+app.post("/auth", jsonParser, (req, res) => {
+  db.adminAuthorization(req.body.userName, req.body.password).then(data => {
+    if (data.err) {
+      return res.status(200).send({ err: data.err });
+    }
+    const token = jwt.sign({ password: req.body.password }, "crazy_cat");
+    return res.status(200).send({ data, token });
+  });
 });
 
 app.get("*", (req, res) => {
