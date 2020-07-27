@@ -17,8 +17,8 @@ class AuthorizationForm extends Component {
     e.preventDefault();
     const { userName, password } = this.state;
 
-    // eslint-disable-next-line no-console
-    API.adminAuthorization(userName, password).then(res => console.log(res));
+    const user = API.adminAuthorization(userName, password).then(res => res);
+    return user;
   };
 
   render() {

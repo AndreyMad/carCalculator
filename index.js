@@ -1,39 +1,19 @@
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+const jwt = require("jsonwebtoken");
+const db = require("./src/mongoDb/index");
 
+const jsonParser = bodyParser.json();
 const app = express();
 
-const mongoose = require("mongoose");
-
-const uri =
-  "mongodb+srv://andrey:598741@cluster0.c5cyn.gcp.mongodb.net/AdminUsers?retryWrites=true&w=majority";
+// Middlewares
 app.use(express.static("build"));
-
-mongoose
-  .connect(uri, { useUnifiedTopology: true, useNewUrlParser: true })
-  .then(() => console.log("mongoose connected"))
-  .catch(err => console.log(err));
-
-app.use(express.static("build"));
-const corsOptions = {
-  origin: "http://localhost:3000",
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
-const userSchema = mongoose.Schema({
-  name: String,
-  password: String,
-  dateCreating: { type: Date, default: Date.now() }
-});
-
-const User = mongoose.model("User", userSchema);
-
-app.post("/auth", cors(corsOptions), (req, res) => {
-  // const user = JSON.parse(req);
-  // console.log(user);
-  // User.find()
-  res.send(req.body);
+app.use(cors());
+app.use(jsonParser);
+app.post("/auth", jsonParser, (req, res) => {
+  db.adminAuthorization(req.body.userName, req.body.password);
 });
 
 app.get("*", (req, res) => {
