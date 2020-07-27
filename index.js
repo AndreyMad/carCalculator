@@ -27,13 +27,11 @@ const userSchema = mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 app.post("/auth", (req, res) => {
-  // const user = JSON.parse(req);
-  // console.log(user);
-  // User.find()
-  console.log(req.body.userName);
-  const { data } = req;
+
+  console.log(req.body);
+ 
   res.sendStatus(200);
-  res.send(data);
+  res.send(req.body);
 });
 
 app.get("*", (req, res) => {
