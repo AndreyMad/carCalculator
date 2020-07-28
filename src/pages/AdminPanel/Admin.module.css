@@ -1,0 +1,21 @@
+.container {
+  padding: 20px;
+}
+
+.wrapper {
+  display: flex;
+  height: 30px;
+  justify-content: start;
+  position: relative;
+}
+.wrapper > p {
+  min-width: 100px;
+  margin-top: 5px;
+}
+.wrapper:after {
+  content: "";
+  width: 100%;
+  border: 1px solid black;
+  position: absolute;
+  bottom: 0px;
+}

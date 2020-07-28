@@ -2,7 +2,6 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const jwt = require("jsonwebtoken");
 const db = require("./src/mongoDb/index");
 
 const jsonParser = bodyParser.json();
@@ -19,8 +18,7 @@ app.post("/auth", jsonParser, (req, res) => {
     if (data.err) {
       return res.status(200).send({ data, err: data.err });
     }
-    const token = jwt.sign({ password: req.body.password }, "crazy_cat");
-    return res.status(200).send({ ...data, token });
+    return res.status(200).send({ ...data });
   });
 });
 

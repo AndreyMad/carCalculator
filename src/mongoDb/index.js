@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 
 const userSchema = mongoose.Schema({
   name: { firstName: String, lastName: String },
@@ -24,21 +25,28 @@ const adminUserSchema = mongoose.Schema({
   password: String,
   dateCreating: { type: Date, default: Date.now() }
 });
+const sessionSchemas = mongoose.Schema({
+  sessionToken: String,
+  userId: String
+});
 const Admin = mongoose.model("admins", adminUserSchema);
 const Users = mongoose.model("users", userSchema);
+const Sessions = mongoose.model("sessions", sessionSchemas);
 
 const getUsers = async () => {
   let users = [];
   await Users.find().then(res => {
     // console.log(res);
-    users = { ...res };
+    users = [...res];
     // console.log(users);
     return users;
   });
 
   return users;
 };
-
+const setTokenToDb = (token, id) => {
+  Sessions.create({ sessionToken: token, userId: id });
+};
 const adminAuthorization = async (userName, password) => {
   let dbResp = {};
 
@@ -54,7 +62,10 @@ const adminAuthorization = async (userName, password) => {
       return resp;
     }
     if (user.password === password) {
-      const resp = { user, err: null };
+      const token = jwt.sign({ password }, "crazy_cat");
+      setTokenToDb(token, user._id);
+      console.log("saved");
+      const resp = { user, err: null, token };
       dbResp = resp;
       return resp;
     }

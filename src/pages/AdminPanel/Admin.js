@@ -46,12 +46,22 @@ class Admin extends Component {
     return user;
   };
 
+  logout = () => {
+    localStorage.removeItem("token");
+    this.setState({ isAuthorized: false });
+  };
+
   render() {
     const { isAuthorized, error, adminUser, users } = this.state;
     return (
       <>
         {isAuthorized && !error ? (
-          <AdminPanel adminUser={adminUser} users={users} />
+          <>
+            <button type="button" onClick={this.logout}>
+              Logout
+            </button>
+            <AdminPanel adminUser={adminUser} users={users} />
+          </>
         ) : (
           <AuthorizationForm adminAuthorization={this.adminAuthorization} />
         )}

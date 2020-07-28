@@ -10,32 +10,38 @@ class AdminPanel extends Component {
   };
 
   static propTypes = {
-    users: PropTypes.shape.isRequired,
-    adminUser: PropTypes.shape({}).isRequired
+    adminUser: PropTypes.string.isRequired
   };
 
   componentDidMount() {
-    const { users, adminUser } = this.props;
-    this.setState({ users, adminUser });
+    const { adminUser } = this.props;
+    this.setState({ adminUser });
     const token = localStorage.getItem("token");
     if (token) {
       API.getUsers().then(res => {
-        this.setState({ isAuthorized: true, users: [...res.data.users] });
+        this.setState({ isAuthorized: true, users: res.data.users });
       });
     }
   }
 
   render() {
     const { users, isAuthorized, adminUser } = this.state;
+    console.log(users);
 
     return (
       <>
-        {isAuthorized ? (
-          <div className={style.container}>
-            <p>{adminUser}</p>
-            <p>{users}</p>
-          </div>
-        ) : null}
+        <div className={style.container}>
+          {users &&
+            users.map(user => (
+              // eslint-disable-next-line no-underscore-dangle
+              <div key={user._id} className={style.wrapper}>
+                <p>Імя: {user.name.firstName}</p>
+                <p>Прізвище: {user.name.lastName}</p>
+                <p>Email: {user.email}</p>
+                <p>Кількість карфакс: {user.allowedCarfaxRequest}</p>
+              </div>
+            ))}
+        </div>
       </>
     );
   }
