@@ -1,34 +1,61 @@
 import React, { Component } from "react";
+import {
+  NotificationContainer,
+  NotificationManager
+} from "react-notifications";
 import AuthorizationForm from "./AuthorizationForm";
 import AdminPanel from "./AdminPanel";
 import * as API from "../../api/api";
 
 class Admin extends Component {
   state = {
-    isAuthorized: false
+    isAuthorized: false,
+    error: false,
+    adminUser: "",
+    users: {}
   };
 
-  onSubmit(e) {
-    e.preventDefault();
-    const { userName, password } = this.state;
-
-    const user = API.adminAuthorization(userName, password).then(
-      // eslint-disable-next-line no-console
-      res => console.log(res.data)
-      // this.setState({ userName: "", password: "" })
-    );
-    return user;
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      this.setState({ isAuthorized: true });
+    }
   }
 
+  adminAuthorization = (userName, password) => {
+    const user = API.adminAuthorization(userName, password).then(
+      // eslint-disable-next-line no-console
+      res => {
+        const { data } = res;
+
+        if (data.err) {
+          this.setState({ error: data.err });
+          NotificationManager.error("Помилка", data.err);
+          return;
+        }
+        if (!data.err && data.token) {
+          localStorage.setItem("token", data.token);
+          this.setState({
+            error: false,
+            isAuthorized: true,
+            adminUser: data.user.name
+          });
+        }
+      }
+    );
+    return user;
+  };
+
   render() {
-    const { isAuthorized } = this.state;
+    const { isAuthorized, error, adminUser, users } = this.state;
     return (
       <>
-        {!isAuthorized ? (
-          <AuthorizationForm onSubmit={this.onSubmit} />
+        {isAuthorized && !error ? (
+          <AdminPanel adminUser={adminUser} users={users} />
         ) : (
-          <AdminPanel />
+          <AuthorizationForm adminAuthorization={this.adminAuthorization} />
         )}
+        <NotificationContainer />
       </>
     );
   }

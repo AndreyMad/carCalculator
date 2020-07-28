@@ -8,7 +8,7 @@ class AuthorizationForm extends Component {
   };
 
   static propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    adminAuthorization: PropTypes.func.isRequired
   };
 
   handleChange = ({ target }) => {
@@ -17,13 +17,19 @@ class AuthorizationForm extends Component {
     });
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+    const { userName, password } = this.state;
+    const { adminAuthorization } = this.props;
+    adminAuthorization(userName, password);
+  };
+
   render() {
     const { userName, password } = this.state;
-    const { onSubmit } = this.props;
     return (
       <div>
         <form
-          onSubmit={onSubmit.bind(this)}
+          onSubmit={this.onSubmit}
           style={{
             width: "400px",
             height: "250px",

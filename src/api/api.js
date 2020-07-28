@@ -68,3 +68,13 @@ export const adminAuthorization = (userName, password) => {
 
   return axios(req).then(res => res);
 };
+
+export const getUsers = token => {
+  const req = {
+    method: "post",
+    url: `${config.IP}getUsers`,
+    data: { token }
+  };
+
+  return axios(req).then(res => res);
+};

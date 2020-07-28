@@ -12,13 +12,25 @@ const app = express();
 app.use(express.static("build"));
 app.use(cors());
 app.use(jsonParser);
+
+// admin authorisation
 app.post("/auth", jsonParser, (req, res) => {
   db.adminAuthorization(req.body.userName, req.body.password).then(data => {
     if (data.err) {
-      return res.status(200).send({ err: data.err });
+      return res.status(200).send({ data, err: data.err });
     }
     const token = jwt.sign({ password: req.body.password }, "crazy_cat");
-    return res.status(200).send({ data, token });
+    return res.status(200).send({ ...data, token });
+  });
+});
+
+// get all users from DB
+app.post("/getUsers", jsonParser, (req, res) => {
+  db.getUsers(req.body.token).then(data => {
+    if (data.err) {
+      return res.status(200).send({ data, err: data.err });
+    }
+    return res.status(200).send({ users: data });
   });
 });
 

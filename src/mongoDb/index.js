@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 const mongoose = require("mongoose");
 
-// const userSchema = mongoose.Schema({
-//   name: { firstName: String, lastName: String },
-//   password: String,
-//   dateCreating: { type: Date, default: Date.now() },
-//   email: { type: String, default: "andrey.87@gmail.com" }
-// });
+const userSchema = mongoose.Schema({
+  name: { firstName: String, lastName: String },
+  password: String,
+  dateCreating: { type: Date, default: Date.now() },
+  email: { type: String, default: "andrey.87@gmail.com" }
+});
 
 const Uri =
   "mongodb+srv://andrey:598741@cluster0.c5cyn.gcp.mongodb.net/usersDB?retryWrites=true&w=majority";
@@ -25,10 +25,23 @@ const adminUserSchema = mongoose.Schema({
   dateCreating: { type: Date, default: Date.now() }
 });
 const Admin = mongoose.model("admins", adminUserSchema);
-// const User = mongoose.model("users", userSchema);
+const Users = mongoose.model("users", userSchema);
+
+const getUsers = async () => {
+  let users = [];
+  await Users.find().then(res => {
+    // console.log(res);
+    users = { ...res };
+    // console.log(users);
+    return users;
+  });
+
+  return users;
+};
 
 const adminAuthorization = async (userName, password) => {
   let dbResp = {};
+
   await Admin.findOne({ name: userName }).then(user => {
     if (!user) {
       const resp = { user: {}, err: "Admin not fousnd" };
@@ -49,5 +62,6 @@ const adminAuthorization = async (userName, password) => {
   });
   return dbResp;
 };
-// User.find({ name: `*` }).then(() => console.log());
+
 module.exports.adminAuthorization = adminAuthorization;
+module.exports.getUsers = getUsers;
