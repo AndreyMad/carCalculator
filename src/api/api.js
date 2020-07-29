@@ -78,3 +78,20 @@ export const getUsers = token => {
 
   return axios(req).then(res => res);
 };
+
+export const checkUserSession = token => {
+  const req = {
+    method: "post",
+    url: `${config.IP}getSession`,
+    data: { token }
+  };
+  return axios(req).then(res => res);
+};
+export const deleteAdminSession = token => {
+  const req = {
+    method: "post",
+    url: `${config.IP}deleteAdmSession`,
+    data: { token }
+  };
+  return axios(req).then(res => res);
+};

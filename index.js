@@ -22,6 +22,28 @@ app.post("/auth", jsonParser, (req, res) => {
   });
 });
 
+// get session user and token
+app.post("/getSession", jsonParser, (req, res) => {
+  return db
+    .getTokenFromDb(req.body.token)
+    .then(resp => {
+      if (!res) {
+        return res.status(200).send({ err: "No user session available" });
+      }
+      return res.status(200).send({ resp });
+    })
+    .catch(err => err);
+});
+
+// delete admin session
+app.post("/deleteAdmSession", jsonParser, (req, res) => {
+  return db.deleteAdminSession(req.body.token).then(resp => {
+    if (resp.ok === 1) {
+      res.status(200).send({ data: "SUCCES" });
+    }
+  });
+});
+
 // get all users from DB
 app.post("/getUsers", jsonParser, (req, res) => {
   db.getUsers(req.body.token).then(data => {

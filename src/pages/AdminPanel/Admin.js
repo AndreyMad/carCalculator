@@ -6,6 +6,7 @@ import {
 import AuthorizationForm from "./AuthorizationForm";
 import AdminPanel from "./AdminPanel";
 import * as API from "../../api/api";
+import style from "./Admin.module.css";
 
 class Admin extends Component {
   state = {
@@ -16,39 +17,58 @@ class Admin extends Component {
   };
 
   componentDidMount() {
-    const token = localStorage.getItem("token");
-    if (token) {
-      this.setState({ isAuthorized: true });
-    }
+    this.authorizationCheck();
   }
 
-  adminAuthorization = (userName, password) => {
-    const user = API.adminAuthorization(userName, password).then(
-      // eslint-disable-next-line no-console
-      res => {
-        const { data } = res;
-
-        if (data.err) {
-          this.setState({ error: data.err });
-          NotificationManager.error("Помилка", data.err);
-          return;
-        }
-        if (!data.err && data.token) {
-          localStorage.setItem("token", data.token);
-          this.setState({
-            error: false,
-            isAuthorized: true,
-            adminUser: data.user.name
-          });
-        }
+  authorizationCheck = () => {
+    const token = localStorage.getItem("token");
+    API.checkUserSession(token).then(res => {
+      if (!res.data.resp) {
+        this.setState({ isAuthorized: false });
       }
-    );
-    return user;
+      if (res.data.resp && token === res.data.resp.sessionToken) {
+        API.getUsers().then(resp => {
+          this.setState({
+            isAuthorized: true,
+            users: resp.data.users,
+            adminUser: res.data.resp.userName
+          });
+        });
+      }
+    });
+  };
+
+  adminAuthorization = (userName, password) => {
+    API.adminAuthorization(userName, password)
+      .then(
+        // eslint-disable-next-line no-console
+        res => {
+          const { data } = res;
+
+          if (data.err) {
+            this.setState({ error: data.err });
+            NotificationManager.error("Помилка", data.err);
+            return;
+          }
+          if (!data.err && data.token) {
+            localStorage.setItem("token", data.token);
+            this.setState({
+              error: false,
+              isAuthorized: true,
+              adminUser: data.user.name
+            });
+          }
+        }
+      )
+      .finally(() => this.authorizationCheck())
+      // eslint-disable-next-line no-console
+      .catch(err => console.log(err));
   };
 
   logout = () => {
+    API.deleteAdminSession(localStorage.getItem("token"));
     localStorage.removeItem("token");
-    this.setState({ isAuthorized: false });
+    this.setState({ isAuthorized: false, users: {} });
   };
 
   render() {
@@ -57,9 +77,18 @@ class Admin extends Component {
       <>
         {isAuthorized && !error ? (
           <>
-            <button type="button" onClick={this.logout}>
-              Logout
-            </button>
+            <div className={style.logoutContainer}>
+              {" "}
+              <p>{adminUser}</p>
+              <button
+                className={style.logoutBtn}
+                type="button"
+                onClick={this.logout}
+              >
+                Logout
+              </button>{" "}
+            </div>
+
             <AdminPanel adminUser={adminUser} users={users} />
           </>
         ) : (

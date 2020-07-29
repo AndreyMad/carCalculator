@@ -1,46 +1,74 @@
+/* eslint-disable react/no-did-update-set-state */
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import style from "./Admin.module.css";
-import * as API from "../../api/api";
 
 class AdminPanel extends Component {
   state = {
-    isAuthorized: false,
     users: []
   };
 
   static propTypes = {
-    adminUser: PropTypes.string.isRequired
+    users: PropTypes.arrayOf({}).isRequired
   };
 
   componentDidMount() {
-    const { adminUser } = this.props;
-    this.setState({ adminUser });
-    const token = localStorage.getItem("token");
-    if (token) {
-      API.getUsers().then(res => {
-        this.setState({ isAuthorized: true, users: res.data.users });
-      });
+    const { users } = this.props;
+    if (Object.keys(users).length > 1) {
+      this.setState({ users: [...users] });
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps === this.props) {
+      return;
+    }
+    const { users } = this.props;
+    this.setState({ users });
+  }
+
+  inputChange = ({ target }) => {
+    // console.log(target.id);
+
+    const { users } = this.state;
+    const userIndex = users.find((user, index) => {
+      // eslint-disable-next-line no-console
+      console.log(index);
+      if (user._id === target.id) {
+        return index;
+      }
+      return null;
+    });
+    return userIndex;
+  };
+
   render() {
-    const { users, isAuthorized, adminUser } = this.state;
-    console.log(users);
+    const { users } = this.state;
 
     return (
       <>
         <div className={style.container}>
-          {users &&
-            users.map(user => (
-              // eslint-disable-next-line no-underscore-dangle
-              <div key={user._id} className={style.wrapper}>
+          {users.map(user => (
+            // eslint-disable-next-line no-underscore-dangle
+            <div key={user._id} className={style.wrapper}>
+              <div className={style.innerWrappe}>
                 <p>Імя: {user.name.firstName}</p>
                 <p>Прізвище: {user.name.lastName}</p>
-                <p>Email: {user.email}</p>
-                <p>Кількість карфакс: {user.allowedCarfaxRequest}</p>
               </div>
-            ))}
+              <div className={style.innerWrappe}>
+                <p>Email: {user.email}</p>
+                <p>Телефон: {user.phone}</p>
+              </div>
+              <p>Кількість карфакс: </p>
+              <input
+                type="number"
+                value={user.allowedCarfaxRequest}
+                id={user._id}
+                onChange={this.inputChange}
+              />
+            </div>
+          ))}
         </div>
       </>
     );

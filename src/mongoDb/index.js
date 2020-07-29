@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
@@ -27,7 +28,8 @@ const adminUserSchema = mongoose.Schema({
 });
 const sessionSchemas = mongoose.Schema({
   sessionToken: String,
-  userId: String
+  userId: String,
+  userName: String
 });
 const Admin = mongoose.model("admins", adminUserSchema);
 const Users = mongoose.model("users", userSchema);
@@ -44,8 +46,18 @@ const getUsers = async () => {
 
   return users;
 };
-const setTokenToDb = (token, id) => {
-  Sessions.create({ sessionToken: token, userId: id });
+const setTokenToDb = (token, id, userName) => {
+  Sessions.create({ sessionToken: token, userId: id, userName });
+};
+const getTokenFromDb = token => {
+  return Sessions.findOne({ sessionToken: token }).then(res => {
+    return res;
+  });
+};
+const deleteAdminSession = token => {
+  return Sessions.deleteOne({ sessionToken: token }).then(res => {
+    return res;
+  });
 };
 const adminAuthorization = async (userName, password) => {
   let dbResp = {};
@@ -63,7 +75,7 @@ const adminAuthorization = async (userName, password) => {
     }
     if (user.password === password) {
       const token = jwt.sign({ password }, "crazy_cat");
-      setTokenToDb(token, user._id);
+      setTokenToDb(token, user._id, user.name);
       console.log("saved");
       const resp = { user, err: null, token };
       dbResp = resp;
@@ -76,3 +88,5 @@ const adminAuthorization = async (userName, password) => {
 
 module.exports.adminAuthorization = adminAuthorization;
 module.exports.getUsers = getUsers;
+module.exports.getTokenFromDb = getTokenFromDb;
+module.exports.deleteAdminSession = deleteAdminSession;
