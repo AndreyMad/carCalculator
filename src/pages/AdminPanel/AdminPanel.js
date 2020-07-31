@@ -10,7 +10,18 @@ class AdminPanel extends Component {
   };
 
   static propTypes = {
-    users: PropTypes.arrayOf({}).isRequired
+    users: PropTypes.arrayOf(
+      PropTypes.shapeOf({
+        _id: PropTypes.string.isRequired,
+        allowedCarfaxRequest: PropTypes.string.isRequired,
+        name: PropTypes.shapeOf({
+          firstName: PropTypes.string.isRequired,
+          lastName: PropTypes.string.isRequired
+        }).isRequired,
+        email: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired
+      })
+    ).isRequired
   };
 
   componentDidMount() {
@@ -29,18 +40,14 @@ class AdminPanel extends Component {
   }
 
   inputChange = ({ target }) => {
-    // console.log(target.id);
-
     const { users } = this.state;
-    const userIndex = users.find((user, index) => {
-      // eslint-disable-next-line no-console
-      console.log(index);
-      if (user._id === target.id) {
-        return index;
-      }
-      return null;
+    const newUser = users.find(user => {
+      return user._id === target.id;
     });
-    return userIndex;
+    newUser.allowedCarfaxRequest = target.value;
+
+    this.setState({ users: [...users, newUser] });
+    return newUser;
   };
 
   render() {

@@ -30,6 +30,7 @@ app.post("/getSession", jsonParser, (req, res) => {
       if (!res) {
         return res.status(200).send({ err: "No user session available" });
       }
+
       return res.status(200).send({ resp });
     })
     .catch(err => err);
