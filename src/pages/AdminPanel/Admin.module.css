@@ -17,8 +17,15 @@
   flex-direction: column;
   padding: 5px;
 }
+.valueInput {
+  width: 40px;
+  height: 50%;
+}
 .wrapper > p {
   min-width: 100px;
+  margin-top: 5px;
+}
+.wrapper > form {
   margin-top: 5px;
 }
 .wrapper:after {

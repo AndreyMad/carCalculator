@@ -46,6 +46,14 @@ const getUsers = async () => {
 
   return users;
 };
+const updateUser = async user => {
+  const some = await Users.findOne({ _id: user._id });
+  console.log(some);
+  await Users.updateOne({ _id: user._id }, { user }).then(res =>
+    console.log(res)
+  );
+};
+
 const setTokenToDb = (token, id, userName) => {
   Sessions.create({ sessionToken: token, userId: id, userName });
 };
@@ -90,3 +98,4 @@ module.exports.adminAuthorization = adminAuthorization;
 module.exports.getUsers = getUsers;
 module.exports.getTokenFromDb = getTokenFromDb;
 module.exports.deleteAdminSession = deleteAdminSession;
+module.exports.updateUser = updateUser;

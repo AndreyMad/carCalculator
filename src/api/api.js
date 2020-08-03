@@ -78,6 +78,14 @@ export const getUsers = token => {
 
   return axios(req).then(res => res);
 };
+export const updateUser = userToupdate => {
+  const req = {
+    method: "post",
+    url: `${config.IP}updateUser`,
+    data: { userToupdate }
+  };
+  return axios(req).then(res => res);
+};
 
 export const checkUserSession = token => {
   const req = {
