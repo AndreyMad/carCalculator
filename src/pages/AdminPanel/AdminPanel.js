@@ -40,6 +40,14 @@ class AdminPanel extends Component {
     this.setState({ users });
   }
 
+  componentWillUnmount() {
+    API.deleteAdminSession(localStorage.getItem("token")).then(res => {
+      if (res.data) {
+        localStorage.removeItem("token");
+      }
+    });
+  }
+
   inputChange = ({ target }) => {
     const { users } = this.state;
     const newUser = users.find(user => {

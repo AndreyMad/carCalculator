@@ -9,12 +9,14 @@ import routes from "../../routes/routes";
 import SVG from "../../assets/svg/index";
 import fade from "../../transitions/fade250.module.css";
 import slide from "../../transitions/slide.module.css";
+import AuthModal from "../AuthModal/AuthModal";
 
 class Header extends Component {
   state = {
     isBurgerOpen: false,
     scrolOn: true,
-    windowWidth: ""
+    windowWidth: "",
+    isAuthOpen: false
   };
 
   componentDidMount() {
@@ -41,9 +43,10 @@ class Header extends Component {
   };
 
   render() {
-    const { isBurgerOpen, windowWidth } = this.state;
+    const { isBurgerOpen, isAuthOpen, windowWidth } = this.state;
     return (
       <>
+        {isAuthOpen ? AuthModal : null}
         <div className={style.container}>
           <NavLink className={style.logo} to={routes.MAIN_PAGE.path}>
             <img src={logo} alt="autonom logo" />
@@ -247,6 +250,17 @@ class Header extends Component {
                       className={style.itemIcon}
                     />
                   </a>
+                </li>
+                <li className={style.itemIcon}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      this.setState({ isAuthOpen: true, isBurgerOpen: false });
+                    }}
+                    className={style.authButton}
+                  >
+                    Авторизація
+                  </button>
                 </li>
               </ul>
             </div>

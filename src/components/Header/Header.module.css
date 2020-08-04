@@ -73,6 +73,15 @@
   color: #ffffff;
   text-decoration: none;
 }
+.authButton {
+  margin-top: 15px;
+  color: #ffffff;
+  background-color: transparent;
+  width: 145px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
 ul {
   list-style: none;
 }
