@@ -32,15 +32,15 @@ class AdminPanel extends Component {
     // console.log(target.id);
 
     const { users } = this.state;
-    const userIndex = users.find((user, index) => {
-      // eslint-disable-next-line no-console
-      console.log(index);
+    const user = users.find((user, index) => {
       if (user._id === target.id) {
         return index;
       }
+      console.log(user);
       return null;
     });
-    return userIndex;
+    console.log(users.indexOf(user));
+    return user;
   };
 
   render() {
