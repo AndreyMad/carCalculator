@@ -54,6 +54,10 @@ app.post("/getUsers", jsonParser, (req, res) => {
     return res.status(200).send({ users: data });
   });
 });
+// update user
+app.post("/updateUser", jsonParser, (req, res) => {
+  db.updateUser(req.body.userToupdate).then(data => res.status(200).send(data));
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));

@@ -7,7 +7,9 @@ const userSchema = mongoose.Schema({
   name: { firstName: String, lastName: String },
   password: String,
   dateCreating: { type: Date, default: Date.now() },
-  email: { type: String, default: "andrey.87@gmail.com" }
+  email: { type: String, default: "andrey.87@gmail.com" },
+  phone: String,
+  allowedCarfaxRequest: String
 });
 
 const Uri =
@@ -46,6 +48,15 @@ const getUsers = async () => {
 
   return users;
 };
+const updateUser = async user => {
+  await Users.updateOne(
+    { _id: user._id },
+    { $set: { allowedCarfaxRequest: user.allowedCarfaxRequest } }
+  );
+  const updatedUser = await Users.findById({ _id: user._id });
+  return updatedUser;
+};
+
 const setTokenToDb = (token, id, userName) => {
   Sessions.create({ sessionToken: token, userId: id, userName });
 };
@@ -90,3 +101,4 @@ module.exports.adminAuthorization = adminAuthorization;
 module.exports.getUsers = getUsers;
 module.exports.getTokenFromDb = getTokenFromDb;
 module.exports.deleteAdminSession = deleteAdminSession;
+module.exports.updateUser = updateUser;

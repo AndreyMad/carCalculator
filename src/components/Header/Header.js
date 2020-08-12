@@ -9,12 +9,14 @@ import routes from "../../routes/routes";
 import SVG from "../../assets/svg/index";
 import fade from "../../transitions/fade250.module.css";
 import slide from "../../transitions/slide.module.css";
+import AuthModal from "../AuthModal/AuthModal";
 
 class Header extends Component {
   state = {
     isBurgerOpen: false,
     scrolOn: true,
-    windowWidth: ""
+    windowWidth: "",
+    isAuthOpen: false
   };
 
   componentDidMount() {
@@ -40,8 +42,16 @@ class Header extends Component {
     }
   };
 
+  authClose = e => {
+    if (e.target.className.includes("containerShadow")) {
+      this.setState({ isAuthOpen: false }, () => {
+        this.togleScrol();
+      });
+    }
+  };
+
   render() {
-    const { isBurgerOpen, windowWidth } = this.state;
+    const { isBurgerOpen, isAuthOpen, windowWidth } = this.state;
     return (
       <>
         <div className={style.container}>
@@ -248,6 +258,17 @@ class Header extends Component {
                     />
                   </a>
                 </li>
+                <li className={style.itemIcon}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      this.setState({ isAuthOpen: true, isBurgerOpen: false });
+                    }}
+                    className={style.authButton}
+                  >
+                    Авторизація
+                  </button>
+                </li>
               </ul>
             </div>
           </CSSTransition>
@@ -258,6 +279,14 @@ class Header extends Component {
             classNames={fade}
           >
             <div className={style.shadow} onClick={this.toggleModal} />
+          </CSSTransition>
+          <CSSTransition
+            in={isAuthOpen}
+            unmountOnExit
+            timeout={250}
+            classNames={fade}
+          >
+            <AuthModal authClose={this.authClose} />
           </CSSTransition>
         </div>
       </>
