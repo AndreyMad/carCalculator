@@ -1,8 +1,13 @@
+/* eslint-disable react/no-unused-state */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import {
+  NotificationContainer,
+  NotificationManager
+} from "react-notifications";
 import style from "./Header.module.css";
 import logo from "../../assets/img/logo.4acaa253b517.png";
 import routes from "../../routes/routes";
@@ -10,13 +15,16 @@ import SVG from "../../assets/svg/index";
 import fade from "../../transitions/fade250.module.css";
 import slide from "../../transitions/slide.module.css";
 import AuthModal from "../AuthModal/AuthModal";
+import * as API from "../../api/api";
 
 class Header extends Component {
   state = {
     isBurgerOpen: false,
     scrolOn: true,
     windowWidth: "",
-    isAuthOpen: false
+    isAuthOpen: false,
+    isAuthorized: false,
+    user: {}
   };
 
   componentDidMount() {
@@ -50,8 +58,54 @@ class Header extends Component {
     }
   };
 
+  logOut = () => {
+    API.deleteSession(localStorage.getItem("token"));
+    this.setState({
+      isBurgerOpen: false,
+      isAuthOpen: false,
+      isAuthorized: false
+    });
+    localStorage.removeItem("token");
+  };
+
+  authorization = (email, password) => {
+    API.userAuthorization(email, password)
+      .then(res => {
+        const { data } = res;
+
+        if (data.err) {
+          this.setState({ error: data.err });
+          NotificationManager.error("Помилка", data.err);
+          return;
+        }
+        if (!data.err && data.token) {
+          localStorage.setItem("token", data.token);
+          this.setState(
+            {
+              error: false,
+              isAuthorized: true,
+              user: data.user,
+              isAuthOpen: false
+            },
+            () => {
+              this.togleScrol();
+            }
+          );
+        }
+      })
+      // .finally(() => this.authorizationCheck())
+      // eslint-disable-next-line no-console
+      .catch(err => console.log(err));
+  };
+
   render() {
-    const { isBurgerOpen, isAuthOpen, windowWidth } = this.state;
+    const {
+      isBurgerOpen,
+      isAuthOpen,
+      windowWidth,
+      isAuthorized,
+      user
+    } = this.state;
     return (
       <>
         <div className={style.container}>
@@ -259,15 +313,31 @@ class Header extends Component {
                   </a>
                 </li>
                 <li className={style.itemIcon}>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      this.setState({ isAuthOpen: true, isBurgerOpen: false });
-                    }}
-                    className={style.authButton}
-                  >
-                    Авторизація
-                  </button>
+                  {isAuthorized ? (
+                    <div className={style.authWrapper}>
+                      <span>{user.name.firstName}</span>
+                      <button
+                        className={style.exitButton}
+                        onClick={this.logOut}
+                        type="button"
+                      >
+                        Вихід
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        this.setState({
+                          isAuthOpen: true,
+                          isBurgerOpen: false
+                        });
+                      }}
+                      className={style.authButton}
+                    >
+                      Авторизація
+                    </button>
+                  )}
                 </li>
               </ul>
             </div>
@@ -286,7 +356,10 @@ class Header extends Component {
             timeout={250}
             classNames={fade}
           >
-            <AuthModal authClose={this.authClose} />
+            <AuthModal
+              authClose={this.authClose}
+              authorization={this.authorization}
+            />
           </CSSTransition>
         </div>
       </>

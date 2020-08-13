@@ -9,7 +9,10 @@ const userSchema = mongoose.Schema({
   dateCreating: { type: Date, default: Date.now() },
   email: { type: String, default: "andrey.87@gmail.com" },
   phone: String,
-  allowedCarfaxRequest: String
+  allowedCarfaxRequest: String,
+  carRequests: Array,
+  carfaxRequests: Array,
+  favoriteCars: Array
 });
 
 const Uri =
@@ -40,9 +43,7 @@ const Sessions = mongoose.model("sessions", sessionSchemas);
 const getUsers = async () => {
   let users = [];
   await Users.find().then(res => {
-    // console.log(res);
     users = [...res];
-    // console.log(users);
     return users;
   });
 
@@ -65,7 +66,7 @@ const getTokenFromDb = token => {
     return res;
   });
 };
-const deleteAdminSession = token => {
+const deleteSession = token => {
   return Sessions.deleteOne({ sessionToken: token }).then(res => {
     return res;
   });
@@ -96,9 +97,36 @@ const adminAuthorization = async (userName, password) => {
   });
   return dbResp;
 };
+const userAuthorization = async (email, password) => {
+  let dbResp = {};
+  console.log(email);
+  await Users.findOne({ email }).then(user => {
+    if (!user) {
+      const resp = { user: {}, err: "Користувач не існує" };
+      dbResp = resp;
+      return resp;
+    }
+    if (user.password !== password) {
+      const resp = { user: {}, err: "Невірний пароль" };
+      dbResp = resp;
+      return resp;
+    }
+    if (user.password === password) {
+      const token = jwt.sign({ password }, "crazy_cat");
+      setTokenToDb(token, user._id, user.name);
+      console.log("saved");
+      const resp = { user, err: null, token };
+      dbResp = resp;
+      return resp;
+    }
+    return dbResp;
+  });
+  return dbResp;
+};
 
 module.exports.adminAuthorization = adminAuthorization;
 module.exports.getUsers = getUsers;
 module.exports.getTokenFromDb = getTokenFromDb;
-module.exports.deleteAdminSession = deleteAdminSession;
+module.exports.deleteSession = deleteSession;
 module.exports.updateUser = updateUser;
+module.exports.userAuthorization = userAuthorization;

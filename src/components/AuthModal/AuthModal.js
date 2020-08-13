@@ -5,8 +5,8 @@ import style from "./AuthModal.module.css";
 class AuthModal extends Component {
   state = {
     registrationForm: false,
-    authLogin: "",
-    authPassword: ""
+    email: "",
+    password: ""
   };
 
   static propTypes = {
@@ -17,6 +17,13 @@ class AuthModal extends Component {
     this.setState({
       [target.id]: target.value
     });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+    const { authorization, authClose } = this.props;
+    authorization(email, password);
   };
 
   render() {
@@ -53,17 +60,17 @@ class AuthModal extends Component {
           </div>
           {registrationForm ? null : (
             <>
-              <form className={style.authForm}>
+              <form className={style.authForm} onSubmit={this.handleSubmit}>
                 <input
-                  placeholder="Логін"
-                  id="authLogin"
+                  placeholder="Email"
+                  id="email"
                   type="text"
                   value={authLogin}
                   onChange={this.inputHandleChange}
                 />
                 <input
                   placeholder="Пароль"
-                  id="authPassword"
+                  id="password"
                   type="password"
                   value={authPassword}
                   onChange={this.inputHandleChange}

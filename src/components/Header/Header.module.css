@@ -109,6 +109,16 @@ ul {
 .phoneLink {
   color: #ffffff;
 }
+.authWrapper {
+  display: flex;
+  margin-top: 25px;
+  width: 100%;
+  min-width: 160px;
+  justify-content: space-evenly;
+}
+.authWrapper > span {
+  color: #ffffff;
+}
 @media (min-width: 768px) {
   .container {
     height: 120px;

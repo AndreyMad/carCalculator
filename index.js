@@ -21,6 +21,15 @@ app.post("/auth", jsonParser, (req, res) => {
     return res.status(200).send({ ...data });
   });
 });
+// userAuthorization
+app.post("/userAuth", jsonParser, (req, res) => {
+  db.userAuthorization(req.body.email, req.body.password).then(data => {
+    if (data.err) {
+      return res.status(200).send({ data, err: data.err });
+    }
+    return res.status(200).send({ ...data });
+  });
+});
 
 // get session user and token
 app.post("/getSession", jsonParser, (req, res) => {
@@ -36,9 +45,9 @@ app.post("/getSession", jsonParser, (req, res) => {
     .catch(err => err);
 });
 
-// delete admin session
-app.post("/deleteAdmSession", jsonParser, (req, res) => {
-  return db.deleteAdminSession(req.body.token).then(resp => {
+// delete  session
+app.post("/deleteSession", jsonParser, (req, res) => {
+  return db.deleteSession(req.body.token).then(resp => {
     if (resp.ok === 1) {
       res.status(200).send({ data: "SUCCES" });
     }

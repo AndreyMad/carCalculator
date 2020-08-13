@@ -45,7 +45,7 @@ class AdminPanel extends Component {
   }
 
   componentWillUnmount() {
-    API.deleteAdminSession(localStorage.getItem("token")).then(res => {
+    API.deleteSession(localStorage.getItem("token")).then(res => {
       if (res.data) {
         localStorage.removeItem("token");
       }
