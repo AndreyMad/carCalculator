@@ -3,6 +3,8 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
+mongoose.set("useFindAndModify", false);
+
 const userSchema = mongoose.Schema({
   name: { firstName: String, lastName: String },
   password: String,
@@ -47,8 +49,25 @@ const getUsers = async () => {
   return users;
 };
 const updateUser = async user => {
-  const userToOverwrite = await Users.findOne({ _id: user._id });
-  console.log(userToOverwrite);
+  // console.log(user);
+  // const mongoRes = await Users.findById({ _id: user._id });
+  // await mongoRes.updateOne({
+  //   $set: {
+  //     password: user.password,
+  //     allowedCarfaxRequest: user.allowedCarfaxRequest
+  //   }
+  // });
+
+  let resp = await Users.findOneAndUpdate(
+    { _id: user._id },
+    {
+      newValue: true,
+      allowedCarfaxRequest: 32
+    },
+    { new: true }
+  );
+  resp = await Users.findOne({ _id: user._id });
+  console.log(resp);
 };
 
 const setTokenToDb = (token, id, userName) => {
