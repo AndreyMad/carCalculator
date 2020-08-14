@@ -9,7 +9,12 @@ const userSchema = mongoose.Schema({
   name: { firstName: String, lastName: String },
   password: String,
   dateCreating: { type: Date, default: Date.now() },
-  email: { type: String, default: "andrey.87@gmail.com" }
+  email: { type: String, default: "andrey.87@gmail.com" },
+  phone: String,
+  allowedCarfaxRequest: String,
+  carRequests: Array,
+  carfaxRequests: Array,
+  favoriteCars: Array
 });
 
 const Uri =
@@ -40,34 +45,28 @@ const Sessions = mongoose.model("sessions", sessionSchemas);
 const getUsers = async () => {
   let users = [];
   await Users.find().then(res => {
-    // console.log(res);
     users = [...res];
-    // console.log(users);
     return users;
   });
 
   return users;
 };
-const updateUser = async user => {
-  // console.log(user);
-  // const mongoRes = await Users.findById({ _id: user._id });
-  // await mongoRes.updateOne({
-  //   $set: {
-  //     password: user.password,
-  //     allowedCarfaxRequest: user.allowedCarfaxRequest
-  //   }
-  // });
+const registerUser = async user => {
+  console.log(user);
+  const isUserExist = await Users.findOne({ email: user.email });
+  if (isUserExist) return { user: {}, err: "User exist" };
+  await Users.create(user);
+  const userFromDb = await Users.findOne({ email: user.email });
+  return userFromDb;
+};
 
-  let resp = await Users.findOneAndUpdate(
+const updateUser = async user => {
+  await Users.updateOne(
     { _id: user._id },
-    {
-      newValue: true,
-      allowedCarfaxRequest: 32
-    },
-    { new: true }
+    { $set: { allowedCarfaxRequest: user.allowedCarfaxRequest } }
   );
-  resp = await Users.findOne({ _id: user._id });
-  console.log(resp);
+  const updatedUser = await Users.findById({ _id: user._id });
+  return updatedUser;
 };
 
 const setTokenToDb = (token, id, userName) => {
@@ -78,7 +77,7 @@ const getTokenFromDb = token => {
     return res;
   });
 };
-const deleteAdminSession = token => {
+const deleteSession = token => {
   return Sessions.deleteOne({ sessionToken: token }).then(res => {
     return res;
   });
@@ -109,9 +108,37 @@ const adminAuthorization = async (userName, password) => {
   });
   return dbResp;
 };
+const userAuthorization = async (email, password) => {
+  let dbResp = {};
+  console.log(email);
+  await Users.findOne({ email }).then(user => {
+    if (!user) {
+      const resp = { user: {}, err: "Користувач не існує" };
+      dbResp = resp;
+      return resp;
+    }
+    if (user.password !== password) {
+      const resp = { user: {}, err: "Невірний пароль" };
+      dbResp = resp;
+      return resp;
+    }
+    if (user.password === password) {
+      const token = jwt.sign({ password }, "crazy_cat");
+      setTokenToDb(token, user._id, user.name);
+      console.log("saved");
+      const resp = { user, err: null, token };
+      dbResp = resp;
+      return resp;
+    }
+    return dbResp;
+  });
+  return dbResp;
+};
 
 module.exports.adminAuthorization = adminAuthorization;
 module.exports.getUsers = getUsers;
 module.exports.getTokenFromDb = getTokenFromDb;
-module.exports.deleteAdminSession = deleteAdminSession;
+module.exports.deleteSession = deleteSession;
 module.exports.updateUser = updateUser;
+module.exports.userAuthorization = userAuthorization;
+module.exports.registerUser = registerUser;

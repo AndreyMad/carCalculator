@@ -167,6 +167,7 @@ class SearchPage extends Component {
           }
           if (res.car) {
             const { photos } = res;
+
             if (photos.length > 1) {
               this.setState({
                 car: { ...car, images: [...photos] },

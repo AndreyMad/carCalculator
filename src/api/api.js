@@ -68,6 +68,15 @@ export const adminAuthorization = (userName, password) => {
 
   return axios(req).then(res => res);
 };
+export const userAuthorization = (email, password) => {
+  const req = {
+    method: "post",
+    url: `${config.IP}userAuth`,
+    data: { email, password }
+  };
+
+  return axios(req).then(res => res);
+};
 
 export const getUsers = token => {
   const req = {
@@ -84,7 +93,15 @@ export const updateUser = userToupdate => {
     url: `${config.IP}updateUser`,
     data: { userToupdate }
   };
-  return axios(req).then(res => res);
+  return axios(req).then(res => res.data);
+};
+export const registerUser = user => {
+  const req = {
+    method: "post",
+    url: `${config.IP}registerUser`,
+    data: { user }
+  };
+  return axios(req).then(res => res.data);
 };
 
 export const checkUserSession = token => {
@@ -95,10 +112,10 @@ export const checkUserSession = token => {
   };
   return axios(req).then(res => res);
 };
-export const deleteAdminSession = token => {
+export const deleteSession = token => {
   const req = {
     method: "post",
-    url: `${config.IP}deleteAdmSession`,
+    url: `${config.IP}deleteSession`,
     data: { token }
   };
   return axios(req).then(res => res);

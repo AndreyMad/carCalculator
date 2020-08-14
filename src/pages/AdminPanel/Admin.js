@@ -20,6 +20,7 @@ class Admin extends Component {
     this.authorizationCheck();
   }
 
+  // доделать проверку на админа
   authorizationCheck = () => {
     const token = localStorage.getItem("token");
     API.checkUserSession(token).then(res => {
@@ -40,33 +41,30 @@ class Admin extends Component {
 
   adminAuthorization = (userName, password) => {
     API.adminAuthorization(userName, password)
-      .then(
-        // eslint-disable-next-line no-console
-        res => {
-          const { data } = res;
+      .then(res => {
+        const { data } = res;
 
-          if (data.err) {
-            this.setState({ error: data.err });
-            NotificationManager.error("Помилка", data.err);
-            return;
-          }
-          if (!data.err && data.token) {
-            localStorage.setItem("token", data.token);
-            this.setState({
-              error: false,
-              isAuthorized: true,
-              adminUser: data.user.name
-            });
-          }
+        if (data.err) {
+          this.setState({ error: data.err });
+          NotificationManager.error("Помилка", data.err);
+          return;
         }
-      )
+        if (!data.err && data.token) {
+          localStorage.setItem("token", data.token);
+          this.setState({
+            error: false,
+            isAuthorized: true,
+            adminUser: data.user.name
+          });
+        }
+      })
       .finally(() => this.authorizationCheck())
       // eslint-disable-next-line no-console
       .catch(err => console.log(err));
   };
 
   logout = () => {
-    API.deleteAdminSession(localStorage.getItem("token"));
+    API.deleteSession(localStorage.getItem("token"));
     localStorage.removeItem("token");
     this.setState({ isAuthorized: false, users: {} });
   };

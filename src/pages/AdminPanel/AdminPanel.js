@@ -2,6 +2,10 @@
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import {
+  NotificationContainer,
+  NotificationManager
+} from "react-notifications";
 import style from "./Admin.module.css";
 import * as API from "../../api/api";
 
@@ -41,7 +45,7 @@ class AdminPanel extends Component {
   }
 
   componentWillUnmount() {
-    API.deleteAdminSession(localStorage.getItem("token")).then(res => {
+    API.deleteSession(localStorage.getItem("token")).then(res => {
       if (res.data) {
         localStorage.removeItem("token");
       }
@@ -64,7 +68,12 @@ class AdminPanel extends Component {
     const newUser = users.find(user => {
       return user._id === e.target.id;
     });
-    API.updateUser(newUser);
+    API.updateUser(newUser).then(res => {
+      if (JSON.stringify(newUser) === JSON.stringify(res)) {
+        return NotificationManager.success("Успішно", "Дані оновлено", 3000);
+      }
+      return NotificationManager.error("Помилка", "Дані не оновлено", 3000);
+    });
   };
 
   render() {
@@ -73,6 +82,7 @@ class AdminPanel extends Component {
     return (
       <>
         <div className={style.container}>
+          <NotificationContainer />
           {users.map(user => (
             // eslint-disable-next-line no-underscore-dangle
             <div key={user._id} className={style.wrapper}>
