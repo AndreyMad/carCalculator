@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const pdb = require("./src/Postgrees/index");
 const db = require("./src/mongoDb/index");
 
 const jsonParser = bodyParser.json();
@@ -12,23 +13,36 @@ app.use(express.static("build"));
 app.use(cors());
 app.use(jsonParser);
 
-// admin authorisation
-app.post("/auth", jsonParser, (req, res) => {
-  db.adminAuthorization(req.body.userName, req.body.password).then(data => {
-    if (data.err) {
-      return res.status(200).send({ data, err: data.err });
-    }
-    return res.status(200).send({ ...data });
-  });
+// start server
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
-// userAuthorization
-app.post("/userAuth", jsonParser, (req, res) => {
-  db.userAuthorization(req.body.email, req.body.password).then(data => {
-    if (data.err) {
-      return res.status(200).send({ data, err: data.err });
-    }
-    return res.status(200).send({ ...data });
+
+const port = process.env.PORT || 9000;
+
+app.listen(port, () => {
+  console.log(`Server starting on port ${port}`);
+});
+
+// register new user DONE
+app.post("/registerUser", jsonParser, async (req, res) => {
+  const dataResp = await pdb.addUser(req.body.user);
+  if (dataResp.error) {
+    return res.status(200).send(dataResp);
+  }
+  return res.status(201).send(dataResp);
+});
+
+// authorisation
+app.post("/auth", jsonParser, async (req, res) => {
+  const dataResp = await pdb.authorization({
+    userEmail: req.body.userEmail,
+    password: req.body.password
   });
+  if (dataResp.error) {
+    return res.status(200).send(dataResp);
+  }
+  return res.status(201).send(dataResp);
 });
 
 // get session user and token
@@ -64,22 +78,7 @@ app.post("/getUsers", jsonParser, (req, res) => {
   });
 });
 
-//register new user
-app.post("/registerUser", jsonParser, (req, res) => {
-  db.registerUser(req.body.user).then(data => res.status(200).send(data));
-});
-
 // update user
 app.post("/updateUser", jsonParser, (req, res) => {
   db.updateUser(req.body.userToupdate).then(data => res.status(200).send(data));
-});
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
-const port = process.env.PORT || 9000;
-
-app.listen(port, () => {
-  console.log(`Server starting on port ${port}`);
 });

@@ -7,43 +7,41 @@ const client = new Client({
   user: "xjqyfann",
   password: "MjJJt1VnysEEFCqb_oSLEqh6EINXDBMT"
 });
+client.connect(err => {
+  if (err) {
+    return console.error("could not connect to postgres", err);
+  }
+  console.log("postgree connected");
+});
 
-const addUser = (firstname, lastName, email, phone, password) => {
-  client.connect(err => {
-    if (err) {
-      return console.error("could not connect to postgres", err);
-    }
-    return client.query(
-      `INSERT INTO users(firstname, lastName,email, phone, password ) VALUES($1, $2, $3, $4, $5)`,
-      [firstname, lastName, email, phone, password],
-      (error, result) => {
-        if (err) {
-          return console.error("error running query", error);
-        }
-        client.end();
-        return result;
-      }
-    );
-  });
+const addUser = ({ firstName, lastName, email, phone, password }) => {
+  return client
+    .query(
+      `INSERT INTO users(firstname, lastName,email, phone, password ) VALUES($1, $2, $3, $4, $5) returning id, email, password`,
+      [firstName, lastName, email, phone, password]
+    )
+    .then(res => {
+      return { user: { ...res.rows[0] } };
+    })
+    .catch(error => {
+      return { error: { ...error }, user: {} };
+    });
 };
 
-addUser("bob", "singer", "bobi@bob", "90711684", "12334");
-// addUser(query);
+const authorization = ({ userEmail, userPassword }) => {
+  return client
+    .query(`SELECT email, password FROM users where email = '${userEmail}'`)
+    .then(res => {
+      console.log(!!res.rows.length);
+      if (res.rows.length === 0) {
+        return { error: "Користувача не знайдено", user: {} };
+      }
+      return { user: { ...res.rows[0] } };
+    })
+    .catch(error => {
+      return { error: { ...error }, user: {} };
+    });
+};
 
-// const getUsers = () => {
-//   client.connect(function(err) {
-//     if (err) {
-//       return console.error("could not connect to postgres", err);
-//     }
-//     client.query("select * from users", (err, result) => {
-//       if (err) {
-//         return console.error("error running query", err);
-//       }
-//       console.log(result);
-//       client.end();
-//       return result;
-//     });
-//   });
-// };
-// getUsers();
-// addUser(query);
+module.exports.addUser = addUser;
+module.exports.authorization = authorization;

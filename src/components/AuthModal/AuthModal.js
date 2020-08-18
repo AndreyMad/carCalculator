@@ -30,10 +30,10 @@ class AuthModal extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { authEmail, authPassword } = this.state;
-    if (EmailValidator.validate(authEmail)) {
-      const { authorization } = this.props;
-      authorization(authEmail, authPassword);
-    }
+    // if (EmailValidator.validate(authEmail)) {
+    const { authorization } = this.props;
+    authorization(authEmail, authPassword);
+    // }
   };
 
   registrationFormHandleSubmit = e => {

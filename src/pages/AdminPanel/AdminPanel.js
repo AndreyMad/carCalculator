@@ -44,13 +44,13 @@ class AdminPanel extends Component {
     this.setState({ users });
   }
 
-  componentWillUnmount() {
-    API.deleteSession(localStorage.getItem("token")).then(res => {
-      if (res.data) {
-        localStorage.removeItem("token");
-      }
-    });
-  }
+  // componentWillUnmount() {
+  //   API.deleteSession(localStorage.getItem("token")).then(res => {
+  //     if (res.data) {
+  //       localStorage.removeItem("token");
+  //     }
+  //   });
+  // }
 
   inputChange = ({ target }) => {
     const { users } = this.state;
@@ -68,12 +68,12 @@ class AdminPanel extends Component {
     const newUser = users.find(user => {
       return user._id === e.target.id;
     });
-    API.updateUser(newUser).then(res => {
-      if (JSON.stringify(newUser) === JSON.stringify(res)) {
-        return NotificationManager.success("Успішно", "Дані оновлено", 3000);
-      }
-      return NotificationManager.error("Помилка", "Дані не оновлено", 3000);
-    });
+    // API.updateUser(newUser).then(res => {
+    //   if (JSON.stringify(newUser) === JSON.stringify(res)) {
+    //     return NotificationManager.success("Успішно", "Дані оновлено", 3000);
+    //   }
+    //   return NotificationManager.error("Помилка", "Дані не оновлено", 3000);
+    // });
   };
 
   render() {

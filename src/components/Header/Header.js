@@ -31,7 +31,7 @@ class Header extends Component {
     this.setState({
       windowWidth: window.innerWidth
     });
-    this.checkAuth();
+    // this.checkAuth();
   }
 
   toggleModal = () => {
@@ -70,13 +70,13 @@ class Header extends Component {
   };
 
   authorization = (email, password) => {
-    API.userAuthorization(email, password)
+    API.authorization(email, password)
       .then(res => {
         const { data } = res;
-
-        if (data.err) {
-          this.setState({ error: data.err });
-          NotificationManager.error("Помилка", data.err);
+        console.log(data);
+        if (data.error) {
+          this.setState({ error: data.error });
+          NotificationManager.error("Помилка", data.error);
           return;
         }
         if (!data.err && data.token) {
@@ -107,34 +107,33 @@ class Header extends Component {
     regPhone
   ) => {
     const user = {
-      name: {
-        firstName: regFirstName,
-        lastName: regLastName
-      },
+      firstName: regFirstName,
+      lastName: regLastName,
       password: regPassword,
       email: regEmail,
       phone: regPhone
     };
     API.registerUser(user).then(res => {
-      if (res.err)
+      if (res.error && res.error.detail)
         return NotificationManager.error(
-          "Кориснтувач вже існує",
-          `${res.err}`,
+          `${res.error.detail}`,
+          "Помилка",
+
           3000
         );
 
-      return this.authorization(res.email, res.password);
+      // return this.authorization(res.email, res.password);
     });
   };
 
-  checkAuth = () => {
-    const token = localStorage.getItem("token");
-    API.checkUserSession(token).then(res => {
-      if (!res.data.resp) {
-        this.setState({ isAuthorized: false });
-      }
-    });
-  };
+  // checkAuth = () => {
+  //   const token = localStorage.getItem("token");
+  //   API.checkUserSession(token).then(res => {
+  //     if (!res.data.resp) {
+  //       this.setState({ isAuthorized: false });
+  //     }
+  //   });
+  // };
 
   render() {
     const {
