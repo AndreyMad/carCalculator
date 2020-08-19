@@ -5,7 +5,7 @@ import SearchPage from "../pages/SearchPage/SearchPage";
 import PartsPage from "../pages/PartsPage/PartsPage";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Answers from "../pages/Answers/Answers";
-import Admin from "../pages/AdminPanel/Admin.jsx";
+import Admin from "../pages/AdminPanel/Admin";
 
 export default {
   MAIN_PAGE: {

@@ -73,6 +73,15 @@
   color: #ffffff;
   text-decoration: none;
 }
+.authButton {
+  margin: 15px auto 0px;
+  color: #ffffff;
+  background-color: transparent;
+  width: 145px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #ffffff;
+}
 ul {
   list-style: none;
 }
@@ -98,6 +107,16 @@ ul {
   height: 20px;
 }
 .phoneLink {
+  color: #ffffff;
+}
+.authWrapper {
+  display: flex;
+  margin-top: 25px;
+  width: 100%;
+  min-width: 160px;
+  justify-content: space-evenly;
+}
+.authWrapper > span {
   color: #ffffff;
 }
 @media (min-width: 768px) {
@@ -135,7 +154,7 @@ ul {
   .feedbackTabletContainer {
     max-width: 300px;
     margin: 0px 15px;
-    height: 65px;
+    height: 85px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

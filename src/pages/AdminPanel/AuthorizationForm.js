@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import * as API from "../../api/api";
+import PropTypes from "prop-types";
 
 class AuthorizationForm extends Component {
   state = {
     userName: "",
     password: ""
+  };
+
+  static propTypes = {
+    adminAuthorization: PropTypes.func.isRequired
   };
 
   handleChange = ({ target }) => {
@@ -16,8 +20,8 @@ class AuthorizationForm extends Component {
   onSubmit = e => {
     e.preventDefault();
     const { userName, password } = this.state;
-
-    const user = API.adminAuthorization(userName, password).then(res => res);
+    const { adminAuthorization } = this.props;
+    adminAuthorization(userName, password);
   };
 
   render() {

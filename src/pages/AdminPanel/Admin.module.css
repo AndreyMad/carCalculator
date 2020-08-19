@@ -1,0 +1,49 @@
+.container {
+  padding: 20px;
+}
+
+.wrapper {
+  display: flex;
+  height: 45px;
+  justify-content: start;
+  position: relative;
+}
+.innerWrappe {
+  height: 100%;
+  width: 300px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 5px;
+}
+.valueInput {
+  width: 40px;
+  height: 50%;
+}
+.wrapper > p {
+  min-width: 100px;
+  margin-top: 5px;
+}
+.wrapper > form {
+  margin-top: 5px;
+}
+.wrapper:after {
+  content: "";
+  width: 100%;
+  border: 1px solid black;
+  position: absolute;
+  bottom: 0px;
+}
+.logoutContainer {
+  height: 50px;
+  width: 100%;
+  position: relative;
+}
+.logoutBtn {
+  width: 70px;
+  height: 35px;
+  margin: 10px 10px 10px auto;
+  cursor: pointer;
+  display: block;
+}

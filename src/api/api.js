@@ -59,14 +59,48 @@ export const getAveragePrice = ({ make, model, year }) => {
     )
     .then(res => res);
 };
-export const adminAuthorization = (userName, password) => {
-  const user = JSON.stringify({ userName, password });
 
+export const authorization = (userEmail, password) => {
   const req = {
     method: "post",
     url: `${config.IP}auth`,
-    data: { userName, password }
+    data: { userEmail, password }
   };
 
+  return axios(req).then(res => res);
+};
+
+export const registerUser = user => {
+  const req = {
+    method: "post",
+    url: `${config.IP}registerUser`,
+    data: { user }
+  };
+  return axios(req).then(res => res.data);
+};
+
+export const logout = token => {
+  const req = {
+    method: "post",
+    url: `${config.IP}logout`,
+    data: { token }
+  };
+  return axios(req).then(res => res.data);
+};
+
+export const checkUserSession = token => {
+  const req = {
+    method: "post",
+    url: `${config.IP}getSession`,
+    data: { token }
+  };
+  return axios(req).then(res => res);
+};
+export const deleteSession = token => {
+  const req = {
+    method: "post",
+    url: `${config.IP}deleteSession`,
+    data: { token }
+  };
   return axios(req).then(res => res);
 };
