@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-did-update-set-state */
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from "react";
@@ -7,7 +8,7 @@ import {
   NotificationManager
 } from "react-notifications";
 import style from "./Admin.module.css";
-import * as API from "../../api/api";
+// import * as API from "../../api/api";
 
 class AdminPanel extends Component {
   state = {
@@ -44,13 +45,13 @@ class AdminPanel extends Component {
     this.setState({ users });
   }
 
-  componentWillUnmount() {
-    API.deleteSession(localStorage.getItem("token")).then(res => {
-      if (res.data) {
-        localStorage.removeItem("token");
-      }
-    });
-  }
+  // componentWillUnmount() {
+  //   API.deleteSession(localStorage.getItem("token")).then(res => {
+  //     if (res.data) {
+  //       localStorage.removeItem("token");
+  //     }
+  //   });
+  // }
 
   inputChange = ({ target }) => {
     const { users } = this.state;
@@ -68,12 +69,13 @@ class AdminPanel extends Component {
     const newUser = users.find(user => {
       return user._id === e.target.id;
     });
-    API.updateUser(newUser).then(res => {
-      if (JSON.stringify(newUser) === JSON.stringify(res)) {
-        return NotificationManager.success("Успішно", "Дані оновлено", 3000);
-      }
-      return NotificationManager.error("Помилка", "Дані не оновлено", 3000);
-    });
+    // API.updateUser(newUser).then(res => {
+    //   if (JSON.stringify(newUser) === JSON.stringify(res)) {
+    //     return NotificationManager.success("Успішно", "Дані оновлено", 3000);
+    //   }
+    //   return NotificationManager.error("Помилка", "Дані не оновлено", 3000);
+    // });
+    return newUser;
   };
 
   render() {

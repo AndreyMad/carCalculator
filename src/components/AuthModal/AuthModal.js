@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import * as EmailValidator from "email-validator";
+// import * as EmailValidator from "email-validator";
 import style from "./AuthModal.module.css";
 
 class AuthModal extends Component {
@@ -30,10 +30,10 @@ class AuthModal extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { authEmail, authPassword } = this.state;
-    if (EmailValidator.validate(authEmail)) {
-      const { authorization } = this.props;
-      authorization(authEmail, authPassword);
-    }
+    // if (EmailValidator.validate(authEmail)) {
+    const { authorization } = this.props;
+    authorization(authEmail, authPassword);
+    // }
   };
 
   registrationFormHandleSubmit = e => {
