@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const db = require("./src/mongoDb/index");
+const db = require("./src/Postgrees/index.js");
 
 const jsonParser = bodyParser.json();
 const app = express();
@@ -66,7 +66,11 @@ app.post("/getUsers", jsonParser, (req, res) => {
 
 //register new user
 app.post("/registerUser", jsonParser, (req, res) => {
-  db.registerUser(req.body.user).then(data => res.status(200).send(data));
+  db.addUser(req.body.user);
+  // .then(data => {
+  // console.log(data);
+  res.status(200);
+  // });
 });
 
 // update user

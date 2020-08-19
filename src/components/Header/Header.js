@@ -107,10 +107,8 @@ class Header extends Component {
     regPhone
   ) => {
     const user = {
-      name: {
-        firstName: regFirstName,
-        lastName: regLastName
-      },
+      firstName: regFirstName,
+      lastName: regLastName,
       password: regPassword,
       email: regEmail,
       phone: regPhone
